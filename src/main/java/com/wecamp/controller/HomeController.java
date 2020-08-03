@@ -28,9 +28,15 @@ public class HomeController {
 		return "myPage/my-page/마이페이지";
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home() {
 		log.info("#HomeController home() 접근"); 
 		return "home";
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index() {
+		log.info("#HomeController index() 접근"); 
+		return "index";
 	}
 }

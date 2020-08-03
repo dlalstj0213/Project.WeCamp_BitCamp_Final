@@ -1,14 +1,15 @@
+<%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Test</title>
+
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<h1 id="h1" class="h1">환영합니다!!</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<h2>
+		홈 바디 부분
+	</h2>
 </body>
 </html>

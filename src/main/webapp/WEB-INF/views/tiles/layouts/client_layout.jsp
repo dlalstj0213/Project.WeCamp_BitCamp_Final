@@ -13,38 +13,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
 
     <!-- Favicon -->
-    <link rel="icon" href="../../images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Template CSS Files -->
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/font-awesome.css">
-    <link rel="stylesheet" href="../../css/line-awesome.css">
-    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../../css/magnific-popup.css">
-    <link rel="stylesheet" href="../../css/animated-headline.css">
-    <link rel="stylesheet" href="../../css/daterangepicker.css">
-    <link rel="stylesheet" href="../../css/jquery-ui.css">
-    <link rel="stylesheet" href="../../css/jquery.filer.css">
-    <link rel="stylesheet" href="../../css/jquery.filer-dragdropbox-theme.css">
-    <link rel="stylesheet" href="../../css/select2.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <script src="../../js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/line-awesome.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/animated-headline.css">
+    <link rel="stylesheet" href="/css/daterangepicker.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/jquery.filer.css">
+    <link rel="stylesheet" href="css/jquery.filer-dragdropbox-theme.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/modernizr.js"></script> <!-- Modernizr -->
 </head>
   
 <body>
     <header id="header">
         <tiles:insertAttribute name="header" />
     </header>
-
-    <section id="menu">
-        <tiles:insertAttribute name="menu" />
-    </section>
-	             
+     
     <section id="body">
         <tiles:insertAttribute name="body" />
     </section>

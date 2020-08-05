@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html>
+<body>
+>>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
 <!-- ================================
     START HERO-WRAPPER AREA
 ================================= -->
@@ -1430,3 +1436,8 @@
 <!-- ================================
     END CTA AREA
 ================================= -->
+<<<<<<< HEAD
+=======
+</body>
+</html>
+>>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77

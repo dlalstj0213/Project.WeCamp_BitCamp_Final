@@ -20,7 +20,11 @@
                 <div class="col-lg-12">
                     <div class="menu-full-width">
                         <div class="logo">
+<<<<<<< HEAD
                             <a href="index.html"><img src="/images/logo.png" alt="logo"></a>
+=======
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+>>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
                         </div><!-- end logo -->
                         <div class="main-menu-content">
                             <nav>
@@ -61,8 +65,13 @@
                                         <ul class="dropdown-menu-item">
                                             <li><a href="user-profile.html">user profile</a></li>
                                             <li><a href="top-author.html">top authors </a></li>
+<<<<<<< HEAD
                                             <li><a href="mypage/myPage.do">dashboard</a></li>
                                             <li><a href="wecamp/booking.do">booking  </a></li>
+=======
+                                            <li><a href="dashboard.html">dashboard</a></li>
+                                            <li><a href="booking.html">booking  </a></li>
+>>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
                                             <li><a href="booking-confirmation.html">booking confirmation </a></li>
                                             <li><a href="invoice.html">invoice</a></li>
                                             <li><a href="pricing.html">pricing</a></li>
@@ -191,7 +200,11 @@
         </div><!-- end humburger-menu -->
         <div class="side-menu-wrap side-user-menu-wrap">
             <div class="side-user-img">
+<<<<<<< HEAD
                 <img src="/images/team2.jpg" alt="image">
+=======
+                <img src="images/team2.jpg" alt="image">
+>>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
                 <h4 class="su__name">Mark Williamson</h4>
                 <span class="su__meta">Joined 3 years ago</span>
                 <div class="avatar-icon">

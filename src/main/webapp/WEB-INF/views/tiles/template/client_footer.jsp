@@ -15,11 +15,7 @@
             <div class="col-lg-3 column-td-6">
                 <div class="footer-item">
                     <div class="logo">
-<<<<<<< HEAD
                         <a href="index.html" class="foot-logo"><img src="/images/logo.png" alt="logo"></a>
-=======
-                        <a href="index.html" class="foot-logo"><img src="images/logo.png" alt="logo"></a>
->>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
                         <p class="footer__desc">
                             Morbi convallis bibendum urna ut viverra. Maecenas
                             quis consequat libero, a feugiat eros
@@ -122,10 +118,6 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/popper.min.js"></script>
-<<<<<<< HEAD
-=======
-<script src="/js/bootstrap.min.js"></script>
->>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/jquery.magnific-popup.min.js"></script>
 <script src="/js/isotope-3.0.6.min.js"></script>
@@ -140,7 +132,4 @@
 <script src="/js/jquery.filer.min.js"></script>
 <script src="/js/smooth-scrolling.js"></script>
 <script src="/js/main.js"></script>
-<<<<<<< HEAD
 <script src="/js/bootstrap.min.js"></script>
-=======
->>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77

@@ -30,18 +30,11 @@
     <link rel="stylesheet" href="/css/daterangepicker.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
     <link rel="stylesheet" href="/css/jquery.filer.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="/css/jquery.filer-dragdropbox-theme.css">
     <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modernizr.js"></script> <!-- Modernizr -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jquery -->
-=======
-    <link rel="stylesheet" href="css/jquery.filer-dragdropbox-theme.css">
-    <link rel="stylesheet" href="/css/select2.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/modernizr.js"></script> <!-- Modernizr -->
->>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
 </head>
   
 <body>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+	
 	<!-- base-definition -->
-	<definition name="client-view-layout" template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
+	<definition name="client-layout" template="/WEB-INF/views/tiles/layouts/client_layout.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/template/client_header.jsp"/>
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/template/client_footer.jsp"/>
 	</definition>
-
-	<definition name="home" extends="client-view-layout">
-		<put-attribute name="title" value="홈" />
-		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
-	</definition>
-
-	<definition name="*/*/*" extends="client-view-layout">
+	
+	<definition name="index" extends="client-layout">
+		<put-attribute name="title" value="위캠프 :: 최고의 캠핑 사이트" />
+		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+	</definition>	
+	
+	<definition name="*/*/*" extends="client-layout">
 		<put-attribute name="title" value="{3}" />
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
-	</definition>
+	</definition>	
 	 
 </tiles-definitions>

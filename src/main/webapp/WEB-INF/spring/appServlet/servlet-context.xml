@@ -16,8 +16,13 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/images/**" location="/resources/images/" />
-	<resources mapping="/videos/**" location="/resources/videos/" />
+	<resources mapping="/img/**" location="/resources/img/" />
+	<resources mapping="/video/**" location="/resources/video/" />
+	<resources mapping="/php/**" location="/resources/php/" />
+	<resources mapping="/sass/**" location="/resources/sass/" />
+	<resources mapping="/common/**" location="/resources/common/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

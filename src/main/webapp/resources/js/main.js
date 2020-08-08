@@ -185,25 +185,68 @@ Author Email:   contact@tecydevs.com
             type: 'video'
         });
 
+        /***changed by rhie***/
         /*==== Daterangepicker =====*/
         $('input[name="daterange"]').daterangepicker({
-            opens: 'left',
-            singleDatePicker: true
+        	autoApply: true,
+        	minDate: new Date(),
+        	opens: 'center',
+        	//applyLabel: '확인',
+        	//cancelLabel: '취소',
+        	 locale :{
+                 format: 'YYYY/MM/DD',
+                 'monthNames': [
+                	 '1월',
+                	 '2월',
+                	 '3월',
+                	 '4월',
+                	 '5월',
+                	 '6월',
+                	 '7월',
+                	 '8월',
+                	 '9월',
+                	 '10월',
+                	 '11월',
+                	 '12월'
+                 ],
+                 'daysOfWeek': [
+                	 '일',
+                	 '월',
+                	 '화',
+                	 '수',
+                	 '목',
+                	 '금',
+                	 '토'
+                 ]
+             },
+        }, function(start, end, label){
+        	$('#check-in').val(start.format('YYYY/MM/DD'))
+        	$('#check-out').val(end.format('YYYY/MM/DD'))
         });
-
+        
+        /***changed by rhie***/
         /*==== Quantity number increment control =====*/
         $(document).on('click', '.input-number-increment', function() {
             var $input = $(this).parents('.input-number-group').find('.input-number');
             var val = parseInt($input.val(), 10);
-            $input.val(val + 1);
-
+            var max = $(".input-number").attr("max");
+            if(val == max) {
+            	$input.val(val);
+            } else {
+            	$input.val(val + 1);
+            }
         });
-
+        
+        /***changed by rhie***/
         /*==== Quantity number decrement control =====*/
         $(document).on('click', '.input-number-decrement', function() {
             var $input = $(this).parents('.input-number-group').find('.input-number');
             var val = parseInt($input.val(), 10);
-            $input.val(val - 1);
+            if(val == 0){
+            	$input.val(val);
+            } else {
+            	$input.val(val - 1);
+            }
         });
 
         /*==== select2 =====*/

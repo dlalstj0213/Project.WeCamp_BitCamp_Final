@@ -31,4 +31,9 @@ public class IndexController {
 	private String campDetail() {
 		return "client/camp_detail/캠핑장 이름";
 	}
+	
+	@RequestMapping("booking.do")
+	private String bookingDetail() {
+		return "client/com_inquiry/업체 문의 작성";
+	}
 }

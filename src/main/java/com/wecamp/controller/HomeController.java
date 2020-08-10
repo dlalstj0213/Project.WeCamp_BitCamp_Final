@@ -9,34 +9,46 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 public class HomeController {
-	
-	@RequestMapping(value = "/boardList.do")
-	public String boardList() throws Exception {
-		log.info("#HomeController boardList() 접근"); 
-		return "boardList/리스트";
-	}
-	
-	@RequestMapping(value = "/boardView.do")
-	public String boardView() throws Exception {
-		log.info("#HomeController boardView() 접근"); 
-		return "boardView/뷰";
-	}
 
-	@RequestMapping(value = "/my_page.do")
-	public String myPage() {
-		log.info("#HomeController myPage() 접근"); 
-		return "myPage/my-page/마이페이지";
-	}
-	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home() {
-		log.info("#HomeController home() 접근"); 
-		return "home";
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
-		log.info("#HomeController index() 접근"); 
+		log.info("#HomeController index() 접근");
 		return "index";
+	}
+
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+	public String myPage() {
+		log.info("#HomeController index() 접근");
+		return "mypage/dashboard/hello";
+	}
+
+	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
+	public String signUp() {
+		log.info("#HomeController index() 접근");
+		return "mypage/sign_up/signup";
+	}
+
+	@RequestMapping(value = "/loginUser", method = RequestMethod.GET)
+	public String loginUser() {
+		log.info("#HomeController index() 접근");
+		return "mypage/login/login";
+	}
+
+	@RequestMapping(value = "/listingDetail", method = RequestMethod.GET)
+	public String listingDetail() {
+		log.info("#HomeController index() 접근");
+		return "mypage/listing_details/listingDetail";
+	}
+
+	@RequestMapping(value = "/booking", method = RequestMethod.GET)
+	public String booking() {
+		log.info("#HomeController index() 접근");
+		return "mypage/booking/booking";
+	}
+
+	@RequestMapping(value = "/addListing", method = RequestMethod.GET)
+	public String addListing() {
+		log.info("#HomeController index() 접근");
+		return "mypage/add_listing/addListing";
 	}
 }

@@ -18,7 +18,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700&display=swap" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	
     <!-- Template CSS Files -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
@@ -34,7 +35,27 @@
     <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modernizr.js"></script> <!-- Modernizr -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!--jquery-->
+    
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '306095397264311',
+	      xfbml      : true,
+	      version    : 'v7.0'
+	    });
+	    FB.AppEvents.logPageView();
+	  };
+	
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "https://connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+	
 </head>
   
 <body>

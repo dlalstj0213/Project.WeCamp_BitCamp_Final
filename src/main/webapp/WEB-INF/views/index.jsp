@@ -1,14 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-=======
-<!DOCTYPE html>
-<html>
-<body>
->>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
+  <style>
+    .playon-instagarm {
+      width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .instagram {
+      width: 250px;
+      margin-bottom: 30px;
+    }
+
+    .instagram-thum {
+      width:250px;
+      height:250px;
+      background-size:cover;
+    }
+  </style>
+
 <!-- ================================
     START HERO-WRAPPER AREA
 ================================= -->
+
 <section class="hero-wrapper hero-wrapper4">
     <div class="hero-overlay"></div><!-- end hero-overlay -->
     <div class="video-bg">
@@ -19,9 +35,9 @@
             <div class="col-lg-12">
                 <div class="hero-heading">
                     <div class="section-heading">
-                        <h2 class="sec__title">Find the Best Places to Be</h2>
+                        <h2 class="sec__title">You camp? We camp!</h2>
                         <p class="sec__desc">
-                            Discover the best places to stay, eat, shop & visit the city nearest to you.
+                           머물고 쉬다 갈 캠핑장 찾아볼까요?
                         </p>
                     </div>
                 </div><!-- end hero-heading -->
@@ -306,314 +322,6 @@
     END HERO-WRAPPER AREA
 ================================= -->
 
-	<!-- ================================
-    START CAT AREA
-================================= -->
-<section class="cat-area padding-top-100px padding-bottom-90px">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading text-center">
-                    <h2 class="sec__title before-none pt-0">Browse by Categories</h2>
-                    <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                        a feugiat eros. Nunc ut lacinia tortors.
-                    </p>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row mt-5">
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img1.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-cutlery"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">Restaurants</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img2.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-plane"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">travels</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img3.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-hotel"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">hotels</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img4.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-music"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">events</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img5.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-shopping-cart"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">shops</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img6.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-gear"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">fitness</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img7.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-glass"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">food & drink</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img8.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-paint-brush"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">art & design</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img9.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-paint-brush"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">Salons</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img10.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-money"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">jobs</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img11.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-briefcase"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">Business</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-            <div class="col-lg-2 column-td-6">
-                <div class="category-item mb-4 mt-0 ml-0 mr-0 p-0">
-                    <figure class="category-fig m-0">
-                        <img src="images/img12.jpg" alt="category-image" class="cat-img">
-                        <figcaption class="fig-caption">
-                            <a href="#" class="cat-fig-box">
-                                <div class="icon-element mb-3">
-                                    <span class="la la-hospital-o"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title">Hospital</h4>
-                                </div>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div><!-- end category-item m-0 padding-0 -->
-            </div><!-- end col-lg-2 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end cat-area -->
-<!-- ================================
-    END CAT AREA
-================================= -->
-
-<!-- ================================
-    START HIW AREA
-================================= -->
-<section class="hiw-area text-center padding-top-100px padding-bottom-80px">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="sec__title before-none pt-0">How Dirto Works</h2>
-                    <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                        a feugiat eros. Nunc ut lacinia tortors.
-                    </p>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row padding-top-100px">
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box">
-                    <div class="info-icon">
-                        <span class="la la-search-plus"></span>
-                        <span class="info-number">1</span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Find a Place</h4>
-                        <p class="info__desc">
-                            Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box">
-                    <div class="info-icon">
-                        <span class="la la-map-o"></span>
-                        <span class="info-number">2</span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Select a location</h4>
-                        <p class="info__desc">
-                            Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box">
-                    <div class="info-icon">
-                        <span class="la la-sort"></span>
-                        <span class="info-number">3</span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Select a Category</h4>
-                        <p class="info__desc">
-                            Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box">
-                    <div class="info-icon">
-                        <span class="la la-check-circle"></span>
-                        <span class="info-number">4</span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">See Result</h4>
-                        <p class="info__desc">
-                            Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end hiw-area -->
-<!-- ================================
-    END HIW AREA
-================================= -->
-
 <!-- ================================
     START CARD AREA
 ================================= -->
@@ -622,7 +330,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="sec__title before-none pt-0">Most Visited Places</h2>
+                
+                    <h2 class="sec__title before-none pt-0">가장 많이 예약한 캠핑장</h2>
+                    <br/><div
+					  class="fb-like"
+					  data-share="true"
+					  data-width="450"
+					  data-show-faces="true">
+					</div>
                     <p class="sec__desc">
                         Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
                         a feugiat eros. Nunc ut lacinia tortors.
@@ -937,260 +652,6 @@
     END CARD AREA
 ================================= -->
 
-<!-- ================================
-    START FUN-FACT AREA
-================================= -->
-<section class="funfact-area section-bg-2 padding-top-100px padding-bottom-50px before-none after-none text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="sec__title before-none pt-0 text-white">Numbers Say Everything</h2>
-                    <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                        a feugiat eros. Nunc ut lacinia tortors.
-                    </p>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row mt-5">
-            <div class="col-lg-3 column-td-6">
-                <div class="counter-item">
-                    <div class="counter-number fun-bg1">
-                        <span class="counter">1150</span>
-                        <span class="count-symbol">+</span>
-                    </div><!-- end counter-number -->
-                    <div class="counter-content padding-top-20px">
-                        <p class="counter__title">Projects Completed</p>
-                    </div><!-- end counter-content -->
-                </div><!-- end counter-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="counter-item">
-                    <div class="counter-number fun-bg2">
-                        <span class="counter">3040</span>
-                        <span class="count-symbol">+</span>
-                    </div><!-- end counter-number -->
-                    <div class="counter-content padding-top-20px">
-                        <p class="counter__title">Happy Clients</p>
-                    </div><!-- end counter-content -->
-                </div><!-- end counter-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="counter-item">
-                    <div class="counter-number fun-bg3">
-                        <span class="counter">2020</span>
-                        <span class="count-symbol">+</span>
-                    </div><!-- end counter-number -->
-                    <div class="counter-content padding-top-20px">
-                        <p class="counter__title">Cup of Coffee</p>
-                    </div><!-- end counter-content -->
-                </div><!-- end counter-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="counter-item">
-                    <div class="counter-number fun-bg4">
-                        <span class="counter">350</span>
-                        <span class="count-symbol">+</span>
-                    </div><!-- end counter-number -->
-                    <div class="counter-content padding-top-20px">
-                        <p class="counter__title">Awards Winning</p>
-                    </div><!-- end counter-content -->
-                </div><!-- end counter-item -->
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end funfact-area -->
-<!-- ================================
-    END FUN-FACT AREA
-================================= -->
-
-<!-- ================================
-    START HIW AREA
-================================= -->
-<section class="hiw-area padding-top-100px padding-bottom-80px after-none text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="sec__title before-none pt-0">What We Offer</h2>
-                    <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                        a feugiat eros. Nunc ut lacinia tortors.
-                    </p>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row mt-5">
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box icon-box-layout">
-                    <div class="info-icon">
-                        <span class="la la-map"></span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Great Places</h4>
-                        <p class="info__desc">
-                            There are many variations of passages of Lorem Ipsum available.
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box icon-box-layout">
-                    <div class="info-icon">
-                        <span class="la la-cutlery"></span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Great Restaurants</h4>
-                        <p class="info__desc">
-                            There are many variations of passages of Lorem Ipsum available.
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box icon-box-layout">
-                    <div class="info-icon">
-                        <span class="la la-hotel"></span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Great Hotels</h4>
-                        <p class="info__desc">
-                            There are many variations of passages of Lorem Ipsum available.
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="icon-box icon-box-layout info-more-content">
-                    <div class="info-icon">
-                        <span class="la la-ellipsis-h"></span>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">And More...</h4>
-                        <p class="info__desc">
-                            There are many variations of passages of Lorem Ipsum available.
-                        </p>
-                    </div><!-- end info-content -->
-                </div><!-- end icon-box -->
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end hiw-area -->
-<!-- ================================
-    END HIW AREA
-================================= -->
-
-<!-- ================================
-    START CTA AREA
-================================= -->
-<section class="cta-area section-bg column-sm-center padding-top-80px padding-bottom-80px">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-9">
-                <div class="section-heading">
-                    <h2 class="sec__title before-none pt-0 mb-3 font-size-28">Dirto is the best way to find & discover <br> great local businesses</h2>
-                    <p class="sec__desc font-size-17">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
-                    </p>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-9 -->
-            <div class="col-lg-3">
-                <div class="btn-box">
-                    <a href="sign-up.html" class="theme-btn">Create Account</a>
-                </div><!-- end btn-box -->
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end cta-area -->
-<!-- ================================
-    END CTA AREA
-================================= -->
-
-<!-- ================================
-       START TESTIMONIAL AREA
-================================= -->
-<section class="testimonial-area padding-top-100px padding-bottom-100px text-center">
-    <img src="images/testi-img1.jpg" alt="testtmonial-image" class="random-img">
-    <img src="images/testi-img2.jpg" alt="testtmonial-image" class="random-img">
-    <img src="images/testi-img3.jpg" alt="testtmonial-image" class="random-img">
-    <img src="images/testi-img4.jpg" alt="testtmonial-image" class="random-img">
-    <img src="images/testi-img5.jpg" alt="testtmonial-image" class="random-img">
-    <img src="images/testi-img6.jpg" alt="testtmonial-image" class="random-img">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="sec__title before-none pt-0">What Our Users Said</h2>
-                    <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero,<br>
-                        a feugiat eros. Nunc ut lacinia tortors.
-                    </p>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row">
-            <div class="col-lg-8 mx-auto mt-4">
-                <div class="testimonial-carousel">
-                    <div class="testimonial-item">
-                        <div class="testi-comment">
-                            <p class="testi__desc">
-                                Excepteur sint occaecat cupidatat non proident sunt in culpa
-                                officia deserunt mollit anim laborum sint occaecat cupidatat non
-                                proident. Occaecat cupidatat non proident des
-                                culpa officia deserunt mollit.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at cumque fuga
-                                minima molestias nihil perspiciatis repudiandae sed vitae voluptatibus?
-                            </p>
-                        </div>
-                        <div class="testi-content">
-                            <img src="images/team8.jpg" class="testi__img" alt="testimonial image">
-                            <h4 class="tesi__title">Richard Doe</h4>
-                            <span class="testi__meta">united states</span>
-                        </div>
-                    </div><!-- end testimonial-item -->
-                    <div class="testimonial-item">
-                        <div class="testi-comment">
-                            <p class="testi__desc">
-                                Excepteur sint occaecat cupidatat non proident sunt in culpa
-                                officia deserunt mollit anim laborum sint occaecat cupidatat non
-                                proident. Occaecat cupidatat non proident des
-                                culpa officia deserunt mollit.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at cumque fuga
-                                minima molestias nihil perspiciatis repudiandae sed vitae voluptatibus?
-                            </p>
-                        </div>
-                        <div class="testi-content">
-                            <img src="images/team9.jpg" class="testi__img" alt="testimonial image">
-                            <h4 class="tesi__title">Denwen Evil</h4>
-                            <span class="testi__meta">united kingdom</span>
-                        </div>
-                    </div><!-- end testimonial-item -->
-                    <div class="testimonial-item">
-                        <div class="testi-comment">
-                            <p class="testi__desc">
-                                Excepteur sint occaecat cupidatat non proident sunt in culpa
-                                officia deserunt mollit anim laborum sint occaecat cupidatat non
-                                proident. Occaecat cupidatat non proident des
-                                culpa officia deserunt mollit.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at cumque fuga
-                                minima molestias nihil perspiciatis repudiandae sed vitae voluptatibus?
-                            </p>
-                        </div>
-                        <div class="testi-content">
-                            <img src="images/team10.jpg" class="testi__img" alt="testimonial image">
-                            <h4 class="tesi__title">Collis Pong</h4>
-                            <span class="testi__meta">melbourne, australia</span>
-                        </div>
-                    </div><!-- end testimonial-item -->
-                </div><!-- end testimonial-carousel -->
-            </div><!-- end col-lg-8 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end testimonial-area -->
-<!-- ================================
-       START TESTIMONIAL AREA
-================================= -->
 
 <div class="section-block"></div>
 
@@ -1202,7 +663,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title before-none pt-0">Latest Tips & Articles</h2>
+                    <h2 class="sec__title before-none pt-0">최근 게시물</h2>
                     <p class="sec__desc">
                         Morbi convallis bibendum urna ut viverra. Maecenas quis consequat,<br>
                         a feugiat eros. Nunc ut lacinia tortors.
@@ -1325,48 +786,9 @@
 
 <div class="section-block"></div>
 
-<!-- ================================
-    START CTA AREA
-================================= -->
-<section class="cta-area cta-area3 padding-top-100px padding-bottom-100px section-bg">
-    <img src="images/symble1.png" alt="" class="symble-img">
-    <img src="images/symble2.png" alt="" class="symble-img">
-    <img src="images/symble3.png" alt="" class="symble-img">
-    <img src="images/symble4.png" alt="" class="symble-img">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="mobile-img">
-                    <img src="images/mobile.png" alt="mobile-img">
-                </div>
-            </div><!-- end col-lg-5 -->
-            <div class="col-lg-6 ml-auto">
-                <div class="mobile-app-content">
-                    <div class="section-heading">
-                        <h2 class="sec__title before-none pt-0 mb-3">Dirto Android and IOS App is Available!</h2>
-                        <p class="sec__desc font-size-17 mb-4">
-                            Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-                            quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet
-                            Lorem ipsum dolor sit amet.
-                        </p>
-                    </div><!-- end section-heading -->
-                    <ul class="info-list contact-links">
-                        <li class="d-flex align-items-center mb-2"><span class="la la-file-text-o"></span> Real Time Listing</li>
-                        <li class="d-flex align-items-center mb-2"><span class="la la-filter"></span> Budget Filter For Budget</li>
-                        <li class="d-flex align-items-center mb-2"><span class="la la-question-circle"></span> Notification Price Reduction</li>
-                    </ul>
-                    <div class="btn-box text-left margin-top-40px">
-                        <a href="#" class="theme-btn download-btn"><span class="la la-apple"></span> app store</a>
-                        <a href="#" class="theme-btn download-btn"><span class="la la-android"></span> google play</a>
-                    </div><!-- end btn-box -->
-                </div>
-            </div><!-- end col-lg-6 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end cta-area -->
-<!-- ================================
-    END CTA AREA
-================================= -->
+	<div class="playon-instagarm"></div>
+
+<div class="section-block"></div>
 
 <!-- ================================
        START CLIENTLOGO AREA
@@ -1403,41 +825,29 @@
        START CLIENTLOGO AREA
 ================================= -->
 
-<!-- ================================
-    START CTA AREA
-================================= -->
-<section class="cta-area cta-area2">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="cta-box d-flex align-items-center">
-                    <div class="col-lg-8">
-                        <div class="section-heading">
-                            <h2 class="sec__title before-none pt-0 text-white">Subscribe to Newsletter!</h2>
-                            <p class="sec__desc">Subscribe to get latest updates and information.</p>
-                        </div><!-- end section-heading -->
-                    </div><!-- end col-lg-8 -->
-                    <div class="col-lg-4">
-                        <div class="contact-form-action">
-                            <form method="post">
-                                <div class="form-group mb-0">
-                                    <span class="la la-envelope-o form-icon"></span>
-                                    <input class="form-control" type="email" placeholder="Enter your email">
-                                    <button class="theme-btn" type="submit">Subscribe</button>
-                                </div>
-                            </form>
-                        </div><!-- end contact-form-action -->
-                    </div><!-- end col-lg-3 -->
-                </div><!-- end cta-box -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end cta-area -->
-<!-- ================================
-    END CTA AREA
-================================= -->
-<<<<<<< HEAD
-=======
-</body>
-</html>
->>>>>>> bf1b780297bc5a80c2a0eca3edc81ddef2430b77
+
+
+<script>
+$(document).ready(function() {
+  $.ajax({
+    url: "resources/common/instagram.php",
+    success: function (response) {
+      var list = '';
+     	
+      var result = JSON.parse(response);
+      $.each(result, function(key, val) {
+        /* 
+        val.username : 사용자 이름 ➌
+        val.link : 인스타그램 게시물 링크 주소 ➌
+        val.thum : 썸네일이미지 주소 ➌
+        vak.text : 인스타그램 게시물 내용 ➌
+        */
+        list += '<div class="instagram">'+
+        '<div class="instagram-thum" style="background:url('+val.thum+') no-repeat top center;"></div></a>'+
+        '</div>';
+      });
+      $('.playon-instagarm').append(list);
+    }
+  });
+});
+</script>

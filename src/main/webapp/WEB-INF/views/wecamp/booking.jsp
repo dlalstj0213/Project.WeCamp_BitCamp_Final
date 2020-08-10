@@ -21,7 +21,7 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-<section class="breadcrumb-area">
+ <section class="breadcrumb-area">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
@@ -29,7 +29,7 @@
                     <div class="breadcrumb-content">
                         <h2 class="breadcrumb__title">booking</h2>
                         <ul class="breadcrumb__list">
-                            <li class="active__list-item"><a href="index.html">home</a></li>
+                            <li class="active__list-item"><a href="/">home</a></li>
                             <li class="active__list-item">pages</li>
                             <li>booking</li>
                         </ul>
@@ -37,13 +37,13 @@
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
-    </div><!-- end breadcrumb-wrap -->
+    </div><!-- end breadcrumb-wrap
     <div class="bread-svg">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none">
             <path d="M-4.22,89.30 C280.19,26.14 324.21,125.81 511.00,41.94 L500.00,150.00 L0.00,150.00 Z"></path>
         </svg>
-    </div><!-- end bread-svg -->
-</section><!-- end breadcrumb-area -->
+    </div> --><!-- end bread-svg-->
+</section> <!-- end breadcrumb-area -->
 <!-- ================================
     END BREADCRUMB AREA
 ================================= -->
@@ -67,16 +67,15 @@
                                  <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text">날짜</label>
-                                            <div class="form-group">
-                                                	2020.08.03 ~ 2020.08.04
+                                            <div class="form-group booking_date">
+                                                	
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
                                  <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text">인원</label>
-                                            <div class="form-group">
-                                             4명
+                                            <div class="form-group peopleNum">
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
@@ -110,28 +109,34 @@
                             <div class="title-shape margin-top-10px"></div>
                      </div><!-- billing-title-wrap -->
    			
+                           
    			
    			 				<ul class="booking-list">
                                 <li class="d-flex align-items-center justify-content-between"
                                 	style="font-size:15px;color:#333f57;font-weight:600;margin-top:15px;margin-bottom:10px; margin-left:40px;margin-right:20px;">
-                                	 서비스 수수료 <span>5,000원</span>
+                                	 서비스 수수료(원) <span class="service_fee"></span>
                                 </li>
                                 <li class="d-flex align-items-center justify-content-between"
                                     style="font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
-                                                                                캠핑 이용료 <span>45,000원</span></li>
+                                                                                캠핑 이용료(원) <span class="camp_fee"></span></li>
                                 <li class="d-flex align-items-center justify-content-between"
                                     style="font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
-                                                                                 바베큐 이용료 <span>20,000원</span></li>
+                                                                                 바베큐 이용료 (원)<span class="bbq_fee"></span></li>
                                 <li class="d-flex align-items-center justify-content-between"
-                                    style="font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
-                                                                                포인트<input class="form-control" type="text" style="width:100px; text-align:right;"  placeholder="0P"></li>
+                                    style="font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:3px; margin-left:40px;margin-right:20px;">
+                                                                                포인트(P)<input id="point" class="form-control point" type="text" style="width:170px; text-align:right;"  placeholder="0" value=""></li>
+                                <li id="my_point"style="text-align:right; font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
+                                                                                 보유 : 100,000P &nbsp;&nbsp;<a id="bt_use_point"type="button" style="text-decoration:underline; color:#ff6b6b"> 전액 사용</a></li>
+								<!-- <li style="cursor:pointer; font-size:15px;color:#ff6b6b;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:600px;margin-right:20px;">
+									 &nbsp;<u>전액 사용</u>
+								</li> -->
                             </ul>
                             <!-- <div class="section-block-2 mt-4"></div> -->
                             <ul class="booking-list total-list mt-4">
                                 <li class="d-flex align-items-center justify-content-between"
                                 style="font-size:20px;color:#ff6b6b;font-weight:600;margin-top:7px; margin-bottom:40px;margin-left:40px;margin-right:20px;">
-                                                                        총 액
-                                <span class="color-text"style="font-size:20px;color:#333f57;font-weight:600;">70,000원</span></li>
+                                                                        총 액(원)
+                                <span class="color-text camp_total"style="font-size:20px;color:#333f57;font-weight:600;"></span></li>
                             </ul>		 
    					 
  			<!-- <div class="billing-content">
@@ -163,6 +168,31 @@
                             <div class="title-shape margin-top-10px"></div>
                         </div><!-- billing-title-wrap -->
                         <div class="payment-method-wrap p-4">
+                        
+                        <div class="payment-tab">
+                                <div class="payment-trigger">
+                                    <label class="payment-radio">
+                                        <input type="radio" name="radio">
+                                        <span class="checkmark"></span>
+                                         <img src="/images/kakaopay.png"/>
+                                       <span>&nbsp; 카카오 페이</span>
+                                    </label>
+                                </div><!-- end payment-trigger -->
+                        </div><!-- end payment-tab -->
+                        
+                        <div class="payment-tab">
+                                <div class="payment-trigger">
+                                    <label class="payment-radio">
+                                        <input type="radio" name="radio">
+                                        <span class="checkmark"></span>
+                                       <img src="https://img.icons8.com/android/24/000000/bank-card-back-side.png"/>
+                                       </span><span> &nbsp;카드</span>
+                                    </label>
+                                </div><!-- end payment-trigger -->
+                        </div><!-- end payment-tab -->
+                        
+                        
+                            <!-- start 무통장입금..등등 
                             <div class="payment-tab">
                                 <div class="payment-trigger">
                                     <label class="payment-radio">
@@ -177,10 +207,10 @@
                                                     	2020-08-04까지 입금
                                                 </p>
                                             </div>
-                                        </div><!-- end payment-content -->
+                                        </div>end payment-content
                                     </label>
-                                </div><!-- end payment-trigger -->
-                            </div><!-- end payment-tab -->
+                                </div>end payment-trigger
+                            </div>end payment-tab
                             <div class="payment-tab">
                                 <div class="payment-trigger">
                                     <label class="payment-radio">
@@ -233,10 +263,10 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div><!-- end payment-content -->
+                                        </div>end payment-content
                                     </label>
-                                </div><!-- end payment-trigger -->
-                            </div><!-- end payment-tab -->
+                                </div>end payment-trigger
+                            </div>end payment-tab
                             <div class="payment-tab">
                                 <div class="payment-trigger">
                                     <label class="payment-radio paypal-option">
@@ -250,11 +280,12 @@
                                                     You will be redirected to PayPal to complete payment.
                                                 </p>
                                             </div>
-                                        </div><!-- end payment-content -->
+                                        </div>end payment-content
                                     </label>
-                                </div><!-- end payment-trigger -->
-                            </div><!-- end payment-tab -->
-                        
+                                </div>end payment-trigger
+                            </div> 
+                            <!-- end payment-tab ///////end 무통장입금..등등-->
+                       
                         <!--start 이용약관-->
                         <div class="billing-title-wrap">
                         <h3 class="widget-title pb-0">이용 약관</h3>
@@ -321,7 +352,7 @@
                 <div class="card-item">
                     <!--  <a class="card-image-wrap"> -->
                         <div class="card-image">
-                            <img src="/images/img25.jpg" class="card__img" alt="">
+                            <img id="camp_thumb" src="/images/img25.jpg" class="card__img" alt="">
                            
                             <span class="badge" style="color:white"> <span class="la la-star"></span>4.6</span>
                         </div>
@@ -342,20 +373,20 @@
                     <div class="billing-content">
                         <div class="booking-summary">
                             <ul class="booking-list">
-                                <li class="d-flex align-items-center justify-content-between">날짜 <span>2020.08.03 ~ 2020.08.04</span></li>
-                                <li class="d-flex align-items-center justify-content-between">인원 <span>4명</span></li>
+                                <li class="d-flex align-items-center justify-content-between">날짜 <span class="booking_date"></span></li>
+                                <li class="d-flex align-items-center justify-content-between">인원 <span class="peopleNum"></span></li>
                                 <li id="charge" class="d-flex align-items-center justify-content-between"data-container="body" data-toggle="popover"
                                 	data-content="수수료는 위캠프 플랫폼을 운영하고 연중무휴 고객 지원과 같은 다양한 서비스를 제공하는데 사용됩니다." data-placement="left"
                                 	style="cursor:pointer">
-                                	 <u>서비스 수수료</u> <span>5,000원</span>
+                                	 <u>서비스 수수료(원)</u> <span class="service_fee"></span>
                                 </li>
-                                <li class="d-flex align-items-center justify-content-between">캠핑 이용료 <span>45,000원</span></li>
-                                <li class="d-flex align-items-center justify-content-between">바베큐 이용료 <span>20,000원</span></li>
-                                <li class="d-flex align-items-center justify-content-between">포인트 <span>0P</span></li>
+                                <li class="d-flex align-items-center justify-content-between">캠핑 이용료(원) <span class="camp_fee"></span></li>
+                                <li class="d-flex align-items-center justify-content-between">바베큐 이용료(원)<span class="bbq_fee"></span></li>
+                                <li class="d-flex align-items-center justify-content-between">포인트(P) <span class="point" id="use_point"></span></li>
                             </ul>
                             <div class="section-block-2 mt-4"></div>
                             <ul class="booking-list total-list mt-4">
-                                <li class="d-flex align-items-center justify-content-between">총 액<span class="color-text">70,000원</span></li>
+                                <li class="d-flex align-items-center justify-content-between">총 액(원)<span class="color-text camp_total"></span></li>
                             </ul>
                             <!-- <div class="coupon-widget mt-4">
                                 <div class="contact-form-action">
@@ -389,83 +420,10 @@
 <!-- ================================
     END BOOKING AREA
 ================================= -->
-     <!--  $( document ).ready( function() {
-        $( ".chbAll" ).click( function() {
-          $( ".chb" ).prop( 'checked', this.checked );
-        } );
-      } ); -->
-   
-<!--전체 동의 클릭 시 전체 선택되는 function-->
-<script>
-$(document).ready(function(){
-    //최상단 체크박스 클릭
-    $("#chbAll").click(function(){
-        //클릭되었으면
-        if($("#chbAll").prop("checked")){
-            //input태그의 name이 chb인 태그들을 찾아서 checked옵션을 true로 정의
-            $("input[name=chb]").prop("checked",true);
-            $bt_pay = $("#bt_pay").attr("disabled", false);//전체 동의하면 결제하기 버튼 활성화
-            //클릭이 안돼있으면
-        }else{
-            //input태그의 name이 chb인 태그들을 찾아서 checked옵션을 false로 정의
-            $("input[name=chb]").prop("checked",false);
-            $bt_pay = $("#bt_pay").attr("disabled", true);//전체 동의 안 하면 결제하기 버튼 비활성화
-        }
-    });
-    
-    $(".chb").click(function(){//모든 체크박스가 체크되었을 때 결제하기 버튼이 활성화 돼라
-    	if($("input:checkbox[id='chb1']").is(":checked") &
-    		$("input:checkbox[id='chb2']").is(":checked") &
-    		$("input:checkbox[id='chb3']").is(":checked") &
-    		$("input:checkbox[id='chb4']").is(":checked") &
-    		$("input:checkbox[id='chb5']").is(":checked")
-    	){
-		 $bt_pay = $("#bt_pay").attr("disabled", false);
-    	}else{
-    		 $bt_pay = $("#bt_pay").attr("disabled", true);//전체 동의 안 하면 결제하기 버튼 비활성화
-    	}
-	});
-	$("#charge").on("click", function(){
-		// toggle 함수는 팝오버가 show상태면 hide로 hide면 show를 실행한다.
-		// 함수의 종류는 show, hide, toggle있다.
-		$("#charge").popover('toggle');
-		// destroy 함수도 존재하는데 이는 popover를 해제하는 함수이다.
-	});
-    //$("#charge").popover('toggle')
-	//$("#charge").tooltip();
-    
-    $("#bt_use").click(function(){//이용규칙 동의 상세내역 띄우기
-		$("#rules_area1").load("/common/rules_of_use.txt", function(p1, p2, p3){
-			//alert("p1 : "+p1+" ,p2 : "+p2+" ,p3 : "+p3);
-			if(p2 == "success"){
-				//alert("성공");
-				//alert("status : "+p3.status+", readyState : "+p3.readyState);
-			}
-			if(p2 == "error"){
-				//alert("실패");
-				//alert("p1: "+p1+"status : "+p3.status+", readyState : "+p3.readyState);
-			}
-		});
-	});
-    
-     $("#bt_refund").click(function(){//취소 및 환불 규칙 동의 상세내역 띄우기
-		$("#rules_area2").load("/common/refund.txt");
-	});
-    
-     /* $("#bt_refund").click(function(){
-		$.get("/common/refund.jsp", function(p1,p2,p3){
-			alert("p1 : "+p1+" ,p2 : "+p2+" ,p3 : "+p3);
-			$("#rules_area2").html(p1);
-		});
-	});  */
-    
-    $("#bt_privacy").click(function(){//개인정보 수집 및 이용 동의 상세내역 띄우기
-		$("#rules_area3").load("/common/privacy.txt");
-	});
-    
-    $("#bt_privacy3").click(function(){//개인정보 제3자동의 상세내역 띄우기
-		$("#rules_area4").load("/common/privacy3.txt");
-	});
-
-})
- </script>
+<!-- ================================
+    FORM AREA
+================================= -->
+<form>
+<input id="originalCampFee" type="hidden" value="">
+</form>
+<script src="/js/custom-booking.js"></script>

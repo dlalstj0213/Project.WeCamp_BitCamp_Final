@@ -20,11 +20,14 @@
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/video/**" location="/resources/video/" />
 	<resources mapping="/fonts/**" location="/resources/fonts/" />
+	<resources mapping="/common/**" location="/resources/common/" />
+	<resources mapping="/admin/**" location="/resources/admin/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		
 	</beans:bean>
 	
 	<!-- 파일 업로드용 resolver -->

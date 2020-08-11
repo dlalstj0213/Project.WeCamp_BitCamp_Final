@@ -1,24 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <style>
-    .playon-instagarm {
-      width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+
+ <style>
+    
+    .card-image:after {
+		background-color:#FFFFFF !important;
+		opacity: 0% !important;
     }
 
-    .instagram {
-      width: 250px;
-      margin-bottom: 30px;
-    }
 
-    .instagram-thum {
-      width:250px;
-      height:250px;
-      background-size:cover;
-    }
   </style>
 
 <!-- ================================
@@ -665,8 +655,7 @@
                 <div class="section-heading text-center">
                     <h2 class="sec__title before-none pt-0">최근 게시물</h2>
                     <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat,<br>
-                        a feugiat eros. Nunc ut lacinia tortors.
+                        WeCamp의 소식을 인스타그램에서도 만나보세요!
                     </p>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
@@ -674,107 +663,65 @@
         <div class="row mt-5">
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap">
+                    <a href="blog-single.html" class="card-image-wrap" id="instaLink0">
                         <div class="card-image">
-                            <img src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img id="insta0" src="images/img31.jpg" alt="blog image" class="card__img">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
-                        <a href="blog-single.html" class="card-title">
-                            50 Greatest Event Places in United Kingdom
-                        </a>
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li>25 Dec, 2018 - <a href="#" class="tag__text">Tips & Tricks</a></li>
-                            <li><a href="javascript:void(0)">340 Likes</a></li>
+                            <li id="instaTime0">25 Dec, 2018</li>
+                            <li></a></li>
                         </ul>
-                        <p class="card-sub mt-3">
+                        <p class="card-sub mt-3" id="instaContent0">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
                         </p>
-                        <ul class="post-author d-flex align-items-center justify-content-between mt-3">
-                            <li>
-                                <img src="images/testi-img7.jpg" alt="">
-                                <span class="by__text">By</span>
-                                <span>David Wise</span>
-                            </li>
-                            <li>
-                                <a href="blog-single.html" class="blog__btn">
-                                    read more
-                                </a>
-                            </li>
-                        </ul>
                     </div><!-- end blog-post-body -->
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
+            
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap">
+                    <a href="blog-single.html" class="card-image-wrap" id="instaLink1">
                         <div class="card-image">
-                            <img src="images/img32.jpg" alt="blog image" class="card__img">
+                            <img id="insta1" src="images/img31.jpg" alt="blog image" class="card__img">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
-                        <a href="blog-single.html" class="card-title">
-                            Top 10 Best Clothing Shops in Sydney
-                        </a>
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li>26 Dec, 2018 - <a href="#" class="tag__text">Tips & News</a></li>
-                            <li><a href="javascript:void(0)">620 Likes</a></li>
+                            <li id="instaTime1">25 Dec, 2018</li>
+                            <li></a></li>
                         </ul>
-                        <p class="card-sub mt-3">
+                        <p class="card-sub mt-3" id="instaContent1">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
                         </p>
-                        <ul class="post-author d-flex align-items-center justify-content-between mt-3">
-                            <li>
-                                <img src="images/testi-img7.jpg" alt="">
-                                <span class="by__text">By</span>
-                                <span>Mark Wins</span>
-                            </li>
-                            <li>
-                                <a href="blog-single.html" class="blog__btn">
-                                    read more
-                                </a>
-                            </li>
-                        </ul>
-                    </div><!-- end card-content -->
+                    </div><!-- end blog-post-body -->
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
+            
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap">
+                    <a href="blog-single.html" class="card-image-wrap" id="instaLink2">
                         <div class="card-image">
-                            <img src="images/img30.jpg" alt="blog image" class="card__img">
+                            <img id="insta2" src="images/img31.jpg" alt="blog image" class="card__img">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
-                        <a href="blog-single.html" class="card-title">
-                            Top 15 Greatest Hotels in United States
-                        </a>
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li>27 Dec, 2018 - <a href="#" class="tag__text">Tips & Tricks</a></li>
-                            <li><a href="javascript:void(0)">800 Likes</a></li>
+                            <li id="instaTime2">25 Dec, 2018</li>
+                            <li></a></li>
                         </ul>
-                        <p class="card-sub mt-3">
+                        <p class="card-sub mt-3" id="instaContent2">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
                         </p>
-                        <ul class="post-author d-flex align-items-center justify-content-between mt-3">
-                            <li>
-                                <img src="images/testi-img7.jpg" alt="">
-                                <span class="by__text">By</span>
-                                <span>Matt Derry</span>
-                            </li>
-                            <li>
-                                <a href="blog-single.html" class="blog__btn">
-                                    read more
-                                </a>
-                            </li>
-                        </ul>
-                    </div><!-- end card-content -->
+
+                    </div><!-- end blog-post-body -->
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
@@ -824,30 +771,49 @@
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
+<!-- ================================
+       START INSTAGRAM AREA
+================================= -->
+<script type="text/javascript" language="javascript" 
+	 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
 
+		   $(document).ready(function(){ 
+			   console.log("hello world");
+			   
+			   $.ajax({
+				   url: "insta/getGrid.json", 
+				   type: "GET",
+				   contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				   success: function(responseData){
+					  //var jsObj = JSON.parse(responseData); //jQuery 버젼을 올려서 필요 없음
+					  //encodeURIComponent(responseData);
+					  //alert(responseData);
+                      if(!responseData){
+						  return false;
+					  }else{
+						  for(i=0;i<3;i++){
+							 $("#insta"+i).attr('src', responseData.data[i].media_url);
+							 $("#instaLink"+i).attr('href', responseData.data[i].permalink);
+							 var time = responseData.data[i].timestamp.split("T");
+							 $("#instaTime"+i).html(time[0]);
+							 $("#instaContent"+i).html(responseData.data[i].caption);
 
+								//alert("good");
+						  }
+					  }
+				   },
+				 error: function(request, status, error){
+					 alert(request);
+					 alert(status);
+					 alert(error);
+				 }
+			   });
+			   
+			});
+		
+		   
+	</script>
 
-<script>
-$(document).ready(function() {
-  $.ajax({
-    url: "resources/common/instagram.php",
-    success: function (response) {
-      var list = '';
-     	
-      var result = JSON.parse(response);
-      $.each(result, function(key, val) {
-        /* 
-        val.username : 사용자 이름 ➌
-        val.link : 인스타그램 게시물 링크 주소 ➌
-        val.thum : 썸네일이미지 주소 ➌
-        vak.text : 인스타그램 게시물 내용 ➌
-        */
-        list += '<div class="instagram">'+
-        '<div class="instagram-thum" style="background:url('+val.thum+') no-repeat top center;"></div></a>'+
-        '</div>';
-      });
-      $('.playon-instagarm').append(list);
-    }
-  });
-});
-</script>
+</body>
+</html>

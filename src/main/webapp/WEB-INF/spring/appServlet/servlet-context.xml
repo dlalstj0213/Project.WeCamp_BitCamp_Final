@@ -18,7 +18,6 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/images/**" location="/resources/images/" />
-	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/video/**" location="/resources/video/" />
 	<resources mapping="/php/**" location="/resources/php/" />
 	<resources mapping="/sass/**" location="/resources/sass/" />

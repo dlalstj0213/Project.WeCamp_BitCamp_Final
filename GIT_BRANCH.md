@@ -26,4 +26,3 @@
 |`dev_once`|정혜원|
 |`dev_som` |한다솜|
 |`dev_rhie`|이민서|
-

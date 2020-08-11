@@ -225,7 +225,7 @@ body {
 										<div class="form-group">
 											<button class="btn" id="btn" type="submit">
 												<img class="btn-img"
-													src="images/kakao_login_medium_wide.png">
+													src="/images/kakao_login_medium_wide.png">
 											</button>
 										</div>
 									</div>

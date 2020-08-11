@@ -468,4 +468,3 @@
 		<!-- END content -->
 
     </div>
-	<!-- END content-page -->

@@ -22,8 +22,8 @@
                 <div class="col-lg-12">
                     <div class="menu-full-width">
                         <div class="logo">
-                            <a href="/"><img src="/images/logo.png" alt="logo"></a>
-                        </div><!-- end logo --> 
+                            <a href="index.html"><img src="/images/logo.png" alt="logo"></a>
+                        </div><!-- end logo -->
 						<div class="main-menu-content">
 						</div>
                     	 <div class="logo-right-content" style="float:right !important">
@@ -49,10 +49,10 @@
 
             </div>
             <ul class="side-menu-ul">
-                <li><a href="wecamp/mypage.com"><span class="la la-user user-icon"></span> 마이페이지</a></li>
+                <li><a href="dashboard.html"><span class="la la-user user-icon"></span> 회원정보</a></li>
                 <li><a href="dashboard.html"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
                 <li><a href="dashboard.html"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
-                <li><a href="wecamp/com_registration.com"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
+                <li><a href="dashboard.html"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
                 <li><div class="dropdown-divider"></div></li>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
                 <li><a href="#"><span class="la la-gear user-icon"></span> 개인정보 수정</a></li>

@@ -24,6 +24,5 @@
 |`sub_master`||
 |`dev_siru`|이수빈|
 |`dev_once`|정혜원|
-|`dev_som`|한다솜|
+|`dev_som` |한다솜|
 |`dev_rhie`|이민서|
-

@@ -34,10 +34,7 @@
     <link rel="stylesheet" href="/css/jquery.filer-dragdropbox-theme.css">
     <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    
-    
     <script src="/js/modernizr.js"></script> <!-- Modernizr -->
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!--jquery-->
     
 	<script>

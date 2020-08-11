@@ -7243,7 +7243,7 @@
             dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ], // For formatting
             dayNamesMin: [ "Su","Mo","Tu","We","Th","Fr","Sa" ], // Column headings for days starting at Sunday
             weekHeader: "Wk", // Column header for week of the year
-            dateFormat: "mm/dd/yy", // See format options on parseDate
+            dateFormat: "yy/mm/dd", // See format options on parseDate
             firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
             isRTL: false, // True if right-to-left language, false if left-to-right
             showMonthAfterYear: false, // True if the year select precedes month, false for month then year
@@ -8654,9 +8654,9 @@
             inst.selectedDay = date.getDate();
             inst.drawMonth = inst.selectedMonth = date.getMonth();
             inst.drawYear = inst.selectedYear = date.getFullYear();
-            inst.currentDay = ( dates ? date.getDate() : 0 );
-            inst.currentMonth = ( dates ? date.getMonth() : 0 );
             inst.currentYear = ( dates ? date.getFullYear() : 0 );
+            inst.currentMonth = ( dates ? date.getMonth() : 0 );
+            inst.currentDay = ( dates ? date.getDate() : 0 );
             this._adjustInstDate( inst );
         },
 

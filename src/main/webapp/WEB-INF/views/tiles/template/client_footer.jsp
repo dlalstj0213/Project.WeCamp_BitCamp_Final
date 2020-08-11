@@ -16,7 +16,7 @@
             <div class="col-lg-3 column-td-6">
                 <div class="footer-item">
                     <div class="logo">
-                        <a href="index.html" class="foot-logo"><img src="images/logo.png" alt="logo"></a>
+                        <a href="index.html" class="foot-logo"><img src="/images/logo.png" alt="logo"></a>
                         <p class="footer__desc">
                             WeCamp -- We provides camping reservation. and We also offer camping information and community
                         </p>

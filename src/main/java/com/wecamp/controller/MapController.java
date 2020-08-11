@@ -1,12 +1,7 @@
 package com.wecamp.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,14 +20,8 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-<<<<<<< HEAD:src/main/java/com/wecamp/controller/mapController.java
 @RequestMapping("result")
-public class mapController {
-=======
-@RequestMapping("/result/*")
 public class MapController {
->>>>>>> 5283346970a9535f1051e839aea6f9d4a1dc5c58:src/main/java/com/wecamp/controller/MapController.java
-	
 	@RequestMapping("map")
 	public String list(){
 		return "result/map";

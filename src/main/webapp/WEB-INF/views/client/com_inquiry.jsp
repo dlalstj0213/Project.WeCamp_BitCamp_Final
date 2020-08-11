@@ -94,37 +94,12 @@
                     </div><!-- end billing-content -->
                 </div><!-- end billing-form-item -->
                 
-                <div class="billing-form-item">
-                    <div class="billing-title-wrap">
-                        <h3 class="widget-title pb-0">Photo
-                        <i class="la la-exclamation tip ml-1" onclick="photo_required();"></i>
-                        </h3>
-                        <div class="title-shape margin-top-10px"></div>
-                    </div><!-- billing-title-wrap -->
-                    <div class="billing-content">
-                        <div class="row">
-                             <div class="col-lg-12">
-                             	<div id="check-photo-input">
-								</div>
-                             </div>
-                            <div class="col-lg-12">
-                                <div class="drag-and-drop-wrap">
-                                        <form action="test.do" method="post" id="submit-inquiry">
-                                             <input type='hidden' name='email' id='email'>
-                                             <input type='hidden' name='owner_num' id='owner_num'>
-                                             <input type='hidden' name='title' id='title'>
-                                             <input type='hidden' name='content' id='content'>
-                                        </form>
-                                    <div class="drag-and-drop-file">
-                                        <form action="fileUpload.do" method="post" enctype="multipart/form-data">
-                                            <input type="file" name="files" id="filer_input2" multiple="multiple">
-                                        </form>
-                                    </div><!-- end custom-file -->
-                                </div>
-                            </div><!-- end col-lg-12 -->
-                        </div><!-- end row -->
-                    </div><!-- end billing-content -->
-                </div><!-- end billing-form-item -->
+               <form action="test.do" method="post" id="submit-inquiry">
+                    <input type='hidden' name='email' id='email'>
+                    <input type='hidden' name='owner_num' id='owner_num'>
+                    <input type='hidden' name='title' id='title'>
+                    <input type='hidden' name='content' id='content'>
+               </form>
                <div class="d-flex justify-content-between">
 			    <div class="invisible">
 				 <button type="button" class="btn btn-info">Panel</button>

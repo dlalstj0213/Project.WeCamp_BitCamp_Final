@@ -36,4 +36,18 @@ public class IndexController {
 	private String bookingDetail() {
 		return "client/com_inquiry/업체 문의 작성";
 	}
+
+	@RequestMapping("admin.do")
+	private String adminMain() {
+		return "admin/admin_main/관리자 메인";
+	}
+	
+	@RequestMapping("admin_login.do")
+	private String adminLogin() {
+		return "admin/admin_login";
+	}
+	@RequestMapping("member_manage.do")
+	private String memberManage() {
+		return "admin/member_manage/회원 관리";
+	}
 }

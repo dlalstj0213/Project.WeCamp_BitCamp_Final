@@ -10,7 +10,7 @@ public class WecampController {
 	
 	@RequestMapping("/com_registration.com")
 	public String comRegistration() {
-		return "wecamp/com_registration/위캠프 : My 캠핑장 등록";
+		return "client/wecamp/com_registration/위캠프 : My 캠핑장 등록";
 	}
 	
 	@RequestMapping("/booking.com")

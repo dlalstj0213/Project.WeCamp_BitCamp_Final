@@ -23,6 +23,7 @@
 	<resources mapping="/php/**" location="/resources/php/" />
 	<resources mapping="/sass/**" location="/resources/sass/" />
 	<resources mapping="/common/**" location="/resources/common/" />
+	<resources mapping="/admin/**" location="/resources/admin/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

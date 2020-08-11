@@ -34,7 +34,7 @@ public class HomeController {
 		log.info("#HomeController index() 접근");
 		return "mypage/listing_details/listingDetail";
 	}
-
+	//deprecated
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
 	public String booking() {
 		log.info("#HomeController index() 접근");

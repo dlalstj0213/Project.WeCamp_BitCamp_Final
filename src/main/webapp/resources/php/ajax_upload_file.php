@@ -27,6 +27,7 @@
     }
 
     if($data['hasErrors']){
+        System.out.println($data)
         $errors = $data['errors'];
         echo json_encode($errors);
     }

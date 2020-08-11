@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 /*$(document).ready(function(){
 	// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
 		Number.prototype.format = function(){
@@ -30,7 +29,6 @@
 		});
 		
 });*/
-
 var campName;
 var imgs;
 var campZone;
@@ -38,6 +36,12 @@ var maxPeople;
 var category;
 var campPrice;
 function selectSite(index){
+	//예약 버튼 활성화
+	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
+	$('#booking-event').empty();
+	$('#booking-event').append("예약하기");
+	// == $('#booking-event').text("예약하기");
+
 	imgs = document.getElementById('img'+index).getAttribute('src');
 	campName = document.getElementById('campName').value;
 	campZone =  document.getElementById('campZone'+index).innerHTML;
@@ -47,6 +51,16 @@ function selectSite(index){
 	
 	var imgs_html = "";
 	imgs_html += "<img id='imgTest' src="+imgs+" alt='blog image'>";
+
+	//document.getElementsByClassName("calender-customize")[0].value = "2/2/2020";
+	//$('.calender-customize').val("2/2/2020");
+	//var length = document.getElementsByClassName("calender-customize").length;
+	//for(var i=0; i<length; i++){
+	//	document.getElementsByClassName("calender-customize")[i].value = "2/2/2020";
+	//}
+	
+	var imgs_html = "";
+	imgs_html += "<img src="+imgs+" alt='blog image'>";
 	$("#selectedImg").html(imgs_html);
 	
 	var selectedBody_html = "";
@@ -61,6 +75,18 @@ function selectSite(index){
 		+ "<label for='chb1'>바베큐 : 10000원<span>+</span></label>"
 		+ "</div>";
 	
+	var checkBox_html = "";
+	checkBox_html += "<div class='custom-checkbox'>"
+		+ "<input type='checkbox' id='chb1' class='check-bbq' value=10000>"
+		+ "<label for='chb1'>바베큐 : 10000원<span>+</span></label>"
+		+ "</div>";
+		
+		// peopleNum class 의 속성인 max 를 maxPeople 값으로 변경
+		document.getElementById("peopleNum").setAttribute("max", maxPeople);
+		//peopleNum class 의 value 값을 0으로 초기화
+		document.getElementById("peopleNum").value = 0;
+		
+		
 		$("#selectedBody").html(selectedBody_html);
 		$(".customize-checkbox").html(checkBox_html);
 	
@@ -68,9 +94,6 @@ function selectSite(index){
 		
 	window.location.href="#focusHere";
 }
-
-
-
 
 /*$('.card-body').on('click', function(event) {
     alert('You clicked the Bootstrap Card');

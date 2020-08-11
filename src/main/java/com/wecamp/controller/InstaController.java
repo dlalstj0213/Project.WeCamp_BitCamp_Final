@@ -30,12 +30,12 @@ public class InstaController {
 	private InstaService instaService;
 	
 	@RequestMapping("test")
-	public String test() {
+	private String test() {
 		return "insta/test";
 	}
 
 	@RequestMapping("getGrid")
-	public void instaGrid(HttpServletResponse response) {
+	private void instaGrid(HttpServletResponse response) {
 		String jsonArray = instaService.getHttpHTML_GET();
 
 		try {

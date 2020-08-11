@@ -16,10 +16,11 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/css/**" location="/resources/css/" />
-	<resources mapping="/sass/**" location="/resources/sass/" />
+	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/video/**" location="/resources/video/" />
-	<resources mapping="/fonts/**" location="/resources/fonts/" />
+	<resources mapping="/php/**" location="/resources/php/" />
+	<resources mapping="/sass/**" location="/resources/sass/" />
 	<resources mapping="/common/**" location="/resources/common/" />
 	<resources mapping="/admin/**" location="/resources/admin/" />
 
@@ -27,7 +28,6 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
-		
 	</beans:bean>
 	
 	<!-- 파일 업로드용 resolver -->

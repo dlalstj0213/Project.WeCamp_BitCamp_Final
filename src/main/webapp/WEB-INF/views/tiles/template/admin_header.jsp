@@ -6,7 +6,7 @@
 
 		<!-- LOGO -->
         <div class="headerbar-left">
-			<a href="../" class="logo"><img alt="Logo" src="admin/images/logoss.png" />&nbsp;&nbsp; <span> 위캠프 관리자</span></a>
+			<a href="index.html" class="logo"><img alt="Logo" src="admin/images/logoss.png" />&nbsp;&nbsp; <span> 위캠프 관리자</span></a>
         </div>
 
         <nav class="navbar-custom">

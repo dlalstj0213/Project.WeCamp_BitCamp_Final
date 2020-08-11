@@ -22,9 +22,6 @@
 	<!-- Custom CSS -->
 	<link href="/admin/css/style.css" rel="stylesheet" type="text/css" />
 	
-	<!-- BEGIN CSS for this page -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
-	<!-- END CSS for this page -->
 </head>
   
 <body class="adminbody">
@@ -66,8 +63,8 @@
 
 <!-- BEGIN Java Script for this page -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<!-- 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> -->
 
 	<!-- Counter-Up-->
 	<script src="/admin/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
@@ -75,9 +72,6 @@
 
 	<script>
 		$(document).ready(function() {
-			// data-tables
-			$('#example1').DataTable();
-					
 			// counter-up
 			$('.counter').counterUp({
 				delay: 10,
@@ -184,4 +178,3 @@
 	</script>
 <!-- END Java Script for this page -->	
 </body>
-</html>

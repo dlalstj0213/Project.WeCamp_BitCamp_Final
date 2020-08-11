@@ -9,11 +9,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 public class IndexController {
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
-		log.info("#HomeController index() 접근"); 
+	private String index() {
 		return "index";
 	}
-	
 }

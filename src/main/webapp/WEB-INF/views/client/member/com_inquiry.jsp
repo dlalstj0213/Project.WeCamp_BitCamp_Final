@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-lg-9 mx-auto">
                 <div class="billing-form-item">
-                    <div class="billing-title-wrap">
+                    <div id='focus-here' class="billing-title-wrap">
                         <h3 class="widget-title pb-0">업체 문의 작성</h3>
                         <div class="title-shape margin-top-10px"></div>
                     </div><!-- billing-title-wrap -->
@@ -54,7 +54,7 @@
                                             </label>
                                             <div class="form-group">
                                                 <span class="la la-pencil-square-o form-icon"></span>
-                                                <input class="form-control" type="text" id="text1" name="name" placeholder="Write your E-mail Address">
+                                                <input class="form-control" type="text" id="text1" name="name" readonly value="${loginUser.email}">
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-12 -->
@@ -94,7 +94,7 @@
                     </div><!-- end billing-content -->
                 </div><!-- end billing-form-item -->
                 
-               <form action="test.do" method="post" id="submit-inquiry">
+               <form action="inquiry.wcc" method="post" id="submit-inquiry">
                     <input type='hidden' name='email' id='email'>
                     <input type='hidden' name='owner_num' id='owner_num'>
                     <input type='hidden' name='title' id='title'>
@@ -106,7 +106,7 @@
 			    </div>
 			    <div class="show">
                  <div class="btn-box mt-4">
-                  <button type="button" class="theme-btn border-0" onclick="setInputs();">submit</button>
+                  <button type="button" class="theme-btn border-0" onclick="setInputs();">Submit</button>
                  </div><!-- end btn-box -->
 			    </div>
 			    <div class="invisible">
@@ -124,6 +124,21 @@
 <!-- ================================
 	JAVASCRIPT
 ================================= -->
-<script src="/js/com_inquiry.js"></script>
+<script src="/js/com-inquiry.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script>
+$(document).ready(function(){
+	var check = "<%=session.getAttribute("loginUser")%>";
+	if(check == null){
+		alert("로그인 하신 후에 이용 하실 수 있습니다.");
+		location.href ="/login/login.wcc";
+	}
+	if(<%=request.getAttribute("result")%> == true){
+		alert("업체 문의가 작성되었습니다.");
+		location.href="/";
+	}else if(<%=request.getAttribute("result")%> == false){
+		alert("업체 문의가 실패하였습니다.");
+		location.href="/";
+	}
+})
+</script>
 </body>
-</html>

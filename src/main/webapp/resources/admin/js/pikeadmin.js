@@ -3,10 +3,9 @@ var resizefunc = [];
 
 $( document ).ready(function() {
     $(function() {  
-    $(".nicescroll").niceScroll({cursorcolor:"#858586"});
+    	$(".nicescroll").niceScroll({cursorcolor:"#858586"});
 	});
 });
-
 
 !function($) {
     "use strict";

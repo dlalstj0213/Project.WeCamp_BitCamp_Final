@@ -9,7 +9,37 @@ function setInputs(){
 	document.getElementById("owner_num").value = document.getElementById("text2").value;
 	document.getElementById("title").value = document.getElementById("text3").value;
 	document.getElementById("content").value = document.getElementById("text4").value;
+	
+	if(document.getElementById("owner_num").value == ""){
+		input_empty_msg("owner_num");
+		 return;
+	}
+	if(document.getElementById("title").value == ""){
+		input_empty_msg("title");
+		 return;		
+	}
+	if(document.getElementById("content").value == ""){
+		input_empty_msg("content");
+		 return;		
+	}
 	submit();
+}
+
+function input_empty_msg(check){
+	var msg_html = "";
+	if(check == "owner_num"){
+		msg_html += "<div class='alert alert-danger' role='alert'>"
+			+ "사업자 번호를 입력해주세요.";
+	}else if(check == "title"){
+		msg_html += "<div class='alert alert-danger' role='alert'>"
+			+ "제목을 입력해주세요.";
+	}else if(check == "content"){
+		msg_html += "<div class='alert alert-danger' role='alert'>"
+			+ "내용을 입력해주세요.";		
+	}
+	msg_html += "</div>";
+	document.getElementById("check-input").innerHTML = msg_html;
+	window.location.href="#focus-here";
 }
 
 function email_required(){
@@ -47,3 +77,4 @@ function photo_required(){
 	html += "</div>";
 	document.getElementById("check-photo-input").innerHTML = html;	
 }
+

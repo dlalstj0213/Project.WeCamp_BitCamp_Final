@@ -4,8 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
+   	   <typeAlias alias="Admin" type="com.wecamp.model.Admin"/>
+   	   <typeAlias alias="Authority" type="com.wecamp.model.Authority"/>
+   	   <typeAlias alias="Booking" type="com.wecamp.model.Booking"/>
+   	   <typeAlias alias="Camp" type="com.wecamp.model.Camp"/>
+   	   <typeAlias alias="Heart" type="com.wecamp.model.Heart"/>  	
+   	   <typeAlias alias="Img" type="com.wecamp.model.Img"/>  	
+   	   <typeAlias alias="Inquiry" type="com.wecamp.model.Inquiry"/>  	
+   	   <typeAlias alias="LMember" type="com.wecamp.model.LMember"/>  	
+   	   <typeAlias alias="Member" type="com.wecamp.model.Member"/>  	
+   	   <typeAlias alias="Owner" type="com.wecamp.model.Owner"/>  	
+   	   <typeAlias alias="Review" type="com.wecamp.model.Review"/>  	
+   	   <typeAlias alias="Sort" type="com.wecamp.model.Sort"/>  	
+   	   <typeAlias alias="CampAndImg" type="com.wecamp.model.CampAndImg"/>  	
    </typeAliases>
+   
    <mappers>
+		<!--  <mapper resource="com/wecamp/mapper/CampMapper.xml"/>
+				<mapper resource="com/wecamp/mapper/MemberMapper.xml"/>
+				<mapper resource="com/wecamp/mapper/InquiryMapper.xml"/>
+				<mapper resource="com/wecamp/mapper/BookingMapper.xml"/>
+				<mapper resource="com/wecamp/mapper/ReviewMapper.xml"/>
+   		-->
    </mappers>
 </configuration>
 

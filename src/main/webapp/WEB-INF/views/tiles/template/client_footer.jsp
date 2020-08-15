@@ -60,9 +60,9 @@
                     <ul class="list-items">
                         <li><a href="#">커뮤니티</a></li>
                         <li><a href="#">친구 초대하기</a></li>
-                        <li><a href="#">캠핑장 호스팅</a></li>
+                        <li><a href="/owner/add_camp.wcc">캠핑장 호스팅</a></li>
                         <li><a href="#">채용 정보</a></li>
-                        <li><a href="#">업체 문의</a></li>
+                        <li><a href="/owner/com_inquiry.wcc">업체 문의</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -105,21 +105,21 @@
 <!-- end back-to-top -->
 
 <!-- Template JS Files -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/jquery.magnific-popup.min.js"></script>
-<script src="/js/isotope-3.0.6.min.js"></script>
-<script src="/js/animated-headline.js"></script>
-<script src="/js/select2.min.js"></script>
-<script src="/js/moment.min.js"></script>
-<script src="/js/daterangepicker.js"></script>
-<script src="/js/waypoints.min.js"></script>
-<script src="/js/jquery.counterup.min.js"></script>
-<script src="/js/jquery.show-more.js"></script>
-<script src="/js/jquery-rating.js"></script>
-<script src="/js/jquery.filer.min.js"></script>
-<script src="/js/smooth-scrolling.js"></script>
-<script src="/js/main.js"></script>
+<script src="/js/jquery.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/jquery-ui.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/popper.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/bootstrap.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/owl.carousel.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/jquery.magnific-popup.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/isotope-3.0.6.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/animated-headline.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/select2.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/moment.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/daterangepicker.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/waypoints.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/jquery.show-more.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/jquery-rating.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/jquery.filer.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/smooth-scrolling.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/main.js?ver=<%=System.currentTimeMillis()%>"></script>

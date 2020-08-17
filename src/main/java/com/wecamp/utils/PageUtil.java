@@ -2,6 +2,8 @@ package com.wecamp.utils;
 
 import javax.servlet.http.HttpSession;
 
+import lombok.extern.log4j.Log4j;
+
 public class PageUtil {
 	
 	public int getCurrentPageSession(String cpStr, HttpSession session) {

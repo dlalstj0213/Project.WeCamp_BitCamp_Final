@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 public class CampAndImg {
 	private long camp_idx;
 	private String camp_name;
-	private double latitude;
-	private double longitude;
 	private String address;
 	private String camp_tel;
 	private int site_num;
@@ -23,10 +21,15 @@ public class CampAndImg {
 	private String agency_tel;
 	private String agency_name;
 	private int total_booking;
+	private String intro;
 	private long img_idx;
 	private String fname;
 	private String ofname;
 	private long fsize;
 	private String division;
 	private long min_fee;
+	private float avgStar;
+	private int fullStarNum;
+	private boolean isHalfStarExist;
+	private int emptyStarNum;
 }

@@ -45,6 +45,8 @@ public class Pagination {
 		//블럭(range) setting
 		rangeSetting(currentPage);
 		
+		setStartAndEndRow(currentPage, pageSize);
+		
 		setStartIndex(currentPage);
 	}
 	
@@ -61,6 +63,7 @@ public class Pagination {
 		setRangeCount(pageCount);
 		//블럭(range) setting
 		rangeSetting(currentPage);
+		
 		setStartAndEndRow(currentPage, pageSize);
 		
 		setStartIndex(currentPage);

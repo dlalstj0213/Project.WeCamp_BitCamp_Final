@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 import com.wecamp.mapper.SearchMapper;
 import com.wecamp.model.CampAndImg;
 import com.wecamp.utils.PageUtil;
+import com.wecamp.utils.StarUtil;
 import com.wecamp.vo.Pagination;
 import com.wecamp.vo.SearchResultVo;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Service
 @AllArgsConstructor
 class SearchServiceImpl implements SearchService{
@@ -33,7 +36,7 @@ class SearchServiceImpl implements SearchService{
 		
 		PageUtil pageUtil = new PageUtil();
 		int currentPage = pageUtil.getCurrentPageSession(cpStr, session);
-		int pageSize = pageUtil.getCurrentPageSession(psStr, session);
+		int pageSize = pageUtil.getPageSize(psStr, session);
 		int listCount = searchMapper.selectCountCamp();
 		Pagination page = new Pagination(listCount, currentPage, pageSize);
 		
@@ -42,11 +45,22 @@ class SearchServiceImpl implements SearchService{
 		query.put("page", page);
 		List<CampAndImg> list = searchMapper.selectSearchedListOfCamp(query);
 		
+		StarUtil starUtil = new StarUtil();
 		for(CampAndImg ci : list) {
 			long minFee = searchMapper.selectMinFeeOfCamp(ci.getCamp_idx());
+			String avgStarStr = searchMapper.selectAverageStar(ci.getCamp_idx());
+			float avgStar = 0.0f;
+			if(avgStarStr == null) {
+				avgStar = 0.0f;
+			}else {
+				avgStar = Float.parseFloat(avgStarStr);
+			}
 			ci.setMin_fee(minFee);
+			ci.setAvgStar(avgStar);
+			ci.setFullStarNum(starUtil.getFullStarNumber(avgStar));
+			ci.setEmptyStarNum(starUtil.getEmptyStarNumber(avgStar));
+			ci.setHalfStarExist(starUtil.checkHalfStar(avgStar));
 		}
-		
 		return new SearchResultVo(list, page);
 	}
 }

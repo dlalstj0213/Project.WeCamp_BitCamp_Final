@@ -60,8 +60,8 @@
 										<div class="input-box">
 											<label class="label-text">캠핑장 이름</label>
 											<div class="form-group">
-												<span class="la la-pencil-square-o form-icon"></span> <input
-													class="form-control" type="text" name="name"
+												<span class="la la-pencil-square-o form-icon"></span> 
+												<input id="camp-name" class="form-control" type="text" name="name"
 													placeholder="Enter your listing title">
 											</div>
 										</div>
@@ -122,7 +122,7 @@
 											<label class="label-text">주차장 이용 가능 수</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													class="form-control" type="text" name="name"
+													id="parking" class="form-control" type="text" name="name"
 													placeholder="주차할 수 있는 주차대 수를 입력해 주세요">
 											</div>
 										</div>
@@ -136,23 +136,23 @@
 
 												<div class="billing-content">
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb1"> <label
-															for="chb1">화장실</label>
+														<input type="checkbox" id="chb1" name="conv" value="화장실">
+														<label for="chb1">화장실</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb2"> <label
-															for="chb2">샤워실</label>
+														<input type="checkbox" id="chb2" name="conv" value="샤워실"> 
+														<label for="chb2">샤워실</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb3"> <label
-															for="chb3">백화점</label>
+														<input type="checkbox" id="chb3" name="conv" value="개수대">
+														<label for="chb3">개수대</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb4"> <label
-															for="chb4">편의점</label>
+														<input type="checkbox" id="chb4" name="conv" value="편의점"> 
+														<label for="chb4">편의점</label>
 													</div>
 													<!-- end custom-checkbox -->
 												</div>
@@ -170,22 +170,22 @@
 
 												<div class="billing-content">
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb12"> <label
+														<input type="checkbox" id="chb12" name="sec-conv" value="화장실"> <label
 															for="chb12">화장실</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb22"> <label
+														<input type="checkbox" id="chb22" name="sec-conv" value="샤워실"> <label
 															for="chb22">샤워실</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb32"> <label
+														<input type="checkbox" id="chb32" name="sec-conv" value="백화점"> <label
 															for="chb32">백화점</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb42"> <label
+														<input type="checkbox" id="chb42" name="sec-conv" value="편의점"> <label
 															for="chb42">편의점</label>
 													</div>
 													<!-- end custom-checkbox -->
@@ -204,22 +204,22 @@
 
 												<div class="billing-content">
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb13"> <label
+														<input type="checkbox" id="chb13" name="etc-conv" value="화장실"> <label
 															for="chb13">화장실</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb23"> <label
+														<input type="checkbox" id="chb23" name="etc-conv" value="샤워실"> <label
 															for="chb23">샤워실</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb33"> <label
+														<input type="checkbox" id="chb33" name="etc-conv" value="백화점"> <label
 															for="chb33">백화점</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb43"> <label
+														<input type="checkbox" id="chb43" name="etc-conv" value="편의점"> <label
 															for="chb43">편의점</label>
 													</div>
 													<!-- end custom-checkbox -->
@@ -329,7 +329,7 @@
 										<div class="input-box" style="margin-bottom: 10px">
 											<label class="label-text">캠핑 종류</label>
 											<div class="form-group mb-0">
-												<select class="select-option-field-2">
+												<select id="selectSort" class="select-option-field-2">
 													<option value>Select a Camping</option>
 													<option value="1">캠핑</option>
 													<option value="2">글램핑</option>
@@ -477,7 +477,7 @@
 				<div class="billing-form-item p-0 border-0 mb-0 shadow-none">
 					<div class="billing-content p-0">
 						<div class="custom-checkbox d-block mr-0">
-							<input type="checkbox" id="chb13"> <label for="chb13">WeCamp의
+							<input type="checkbox" id="chb50"> <label for="chb50">WeCamp의
 								<a href="#" class="color-text">서비스 정책</a>에 동의합니다.
 							</label>
 						</div>
@@ -487,7 +487,7 @@
                             <label for="chb14">I Agree to Dirto's <a href="#" class="color-text">Terms of Services</a></label>
                         </div>end custom-checkbox -->
 						<div class="btn-box mt-4">
-							<button type="submit" class="theme-btn border-0">캠핑장 업로드</button>
+							<button type="button" class="theme-btn border-0" onclick="uploadCamp();">캠핑장 업로드</button>
 						</div>
 						<!-- end btn-box -->
 					</div>
@@ -556,7 +556,7 @@
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5232256f969f43eca1d4f511ef672cf1&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=76f485124ece8a8f6ef804e2e561062d&libraries=services"></script>
 <!-- <script>
 function bt_addr_click(){
     new daum.Postcode({
@@ -568,10 +568,15 @@ function bt_addr_click(){
 }
 </script> -->
 
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/js/add-camp.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script>
 	$(document).ready(function() {
+		if(<%=request.getAttribute("result")%> == false){
+			alert("사업자 회원만 접근 가능합니다.");
+			location.href = "/";
+		}
+		
 		//포인트 입력 시 자동으로 ',(콤마)' 입력
 		$("input[id='camp-price']").bind('keyup', function(e) {
 			var rgx1 = /\D/g;
@@ -581,7 +586,6 @@ function bt_addr_click(){
 			while (rgx2.test(num))
 				num = num.replace(rgx2, '$1' + ',' + '$2');
 			this.value = num;
-
 		});
 	})
 
@@ -684,9 +688,7 @@ function bt_addr_click(){
 	  this.value = autoHypenPhone( this.value ) ;  
 	}
 	
-	
 	function checkOnly(chk){
-
 		   var obj = document.getElementsByName("checkbox");
 
 		      for(var i=0; i<obj.length; i++){
@@ -705,6 +707,4 @@ function bt_addr_click(){
 	$('#yes').click(function() {
 		$("#bbq-price").removeAttr("disabled");
 		});
-
-
 </script>

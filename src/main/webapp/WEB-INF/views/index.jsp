@@ -87,7 +87,7 @@
         </div><!-- end row -->
         
         <!-- request 할 데이터 -->
-        <form id="searched-data" action="search/search.wcc" method="post">
+        <form id="searched-data" action="search/search.wcc" method="get">
         	<input type="hidden" id="searched-place" name="searchPlace" value="">
         	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
         	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">

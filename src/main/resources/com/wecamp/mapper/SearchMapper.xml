@@ -18,6 +18,11 @@
 	</select>
 	
 	<select id="selectMinFeeOfCamp" resultType="long" parameterType="long">
-		select min(SITE_FEE) from SORT where CAMP_IDX = #{camp_idx}
+		select min(SITE_FEE) from SORT where CAMP_IDX =#{camp_idx}
 	</select>
+	
+	<select id="selectAverageStar" resultType="String" parameterType="long">
+		select avg(STAR) from REVIEW where CAMP_IDX=#{camp_idx}
+	</select>
+	
 </mapper>

@@ -1,5 +1,7 @@
 package com.wecamp.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wecamp.model.Inquiry;
+import com.wecamp.model.Member;
 import com.wecamp.service.owner.OwnerService;
 import com.wecamp.setting.WebTitle;
 
@@ -26,16 +29,14 @@ public class OwnerController {
 	}
 	
 	@RequestMapping(value = "add_camp.wcc", method = RequestMethod.GET)
-	private String addListing() {
-		return "client/member/add_camp/"+WebTitle.TITLE+"캠핑장 등록";
+	private ModelAndView addListing(HttpSession session) {
+		ModelAndView response = ownerService.checkOwner(session);
+		return response;
 	}
 
 	@PostMapping("inquiry.wcc")
 	private ModelAndView inquiry(Inquiry inquiry) {
-		boolean result = ownerService.submitInquiryService(inquiry);
-		ModelAndView response = new ModelAndView();
-		response.setViewName("client/member/com_inquiry/"+WebTitle.TITLE+"캠핑장 등록");
-		response.addObject("result", result);
+		ModelAndView response = ownerService.submitInquiryService(inquiry);
 		return response;
 	}
 }

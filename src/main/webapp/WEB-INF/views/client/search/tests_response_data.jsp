@@ -12,8 +12,6 @@
 	<c:forEach items="${vo.list}" var="list">
 		<p>캠핑장 일련번호 : ${list.camp_idx}</p>
 		<p>캠핑장명 : ${list.camp_name}</p>
-		<p>위도 : ${list.latitude}</p>
-		<p>경도 : ${list.longitude}</p>
 		<p>주소 : ${list.address}</p>
 		<p>캠핑장전화번호 : ${list.camp_tel}</p>
 		<p>사이트수 : ${list.site_num}</p>
@@ -31,6 +29,19 @@
 		<p>이미지 파일 크기 : ${list.fsize}</p>
 		<p>이미지 파일 구분 : ${list.division}</p>
 		<p>최저가 : ${list.min_fee}</p>
+		<p>스타평균 : ${list.avgStar}</p>
+		<p>풀스타 : ${list.fullStarNum}</p>
+		<p>하프스타 : ${list.halfStarExist}</p>
+		<p>노스타 : ${list.emptyStarNum}</p>
+		<c:forEach begin="1" end="${list.fullStarNum}" step="1">
+			풀
+		</c:forEach>
+		<c:if test="${list.halfStarExist}">
+			하
+		</c:if>
+		<c:forEach begin="1" end="${list.emptyStarNum}" step="1">
+			노
+		</c:forEach>
 	</c:forEach>
 	
 	<h2>SHOW PAGING DATA</h2>

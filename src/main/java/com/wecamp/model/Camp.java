@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 public class Camp {
 	private long camp_idx;
 	private String camp_name;
-	private double latitude;
-	private double longitude;
 	private String address;
 	private String camp_tel;
 	private int site_num;
@@ -23,4 +21,5 @@ public class Camp {
 	private String agency_tel;
 	private String agency_name;
 	private long total_booking;
+	private String intro;
 }

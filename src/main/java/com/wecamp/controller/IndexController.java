@@ -16,7 +16,7 @@ public class IndexController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	private String index(HttpSession session) {
 		//로그인 했다고 가정
-		session.setAttribute("loginUser", new Member("linkdog@gmail.com", 1, "이름1", "닉네임1", "qwer1234@", null, 0, "SILVER"));
+		session.setAttribute("loginUser", new Member("linkdog@gmail.com", 2, "이름1", "닉네임1", "qwer1234@", null, 0, "SILVER"));
 		
 		return "index";
 	}

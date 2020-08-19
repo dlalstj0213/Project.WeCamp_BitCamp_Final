@@ -28,22 +28,21 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("result")
 public class MapController {
 	
-	@RequestMapping("map")
+	@RequestMapping("map.wcc")
 	public String list(){
-		return "result/map";
+		return "client/result/map";
 	}
 
 	@RequestMapping("search02")
 	public String listSearch(){
-		return "result/mapList";
+		return "client/result/mapList";
 	}
 
-	@ResponseBody
-	@PostMapping("search01")
-	public Map<String, Object> mapVal(Long seq) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		String location = "서울시 마포구 성산동 254-24";
-		map.put("addr", location);
-		return map;
-	}
+//	@ResponseBody
+//	@PostMapping("search01")
+//	public Map<String, Object> mapVal(Long seq) {
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		String location = "서울시 마포구 성산동 254-24";
+//		map.put("addr", location);
+//		return map;
 }

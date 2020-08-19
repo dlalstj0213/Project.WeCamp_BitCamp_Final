@@ -4,8 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
+   	   	<typeAlias alias="Member" type="com.wecamp.model.Member"/>	
    </typeAliases>
-   <mappers>
-   </mappers>
-</configuration>
+   
+<!--    <mappers>
+   		<mapper resource="com/wecamp/mapper/MemberMapper.xml"/>
+   		<mapper resource="com/wecamp/mapper/LMemberMapper.xml"/>
+   </mappers> -->
+ </configuration>
 

@@ -43,4 +43,5 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<mybatis-spring:scan base-package="com.wecamp.mapper"/>	
+
 </beans>

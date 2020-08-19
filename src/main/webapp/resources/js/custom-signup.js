@@ -65,6 +65,7 @@ function checkPassword(pwd){
         return (email != '' && email != 'undefined' && regex.test(email)); 
     }
     $("#result-check").hide();
+    
     // check when email input lost focus
     $(".input-check-email").blur(function(){
     	
@@ -76,6 +77,10 @@ function checkPassword(pwd){
       // valid check
       if(! email_check(email) ) {
       	$("#result-check").show();
+      	var html="<div>이메일 형식에 맞춰 입력해 주세요</div>";
+      	$("#email-check").hide();
+		$('#result-check').empty();
+		$('#result-check').append(html);
         $(this).focus();
         return false;
       }
@@ -83,8 +88,7 @@ function checkPassword(pwd){
     	$("#result-check").hide();
       }
     });
-    
-    
+   
 /* 로그인 이메일 체크  */   
  // login email check function
     function email_login( email2 ) {    

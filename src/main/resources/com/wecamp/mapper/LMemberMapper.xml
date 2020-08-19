@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 여기서 매퍼 네임스페이스는 인터페이스 파일로 받아와야 함 -->
+
+<mapper namespace="com.wecamp.mapper.LMemberMapper">
+	<insert id="insertLeaveMember" parameterType="Member">
+		insert into L_MEMBER values(#{email}, #{name}, #{nickname}, #{birth})
+	</insert>
+</mapper>

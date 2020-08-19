@@ -261,6 +261,12 @@
 			<version>0.16</version>
 		</dependency>
     
+    <!-- facebook 연동  -->
+    	 <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
+            <version>2.0.3.RELEASE</version>
+        </dependency>
         
 	</dependencies>
     <build>

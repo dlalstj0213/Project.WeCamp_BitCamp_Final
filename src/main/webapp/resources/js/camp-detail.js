@@ -30,7 +30,7 @@ function setSessionAndSubmit(){
 	console.log(
 			sessionItem
 	);
-	location.href = "./booking.com";
+	location.href = "../booking/booking.wcc";
 }
 
 

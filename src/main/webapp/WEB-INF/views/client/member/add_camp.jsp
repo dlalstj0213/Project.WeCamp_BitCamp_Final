@@ -695,8 +695,6 @@ function bt_addr_click(){
 		                  }
 		            }
 		    }
-
-	
 	
 	$('#no').click(function() {
 		$("#bbq-price").attr("disabled",true);

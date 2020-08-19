@@ -75,11 +75,11 @@ function selectSite(index){
 		+ "<label for='chb1'>바베큐 : 10000원<span>+</span></label>"
 		+ "</div>";
 	
-	var checkBox_html = "";
+	/*var checkBox_html = "";
 	checkBox_html += "<div class='custom-checkbox'>"
 		+ "<input type='checkbox' id='chb1' class='check-bbq' value=10000>"
 		+ "<label for='chb1'>바베큐 : 10000원<span>+</span></label>"
-		+ "</div>";
+		+ "</div>";*/
 		
 		// peopleNum class 의 속성인 max 를 maxPeople 값으로 변경
 		document.getElementById("peopleNum").setAttribute("max", maxPeople);

@@ -1,9 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <style>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+   <style>
 		.select-pointer{
 			cursor:pointer
 		}
+
+       #weatherTable {
+              text-align:center;
+              font-size:12px;
+              color:#646464;
+              width:350px;
+       }               
+
+       .borderbar {
+              border-right:1px solid #cecece;
+       }
+       .divisionBorderbar {
+        	  border-color:black;
+              border-right:4px solid #cecece;
+             
+       }
+
+/*        span {
+              color:#7B7B7B;
+              font-size:11px;
+              float:right;
+       }    */               
+
+       .max {
+              display:inline;
+              padding-left:5px;
+              color:red;
+              font-weight:bold;
+              font-size:12px;
+       }
+
+       .min {
+              display:inline;
+              padding-left:5px;
+              color:blue;
+              font-weight:bold;
+              font-size:12px;
+       }
+       
+       .date{
+       		font-size:18px;
+       		font-weight: bold;
+       }
     </style>
     
 <!-- ================================
@@ -16,12 +62,13 @@
                 <div class="col-lg-12 position-relative">
                     <div class="breadcrumb-content">
                     
-                    	<input type="hidden" name="campName" id="campName" value="캠핑장이름">
-                    	<input type="hidden" name="address" id="address" value="서울 강남구 봉은사로 524">
+                    	<input type="hidden" name="campName" id="campName" value="${camp.camp_name}">
+                    	<input type="hidden" name="address" id="address" value="${camp.address}">
+                    	<input type="hidden" name="camp_idx" id="camp_idx" value="1">
                     	
-                        <h2 class="breadcrumb__title">캠핑장이름-오지캠핑</h2>
+                        <h2 class="breadcrumb__title">${camp.camp_name}</h2>
                         <p class="breadcrumb__desc">
-                           <span class="la la-map-marker"></span> 주소표시란
+                           <span class="la la-map-marker"></span> ${camp.address}
                         </p>
                         <ul class="listing-info mt-3 mb-3">
                             <li>
@@ -87,35 +134,21 @@
                     <h2 class="widget-title">갤러리</h2>
                     <div class="title-shape"></div>
                     <div class="gallery-carousel padding-top-35px padding-bottom-40px">
-                        <div data-dot="<img src='/images/flag10.png'>" class="gallery-item">
-                            <img src="/images/flag10.png" alt="gallery-image">
+                    <c:forEach items="${ImgDetailList}" var="campDetailImg">
+                        <div data-dot="<img src='/images/camp-img/detail/${campDetailImg.fname}'>" class="gallery-item">
+                            <img src="/images/camp-img/detail/${campDetailImg.fname}" alt="gallery-image">
                         </div><!-- end gallery-item -->
-                        <div data-dot="<img src='/images/flag11.png'>" class="gallery-item">
+                    </c:forEach>
+                        <%-- <div data-dot="<img src='/images/flag11.png'>" class="gallery-item">
                             <img src="/images/flag11.png" alt="gallery-image">
-                        </div><!-- end gallery-item -->
-                        <div data-dot="<img src='/images/flag12.jpg'>" class="gallery-item">
-                            <img src="/images/flag12.jpg" alt="gallery-image">
-                        </div><!-- end gallery-item -->
-                        <div data-dot="<img src='/images/flag13.jpg'>" class="gallery-item">
-                            <img src="/images/flag13.jpg" alt="gallery-image">
-                        </div><!-- end gallery-item -->
-                        <div data-dot="<img src='/images/flag14.png'>" class="gallery-item">
-                            <img src="/images/flag14.png" alt="gallery-image">
-                        </div><!-- end gallery-item -->
-                        <div data-dot="<img src='/images/flag22.png'>" class="gallery-item">
-                            <img src="/images/flag22.png" alt="gallery-image">
-                        </div><!-- end gallery-item -->
+                        </div><!-- end gallery-item --> --%>
                     </div><!-- end gallery-carousel -->
                     <div class="listing-description padding-bottom-35px">
                         <h2 class="widget-title">캠핑장 소개</h2>
                         <div class="title-shape"></div>
                         <div class="section-heading mt-4">
                             <p class="sec__desc font-size-16">
-                              살랑거리는 강바람이 상쾌하다. 막힘없이 탁 트인 시야도 시원스럽다.
-									도도하게 흘러가는 남한강이 빚어낸 풍경.
-									그 속에 사람이 있고, 옹기종기 어깨를 맞댄 텐트가 있다.
-									강물과 사람, 자연과 사람이 자연스레 하나 되는 곳,
-									여주 이포보 캠핑장의 풍경이다.
+      				             ${camp.intro}
                             </p>
                         </div>
                     </div><!-- end 캠핑장 소개 -->
@@ -123,51 +156,49 @@
                     <div class="feature-listing padding-bottom-20px">
                         <h2 class="widget-title">캠핑 사이트</h2>
                         <div class="title-shape"></div>
-                        <!-- 카테고리 -->
+                      
+                         <!-- 카테고리 -->
+                         <c:forEach var="sortList" items="${sortNameList}" varStatus="status">
+								<!-- 카라반, 글램핑 -->
+                         <%-- <c:forEach begin="0" end="${sortNameSize}" step="1" varStatus="sortNameList"> --%>
+                         <%-- <c:forEach items="${sortNameList}" var="sortList"> --%>
 							<br/><p class=“font-weight-medium” style="font-size:1.5em"> 
 								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAABmJLR0QA/wD/AP+gvaeTAAAHA0lEQVRogc2abWyUVRbHf+dOa98FpGojKuwGKIlYtGEFClHcD7jryxJ0tzEiBvWDdmaKwQ+72XU/GjfZbLKh05ma+BIjG01g/bQhrskqflhsJetC3cRNS4utgoC82RY6QJnn7IfbYdrpPG8zBfafPJln7j33vDz33nPOfRFmERqPLwPW4zgrEFkKLALmAbWTJOeAM8Aw0IdqL6qfSldX32zpIKUy0Gj0Hox5BtVWYEGRbI4AuzDmXUkkekvRpyiDFIRo9FHgd4isLkWBAugGXiOZ3COgYRuHNkjb2+/DcZLAyrBtQ2I/IjHp7PxXmEaBDdLt26uYmPgjqlHAhFavODhAJ+fP/0beeedCkAaBDNK2tkaM2QU0laJdCThIJNIqHR2H/Ah9DdJYbBWwB5g/G5qVgLOo/kJSqX96EXkOHY3Hfw7s5fobAzAPkY80Gv2ZF5FrD2lb22qM+QdQM+uqlYY0qhvceqqgQZNzpgeYe1VVKx5niERWF5pTM4acbt1aicj7/P8aA3ATmcxfdfv2qvyKmXOopuZPiNxbkriGBrjhhpJYBEATFy/+Ib9w2pDTeHwlqj1AJDT7226D77+Hy5dhzRp46ikYGbHP2BhMTMDFi5DJgCqk02AMVFZCJAIVFVBWBocOwSefBJXqYMwaSST2ZwvKrhgDgmpXUcbMmQPRKPT2wu7d0N0Nt98ODzwAc0OO3LvugsFBGB4OQm3IZHYotGTTpNyQi8cfo5h0pqLCGjN3rjVg5SSLDz6A/v7Q7DAGtmyB8vJg9CKricevuPKcQY7z29DCRWDrVlgwJcl+8km49VZwHHjzTTh1KjRbGhrgoYeC06v+PvtqALS9/d6isubHH4e7755eVlkJzz1nv/D4OLzxBly6FJo1GzbAnXcGpW7RtrYmyPaQ6pbQAtetgwcfLFy3YAE88YR9P3oUdu60jiAMjIHNm63DCAKRLZAzqDWUsOXLodWnybp1cP/99v3AAfjww1AiAPthHnkkGK1IK4BoPL4M1f8GFrJwIbz0UrA44ziQTEJfn51vTz8Nq1YFFgXYnt2xAwYGgtAuMcD6wMxvvhlefDF40DQGnn/etlOF996zxoWBiPV6lZVB5P3U4DgrAjGeMwficairC6dQdTW88AJUVdmg+tZbcOJEOB7z58OmTf50qk0GkUZfwtpaiMUs42LQ0GCNynq+ri4YHQ3HY+1aaG72plFtNMCPPIlqa6G93aY2pWDxYnj2WTsMT52ycyudDsdj82b7cdwg8mMD3OhKUF8PL788PXCWgqYmG4gjEevOX3/d5nhBUVEBGzd6UdxoyG0CzkRjI9xyS3CBQdDcnOupwUF4++1wMerIEa/aujKvWo4d82Y+MWEzgepq+1RVwbx5NgZ5Ydmy3PvJk9aTBYWPlyzDbs/eVLD22DH79dwEjo7CV19NL6ut9TdoaMjGKLDDMCguXbJt3TFmgBHX6nTarmdcm4/NLBsf9x9Chw/n3vNzQS/099v1ljtGDTDkycRr2J07N7PMceCCz55g9ivX1cGiRd60U+EXlFUPG1S9qbwMKtRDAOfPews+etT+Ll8+q/MHkT4DHPQk8jLILTh6GTR1GC9d6q3gVIyN+Tsp1V6D6qeeRMX00Ph4MH6LF3uKnoaBgSDufa+ZPGxyd+7Hj7szKmbIZfO4+nrr4oPCP9sellRqILsE3+VKduECnD1buK6YHjp50v6G6R0IYtAuyC3wdnqSfvdd4fJieujMGfsbfHlt+bnpkIXj/AUmt7EklTqosVg3sKYg8fHj1iPlw80pePXQ6dP294473GlGRuDbb+Gbb2x69PXXfvNnn3R1fQlT9uWA14C/FST/+GObEZSV2QQxuynoprhfDxmTS3jTaav40FDucet5N6i+mn29EgQUhFisB7gvHDcXlJdDTY19qqtzv93ddvW5YoVV/sSJ8Bso0/GZJJNrs3+u9JCAquNEMeZzitk9zcfEBPzwg33ykU5DT0/JIoAMxsSnFkzbrJeuri+A5GxIuiYQ6ZBE4sDUopmnD8b8Gvj3tdKpBHxJefkr+YWFD7y2bVtCJtOD27Li+uM0xqySRGIwv6LgGevkydjDgE+WeV2QRmRjIWPA49BYksnPUf0l4BFUrjnGEdkknZ373Aj8j/XtzZE9QP2sqhYeZxF5zMsYCHAjRBKJ/UQiLage8KO9ahD5AmN+4mcMBLziIh0dhxgfb0F1B5ApWcHgyCDyZ0TWus2ZfIS/vBSLNaOavAq3sPLxGcbE8+OMH4q+L6ex2MPAK0BLsTxcsA/VVyWV+nsxjUu/ANjW1oQxzwC/AkKsCaZhGNXdGPOudHb+pxR9SjZoKnTbtiVcvrweY+5BtRFYiA3OuSuaqqeBYYzpx3EOAnsllQpw+BMM/wMRAF9MRJZJtwAAAABJRU5ErkJggg==">
-								&nbsp;글램핑
+								&nbsp;${sortList}
+								
 								</p><br/>
 						<!-- end 카테고리 -->
-							<!-- start card list -->
-                        	<div class="card mb-3 select-pointer" onclick="selectSite(1)">
-                        	<input type="hidden" id="category1" value="글램핑"/>
-							  <div class="row no-gutters">
-							    <div class="col-md-4">
-							      <img id="img1" src="/images/flag12.jpg" height=200 width=540 class="card-img">
-							    </div>
-							    <div class="col-md-8">
-							      <div class="card-body">
-							        <h5 id="campZone1" class="card-title">Zone - A</h5>
-							        <p class="card-text">
-							        	인원 제한 수 : <strong id="maxPeople1">12</strong>
-							        	<br/>
-							        	가격 : <strong id="price1" class="price">10000</strong> 원
-							        </p>
-							        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							      </div>
-							    </div>
-							  </div>
-							</div> <!-- end 카드 -->
-							<div class="card mb-3 select-pointer" onclick="selectSite(2)">
-							<input type="hidden" id="category2" value="글램핑"/>
-							  <div class="row no-gutters">
-							    <div class="col-md-4">
-							       <img id="img2" src="/images/flag13.jpg" height=200 width=540 class="card-img">
-							    </div>
-							    <div class="col-md-8">
-							      <div class="card-body">
-							        <h5 id="campZone2" class="card-title">Zone - B</h5>
-							        <p class="card-text">
-							        	인원 제한 수 : <strong id="maxPeople2">4</strong>
-							        	<br/>
-							        	가격 : <strong id="price2" class="price">15000</strong> 원
-							        </p>
-							        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							      </div>
-							    </div>
-							  </div>
-							</div> <!-- end 카드 -->
+						 
+						<c:forEach items="${list}" varStatus="i">
+							    <c:forEach items="${list[i.index]}" var="sort"> 
+							    	<c:if test="${sortList eq sort.sort_name}">
+							    	 <c:set var="j" value="${j+1}"/>
+							    	 ${j}
+			                        	<div class="card mb-3 select-pointer" onclick="selectSite(${j})">
+			                        	<input type="hidden" id="category${j}" value="글램핑"/>   
+										  <div class="row no-gutters">
+										    <div class="col-md-4">
+										      <img id="img${j}" src="/images/camp-img/sort/${sort.fname}" height=200 width=540 class="card-img">
+										    </div>
+										    <div class="col-md-8">
+										      <div class="card-body">
+										        <h5 id="campZone${j}" class="card-title"> ${sort.site_name}</h5>
+										        <p class="card-text">
+										        	인원 제한 수 : <strong id="maxPeople${j}"> ${sort.people_num}</strong>
+										        	<br/>
+										        	가격 : <strong id="price${j}" class="price">${sort.site_fee}</strong> 원
+										        </p>
+										        <p class="card-text"><small class="text-muted">3분 전에 업데이트 됨</small></p>
+										      </div>
+										    </div>
+										  </div>
+										</div> <!-- end 카드 -->
+									</c:if>
+								 </c:forEach> 
+								<!-- end sort --> 
+		                    </c:forEach> 
+		                  </c:forEach>
+						<%--
                         <!-- 카테고리 -->
 							<br/><p class=“font-weight-medium” style="font-size:1.5em"> 
 								<img src="data:image/png;base64,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">
@@ -193,6 +224,7 @@
 							    </div>
 							  </div>
 							</div> <!-- end 카드 -->
+							 --%>
                     </div><!-- end 캠핑 사이트 -->
 					
                     <div class="feature-listing padding-bottom-20px">
@@ -218,21 +250,89 @@
     START KakaoMap AREA
 ================================= -->
 <div id="map" style="width:100%;height:350px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb1a4e9976c392dc224cb52b669bd63e&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f0aec9df013aa05ae74510780014c2b&libraries=services"></script>
 <!-- ================================
    	END KakaoMap AREA
 ================================= -->                        
                         
                         </div>
                     </div><!-- end 캠핑장 위치 -->
+                 <br/>
+                 <!-- <div class="listing-description padding-bottom-35px"> -->
+                    <h2 id="weather" class="widget-title">날씨</h2>
+                        <div class="title-shape margin-bottom-35px"></div>
+                    <!-- weather widget start -->
+                    <table id="weatherTable">
+                    <!--8/17부분-->
+                    <tr align ="center">
+						<th colspan = "4" class="divisionBorderbar"><div id="date0" class="date" style="margin-bottom:10px" ></div></th>
+						<th colspan = "4" ><div id="date4" class="date" style="margin-bottom:10px"></div></th>
+				    </tr>
+				    <tr>
+            			<td class="borderbar">
+                                 <div id="hour0">시</div>
+                                 <div id="cicon0" class="cicon"></div>
+                                 <div>기온<div id="ctemp0" class="max chightemp"> ℃</div></div>
+                                 <div>강수 확률<div id="pop0" class="min pop"> %</div></div>
+                           </td>
+                           <td class="borderbar">
+                                 <div id="hour1">시</div>
+                                 <div id="cicon1" class="cicon"></div>
+                                 <div>기온<div id="ctemp1" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop1" class="min pop"> %</div></div>
+                           </td>
+                           <td class="borderbar">
+                                 <div id="hour2">시</div>
+                                 <div id="cicon2" class="cicon"></div>
+                                 <div>기온<div id="ctemp2" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop2" class="min pop"> %</div></div>
+                           </td>
+                           <td class="divisionBorderbar">
+                                 <div id="hour3">시</div>
+                                 <div id="cicon3" class="cicon"></div>
+                                 <div>기온<div id="ctemp3" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop3" class="min pop"> %</div></div>
+                           </td>
+                  <!-- 8/18부분
+                   <tr align ="center">
+						<td colspan = "4"><div id="date4" class="date" ></div></td>
+				   </tr> -->
+                           <td class="borderbar">
+                               <div id="hour4">시</div>
+                                 <div id="cicon4" class="cicon"></div>
+                                 <div>기온<div id="ctemp4" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop4" class="min pop"> %</div></div>
+                           </td>
+                           <td class="borderbar">
+                                 <div id="hour5">시</div>
+                                 <div id="cicon5" class="cicon"></div>
+                                 <div>기온<div id="ctemp5" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop5" class="min pop"> %</div></div>
+                           </td>
+                            <td class="borderbar">
+                                 <div id="hour6">시</div>
+                                 <div id="cicon6" class="cicon"></div>
+                                 <div>기온<div id="ctemp6" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop6" class="min pop"> %</div></div>
+                           </td>
+                            <td class="borderbar">
+                                 <div id="hour7">시</div>
+                                 <div id="cicon7" class="cicon"></div>
+                                 <div>기온<div id="ctemp7" class="max temp"> ℃<strong></strong></div></div>
+                                 <div>강수 확률<div id="pop7" class="min pop"> %</div></div>
+                           </td>
+                    </tr>
+             </table>
+             <!-- weather widget end -->
+               <!--   </div> -->
                     <div class="contact-listing padding-top-40px padding-bottom-40px">
                         <h2 class="widget-title">캠핑장 정보</h2>
                         <div class="title-shape"></div>
                         <div class="info-list margin-top-35px padding-bottom-35px">
                             <ul>
-                                <li class="mb-2"><span><i class="la la-map-marker"></i> 주소:</span>101 East Parkview Road, New York</li>
+                                <li class="mb-2"><span><i class="la la-map-marker"></i> 주소:</span>${camp.address}</li>
                                 <li class="mb-2"><span><i class="la la-envelope-o"></i> 이메일:</span><a href="mailto:example@gmail.com">example@gmail.com</a></li>
-                                <li class="mb-2"><span><i class="la la-phone"></i> 전화번호:</span><a href="#">+7(111)123456789</a></li>
+                                <li class="mb-2"><span><i class="la la-phone"></i> 전화번호:</span><a href="#">${camp.camp_tel}</a></li>
                                 <li><span><i class="la la-external-link-square"></i> 웹사이트:</span><a href="#">www.techydevs.com</a></li>
                             </ul>
                         </div>
@@ -785,4 +885,5 @@
 <script src="/js/kakao-map.js"></script>
 <script src="/js/select-site.js"></script>
 <script src="/js/camp-detail.js"></script>
+<script src="/js/custom-weather.js"></script>
 

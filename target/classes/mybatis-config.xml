@@ -4,8 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
+   	   		<typeAlias alias="Camp" type="com.wecamp.model.Camp"/>
+   	   		<typeAlias alias="Sort" type="com.wecamp.model.Sort"/>
+   	   		<typeAlias alias="Img" type="com.wecamp.model.Img"/>
+
    </typeAliases>
    <mappers>
+   		 <mapper resource="com/wecamp/mapper/CampDetailMapper.xml"/>
    </mappers>
 </configuration>
-

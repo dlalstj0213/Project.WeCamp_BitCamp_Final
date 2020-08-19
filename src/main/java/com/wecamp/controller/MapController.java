@@ -27,9 +27,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("result")
 public class MapController {
-	@RequestMapping("map")
+	@RequestMapping("map.wcc")
 	public String list(){
-		return "result/map";
+		return "client/result/map";
 	}
 
 	@RequestMapping("search02")

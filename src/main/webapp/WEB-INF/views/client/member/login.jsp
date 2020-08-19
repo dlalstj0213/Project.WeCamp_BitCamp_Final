@@ -212,6 +212,22 @@ body {
 														src="/images/kakao_login_medium_wide.png">
 												</button>
 											</div>
+											<div class="fb-login-button" data-size="large"  data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" data-width=""></div>
+											<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+											</fb:login-button>
+											<div id="status"></div>
+											<!-- <input type="button" value="checking" id="authBtn" onclick="
+																					            if(this.value === 'Login') {
+																					                FB.login(function(response) {
+																					                    location.reload();
+																					                });
+																					            } else {
+																					                FB.logout(function(response) {
+																					                    location.reload();
+																					                });
+																					            }"
+											>									
+											<div id="welcome"></div> -->
 										</div>
 										<div class="col-lg-12">
 											<div class="account-assist mt-4 mb-4 text-center">
@@ -396,7 +412,7 @@ body {
 					<div class="footer-item">
 						<div class="logo">
 							<a href="index.html" class="foot-logo"><img
-								src="images/logo2.png" alt="logo"></a>
+								src="/images/logo.png" alt="logo"></a>
 							<p class="footer__desc">Morbi convallis bibendum urna ut
 								viverra. Maecenas quis consequat libero, a feugiat eros</p>
 							<ul class="social-profile">
@@ -495,7 +511,121 @@ body {
 		<i class="fa fa-angle-up" title="Go top"></i>
 	</div>
 	<!-- end back-to-top -->
+	
+<!-- <script>
+  window.fbAsyncInit = function() {
+
+     
+    FB.init({
+      appId      : '1443711249160744',
+      xfbml      : true,
+      version    : 'v8.0'
+    });
+    FB.AppEvents.logPageView();
+    
+    FB.getLoginStatus(function(response) {
+	    statusChangeCallback(response);
+	});
+    {
+        status: 'connected',
+        authResponse: {
+            accessToken: '{access-token}',
+            expiresIn:'{unix-timestamp}',
+            reauthorize_required_in:'{seconds-until-token-expires}',
+            signedRequest:'{signed-parameter}',
+            userID:'{user-id}'
+        }
+    }
+	
+/* 	  FB.logout(function(response) {
+		   // Person is now logged out
+		});
+	
+	  FB.api(
+			  '/me',
+			  'GET',
+			  {"fields":"id,name,email"},
+			  function(response) {
+				  console.log(response);
+				    document.querySelector('#welcome').innerHTML = "Welcome, " + response.email;
+			  }
+			);
+	  
+	  FB.getLoginStatus(function(response) {
+         if(response.status === 'connected') {
+             document.querySelector('#authBtn').value = "Logout";
+             FB.api(
+                 '/me',
+                 'GET',
+                 {"fields":"id,name"},
+                 function(response) {
+                     document.querySelector('#welcome').innerHTML = "Welcome, " + response.name;
+                 }
+             );
+         } else {
+             document.querySelector('#authBtn').value = "Login";
+         }
+     }) */
+     
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+</script> -->
+
+<script>
+function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(ㅌ`);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
 
 
+  function checkLoginState() { 
+	  alert("로그인버튼 누름");// Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+    	 appId            : '1443711249160744',
+         autoLogAppEvents : true,
+         xfbml            : true,
+         version          : 'v8.0'
+    });
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        '환영합니다~ ' + response.name + '님!';
+    });
+  }
+
+</script>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v8.0&appId=3193814364041406&autoLogAppEvents=1" nonce="4mZs5Pcr"></script>
 </body>
 </html>

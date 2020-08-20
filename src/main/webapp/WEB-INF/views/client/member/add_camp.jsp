@@ -72,7 +72,7 @@
 										<div class="input-box">
 											<label class="label-text">주소</label>
 										</div>
-										<div class="input-group"">
+										<div class="input-group">
 											<!-- <input id="addrZip" style="width:500px">
                                             <input type="button" id="bt_addr" onclick="bt_addr_click();" value="주소 찾기">  -->
 											<!-- <span class="la la-pencil-square-o form-icon"></span> -->

@@ -7,7 +7,7 @@
    	   		<typeAlias alias="Camp" type="com.wecamp.model.Camp"/>
    	   		<typeAlias alias="Sort" type="com.wecamp.model.Sort"/>
    	   		<typeAlias alias="Img" type="com.wecamp.model.Img"/>
-
+	   	   	<typeAlias alias="Member" type="com.wecamp.model.Member"/>	
    </typeAliases>
    <mappers>
    		 <mapper resource="com/wecamp/mapper/CampDetailMapper.xml"/>

@@ -6,6 +6,172 @@
 	.star-rating,.star-rating span { display:inline-block; height:39px; overflow:hidden; background:url(star.png)no-repeat; }
 	.star-rating span{ background-position:left bottom; line-height:0; vertical-align:top; }
 	</style>
+	<style>
+body {
+	font-family: 'Varela Round', sans-serif;
+}
+
+.modal-login {
+	width: 500px;
+	margin: 30px auto;
+}
+
+.modal-login .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+}
+
+.modal-login .modal-header {
+	border-bottom: none;
+	position: relative;
+	justify-content: center;
+}
+
+.modal-login .close {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+}
+
+.modal-login h4 {
+	color: #636363;
+	text-align: center;
+	font-size: 26px;
+	margin-top: 0;
+}
+
+.modal-login .modal-content {
+	color: #999;
+	border-radius: 1px;
+	margin-bottom: 15px;
+	background: #fff;
+	border: 1px solid #f3f3f3;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 25px;
+}
+
+.modal-login .form-group {
+	margin-bottom: 20px;
+}
+
+.modal-login label {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.modal-login .form-control {
+	min-height: 38px;
+	padding-left: 5px;
+	box-shadow: none !important;
+	border-width: 0 0 1px 0;
+	border-radius: 0;
+}
+
+.modal-login .form-control:focus {
+	border-color: #ccc;
+}
+
+.modal-login .input-group-addon {
+	max-width: 42px;
+	text-align: center;
+	background: none;
+	border-width: 0 0 1px 0;
+	padding-left: 5px;
+	border-radius: 0;
+}
+
+.modal-login .btn {
+	font-size: 16px;
+	font-weight: bold;
+	background: #19aa8d;
+	border-radius: 3px;
+	border: none;
+	min-width: 140px;
+	outline: none !important;
+}
+
+.modal-login .btn:hover, .modal-login .btn:focus {
+	background: #179b81;
+}
+
+.modal-login .hint-text {
+	text-align: center;
+	padding-top: 5px;
+	font-size: 13px;
+}
+
+.modal-login .modal-footer {
+	color: #999;
+	border-color: #dee4e7;
+	text-align: center;
+	margin: 0 -25px -25px;
+	font-size: 13px;
+	justify-content: center;
+}
+
+.modal-login a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.modal-login a:hover {
+	text-decoration: none;
+}
+
+.modal-login a {
+	color: #19aa8d;
+	text-decoration: none;
+}
+
+.modal-login a:hover {
+	text-decoration: underline;
+}
+
+.modal-login .fa {
+	font-size: 21px;
+}
+
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+</style>
+<script>
+$(function(){
+	if(${msg ne null}){
+		alert('${msg}');
+	};
+	
+	if($("#pwd-form").submit(function(){
+			if($("#pwd1").val() !== $("#pwd2").val()){
+				alert("비밀번호가 다릅니다. 정확하게 입력해 주세요.");
+				$("#pwd1").val("").focus();
+				$("#pwd2").val("");
+				return false;
+			}else if($("#pwd1").val().length < 8) {
+				alert("비밀번호는 8자 이상으로 설정해 주세요.");
+				$("#pwd1").val("").focus();
+				$("#pwd2").val("");
+				return false;
+			}else if($.trim($("#pwd1").val()) !== $("#pwd1").val()) {
+				alert("공백은 입력이 불가능합니다.");
+				$("#pwd1").val("").focus();
+				$("#pwd2").val("");
+				return false;
+			}
+		}) //end function
+	); // if
+		
+	
+	if($("#delete-form").submit(function(){
+			if(!confirm("정말 탈퇴하시겠습니까?")){
+				return false;
+			}
+		}) //end function
+	); // if
+})
+</script>
 <section class="breadcrumb-area">
     <div class="breadcrumb-wrap">
         <div class="container">
@@ -43,11 +209,11 @@
                     <nav>
                         <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
                             
-                            <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+                            <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1 active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true">
                                 <span class="la la-user"></span> 프로필
                             </a>
                             
-                            <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1 active" id="nav-listing-tab" data-toggle="tab" href="#nav-listing" role="tab" aria-controls="nav-listing" aria-selected="false">
+                            <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1" id="nav-listing-tab" data-toggle="tab" href="#nav-listing" role="tab" aria-controls="nav-listing" aria-selected="false">
                                 <span class="la la-list-alt"></span> 예약내역
                             </a>
                             
@@ -68,7 +234,7 @@
             </div><!-- end col-lg-12 -->
             <div class="col-lg-12">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-listing" role="tabpanel" aria-labelledby="nav-listing-tab">
+                    <div class="tab-pane fade" id="nav-listing" role="tabpanel" aria-labelledby="nav-listing-tab">
                         <div class="row">
                             <div class="col-lg-4 column-td-6">
                                 <div class="card-item">
@@ -322,7 +488,7 @@
                             </div><!-- end col-lg-4 -->
                         </div><!-- end row -->
                     </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="user-profile-action">
@@ -351,9 +517,11 @@
                                     </div> -->
                                     
                                     <!-- /////////////////////////// 유저 왼쪽 정보 ///////////////////////////// -->
+                                    <!-- hidden-Data -->
+                                    <input type="hidden" id="nick" value="${member.nickname}">
                                     
                                     <div class="user-details">
-                                        <h2 class="user__name widget-title pb-2"> 조이 정 </h2>
+                                        <h2 class="user__name widget-title pb-2">${member.name}</h2>
                                         <div class="section-heading">
                                             <p class="sec__desc font-size-15 line-height-24">
                                                보조 설명  보조 설명  보조 설명  보조 설명  보조 설명  보조 설명  
@@ -362,9 +530,9 @@
                                             
                                         </div>
                                         <ul class="list-items mt-3">
-                                            <li><span class="la la-github-alt"></span> 닉네임 : 조이 정 </li>
-                                            <li class="text-lowercase"><span class="la la-diamond"></span> 등급 : silver </li>
-                                            <li class="text-lowercase"><span class="la la-cc-diners-club"></span> 포인트 : 2000P </li>
+                                            <li><span class="la la-github-alt"></span> 닉네임 : ${member.nickname} </li>
+                                            <li class="text-lowercase"><span class="la la-diamond"></span> 등급 : ${member.grade } </li>
+                                            <li class="text-lowercase"><span class="la la-cc-diners-club"></span> 포인트 : ${member.point } </li>
                                         </ul>
                                        <div class="user-edit-form mt-4">
                                            <div class="dropdown">
@@ -443,49 +611,108 @@
                                                     <div class="input-box">
                                                         <label class="label-text">이름 </label>
                                                         <div class="form-group">
-                                                            
-                                                            <input class="form-control" type="text" name="text" placeholder="정혜원 " readonly>
+                                                            <input id="user-name" class="form-control" type="text" name="text" placeholder="${member.name } " readonly>
                                                         </div>
                                                     </div>
-                                                    <div class="input-box">
+													<div id="test"></div>	
+                                                    <!-- <div class="input-box">
                                                         <label class="label-text">성별 </label>
                                                         <div class="form-group">
                                                             
                                                             <input class="form-control" type="text" name="text" placeholder="여자 " readonly>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="input-box">
                                                         <label class="label-text">생년월일 </label>
                                                         <div class="form-group">
                                                             
-                                                            <input class="form-control" type="text" name="text" placeholder="1996/02/03" readonly>
+                                                            <input class="form-control" type="text" name="text" placeholder="${member.birth }" >
                                                         </div>
                                                     </div>
                                                     <div class="input-box">
                                                         <label class="label-text">이메일 주소 </label>
                                                         <div class="form-group">
                                                             
-                                                            <input class="form-control" type="text" name="text" placeholder="vkfks1234@naver.com" readonly>
+                                                            <input class="form-control" type="text" name="text" placeholder="${member.email }" readonly>
                                                         </div>
                                                     </div>
-                                                    <div class="input-box">
+                                                    <!-- <div class="input-box">
                                                         <label class="label-text">전화번호 </label>
                                                         <div class="form-group">
                                                             
                                                             <input class="form-control" type="text" name="text" placeholder="01011112222" readonly>
                                                         </div>
-                                                    </div>
-                                                    <div class="input-box">
+                                                    </div> -->
+                                                    <!-- <div class="input-box">
                                                         <label class="label-text">주소 </label>
                                                         <div class="form-group">
                                                             
                                                             <input class="form-control" type="text" name="text" placeholder="서울시 불광어쩌고 연신" readonly>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="btn-box">
-                                                        <button class="theme-btn button-success border-0">수정 </button>
+                                                        <input class="theme-btn button-success border-0 update" type="button" onclick="getUploadTags();" value="수정">
+                                                        <a href="#pwdModal" class="theme-btn border-0" type="button" data-toggle="modal"> 비밀번호 변경 </a>
                                                     </div>
                                                 </form>
+                                                <!-- Modal HTML -->
+												<div id="pwdModal" class="modal fade">
+													<form id="pwd-form" action="change_pwd.wcc" method="post">
+														<div class="modal-dialog modal-login">
+															<div class="modal-content">
+															<div class="modal-header">
+																<h4 class="modal-title"> 비밀번호 변경 </h4>
+										
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-hidden="true">&times;</button>
+															</div>
+															<div style="font-size: 12px; text-align: center">
+																비밀번호를 변경하기 위해서 기존 비밀번호와 새로 설정할 비밀번호를 입력해 주세요. </div>
+															<div class="modal-body">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon"></span> 
+																			<input
+																				type="email"
+																				class="form-control" name="email"
+																				readonly
+																				value="${member.email}">
+																			
+																		</div>
+																		<div class="input-group">
+																			<span class="input-group-addon"></span> 
+																			<input
+																				type="password"
+																				class="form-control" name="old-pwd"
+																				placeholder="기존 비밀번호를 입력해 주세요">
+																			
+																		</div>
+																		<div class="input-group">
+																			<span class="input-group-addon"></span>
+																				<input
+																					id="pwd1"
+																					type="password"
+																					class="form-control" name="pwd"
+																					placeholder="새로 설정할 비밀번호를 입력해 주세요">
+																		</div>
+																		<div class="input-group">
+																			<span class="input-group-addon"></span>
+																				<input
+																					id="pwd2"
+																					type="password"
+																					class="form-control" name="pwd2"
+																					placeholder="새로 설정할 비밀번호를 한 번 더 정확하게 입력해 주세요">
+																		</div>
+																	</div>
+																	<div class="form-group">
+																		<button type="submit" class="theme-btn border-0 w-100">비밀번호 변경</button>
+										
+																	</div>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
                                             </div><!-- end contact-form-action -->
                                         </div><!-- end billing-content -->
                                     </div>
@@ -496,10 +723,52 @@
                                             <h3 class="widget-title pb-0 color-text">계정 삭제 </h3>
                                             <div class="title-shape margin-top-10px"></div>
                                         </div><!-- billing-title-wrap -->
-                                        <div class="delete-info-content p-4">
-                                            <p class="mb-3"><span class="text-warning">주의</span> 계정 삭제와 동시에 모든 정보는 말소됩니다.</p>
-                                            <button class="theme-btn border-0 " data-toggle="modal" data-target=".account-delete-modal"> 계정 삭제 </button>
-                                        </div><!-- end delete-info-content -->
+                                        <!-- <form id="deleteform" action="" method="post"> -->
+	                                        <div class="delete-info-content p-4">
+	                                            <p class="mb-3"><span class="text-warning">주의</span> 계정 삭제와 동시에 모든 정보는 말소됩니다.</p>
+	                                            
+	                                            	<a href="#deleteModal" class="theme-btn border-0" type="button" data-toggle="modal"> 계정 삭제 </a>
+
+												<!-- Modal HTML -->
+												<div id="deleteModal" class="modal fade">
+													<form id="delete-form" action="leave.wcc" method="post">
+													<div class="modal-dialog modal-login">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h4 class="modal-title">회원 탈퇴 </h4>
+
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-hidden="true">&times;</button>
+															</div>
+															<div style="font-size: 12px; text-align: center">
+																비밀번호를 알맞게 입력하시면 최종적으로 회원 탈퇴가 진행됩니다. </div>
+															<div class="modal-body">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon"></span> 
+																			<input
+																				class="form-control" name="email"
+																				readonly value="${member.email}">
+																			
+																		</div>
+																		<div class="input-group">
+																			<span class="input-group-addon"></span>
+																				<input
+																					type="password" class="form-control" name="pwd"
+																					placeholder="비밀번호를 정확하게 입력해 주세요">
+																		</div>
+																	</div>
+																	<div class="form-group">
+																		<button type="submit" class="theme-btn border-0 w-100">회원 탈퇴</button>
+
+																	</div>
+															</div>
+														</div>
+													</div>
+													</form>
+												</div>
+	                                        </div><!-- end delete-info-content -->
+                                        <!-- </form> -->
                                     </div>
                                 </div><!-- end delete-account-info -->
                             </div><!-- end col-lg-8 -->
@@ -904,6 +1173,6 @@
 <!-- ================================
     END DASHBOARD AREA
 ================================= -->
-
+<script src="../js/my-page.js"></script>
 </body>
 </html>

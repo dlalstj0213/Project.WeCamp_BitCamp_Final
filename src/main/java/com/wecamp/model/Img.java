@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Img {
-	private int img_idx;
-	private int camp_idx;
+	private long img_idx;
+	private long camp_idx;
 	private String fname;
 	private String ofname;
 	private long fsize;

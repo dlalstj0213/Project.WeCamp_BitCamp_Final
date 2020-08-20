@@ -13,6 +13,5 @@ public class LMember {
 	private String email;
 	private String name;
 	private String nickname;
-	private String pwd;
 	private Date birth;
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Inquiry {
-	private int inq_idx;
+	private long inq_idx;
 	private String email;
 	private int s_no;
 	private String title;

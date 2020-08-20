@@ -1,7 +1,5 @@
 package com.wecamp.model;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Sort {
-	private int sort_idx;
-	private int camp_idx;
+	private long sort_idx;
+	private long camp_idx;
 	private String sort_name;
 	private String site_name;
 	private int people_num;

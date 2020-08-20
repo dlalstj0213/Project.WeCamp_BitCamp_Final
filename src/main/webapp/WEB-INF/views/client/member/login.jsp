@@ -1,8 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>	
 
 <!DOCTYPE html>
 <html lang="en">
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+	$(function(){
+		$("#find-pwd-btn").click(function(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/login/find_pwd.wcc",
+				type : "POST",
+				data : {
+					email : $("#email").val()
+				},
+				success : function(result) {
+					alert(result);
+				},
+			})
+		});
+	})
+</script>
 <style>
 body {
 	font-family: 'Varela Round', sans-serif;
@@ -135,497 +160,263 @@ body {
 }
 </style>
 
-<body>
-	<!-- start per-loader -->
-	<div class="loader-container">
-		<div class="loader-ripple">
-			<div></div>
-			<div></div>
-		</div>
+<!-- start per-loader -->
+<div class="loader-container">
+	<div class="loader-ripple">
+		<div></div>
+		<div></div>
 	</div>
-	<!-- end per-loader -->
+</div>
+<!-- end per-loader -->
 
 
 
-	<!-- ================================
+<!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-	<section class="breadcrumb-area">
-		<div class="breadcrumb-wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="breadcrumb-content">
-							<h2 class="breadcrumb__title">login</h2>
-							<ul class="breadcrumb__list">
-								<li class="active__list-item"><a href="index.html">home</a></li>
-								<li>login</li>
-							</ul>
-						</div>
-						<!-- end breadcrumb-content -->
+<section class="breadcrumb-area">
+	<div class="breadcrumb-wrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb-content">
+						<h2 class="breadcrumb__title">login</h2>
+						<ul class="breadcrumb__list">
+							<li class="active__list-item"><a href="index.html">home</a></li>
+							<li>login</li>
+						</ul>
 					</div>
-					<!-- end col-lg-12 -->
+					<!-- end breadcrumb-content -->
 				</div>
-				<!-- end row -->
+				<!-- end col-lg-12 -->
 			</div>
-			<!-- end container -->
+			<!-- end row -->
 		</div>
-		<!-- end breadcrumb-wrap -->
-		<div class="bread-svg">
-			<svg viewBox="0 0 500 150" preserveAspectRatio="none">
+		<!-- end container -->
+	</div>
+	<!-- end breadcrumb-wrap -->
+	<div class="bread-svg">
+		<svg viewBox="0 0 500 150" preserveAspectRatio="none">
             <path
-					d="M-4.22,89.30 C280.19,26.14 324.21,125.81 511.00,41.94 L500.00,150.00 L0.00,150.00 Z"></path>
+				d="M-4.22,89.30 C280.19,26.14 324.21,125.81 511.00,41.94 L500.00,150.00 L0.00,150.00 Z"></path>
         </svg>
-		</div>
-		<!-- end bread-svg -->
-	</section>
-	<!-- end breadcrumb-area -->
-	<!-- ================================
+	</div>
+	<!-- end bread-svg -->
+</section>
+<!-- end breadcrumb-area -->
+<!-- ================================
     END BREADCRUMB AREA
 ================================= -->
 
-	<!-- ================================
+<!-- ================================
        START FORM AREA
 ================================= -->
-	<section class="form-shared padding-top-40px padding-bottom-100px">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 mx-auto">
-					<div class="billing-form-item mb-0">
-						<div
-							class="billing-title-wrap border-bottom-0 pr-0 pl-0 pb-0 text-center">
-							<h3 class="widget-title font-size-28 pb-0">Login to your
-								account</h3>
+<section class="form-shared padding-top-40px padding-bottom-100px">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 mx-auto">
+				<div class="billing-form-item mb-0">
+					<div
+						class="billing-title-wrap border-bottom-0 pr-0 pl-0 pb-0 text-center">
+						<h3 class="widget-title font-size-28 pb-0">Login to your
+							account</h3>
 
-						</div>
-						<!-- billing-title-wrap -->
-						<div class="billing-content">
-							<div class="contact-form-action">
-								<form method="post">
-									<div class="row">
-										<div class="col text-center">
-											<p class="font-size-16 font-weight-medium">카카오톡 아이디가
-												있으신가요?</p>
+					</div>
+					<!-- billing-title-wrap -->
+					<div class="billing-content">
+						<div class="contact-form-action">
+							<form method="post" action="login_user.wcc">
+								<div class="row">
+									<div class="col text-center">
+										<p class="font-size-16 font-weight-medium">카카오톡 아이디가
+											있으신가요?</p>
+										<div class="form-group">
+											<a id="kakao-login-btn"></a> <a onclick="loginWithKakao()">카카오
+												로그인</a>
+											<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
+											<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
+											<div id="naver_id_login" style="text-align: center">
+												<a href="${url}"><img width="223"
+													src="${pageContext.request.contextPath}/resources/img/naver_Bn_Green.PNG" /></a>
+											</div>
+											<!-- 네이버 여기까지  -->
+										</div>
+										<a href="http://developers.kakao.com/logout">로그아웃</a>
+									</div>
+									<div class="col-lg-12">
+										<div class="account-assist mt-4 mb-4 text-center">
+											<p class="account__desc">or</p>
+										</div>
+									</div>
+									<!-- end col-lg-12 -->
+									<div class="col-lg-12">
+										<div class="input-box">
+											<label class="label-text">EMAIL</label>
 											<div class="form-group">
-												<button class="btn" id="btn" type="submit">
-													<img class="btn-img"
-														src="/images/kakao_login_medium_wide.png">
-												</button>
-											</div>
-											<div class="fb-login-button" data-size="large"  data-layout="default" data-auto-logout-link="true" data-use-continue-as="false" data-width=""></div>
-											<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-											</fb:login-button>
-											<div id="status"></div>
-											<!-- <input type="button" value="checking" id="authBtn" onclick="
-																					            if(this.value === 'Login') {
-																					                FB.login(function(response) {
-																					                    location.reload();
-																					                });
-																					            } else {
-																					                FB.logout(function(response) {
-																					                    location.reload();
-																					                });
-																					            }"
-											>									
-											<div id="welcome"></div> -->
-										</div>
-										<div class="col-lg-12">
-											<div class="account-assist mt-4 mb-4 text-center">
-												<p class="account__desc">or</p>
+												<span class="la la-user form-icon"></span> <input
+													class="form-control" type="email" id="email2" name="email"
+													placeholder="이메일을 입력해 주세요">
 											</div>
 										</div>
-										<!-- end col-lg-12 -->
-										<div class="col-lg-12">
-											<div class="input-box">
-												<label class="label-text">ID</label>
-												<div class="form-group">
-													<span class="la la-user form-icon"></span> <input
-														class="form-control" type="email" name="text"
-														placeholder="아이디를 입력해 주세요">
-												</div>
-											</div>
-										</div>
-										<!-- end col-lg-12 -->
-										<div class="col-lg-12">
-											<div class="input-box">
-												<label class="label-text">Password</label>
-												<div class="form-group">
-													<span class="la la-lock form-icon"></span> <input
-														class="form-control" type="text" name="text"
-														placeholder="비밀번호를 입력해 주세요">
-												</div>
-											</div>
-										</div>
-										<!-- end col-lg-12 -->
-										<div class="col-lg-12">
+									</div>
+									<!-- end col-lg-12 -->
+									<div class="col-lg-12">
+										<div class="input-box">
+											<label class="label-text">Password</label>
 											<div class="form-group">
-												<div
-													class="custom-checkbox mr-0 d-flex align-items-center justify-content-between">
-													<div>
-														<input type="checkbox" id="chb1"> <label
-															for="chb1">로그인 상태 유지</label>
-													</div>
+												<span class="la la-lock form-icon"></span> <input
+													class="form-control" type="password" name="pwd" id="pwd"
+													placeholder="비밀번호를 입력해 주세요">
+											</div>
+										</div>
+									</div>
+									<!-- end col-lg-12 -->
+									<div class="col-lg-12">
+										<div class="form-group">
+											<div
+												class="custom-checkbox mr-0 d-flex align-items-center justify-content-between">
+												<div>
+													<input type="checkbox" id="chb1"> <label for="chb1">로그인
+														상태 유지</label>
+												</div>
+ 											</div>
+										</div>
+									</div> 
+									<!-- end col-lg-12 -->
+									<div class="col-lg-12">
+										<div class="btn-box margin-top-20px margin-bottom-20px">
+											<button class="theme-btn border-0 w-100" type="submit">Login
+												now</button>
+										</div>
+									</div>
+									<!-- end col-lg-12 -->
+									<div class="col-lg-12">
+										<p class="font-weight-medium">
+											아직 WeCamp 회원이 아니신가요? <a href="../sign_up/sign_up_page.wcc"
+												class="color-text" action="sign_up_page.wcc"> 회원가입 </a>
+										</p>
+									</div>
+									<!-- end col-lg-12 -->
+									</form>
+								</div>
+													<!-- Button HTML (to Trigger Modal) -->
+													<p class="font-weight-medium">
+													비밀번호를 잊으셨나요? 
+													<a href="#myModal" class="color-text font-weight-medium"
+														data-toggle="modal" type="button">비밀번호 찾기 </a>
 
-													<div class="text-center">
-														<!-- Button HTML (to Trigger Modal) -->
-														<a href="#myModal" class="color-text font-weight-medium"
-															data-toggle="modal" type="button">비밀번호 찾기 </a>
-													</div>
+												<!-- Modal HTML -->
+												<div id="myModal" class="modal fade">
+													<div class="modal-dialog modal-login">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h4 class="modal-title">비밀번호 찾기</h4>
 
-													<!-- Modal HTML -->
-													<div id="myModal" class="modal fade">
-														<div class="modal-dialog modal-login">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<h4 class="modal-title">비밀번호 찾기</h4>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-hidden="true">&times;</button>
+															</div>
+															<div style="font-size: 12px; text-align: center">
+																계정으로 사용하는 이메일 주소를 입력하시면, 비밀번호 재설정 링크를 전송해 드립니다.</div>
+															<div class="modal-body">
+																<form action="find_pwd.wcc" method="post">
+																	<div class="form-group">
+																	
+																		
+																		<div class="input-group">
 
-																	<button type="button" class="close"
-																		data-dismiss="modal" aria-hidden="true">&times;</button>
-																</div>
-																<div style="font-size: 12px; text-align: center">
-																	계정으로 사용하는 이메일 주소를 입력하시면, 비밀번호 재설정 링크를 전송해 드립니다.</div>
-																<div class="modal-body">
-																	<form action="/examples/actions/confirmation.php"
-																		method="post">
-																		<div class="form-group">
-
-																			<div class="input-group">
-
-																				<span class="input-group-addon"></span> <input
-																					type="text" class="form-control" name="username"
-																					placeholder="Email" required="required">
-																			</div>
+																			<span class="input-group-addon"></span> <input
+																				type="email" class="form-control" id="email" name="email"
+																				placeholder="Email">
 																		</div>
+																	</div>
 
-																		<div class="form-group">
-																			<button type="submit"
-																				class="theme-btn border-0 w-100">재설정 링크
-																				전송하기</button>
-																		</div>
-																	</form>
-																</div>
-																<div class="modal-footer">
-																	아직 WeCamp 회원이 아니신가요? <a href="#"
-																		class="color-text font-weight-medium">회원가입</a>
-																</div>
+																	<div class="form-group">
+																		<button type="submit" class="theme-btn border-0 w-100"  id="find-pwd-btn">재설정
+																			링크 전송하기</button>
+																	</div>
+																</form>
+															</div>
+															<div class="modal-footer">
+																아직 WeCamp 회원이 아니신가요? <a href="../sign_up/sign_up_page.wcc"
+																	class="color-text font-weight-medium" action="sign_up_page.wcc">회원가입</a>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<!-- end col-lg-12 -->
-										<div class="col-lg-12">
-											<div class="btn-box margin-top-20px margin-bottom-20px">
-												<button class="theme-btn border-0 w-100" type="submit">Login
-													now</button>
-											</div>
-										</div>
-										<!-- end col-lg-12 -->
-										<div class="col-lg-12">
-											<p class="font-weight-medium">
-												아직 WeCamp 회원이 아니신가요? <a href="sign-up.html"
-													class="color-text"> 회원가입 </a>
-											</p>
-										</div>
-										<!-- end col-lg-12 -->
-									</div>
-									<!-- end row -->
-								</form>
-							</div>
-							<!-- end contact-form-action -->
+											
+								<!-- end row -->
+
 						</div>
-						<!-- end billing-content -->
+						
+						<!-- end contact-form-action -->
 					</div>
-					<!-- end billing-form-item -->
+					<!-- end billing-content -->
 				</div>
-				<!-- end col-lg-6 -->
+				<!-- end billing-form-item -->
 			</div>
-			<!-- end row -->
+			<!-- end col-lg-6 -->
 		</div>
-		<!-- end container -->
-	</section>
-	<!-- end form-shared -->
-	<!-- ================================
+		
+												 
+		<!-- end row -->
+	<!-- end container -->
+</section>
+<!-- end form-shared -->
+<!-- ================================
        START FORM AREA
 ================================= -->
 
-	<!-- ================================
-    START CTA AREA
-================================= -->
-	<section class="cta-area cta-area2">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="cta-box d-flex align-items-center">
-						<div class="col-lg-8">
-							<div class="section-heading">
-								<h2 class="sec__title text-white">Subscribe to Newsletter!</h2>
-								<p class="sec__desc">Subscribe to get latest updates and
-									information.</p>
-							</div>
-							<!-- end section-heading -->
-						</div>
-						<!-- end col-lg-8 -->
-						<div class="col-lg-4">
-							<div class="contact-form-action">
-								<form method="post">
-									<div class="form-group mb-0">
-										<span class="la la-envelope-o form-icon"></span> <input
-											class="form-control" type="email"
-											placeholder="Enter your email">
-										<button class="theme-btn" type="submit">Subscribe</button>
-									</div>
-								</form>
-							</div>
-							<!-- end contact-form-action -->
-						</div>
-						<!-- end col-lg-3 -->
-					</div>
-					<!-- end cta-box -->
-				</div>
-				<!-- end col-lg-12 -->
-			</div>
-			<!-- end row -->
-		</div>
-		<!-- end container -->
-	</section>
-	<!-- end cta-area -->
-	<!-- ================================
-    END CTA AREA
-================================= -->
-
-	<!-- ================================
-       START FOOTER AREA
-================================= -->
-	<section
-		class="footer-area section-bg padding-top-140px padding-bottom-60px">
-		<div class="box-icon"></div>
-		<div class="box-icon"></div>
-		<div class="box-icon"></div>
-		<div class="box-icon"></div>
-		<div class="box-icon"></div>
-		<div class="box-icon"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 column-td-6">
-					<div class="footer-item">
-						<div class="logo">
-							<a href="index.html" class="foot-logo"><img
-								src="/images/logo.png" alt="logo"></a>
-							<p class="footer__desc">Morbi convallis bibendum urna ut
-								viverra. Maecenas quis consequat libero, a feugiat eros</p>
-							<ul class="social-profile">
-								<li><a href="#"> <i class="fa fa-facebook"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-twitter"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-instagram"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-dribbble"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-behance"></i>
-								</a></li>
-							</ul>
-						</div>
-						<!-- end logo -->
-					</div>
-					<!-- end footer-item -->
-				</div>
-				<!-- end col-lg-3 -->
-				<div class="col-lg-3 column-td-6">
-					<div class="footer-item">
-						<h4 class="footer__title">Quick Links</h4>
-						<ul class="list-items">
-							<li><a href="about.html">about us</a></li>
-							<li><a href="sign-up.html">sign up</a></li>
-							<li><a href="login.html">log in</a></li>
-							<li><a href="add-listing.html">add listing</a></li>
-							<li><a href="contact.html">contact us</a></li>
-							<li><a href="pricing.html">pricing</a></li>
-						</ul>
-					</div>
-					<!-- end footer-item -->
-				</div>
-				<!-- end col-lg-3 -->
-				<div class="col-lg-3 column-td-6">
-					<div class="footer-item">
-						<h4 class="footer__title">Categories</h4>
-						<ul class="list-items">
-							<li><a href="#">Shops</a></li>
-							<li><a href="#">Hotels</a></li>
-							<li><a href="#">Restaurants</a></li>
-							<li><a href="#">Bars</a></li>
-							<li><a href="#">Events</a></li>
-							<li><a href="#">Fitness</a></li>
-						</ul>
-					</div>
-					<!-- end footer-item -->
-				</div>
-				<!-- end col-lg-3 -->
-				<div class="col-lg-3 column-td-6">
-					<div class="footer-item">
-						<h4 class="footer__title">Contact with Us</h4>
-						<ul class="info-list contact-links">
-							<li><span class="la la-home"></span> 12345 Little Baker St,
-								Melbourne</li>
-							<li><span class="la la-headphones"></span> <a href="#">+
-									61 23 8093 3400</a></li>
-							<li><span class="la la-envelope-o"></span> <a href="#">dirto@gmail.com</a></li>
-						</ul>
-					</div>
-					<!-- end footer-item -->
-				</div>
-				<!-- end col-lg-3 -->
-			</div>
-			<!-- end row -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="copy-right margin-top-50px padding-top-60px">
-						<p class="copy__desc">
-							&copy; Copyright Dirto 2020. Made with <span
-								class="la la-heart-o"></span> by <a
-								href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a>
-						</p>
-						<ul class="list-items">
-							<li><a href="#">Terms & Conditions</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Help Center</a></li>
-						</ul>
-					</div>
-					<!-- end copy-right -->
-				</div>
-				<!-- end col-lg-12 -->
-			</div>
-			<!-- end row -->
-		</div>
-		<!-- end container -->
-	</section>
-	<!-- end footer-area -->
-	<!-- ================================
-       START FOOTER AREA
-================================= -->
-
-	<!-- start back-to-top -->
-	<div id="back-to-top">
-		<i class="fa fa-angle-up" title="Go top"></i>
-	</div>
-	<!-- end back-to-top -->
-	
-<!-- <script>
-  window.fbAsyncInit = function() {
-
-     
-    FB.init({
-      appId      : '1443711249160744',
-      xfbml      : true,
-      version    : 'v8.0'
-    });
-    FB.AppEvents.logPageView();
-    
-    FB.getLoginStatus(function(response) {
-	    statusChangeCallback(response);
+<script type='text/javascript'>
+	Kakao.init('02c2b06d1b71afd6fbaca5c4c4c255b4'); //아까 카카오개발자홈페이지에서 발급받은 자바스크립트 키를 입력함
+	//카카오 로그인 버튼을 생성합니다. 
+	Kakao.Auth.createLoginButton({
+		container : '#kakao-login-btn',
+		success : function(authObj) {
+			Kakao.API.request({
+				url : '/v2/user/me',
+				success : function(res) {
+					alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
+					alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
+					console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
+					console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
+					console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+					// res.properties.nickname으로도 접근 가능 )
+					console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
+				}
+			})
+		},
+		fail : function(error) {
+			alert(JSON.stringify(error));
+		}
 	});
-    {
-        status: 'connected',
-        authResponse: {
-            accessToken: '{access-token}',
-            expiresIn:'{unix-timestamp}',
-            reauthorize_required_in:'{seconds-until-token-expires}',
-            signedRequest:'{signed-parameter}',
-            userID:'{user-id}'
-        }
-    }
-	
-/* 	  FB.logout(function(response) {
-		   // Person is now logged out
+
+	function loginWithKakao() {
+		// 로그인 창을 띄웁니다.
+		Kakao.Auth.loginForm({
+			success : function(authObj) {
+				alert(JSON.stringify(authObj));
+				// 로그인 성공시, API를 호출합니다.
+				Kakao.API.request({
+					url : '/v2/user/me',
+					success : function(res) {
+						console.log(JSON.stringify(res));
+						alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
+						console.log(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
+						console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
+						console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
+						//console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+						// res.properties.nickname으로도 접근 가능 )
+						console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
+					},
+					fail : function(error) {
+						alert(JSON.stringify(error));
+					}
+				});
+			},
+			fail : function(err) {
+				alert(JSON.stringify(err));
+			}
 		});
-	
-	  FB.api(
-			  '/me',
-			  'GET',
-			  {"fields":"id,name,email"},
-			  function(response) {
-				  console.log(response);
-				    document.querySelector('#welcome').innerHTML = "Welcome, " + response.email;
-			  }
-			);
-	  
-	  FB.getLoginStatus(function(response) {
-         if(response.status === 'connected') {
-             document.querySelector('#authBtn').value = "Logout";
-             FB.api(
-                 '/me',
-                 'GET',
-                 {"fields":"id,name"},
-                 function(response) {
-                     document.querySelector('#welcome').innerHTML = "Welcome, " + response.name;
-                 }
-             );
-         } else {
-             document.querySelector('#authBtn').value = "Login";
-         }
-     }) */
-     
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-</script> -->
-
-<script>
-function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(ㅌ`);                   // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();  
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
-    }
-  }
-
-
-  function checkLoginState() { 
-	  alert("로그인버튼 누름");// Called when a person is finished with the Login Button.
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-    	 appId            : '1443711249160744',
-         autoLogAppEvents : true,
-         xfbml            : true,
-         version          : 'v8.0'
-    });
-
-
-    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-      statusChangeCallback(response);        // Returns the login status.
-    });
-  };
- 
-  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        '환영합니다~ ' + response.name + '님!';
-    });
-  }
-
+	};
 </script>
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v8.0&appId=3193814364041406&autoLogAppEvents=1" nonce="4mZs5Pcr"></script>
-</body>
-</html>

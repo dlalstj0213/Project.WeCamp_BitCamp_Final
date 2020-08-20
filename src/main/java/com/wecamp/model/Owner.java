@@ -1,7 +1,5 @@
 package com.wecamp.model;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Owner {
 	private String email;
-	private int camp_idx;
+	private long camp_idx;
 	private String name;
 	private String owner_num;
 	private String com_name;

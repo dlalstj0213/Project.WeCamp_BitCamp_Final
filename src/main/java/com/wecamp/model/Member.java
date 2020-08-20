@@ -17,5 +17,7 @@ public class Member {
 	private String pwd;
 	private Date birth;
 	private long point;
+	private String approval_status;
+	private String approval_key;
 	private String grade;
 }

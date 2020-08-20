@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Review {
-	private int review_idx;
-	private int camp_idx;
+	private long review_idx;
+	private long camp_idx;
 	private String email;
 	private String nickname;
 	private String content;

@@ -1,25 +1,13 @@
 package com.wecamp.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.code.geocoder.Geocoder;
-import com.google.code.geocoder.GeocoderRequestBuilder;
-import com.google.code.geocoder.model.GeocodeResponse;
-import com.google.code.geocoder.model.GeocoderRequest;
-import com.google.code.geocoder.model.GeocoderResult;
-import com.google.code.geocoder.model.GeocoderStatus;
-import com.google.code.geocoder.model.LatLng;
 
 import lombok.extern.log4j.Log4j;
 
@@ -27,6 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("result")
 public class MapController {
+
 	@RequestMapping("map.wcc")
 	public String list(){
 		return "client/result/map";

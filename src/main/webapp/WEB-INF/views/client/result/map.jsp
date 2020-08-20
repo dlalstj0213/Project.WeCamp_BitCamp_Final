@@ -474,100 +474,6 @@ color:gray;
 			
 	    </div>
 	    
-<script>
-
-//주소값을 객체로 만드는 것 
-	function get_query(){
-	    var url = document.location.href;
-	    var qs = url.substring(url.indexOf('?') + 1).split('&');
-	    for(var i = 0, result = {}; i < qs.length; i++){
-	        qs[i] = qs[i].split('=');
-	        result[qs[i][0]] = decodeURIComponent(qs[i][1]);
-	    }
-	    return result;
-	}
-
-
-
-	$("#loadMore").click(function(){
-		
-		$.ajax({
-		      url:"./loadMore.wcc",
-		      type:"POST",
-		      data: get_query(),
-		      dataType: "HTML",
-		      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-		      success: function(result) {
-		          if (result) {
-		        	  $(".list-list-camp").append(result);
-		          } else {
-		              alert("데이터가 없습니다.");
-		          }
-		      },
-		      error: function(request, status, error) {
-		          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		      }
-		  });
-		 
-	///////////////////
-			// 주소-좌표 변환 객체를 생성합니다
-			var geocoder = new kakao.maps.services.Geocoder();
-			
-			var MyData = [];
-			
-			var titleData = document.getElementsByClassName('card-title');
-			var addrData = document.getElementsByClassName('testAddr');
-			var linkData = document.getElementsByClassName('testLink');
-			
-			for(var i =0; i<addrData.length ;i++){
-				MyData.push({title : titleData[i].innerText , groupAddress : addrData[i].getAttribute('value'), link : linkData[i].getAttribute('value') });
-			}
-			
-			
-			for (let i=0; i < MyData.length ; i++) {
-				// 주소로 좌표를 검색합니다
-				geocoder.addressSearch(MyData[i].groupAddress, function(result, status) {
-					
-				    // 정상적으로 검색이 완료됐으면 
-				     if (status === daum.maps.services.Status.OK) {
-			
-				        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-				        // 결과값으로 받은 위치를 마커로 표시합니다
-				        let marker = new daum.maps.Marker({
-				            map: map,
-				            position: coords
-				        });
-						let myContent = "<br/> <a href='../search/camp_detail.wcc?camp_idx="+MyData[i].link+"' style='color:blue' target='_blank'>"+MyData[i].title+"</a>";
-				        // 인포윈도우로 장소에 대한 설명을 표시합니다
-				        let infowindow = new daum.maps.InfoWindow({
-				            content: myContent
-				        });
-				        
-				        kakao.maps.event.addListener(marker, 'mouseover', function() {
-				        	infowindow.open(map, marker);
-				      });
-				        
-				        kakao.maps.event.addListener(marker, 'mouseleave', function() {
-				        	infowindow.close(map, marker);
-				      });
-						
-				        kakao.maps.event.addListener(marker, 'click', function() {
-				        	location.href = "../search/camp_detail.wcc?camp_idx="+MyData[i].link 
-				      });
-				        
-				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				        map.setCenter(coords);
-				    } 
-				})
-				
-			}	 
- ///////////////////////
-			
-	})
-
-</script>				    
-	    
 	    
 
 	    <div class="map">
@@ -582,7 +488,7 @@ color:gray;
 	var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 8 // 지도의 확대 레벨
+	        level: 10 // 지도의 확대 레벨
 	    };  
 	
 	// 지도를 생성합니다    
@@ -596,9 +502,10 @@ color:gray;
 	var titleData = document.getElementsByClassName('card-title');
 	var addrData = document.getElementsByClassName('testAddr');
 	var linkData = document.getElementsByClassName('testLink');
+	var chargeData = document.getElementsByClassName('charge');
 	
 	for(var i =0; i<addrData.length ;i++){
-		MyData.push({title : titleData[i].innerText , groupAddress : addrData[i].getAttribute('value'), link : linkData[i].getAttribute('value') });
+		MyData.push({title : titleData[i].innerText , groupAddress : addrData[i].getAttribute('value'), link : linkData[i].getAttribute('value'), charge : chargeData[i].innerText });
 	}
 	
 	
@@ -611,26 +518,37 @@ color:gray;
 	
 		        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
+		        let content = '<div style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: rgb(113, 113, 113); display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
 		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        let marker = new daum.maps.Marker({
+		       /*  let marker = new daum.maps.Marker({
 		            map: map,
 		            position: coords
+		        }); */
+		        
+		        let customOverlay = new kakao.maps.CustomOverlay({
+		            position: coords,
+		            content: content,
+		            clickable: true
 		        });
-				let myContent = "<br/> <a href='../search/camp_detail.wcc?camp_idx="+MyData[i].link+"' style='color:blue' target='_blank'>"+MyData[i].title+"</a>";
+		        
+		        customOverlay.setMap(map);
+		        
+				let myContent = "<br/> <a href='../search/camp_detail.wcc?camp_idx="+MyData[i].link+"' style='color:blue' target='_blank'>"+MyData[i].charge+"원/1박</a>";
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        let infowindow = new daum.maps.InfoWindow({
 		            content: myContent
 		        });
 		        
-		        kakao.maps.event.addListener(marker, 'mouseover', function() {
-		        	infowindow.open(map, marker);
+		        
+		        kakao.maps.event.addListener(customOverlay, 'mouseover', function() {
+		        	infowindow.open(map, customOverlay);
 		      });
 		        
-		        kakao.maps.event.addListener(marker, 'mouseleave', function() {
-		        	infowindow.close(map, marker);
+		        kakao.maps.event.addListener(customOverlay, 'mouseleave', function() {
+		        	infowindow.close();
 		      });
 				
-		        kakao.maps.event.addListener(marker, 'click', function() {
+		        kakao.maps.event.addListener(customOverlay, 'click', function() {
 		        	location.href = "../search/camp_detail.wcc?camp_idx="+MyData[i].link 
 		      });
 		        
@@ -645,7 +563,124 @@ color:gray;
 
 	
 
-</script>	    
+</script>	
+
+<script>
+
+//주소값을 객체로 만드는 것 
+	function get_query(){
+	    var url = document.location.href;
+	    var qs = url.substring(url.indexOf('?') + 1).split('&');
+	    for(var i = 0, result = {}; i < qs.length; i++){
+	        qs[i] = qs[i].split('=');
+	        result[qs[i][0]] = decodeURIComponent(qs[i][1]);
+	    }
+	    return result;
+	}
+
+
+	$("#loadMore").click(function(){
+		
+		$.ajax({
+		      url:"./loadMore.wcc",
+		      type:"POST",
+		      data: get_query(),
+		      dataType: "HTML",
+		      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+		      success: function(result) {
+		          if (result) {
+		        	  $(".list-list-camp").append(result);
+		        		///////////////////
+		  			document.getElementById('kakaoMap').innerHTML = "";
+		  			var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
+		  			    mapOption = {
+		  			        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		  			        level: 10 // 지도의 확대 레벨
+		  			    };  
+		  			
+		  			// 지도를 생성합니다    
+		  			var map = new kakao.maps.Map(mapContainer, mapOption); 
+		  	
+		  	
+		  			// 주소-좌표 변환 객체를 생성합니다
+		  			var geocoder = new kakao.maps.services.Geocoder();
+		  			
+		  			var MyData = [];
+		  			
+		  			var titleData = document.getElementsByClassName('card-title');
+		  			var addrData = document.getElementsByClassName('testAddr');
+		  			var linkData = document.getElementsByClassName('testLink');
+		  			var chargeData = document.getElementsByClassName('charge');
+		  			
+		  			for(var i =0; i<addrData.length ;i++){
+		  				MyData.push({title : titleData[i].innerText , groupAddress : addrData[i].getAttribute('value'), link : linkData[i].getAttribute('value'), charge : chargeData[i].innerText });
+		  			}
+		  			
+		  			
+		  			for (let i=0; i < MyData.length ; i++) {
+		  				// 주소로 좌표를 검색합니다
+		  				geocoder.addressSearch(MyData[i].groupAddress, function(result, status) {
+		  					
+		  				    // 정상적으로 검색이 완료됐으면 
+		  				     if (status === daum.maps.services.Status.OK) {
+		  			
+		  				        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+		  				        // 결과값으로 받은 위치를 마커로 표시합니다
+		  				          let content = '<div style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: rgb(113, 113, 113); display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+						      
+							        let customOverlay = new kakao.maps.CustomOverlay({
+							            position: coords,
+							            content: content,
+							            clickable: true
+							        });
+						        
+						        customOverlay.setMap(map);
+		  						let myContent = "<br/> <a href='../search/camp_detail.wcc?camp_idx="+MyData[i].link+"' style='color:blue' target='_blank'>"+MyData[i].charge+"원/1박</a>";
+		  				        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		  				        let infowindow = new daum.maps.InfoWindow({
+		  				            content: myContent
+		  				        });
+		  				        
+		  				        kakao.maps.event.addListener(customOverlay, 'mouseover', function() {
+		  				        	infowindow.open(map, customOverlay);
+		  				      });
+		  				        
+		  				        kakao.maps.event.addListener(customOverlay, 'mouseout', function() {
+		  				        	infowindow.close();
+		  				      });
+		  						
+		  				        kakao.maps.event.addListener(customOverlay, 'click', function() {
+		  				        	location.href = "../search/camp_detail.wcc?camp_idx="+MyData[i].link 
+		  				      });
+		  				        
+		  				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		  				        var markerPosition = customOverlay.getPosition(); 
+		  				        map.relayout();
+		  				        map.setCenter(markerPosition);
+		  				    } 
+		  				})
+		  				
+		  			}	 
+		  			
+		  			location.href='#'; 
+		   ///////////////////////
+		          } else {
+		              alert("데이터가 없습니다.");
+		          }
+		      },
+		      error: function(request, status, error) {
+		          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      }
+		  });
+
+
+			
+	})
+
+</script>				    
+
+    
 
 <!--찜 모달띄우기 -->
 

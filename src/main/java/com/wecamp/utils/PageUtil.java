@@ -19,6 +19,8 @@ public class PageUtil {
 		return currentPage;
 	}
 	
+	
+	
 	public int getPageSize(String ps, HttpSession session) {
 		int pageSize = 5;
 		if(ps == null) {

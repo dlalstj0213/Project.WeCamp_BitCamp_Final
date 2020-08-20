@@ -41,11 +41,17 @@ public class SearchController {
 	}
 	@PostMapping("loadMore.wcc")
 	private ModelAndView loadMore(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
-		session.setAttribute("cp", (Integer)session.getAttribute("cp")+1);
-		SearchResultVo result = searchService.searchCampList(searchPlace, false, session, request);
-		System.out.print(result);
+		
+		int cp = Integer.parseInt(session.getAttribute("cp").toString()); 
+		cp = cp + 1;
+		session.setAttribute("cp", cp);
+		SearchResultVo result = searchService.searchCampList(searchPlace, true, session, request);
 		ModelAndView response = new ModelAndView("client/result/mapList");
-		response.addObject("vo", result);
+		if(result!=null) {
+			response.addObject("vo", result);
+		}else {
+			response = new ModelAndView();
+		}
 		return response;
 	}
 }

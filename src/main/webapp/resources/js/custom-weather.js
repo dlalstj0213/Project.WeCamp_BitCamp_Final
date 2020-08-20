@@ -23,7 +23,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/forecast?id=1835848&APPID=c7b
 				
   		temp2 = data.list[i].weather[0].icon;
 		tempIcon = temp2.substring(0,2);
-		 
+	
 		if(hour>=12){
 			date[j]=dateTemp;
 			$("#date"+j).append(date[j]);//날짜 
@@ -37,7 +37,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/forecast?id=1835848&APPID=c7b
 				$("#cicon"+j).append("<img src='http://openweathermap.org/img/wn/"+icon[j]+"@2x.png'/>");//아이콘
 			}
 			$("#ctemp"+j).prepend(data.list[i].main.temp);//현재온도
-			$("#pop"+j).prepend(data.list[i].pop*100);//강수확률
+			$("#pop"+j).prepend(Math.round(data.list[i].pop*100));//강수확률
 			j++
 		}
 	}

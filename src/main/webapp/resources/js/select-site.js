@@ -35,6 +35,7 @@ var campZone;
 var maxPeople;
 var category;
 var campPrice;
+var bbqPrice;
 function selectSite(index){
 	//예약 버튼 활성화
 	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
@@ -48,6 +49,7 @@ function selectSite(index){
 	maxPeople = document.getElementById('maxPeople'+index).innerHTML;
 	category = document.getElementById('category'+index).value;
 	campPrice = document.getElementById('price'+index).innerHTML;
+	bbqPrice = document.getElementById('bbqPrice').innerHTML;
 	
 	var imgs_html = "";
 	imgs_html += "<img id='imgTest' src="+imgs+" alt='blog image'>";

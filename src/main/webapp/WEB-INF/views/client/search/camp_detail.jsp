@@ -173,7 +173,6 @@
 							    <c:forEach items="${list[i.index]}" var="sort"> 
 							    	<c:if test="${sortList eq sort.sort_name}">
 							    	 <c:set var="j" value="${j+1}"/>
-							    	 ${j}
 			                        	<div class="card mb-3 select-pointer" onclick="selectSite(${j})">
 			                        	<input type="hidden" id="category${j}" value="글램핑"/>   
 										  <div class="row no-gutters">

@@ -46,6 +46,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9 mx-auto">
+			
 				<div class="billing-form-item">
 					<div class="billing-title-wrap">
 						<h3 class="widget-title pb-0">캠핑장 등록하기</h3>
@@ -54,8 +55,8 @@
 					<!-- billing-title-wrap -->
 					<div class="billing-content">
 						<div class="contact-form-action">
-							<form method="post">
 								<div class="row">
+								
 									<div class="col-lg-12">
 										<div class="input-box">
 											<label class="label-text">캠핑장 이름</label>
@@ -72,7 +73,7 @@
 										<div class="input-box">
 											<label class="label-text">주소</label>
 										</div>
-										<div class="input-group"">
+										<div class="input-group">
 											<!-- <input id="addrZip" style="width:500px">
                                             <input type="button" id="bt_addr" onclick="bt_addr_click();" value="주소 찾기">  -->
 											<!-- <span class="la la-pencil-square-o form-icon"></span> -->
@@ -85,21 +86,6 @@
 
 										<div id="map"
 											style="height: 300px; margin-top: 10px; display: none"></div>
-
-										<!-- <div class="form-group mb-0">
-                                                <select class="select-option-field-2">
-                                                    <option value >Select a Category</option>
-                                                    <option value="1">Shops</option>
-                                                    <option value="2">Hotels</option>
-                                                    <option value="3">Restaurants</option>
-                                                    <option value="4">Fitness</option>
-                                                    <option value="5">Travel</option>
-                                                    <option value="6">Salons</option>
-                                                    <option value="7">Event</option>
-                                                    <option value="8">Business</option>
-                                                </select>
-                                            </div>end form-group -->
-
 									</div>
 									<!-- end col-lg-12 -->
 
@@ -109,13 +95,35 @@
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
 													id="phoneNum" class="form-control" type="text" name="name"
-													placeholder="업체의 전화번호를 정확히 입력해 주세요">
+													placeholder="업체의 전화번호를 정확히 입력해 주세요.">
 											</div>
 										</div>
 									</div>
 									<!-- end col-lg-12 -->
 
-
+									<div class="col-lg-12">
+										<div class="input-box">
+											<label class="label-text">총 사이트 수</label>
+											<div class="form-group">
+												<span class="la la-pencil-square-o form-icon"></span> <input
+													id="site-num" class="form-control" type="text" name="site-num"
+													placeholder="캠핑장 내 가용 가능한 총 사이트 수를 입력해 주세요.">
+											</div>
+										</div>
+									</div>
+									<!-- end col-lg-12 -->
+									
+									<div class="col-lg-12">
+										<div class="input-box">
+											<label class="label-text">1일 최대 수용 인원 수</label>
+											<div class="form-group">
+												<span class="la la-pencil-square-o form-icon"></span> <input
+													id="full-num" class="form-control" type="text" name="full-num"
+													placeholder="하루 최대 수용 가능한 인원 수를 입력해 주세요.">
+											</div>
+										</div>
+									</div>
+									<!-- end col-lg-12 -->
 
 									<div class="col-lg-12">
 										<div class="input-box">
@@ -123,7 +131,7 @@
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
 													id="parking" class="form-control" type="text" name="name"
-													placeholder="주차할 수 있는 주차대 수를 입력해 주세요">
+													placeholder="주차할 수 있는 주차대 수를 입력해 주세요.">
 											</div>
 										</div>
 									</div>
@@ -133,7 +141,6 @@
 										<div class="input-box">
 											<label class="label-text">편의시설</label>
 											<div class="billing-form-item">
-
 												<div class="billing-content">
 													<div class="custom-checkbox">
 														<input type="checkbox" id="chb1" name="conv" value="화장실">
@@ -160,6 +167,7 @@
 											</div>
 											<!-- end billing-form-item -->
 										</div>
+										<!-- end input-box -->
 									</div>
 									<!-- end col-lg-12 -->
 
@@ -194,6 +202,7 @@
 											</div>
 											<!-- end billing-form-item -->
 										</div>
+										<!-- end input-box -->
 									</div>
 									<!-- end col-lg-12 -->
 
@@ -201,7 +210,6 @@
 										<div class="input-box">
 											<label class="label-text">기타 부대시설</label>
 											<div class="billing-form-item">
-
 												<div class="billing-content">
 													<div class="custom-checkbox">
 														<input type="checkbox" id="chb13" name="etc-conv" value="화장실"> <label
@@ -228,93 +236,45 @@
 											</div>
 											<!-- end billing-form-item -->
 										</div>
+										<!-- end input-box -->
 									</div>
 									<!-- end col-lg-12 -->
 
 									<div class="col-lg-12">
 										<div class="input-box">
-											<label class="label-text">이용 시간</label>
+											<label class="label-text">관리기관명</label>
+											<div class="form-group">
+												<span class="la la-pencil-square-o form-icon"></span> <input
+													id="agency-name" class="form-control" type="text" name="agency-name"
+													placeholder="관리기관 이름을 입력해 주세요.">
+											</div>
 										</div>
 									</div>
 									<!-- end col-lg-12 -->
-									<div class="col-lg-6">
-										<div class="form-group">
-											<select class="select-option-field-9">
-												<option value>체크인</option>
-												<option value="open">체크인</option>
-												<option value="1">1:00am</option>
-												<option value="2">2:00am</option>
-												<option value="3">3:00am</option>
-												<option value="4">4:00am</option>
-												<option value="5">5:00pm</option>
-												<option value="6">6:00pm</option>
-												<option value="7">7:00pm</option>
-												<option value="8">8:00pm</option>
-												<option value="9">9:00am</option>
-												<option value="10">10:00am</option>
-												<option value="11">11:00am</option>
-												<option value="12">12:00am</option>
-												<option value="13">1:00pm</option>
-												<option value="14">2:00pm</option>
-												<option value="15">3:00pm</option>
-												<option value="16">4:00pm</option>
-												<option value="17">5:00pm</option>
-												<option value="18">6:00pm</option>
-												<option value="19">7:00pm</option>
-												<option value="20">8:00pm</option>
-												<option value="21">9:00pm</option>
-												<option value="22">10:00pm</option>
-												<option value="23">11:00pm</option>
-												<option value="24">12:00pm</option>
-											</select>
+									
+									<div class="col-lg-12">
+										<div class="input-box">
+											<label class="label-text">관리기관 전화번호</label>
+											<div class="form-group">
+												<span class="la la-pencil-square-o form-icon"></span> <input
+													id="agency-tel" class="form-control" type="text" name="agency-tel"
+													placeholder="관리기관 전화번호를 입력해 주세요.">
+											</div>
 										</div>
-										<!-- end form-group -->
 									</div>
-									<!-- end col-lg-6 -->
-									<div class="col-lg-6">
-										<div class="form-group">
-											<select class="select-option-field-10">
-												<option value>체크아웃</option>
-												<option value="closed">체크아웃</option>
-												<option value="1">1:00am</option>
-												<option value="2">2:00am</option>
-												<option value="3">3:00am</option>
-												<option value="4">4:00am</option>
-												<option value="5">5:00pm</option>
-												<option value="6">6:00pm</option>
-												<option value="7">7:00pm</option>
-												<option value="8">8:00pm</option>
-												<option value="9">9:00am</option>
-												<option value="10">10:00am</option>
-												<option value="11">11:00am</option>
-												<option value="12">12:00am</option>
-												<option value="13">1:00pm</option>
-												<option value="14">2:00pm</option>
-												<option value="15">3:00pm</option>
-												<option value="16">4:00pm</option>
-												<option value="17">5:00pm</option>
-												<option value="18">6:00pm</option>
-												<option value="19">7:00pm</option>
-												<option value="20">8:00pm</option>
-												<option value="21">9:00pm</option>
-												<option value="22">10:00pm</option>
-												<option value="23">11:00pm</option>
-												<option value="24">12:00pm</option>
-											</select>
-										</div>
-										<!-- end form-group -->
-									</div>
-									<!-- end col-lg-6 -->
+									<!-- end col-lg-12 -->
 
 								</div>
 								<!-- end row -->
-							</form>
 						</div>
 						<!-- end contact-form-action -->
 					</div>
 					<!-- end billing-content -->
 				</div>
 				<!-- end billing-form-item -->
+				
+				<!-- ////////////////////////////////////////////// -->
+				
 				<div class="billing-form-item">
 					<div class="billing-title-wrap">
 						<h3 class="widget-title pb-0">상세정보 등록하기</h3>
@@ -323,148 +283,207 @@
 					<!-- billing-title-wrap -->
 					<div class="billing-content">
 						<div class="contact-form-action">
-							<form method="post">
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="input-box" style="margin-bottom: 10px">
-											<label class="label-text">캠핑 종류</label>
-											<div class="form-group mb-0">
-												<select id="selectSort" class="select-option-field-2">
-													<option value>Select a Camping</option>
-													<option value="1">캠핑</option>
-													<option value="2">글램핑</option>
-													<option value="3">노지 캠핑</option>
-													<option value="4">차박</option>
-												</select>
+								
+							<div class="col-lg-12">
+								<div class="input-box" style="margin-bottom: 10px">
+									<label class="label-text">캠핑 종류</label>
+									<div class="form-group mb-0">
+										<select id="selectSort" class="select-option-field-2">
+											<option value>Select a Camping</option>
+											<option value="1">캠핑</option>
+											<option value="2">글램핑</option>
+											<option value="3">노지 캠핑</option>
+											<option value="4">차박</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<!-- end col-lg-12 -->
+
+							<!-- 입력 사이트 추가 -->
+							<div class="col-lg-12">
+								<div class="input-box">
+									<label class="label-text">캠핑장 최대 수용 인원수</label>
+									<div
+										class="booking-content d-flex align-items-center justify-content-between text-center">
+										<div class="form-group">
+											<div class="input-number-group">
+
+												<div class="input-group-button" onclick="remove_inputs();">
+													<span class="input-site-increment">+</span>
+												</div>
+												<input class="input-number" type="number" value="0"
+													min="0" max="1000">
+												<div class="input-group-button" onclick="add_inputs();">
+													<span class="input-site-decrement">-</span>
+												</div>
 											</div>
-											<!-- end form-group -->
+											<!-- end input-number-group -->
 										</div>
 									</div>
-									<!-- end col-lg-12 -->
-
-
-									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">캠핑장 최대 수용 인원수</label>
-											<div
-												class="booking-content d-flex align-items-center justify-content-between text-center">
+								</div>
+							</div>
+							<!-- end col-lg-12 -->
+									
+							<form>
+							
+								<div class="col-lg-12">
+									<div class="input-box">
+										<div class="billing-form-item">
+											<div class="billing-content">
+											<!-- 1 -->
+											<label class="label-text">캠핑 사이트 이름 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group">
-													<div class="input-number-group">
-
-														<div class="input-group-button">
-															<span class="input-number-decrement">-</span>
-														</div>
-														<input class="input-number" type="number" value="0"
-															min="0" max="1000">
-														<div class="input-group-button">
-															<span class="input-number-increment">+</span>
-														</div>
-													</div>
-													<!-- end input-number-group -->
+													<span class="la la-pencil form-icon"></span>
+													<input class="message-control form-control" style="height: 50px" name="message"
+														placeholder="캠핑장 소개글을 입력해주세요.">
 												</div>
-											</div>
-										</div>
-									</div>
-									<!-- end col-lg-12 -->
-
-
-									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">캠핑장 소개 <i
-												class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i>
-											</label>
-											<div class="form-group">
-												<span class="la la-pencil form-icon"></span>
-												<textarea class="message-control form-control"
-													style="height: 100px" name="message"
-													placeholder="캠핑장 소개글을 입력해주세요."></textarea>
-											</div>
-										</div>
-									</div>
-									<!-- end col-lg-12 -->
-
-									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">대표 사진 (썸네일)</label>
-											<div class="form-group">
-												<div class="drag-and-drop-wrap">
-													<div class="drag-and-drop-file">
-														<form action="" method="post"
-															enctype="multipart/form-data">
-															<input type="file" name="files[]" id="filer_input1"
-																multiple="multiple">
-														</form>
-													</div>
-													<!-- end custom-file -->
+											<!-- 2 -->
+											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input class="message-control form-control" style="height: 50px" name="message"
+														placeholder="캠핑장 소개글을 입력해주세요.">
 												</div>
-											</div>
-										</div>
-									</div>
-									<!-- end col-lg-12 -->
-									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">상세 사진</label>
-											<div class="form-group">
-												<div class="drag-and-drop-wrap">
-													<div class="drag-and-drop-file">
-														<form action="" method="post"
-															enctype="multipart/form-data">
-															<input type="file" name="files[]" id="filer_input2"
-																multiple="multiple">
-														</form>
-													</div>
-													<!-- end custom-file -->
+											<!-- 3 -->
+											<label class="label-text">해당 사이트 이용 가격 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input class="message-control form-control" style="height: 50px" name="message"
+														placeholder="캠핑장 소개글을 입력해주세요.">
 												</div>
-
-											</div>
-										</div>
-									</div>
-									<!-- end col-lg-12 -->
-
-									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">바베큐 이용 가능 유/무</label>
-											<div class="billing-form-item">
-
-												<div class="billing-content">
-													<div class="custom-checkbox">
-														<input type="checkbox" id="yes" name="checkbox" value="chk1" onClick="javascript:checkOnly(this);"> <label for="yes">가능</label>
-													</div>
-													<!-- end custom-checkbox -->
-													<div class="custom-checkbox">
-														<input type="checkbox" id="no" name="checkbox" value="chk2" onClick="javascript:checkOnly(this);"> <label for="no">불가능</label>
-													</div>
-													<!-- end custom-checkbox -->
-													<div class="form-group">
-														<span class="la la-dollar form-icon"></span> <input
-															id="bbq-price" class="form-control" type="text"
-															name="name" placeholder="바베큐 이용 가능 시 요금을 입력해 주세요">
-													</div>
+											<!-- 4 -->
+											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<input id="site-img" type="file" name="site_img" multiple="multiple">
 												</div>
-												<!-- end billing-content -->
+											
 											</div>
-											<!-- end billing-form-item -->
+											<!-- end billing-content -->
+										</div>
+										<!-- end billing-form-item -->
+									</div>
+									<!-- end input-box -->
+								</div>
+								<!-- end col-lg-12 -->
+								
+								<div class="col-lg-12">
+									<div class="input-box">
+										<div class="billing-form-item">
+											<div class="billing-content">
+											<!-- 1 -->
+											<label class="label-text">캠핑 사이트 이름 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input class="message-control form-control" style="height: 50px" name="message"
+														placeholder="캠핑장 소개글을 입력해주세요.">
+												</div>
+											<!-- 2 -->
+											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input class="message-control form-control" style="height: 50px" name="message"
+														placeholder="캠핑장 소개글을 입력해주세요.">
+												</div>
+											<!-- 3 -->
+											<label class="label-text">해당 사이트 이용 가격 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input class="message-control form-control" style="height: 50px" name="message"
+														placeholder="캠핑장 소개글을 입력해주세요.">
+												</div>
+											<!-- 4 -->
+											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<input id="site-img" type="file" name="site_img" multiple="multiple">
+												</div>
+											
+											</div>
+											<!-- end billing-content -->
+										</div>
+										<!-- end billing-form-item -->
+									</div>
+									<!-- end input-box -->
+								</div>
+								<!-- end col-lg-12 -->
+								
+								
+							</form>
+										
+							<div class="col-lg-12">
+								<div class="input-box">
+									<label class="label-text">해당 사이트 사진 <i
+										class="la la-question tip ml-1" data-toggle="tooltip"
+										data-placement="top" title="최대 30글자까지 입력가능합니다."></i>
+									</label>
+									<div class="form-group">
+										<input id="site-img" type="file" name="site_img" multiple="multiple">
+									</div>
+								</div>
+							</div>
+								<!-- end col-lg-12 -->
+
+<!-- 								<div class="col-lg-12">
+									<div class="input-box">
+										<label class="label-text">대표 사진 (썸네일)</label>
+										<div class="form-group">
+											<div class="drag-and-drop-wrap">
+												<div class="drag-and-drop-file">
+														<input type="file" name="files[]" id="filer_input1"
+															multiple="multiple">
+												</div>
+												end custom-file
+											</div>
 										</div>
 									</div>
-									<!-- end col-lg-12 -->
-
-									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">이용 요금</label>
+								</div> -->
+								
+							<div class="col-lg-12">
+								<div class="input-box">
+									<label class="label-text">바베큐 이용 가능 유/무</label>
+									<div class="billing-form-item">
+										<div class="billing-content">
+											<div class="custom-checkbox">
+												<input type="checkbox" id="yes" name="checkbox" value="chk1" onClick="javascript:checkOnly(this);"> <label for="yes">가능</label>
+											</div>
+											<!-- end custom-checkbox -->
+											<div class="custom-checkbox">
+												<input type="checkbox" id="no" name="checkbox" value="chk2" onClick="javascript:checkOnly(this);"> <label for="no">불가능</label>
+											</div>
+											<!-- end custom-checkbox -->
 											<div class="form-group">
 												<span class="la la-dollar form-icon"></span> <input
-													id="camp-price" class="form-control" type="text"
-													name="name" placeholder="캠핑장 가격을 정확히 입력해 주세요">
+													id="bbq-price" class="form-control" type="text"
+													name="name" placeholder="바베큐 이용 가능 시 요금을 입력해 주세요">
 											</div>
 										</div>
+										<!-- end billing-content -->
 									</div>
-									<!-- end col-lg-12 -->
-
-
+									<!-- end billing-form-item -->
 								</div>
-								<!-- end row -->
-							</form>
+							</div>
+							<!-- end col-lg-12 -->
+
+							<div class="col-lg-12">
+								<div class="input-box">
+									<label class="label-text">이용 요금</label>
+									<div class="form-group">
+										<span class="la la-dollar form-icon"></span> <input
+											id="camp-price" class="form-control" type="text"
+											name="name" placeholder="캠핑장 가격을 정확히 입력해 주세요">
+									</div>
+								</div>
+							</div>
+							<!-- end col-lg-12 -->
+
 						</div>
 						<!-- end contact-form-action -->
 					</div>
@@ -487,13 +506,14 @@
                             <label for="chb14">I Agree to Dirto's <a href="#" class="color-text">Terms of Services</a></label>
                         </div>end custom-checkbox -->
 						<div class="btn-box mt-4">
-							<button type="button" class="theme-btn border-0" onclick="uploadCamp();">캠핑장 업로드</button>
+							<button type="button" class="theme-btn border-0" onclick="test();">캠핑장 업로드</button>
 						</div>
 						<!-- end btn-box -->
 					</div>
 					<!-- end billing-content -->
 				</div>
 				<!-- end billing-form-item -->
+				
 			</div>
 			<!-- end col-lg-9 -->
 		</div>
@@ -501,58 +521,13 @@
 	</div>
 	<!-- end container -->
 </section>
+		<form id="submit-form" action="upload_camp.wcc" method="post" enctype="multipart/form-data">
+			<input type="file" multiple="multiple" name="test">
+		</form>
 <!-- end add-listing-area -->
 <!-- ================================
     END ADD-LISTING AREA
 ================================= -->
-
-<!-- ================================
-    START CTA AREA
-================================= -->
-<section class="cta-area cta-area2">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="cta-box d-flex align-items-center">
-					<div class="col-lg-8">
-						<div class="section-heading">
-							<h2 class="sec__title text-white">Subscribe to Newsletter!</h2>
-							<p class="sec__desc">Subscribe to get latest updates and
-								information.</p>
-						</div>
-						<!-- end section-heading -->
-					</div>
-					<!-- end col-lg-8 -->
-					<div class="col-lg-4">
-						<div class="contact-form-action">
-							<form method="post">
-								<div class="form-group mb-0">
-									<span class="la la-envelope-o form-icon"></span> <input
-										class="form-control" type="email"
-										placeholder="Enter your email">
-									<button class="theme-btn" type="submit">Subscribe</button>
-								</div>
-							</form>
-						</div>
-						<!-- end contact-form-action -->
-					</div>
-					<!-- end col-lg-3 -->
-				</div>
-				<!-- end cta-box -->
-			</div>
-			<!-- end col-lg-12 -->
-		</div>
-		<!-- end row -->
-	</div>
-	<!-- end container -->
-</section>
-<!-- end cta-area -->
-
-
-<!-- ================================
-    END CTA AREA
-================================= -->
-
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script

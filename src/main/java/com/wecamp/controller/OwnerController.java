@@ -1,5 +1,8 @@
 package com.wecamp.controller;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wecamp.model.Inquiry;
-import com.wecamp.model.Member;
 import com.wecamp.service.owner.OwnerService;
 import com.wecamp.setting.WebTitle;
 
@@ -38,5 +41,18 @@ public class OwnerController {
 	private ModelAndView inquiry(Inquiry inquiry) {
 		ModelAndView response = ownerService.submitInquiryService(inquiry);
 		return response;
+	}
+	
+	@PostMapping("upload_camp.wcc")
+	private String addCamp(ArrayList<MultipartFile> site_img, ArrayList<MultipartFile> test) {
+		log.info("#> addCamp() 접근"); 
+		log.info("#> size : "+site_img.size());
+		for(MultipartFile file : site_img) {
+			log.info("#> file imgs name : " +file.getOriginalFilename());
+		}
+		for(MultipartFile file : test) {
+			log.info("#> test name : "+file.getOriginalFilename());
+		}
+		return "client/member/add_camp/"+WebTitle.TITLE+"업체 문의 작성";
 	}
 }

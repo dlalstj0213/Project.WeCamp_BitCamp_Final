@@ -1,4 +1,4 @@
-package com.wecamp.service;
+package com.wecamp.service.map;
 
 import com.wecamp.model.Camp;
 import com.wecamp.model.Img;

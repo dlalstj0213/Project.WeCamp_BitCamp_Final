@@ -6,7 +6,7 @@
 
 		<!-- LOGO -->
         <div class="headerbar-left">
-			<a href="index.html" class="logo"><img alt="Logo" src="admin/images/logoss.png" />&nbsp;&nbsp; <span> 위캠프 관리자</span></a>
+			<a href="admin.wcc" class="logo"><img alt="Logo" src="/admin/images/logoss.png" />&nbsp;&nbsp; <span> 위캠프 관리자</span></a>
         </div>
 
         <nav class="navbar-custom">
@@ -15,7 +15,7 @@
 
                         <li class="list-inline-item dropdown notif">
                             <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="admin/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                                <img src="/admin/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->

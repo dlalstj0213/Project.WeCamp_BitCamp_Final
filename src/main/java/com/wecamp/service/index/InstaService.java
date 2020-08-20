@@ -1,4 +1,4 @@
-package com.wecamp.service;
+package com.wecamp.service.index;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

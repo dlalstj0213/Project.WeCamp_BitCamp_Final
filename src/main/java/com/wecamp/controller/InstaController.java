@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.wecamp.service.InstaService;
+import com.wecamp.service.index.InstaService;
 
 import lombok.extern.log4j.Log4j;
 

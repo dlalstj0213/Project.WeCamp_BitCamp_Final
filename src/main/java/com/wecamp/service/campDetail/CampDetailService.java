@@ -1,4 +1,4 @@
-package com.wecamp.service;
+package com.wecamp.service.campDetail;
 
 
 import org.springframework.web.servlet.ModelAndView;

@@ -21,21 +21,21 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	
     <!-- Template CSS Files -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/font-awesome.css">
-    <link rel="stylesheet" href="/css/line-awesome.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/animated-headline.css">
-    <link rel="stylesheet" href="/css/daterangepicker.css">
-    <link rel="stylesheet" href="/css/jquery-ui.css">
-    <link rel="stylesheet" href="/css/jquery.filer.css">
-    <link rel="stylesheet" href="/css/jquery.filer-dragdropbox-theme.css">
-    <link rel="stylesheet" href="/css/select2.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/modernizr.js"></script> <!-- Modernizr -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!--jquery-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/font-awesome.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/line-awesome.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/magnific-popup.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/animated-headline.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/daterangepicker.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/jquery-ui.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/jquery.filer.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/jquery.filer-dragdropbox-theme.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/select2.min.css?ver=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="/css/style.css?ver=<%=System.currentTimeMillis()%>">
+    <script src="/js/modernizr.js?ver=<%=System.currentTimeMillis()%>"></script> <!-- Modernizr -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?ver=<%=System.currentTimeMillis()%>"></script><!--jquery-->
     
 	<script>
 	  window.fbAsyncInit = function() {

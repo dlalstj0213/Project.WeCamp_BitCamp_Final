@@ -11,23 +11,19 @@
 			<ul>
 
 					<li class="submenu">
-						<a class="active" href="index.html"><i class="fa fa-fw fa-bars"></i><span> 메인 </span> </a>
+						<a class="" href="/"><i class="fa fa-fw fa fa-home"></i><span> 위캠프 홈 </span> </a>
                     </li>
 
-					<li class="submenu">
-                        <a href="#"><span class="label radius-circle bg-primary float-right">9</span><i class="fa fa-group bigfonts" aria-hidden="true"></i>
+					<li class="submenu1">
+                        <a id="member-menu" href="#"><span class="label radius-circle bg-primary float-right">9</span><i class="fa fa-group bigfonts" aria-hidden="true"></i>
                         	<span> 회원 관리 </span>
                         </a>
                             <ul>
-								<li>
-                                    <a href="#"><span>Second Level</span></a>
+								<li id="member-submenu">
+                                    <a href="member_manage.wcc"><span>회원</span></a>
                                 </li>
-                                <li class="submenu">
-                                    <a href="#"><span>Third Level</span> <span class="menu-arrow"></span> </a>
-                                        <ul style="">
-                                            <li><a href="#"><span>Third Level Item</span></a></li>
-                                            <li><a href="#"><span>Third Level Item</span></a></li>
-                                        </ul>
+                                <li id="withdrawal-member-submenu">
+                                    <a href="#"><span>탈퇴 회원</span> </a>
                                 </li>                                
                             </ul>
                     </li>

@@ -14,18 +14,19 @@
 	<link rel="shortcut icon" href="/admin/images/favicon2.png">
 
 	<!-- Bootstrap CSS -->
-	<link href="/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/admin/css/bootstrap.min.css?ver=<%=System.currentTimeMillis()%>" rel="stylesheet" type="text/css" />
 	
 	<!-- Font Awesome CSS -->
-	<link href="/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="/admin/font-awesome/css/font-awesome.min.css?ver=<%=System.currentTimeMillis()%>" rel="stylesheet" type="text/css" />
 	
 	<!-- Custom CSS -->
-	<link href="/admin/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/admin/css/style.css?ver=<%=System.currentTimeMillis()%>" rel="stylesheet" type="text/css" />
 	
 </head>
   
-<body class="adminbody">
-    <div id="main">
+<!-- <body class="adminbody"> -->
+<body>
+<!--     <div id="main"> -->
     <header id="header">
         <tiles:insertAttribute name="header" />
     </header>
@@ -42,33 +43,33 @@
     <footer id="footer">
         <tiles:insertAttribute name="footer" />
     </footer>
-    </div>
+<!--     </div> -->
     <!-- END main -->
-    
-	
-<script src="/admin/js/modernizr.min.js"></script>
-<script src="/admin/js/jquery.min.js"></script>
-<script src="/admin/js/moment.min.js"></script>
-		
-<script src="/admin/js/popper.min.js"></script>
-<script src="/admin/js/bootstrap.min.js"></script>
+</body>
 
-<script src="/admin/js/detect.js"></script>
-<script src="/admin/js/fastclick.js"></script>
-<script src="/admin/js/jquery.blockUI.js"></script>
-<script src="/admin/js/jquery.nicescroll.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script src="/admin/js/modernizr.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/jquery.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/moment.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/popper.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/bootstrap.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+
+<script src="/admin/js/detect.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/fastclick.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/jquery.blockUI.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/jquery.nicescroll.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 <!-- App js -->
-<script src="/admin/js/pikeadmin.js"></script>
+<script src="/admin/js/pikeadmin.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 <!-- BEGIN Java Script for this page -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 <!-- 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> -->
 
 	<!-- Counter-Up-->
-	<script src="/admin/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
-	<script src="/admin/plugins/counterup/jquery.counterup.min.js"></script>			
+	<script src="/admin/plugins/waypoints/lib/jquery.waypoints.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="/admin/plugins/counterup/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>			
 
 	<script>
 		$(document).ready(function() {
@@ -177,4 +178,4 @@
 	});
 	</script>
 <!-- END Java Script for this page -->	
-</body>
+</html>

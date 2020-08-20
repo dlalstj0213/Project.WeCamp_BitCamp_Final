@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Camp {
+
 	private int camp_idx;
 	private String camp_name;
 	private String address;
@@ -23,4 +24,5 @@ public class Camp {
 	private int total_booking;
 	private String intro;
 	private long bbq_fee;
+
 }

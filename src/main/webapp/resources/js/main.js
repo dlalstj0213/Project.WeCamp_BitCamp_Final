@@ -220,8 +220,8 @@ Author Email:   contact@tecydevs.com
                  ]
              },
         }, function(start, end, label){
-        	$('#check-in').val(start.format('YYYY/MM/DD'))
-        	$('#check-out').val(end.format('YYYY/MM/DD'))
+        	$('.check-in').val(start.format('YYYY/MM/DD'))
+        	$('.check-out').val(end.format('YYYY/MM/DD'))
         });
         
         /***changed by rhie***/
@@ -251,7 +251,7 @@ Author Email:   contact@tecydevs.com
 
         /*==== select2 =====*/
         $('.select-option-field').select2({
-            placeholder: "Select a Location",
+            placeholder: "캠핑장명 또는 장소 입력",
             allowClear: true
         });
 

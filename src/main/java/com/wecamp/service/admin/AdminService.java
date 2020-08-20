@@ -1,4 +1,4 @@
-package com.wecamp.service;
+package com.wecamp.service.admin;
 
 
 import java.util.List;

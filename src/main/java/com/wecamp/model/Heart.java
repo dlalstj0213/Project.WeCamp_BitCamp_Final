@@ -1,5 +1,7 @@
 package com.wecamp.model;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

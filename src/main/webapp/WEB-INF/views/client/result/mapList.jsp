@@ -1,16 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-		    	<div class="list-grid-container" onclick="location.href='http://google.com'">
-				  <div class="list-campPic">
+	    	<c:forEach items="${vo.list}" var="list">
+	
+		    	<div class="list-grid-container">
+				  <div class="list-campPic" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
 				  	<div class="list-campPic-Wrap">
-				  		<img class="campPic" src="http://www.gyeongju.go.kr/upload/content/thumb/20200428/24F347BD8AE241D9B2B3FCA410B17329.jpg">
+				  		<img class="campPic" src="/images/camp-img/thumb/${list.fname}">
+				  		<p>${list.fname}</p>
 				  	</div>
 				  </div>
 				  <div class="list-campInform">
-				    <div class="list-campType">
-				   		 <span class="location">경기도 광주시</span> 의 <span class="type"> 오지캠핑장</span>
+				    <div class="list-campType" onclick="location.href='http://google.com'">
+				    <c:set var="fullAddr" value="${list.address}"/> 
+				   		  <span class="location">${fn:substring(fullAddr, 0, 2)}</span> 지역의 <span class="type">캠핑장</span>
+				   		   <input class="testAddr" type="hidden" value="${list.address}">
+				   		   <input class="testLink" type="hidden" value="${list.camp_idx}">
 				    </div>
 				    <div class="list-campJJim">
 				     <button class="heart">
@@ -19,29 +27,33 @@
 						</svg>
 					</button>
 				    </div>
-				    <div class="list-campName">
-				    	<h3 class="card-title">구글 캠핑장 
+				    <div class="list-campName" onclick="location.href='http://google.com'">
+				    	<h3 class="card-title">${list.camp_name}
 	                      <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="안전 캠핑 인증"></i>
 	                   </h3>	
 				    </div>
-				    <div class="list-decoBar">
+				    <div class="list-decoBar" onclick="location.href='http://google.com'">
 				    ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ 
 				    </div>
-				    <div class="list-campMoreInform">
-				    	 경기도 광주시 백마산 자락에 위치한 공기 좋은 캠핑장입니다.
+				    <div class="list-campMoreInform" onclick="location.href='http://google.com'">
+				    	 ${list.intro}
 				    </div>
-				    <div class="list-campRating">
+				    <div class="list-campRating" onclick="location.href='http://google.com'">
 				 		   <div class="rating-rating">
-	                             <span class="la la-star"></span>
-	                             <span class="la la-star"></span>
-	                             <span class="la la-star"></span>
-	                             <span class="la la-star-half-full"></span>
-	                             <span class="la la-star last-star"></span>
-	                             <span class="rating-count">4.5</span>
+	                            <c:forEach begin="1" end="${list.fullStarNum}" step="1">
+									<span class="la la-star"></span>
+								</c:forEach>
+								<c:if test="${list.halfStarExist}">
+									<span class="la la-star-half-full"></span>
+								</c:if>
+	                            <c:forEach begin="1" end="${list.emptyStarNum}" step="1">
+									<span class="la la-star last-star"></span>
+								</c:forEach>
+	                             <span class="rating-count">${list.avgStar}</span>
 	                        	</div>
 				    </div>
-				    <div class="list-campCharge">
-				    	<span>₩</span><span class="charge">450000</span><span style="font-weight: 300 !important;">/1박</span>
+				    <div class="list-campCharge" onclick="location.href='http://google.com'">
+				    	<span>₩</span><span class="charge">${list.min_fee}</span><span style="font-weight: 300 !important;">/1박</span>
 				    </div>
 				  </div>
 				</div>
@@ -49,3 +61,4 @@
 				<div class="list-under-decoBar">
 				    ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 				</div>
+	</c:forEach>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wecamp.service.admin.AdminService;
+import com.wecamp.service.admin.AdminServiceImpl;
 import com.wecamp.setting.WebTitle;
 
 

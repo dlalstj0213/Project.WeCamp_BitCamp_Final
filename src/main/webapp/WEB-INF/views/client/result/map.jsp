@@ -38,11 +38,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!--jquery-->
 
 <style>
+	
 
-	html,body {height:100%;
-				width: 100%; 
+	html,body {height:100vh;
+				width:100%; 
 				margin:0; 
 				padding:0;
+				
 				}
 
  	
@@ -61,7 +63,7 @@
 		padding:5; 
 		margin:5; 
 	  display: grid;
-	  grid-template-columns: 0.9fr 1.5fr 0.6fr;
+	  grid-template-columns: 0.8fr 1.5fr 0.7fr;
 	  grid-template-rows: 1fr;
 	  gap: 1px 1px;
 	  grid-template-areas: "logo searchbar mypage";
@@ -74,7 +76,7 @@
 	}
 	
 	.mypage { grid-area: mypage; 
-				text-align: right; 
+				text-align: left; 
 			}
 	
 	.searchbar { 
@@ -94,24 +96,30 @@
 	  grid-area: body;
 	}
 	
-	.list { grid-area: list; 
-			display: grid;
+	.list { grid-area: list;
+			width: 926px; 
+			max-width: 100%;
+			max-height: 100%;
 			display: grid;
 			  grid-template-columns: 1fr;
 			  grid-template-rows: 1.8fr 0.2fr;
 			  gap: 1px 1px;
 			  grid-template-areas: "list-list-camp" "list-list-button";
 			}
-	.list-list-camp { grid-area: list-list-camp; }
+	.list-list-camp { grid-area: list-list-camp; 
+			max-width: 100%;
+			width: 926px;
+			max-height: 100%;}
 	
-	.list-list-button { grid-area: list-list-button; }			
+	.list-list-button { grid-area: list-list-button; max-width: 100%;
+			max-height: 100%;}			
 			
 	
 	.map { 
 			width: 100%; height: 100%;
+			 max-width: 100%;
+			  max-height: 100%;
 			grid-area: map; 
-			background-color: blue;
-		
 			
 			}
 	#kakaoMap {
@@ -137,44 +145,6 @@
 	
 	.footer2 { grid-area: footer2; 
 			}
-			
-	/* .list-grid-container {
-	  display: grid;
-	  grid-template-columns: 1fr;
-	  grid-template-rows: 1.3fr 1.4fr;
-	  gap: 1px 1px;
-	 grid-template-areas: "list-card-image" "list-card-content"  
-	}
-	
-	.list-card-image {
-	 grid-area: list-card-image; 
-		height:100%;
-		width: 100%;
-		text-align: center;
-	  
-	 }
-	
-	.list-card-content {
-		text-align : center;
-		color : black;
-	  display: grid;
-	  grid-template-columns: 1fr;
-	  grid-template-rows: 0.8fr 0.6fr 1.6fr;
-	  gap: 1px 1px;
-	 grid-template-areas: "list-site-name" "list-site-tag" "list-site-inform";
-	  grid-area: list-card-content;
-	}
-	
-	.list-site-name { grid-area: list-site-name; 
-	background-color: skyblue;
-	}
-	
-	.list-site-tag { grid-area: list-site-tag; 
-	background-color: pink;
-	}
-	
-	.list-site-inform { grid-area: list-site-inform; 
-	background-color: aliceblue;} */
 	
 	.list-grid-container {
 	  width: 792; height: 228;
@@ -185,6 +155,7 @@
 	 grid-template-areas: "list-campPic list-campInform";
 	 margin-bottom : 30;
 	 cursor: pointer;
+	 
 	}
 	
 	.list-campPic { 
@@ -219,7 +190,7 @@
 	
 	.campPic{
 	 display: block;
-	 width: auto; 
+	 width: 100%; 
 	 height: 100%;
 	 border-radius: 10px; 
 	}
@@ -329,6 +300,9 @@ color:gray;
 	color:#ff6b6b;
 }
 
+
+
+
 </style>
 
 
@@ -343,19 +317,54 @@ color:gray;
     	<div class="logo"> <a href="../"><img src="/images/logo.png" alt="logo"></a></div>
 		<div class="searchbar">
 			
-			<form action="" method="get">
-			  <div class="product-search">
-			      <div class="search-element">
-			        <label class="search-label">위치</label>
-			        <input class="search-input" type="text" autocomplete="on" placeholder="강릉시" >
-			      </div>
-			      <div class="search-element">
-			        <label class="search-label">일정</label>
-			        <input class="search-input" type="date" class="" autocomplete="on">
-			      </div>
-			      <a type="submit" class="search-button">Search</a>
-			  </div>
-			</form>
+                <div class="main-search-input">
+                    <div class="main-search-input-item">
+                        <div class="contact-form-action">
+                            <form action="#">
+                                <div class="main-search form-group mb-0">
+                                    <span class="la la-search form-icon"></span>
+                                    <input id="search" class="form-control" type="text" placeholder="위치">
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- end main-search-input-item -->
+                    <div class="main-search-input-item">
+                    <div class="contact-form-action padding-top-29px" style="margin-top: 17px">
+                               <div class="form-group">
+                                   <span class="la la-calendar-o form-icon"></span>
+                                   <input id="initDate" class="date-range form-control" type="text" name="daterange" value=""/>
+                                   <input id="check-in" type="hidden" value="">
+                                   <input id="check-out" type="hidden" value="">
+                               </div>
+                    </div><!-- end main-search-input-item -->
+                    </div><!-- end main-search-input-item -->
+                    <div class="main-search-input-item">
+						<select class="custom-select" style="height: 50px;"  id="optionNo" name="optionNo" onchange='selectPeopleNum();'>
+						  <option>1</option>
+						  <option>2</option>
+						  <option>3</option>
+						  <option>4</option>
+						  <option>5</option>
+						  <option>6</option>
+						  <option>7</option>
+						  <option>8</option>
+						  <option>9</option>
+						  <option>10</option>
+						  <option>more</option>
+						</select>
+                        
+                    </div><!-- end main-search-input-item -->
+                    <div class="main-search-input-btn">
+                        <button class="button theme-btn" type="button" onclick="submitSearch()">Search</button>
+                    </div><!-- end main-search-input-btn -->
+                     <!-- request 할 데이터 -->
+        <form id="searched-data" action="../search/search.wcc" method="get">
+        	<input type="hidden" id="searched-place" name="searchPlace" value="">
+        	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
+        	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">
+        	<input type="hidden" id="peopleNum" name="peopleNum" value="">
+        </form>
+                </div><!-- end main-search-input -->
 		
 		</div>
 		<div class="mypage">
@@ -368,26 +377,32 @@ color:gray;
 
 	</div>
 	
-		<div class="side-user-panel">
+	<div class="side-user-panel">
         <div class="humburger-menu">
             <div class="humburger-menu-lines side-menu-close"></div><!-- end humburger-menu-lines -->
         </div><!-- end humburger-menu -->
         <div class="side-menu-wrap side-user-menu-wrap">
             <div class="side-user-img">
                 
-                <h4 class="su__name">이수빈</h4>
-                <span class="su__meta">가입 날짜 : 2020-08-03</span>
+                <h4 id="name" class="su__name">${member.name}</h4>
+                <!-- <span id="date" class="su__meta">가입 날짜 : 2020-08-03</span> -->
 
             </div>
             <ul class="side-menu-ul">
-                <li><a href="dashboard.html"><span class="la la-user user-icon"></span> 회원정보</a></li>
-                <li><a href="dashboard.html"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
-                <li><a href="dashboard.html"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
-                <li><a href="dashboard.html"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
-                <li><div class="dropdown-divider"></div></li>
+            <c:if test="${member != null}">
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
+            </c:if>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
                 <li><a href="#"><span class="la la-gear user-icon"></span> 개인정보 수정</a></li>
-                <li><a href="#"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                <c:if test="${member == null }">
+                <li><a onclick="location.href='/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
+                </c:if>
+                <c:if test="${member != null }">
+                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                </c:if>
             </ul>
             <div class="side-user-search contact-form-action">
                 <form method="post">
@@ -398,8 +413,7 @@ color:gray;
                 </form>
             </div><!-- end sidebar-widget -->
         </div><!-- end side-menu-wrap -->
-    </div><!-- end side-user-panel -->
-	
+    </div><!-- end side-user-panel -->	
 
 	
 	  <div class="body">
@@ -414,31 +428,31 @@ color:gray;
 				  	</div>
 				  </div>
 				  <div class="list-campInform">
-				    <div class="list-campType" onclick="location.href='http://google.com'">
+				    <div class="list-campType" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
 				    <c:set var="fullAddr" value="${list.address}"/> 
 				   		  <span class="location">${fn:substring(fullAddr, 0, 2)}</span> 지역의 <span class="type">캠핑장</span>
 				   		   <input class="testAddr" type="hidden" value="${list.address}">
 				   		   <input class="testLink" type="hidden" value="${list.camp_idx}">
 				    </div>
 				    <div class="list-campJJim">
-				     <button class="heart">
+				     <button class="heart" id="heart-${list.camp_idx}">
 				    	<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	 					 <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 						</svg>
 					</button>
 				    </div>
-				    <div class="list-campName" onclick="location.href='http://google.com'">
+				    <div class="list-campName" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
 				    	<h3 class="card-title">${list.camp_name}
 	                      <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="안전 캠핑 인증"></i>
 	                   </h3>	
 				    </div>
-				    <div class="list-decoBar" onclick="location.href='http://google.com'">
-				    ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ 
+				    <div class="list-decoBar" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
+				    <hr style="border:solid 0.3px black; width:80px;color:black;">
 				    </div>
-				    <div class="list-campMoreInform" onclick="location.href='http://google.com'">
+				    <div class="list-campMoreInform" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
 				    	 ${list.intro}
 				    </div>
-				    <div class="list-campRating" onclick="location.href='http://google.com'">
+				    <div class="list-campRating" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
 				 		   <div class="rating-rating">
 	                            <c:forEach begin="1" end="${list.fullStarNum}" step="1">
 									<span class="la la-star"></span>
@@ -452,14 +466,15 @@ color:gray;
 	                             <span class="rating-count">${list.avgStar}</span>
 	                        	</div>
 				    </div>
-				    <div class="list-campCharge" onclick="location.href='http://google.com'">
+				    <div class="list-campCharge" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}'">
 				    	<span>₩</span><span class="charge">${list.min_fee}</span><span style="font-weight: 300 !important;">/1박</span>
 				    </div>
 				  </div>
 				</div>
 				
 				<div class="list-under-decoBar">
-				    ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+				  <hr style="border:solid 0.3px black !important;width:900px;
+color:black;">
 				</div>
 	</c:forEach>
 	
@@ -682,32 +697,92 @@ color:gray;
 
     
 
-<!--찜 모달띄우기 -->
-
-<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">test  </h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">X</span>
-					</button>
-				</div>
-				<div class="modal-body">해당 캠핑장을 찜하겠습니까?</div>
-				<div class="modal-footer">
-					<a class="btn" id="modalY" href="#">예</a>
-					<button class="btn" type="button" data-dismiss="modal">아니요</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 <script>
+
 $(".heart").click(function(e){
 	e.preventDefault();
-	$('#testModal').modal("show");
+
+	var strList = $(this).attr('id').split('-');
+	const camp_idx = strList[1];
+	const email = '${member.email}';
 	
+	if(email===""){
+		alert("로그인이 필요합니다.");
+		location.href="https://127.0.0.1:8443/login/login.wcc";
+		return false;
+	}
+	
+	$.ajax({
+	      url:"../heart/insert.wcc",
+	      type:"GET",
+	      data: { email : email, camp_idx : camp_idx },
+	      dataType: "HTML",
+	      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+	      success: function(result) {
+	          if (result*1!==0) { 
+	        	 alert("성공적으로 처리되었습니다.");
+	        	 
+	        	
+	          } else {
+	              alert("이미 찜한 캠핑장입니다.");
+	              return false;
+	          }
+	      },
+	      error: function(request, status, error) {
+	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	      }
+	  });	
+	
+	let filled_button = '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="#ff6b6b" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>';
+	 $(this).html(filled_button);
+	 $(this).attr('class', 'clickedHeart');
+	 
+		
 });
+
+$(".clickedHeart").click(function(e){
+	e.preventDefault();
+
+	var strList = $(this).attr('id').split('-');
+	const camp_idx = strList[1];
+	const email = '${member.email}';
+	
+	if(email===""){
+		alert("로그인이 필요합니다.");
+		location.href="https://127.0.0.1:8443/login/login.wcc";
+		return false;
+	}
+	
+	$.ajax({
+	      url:"../heart/delete.wcc",
+	      type:"GET",
+	      data: { email : email, camp_idx : camp_idx },
+	      dataType: "HTML",
+	      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+	      success: function(result) {
+	          if (result*1!==0) {
+	        	 alert("해당 캠핑장에 찜하기가 취소되었습니다.");
+	        	 let empty_button = '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/></svg>';
+	        		$(this).html(empty_button);
+	        		$(this).attr('class', 'heart');
+	        	
+	          } else {
+	              alert("해당 캠핑장에 찜 내역이 없습니다.");
+	              return false;
+	          }
+	      },
+	      error: function(request, status, error) {
+	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	      }
+	  });	
+	
+	 
+		
+});
+
+
+
 
 </script>  
 
@@ -734,33 +809,6 @@ $(".heart").click(function(e){
 	    );
 	});
 </script>
- 
- <script>
- 
-/*  $("#loadMore").click(function(){
-
-	 $.ajax({
-	      url:"./search02",
-	      type:"GET",
-	      dataType: "HTML",
-	      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-	      success: function(result) {
-	          if (result) {
-	        	 
-	        	  $(".list-list-camp").append(result);
-	          } else {
-	              alert("잠시 후에 시도해주세요.");
-	          }
-	      },
-	      error: function(request, status, error) {
-	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	      }
-	  });
-
-	 
- })
-  */
- </script>
 
 	  <div class="footer">
 	    <div class="footer2">
@@ -864,6 +912,10 @@ $(".heart").click(function(e){
     <i class="fa fa-angle-up" title="Go top" style="padding:5px !important"></i>
 </div>
 <!-- end back-to-top -->
+
+
+<!-- for search JS -->
+<script src="/js/search.js"></script>
 
 <!-- Template JS Files -->
 <script src="/js/jquery.min.js"></script>

@@ -6,4 +6,35 @@
 	<insert id="insertInquiry" parameterType="hashmap">
 		insert into INQUIRY values(INQUIRY_SEQ.nextval, #{query.email}, 1, #{query.title}, #{query.owner_num}, #{query.content}, SYSDATE)
 	</insert>
+	
+	<insert id="insertCamp" parameterType="hashmap">
+		<selectKey keyProperty="camp_idx" resultType="int" order="BEFORE">
+			select CAMP_SEQ.nextval from dual
+		</selectKey>
+		insert into CAMP values(#{camp_idx}, #{camp.camp_name}, #{camp.address}, #{camp.camp_tel}, #{camp.site_num}, #{camp.full_num}, 
+				#{camp.parking}, #{camp.conv}, #{camp.etc_conv}, #{camp.agency_tel}, #{camp.agency_name}, 0, #{camp.intro}, #{camp.bbq_fee})
+	</insert>
+	
+	<insert id="insertImgs" parameterType="hashmap">
+		<selectKey keyProperty="img_idx" resultType="int" order="BEFORE">
+			select nvl(max(IMG_IDX), 0)+1 from IMG
+		</selectKey>
+		<foreach collection="list" item="img" index="index" open="insert all" close="select * from dual">
+			into IMG values(#{img_idx}+#{index}, #{camp.camp_idx}, #{img.fname}, #{img.ofname}, #{img.fsize}, #{division})
+		</foreach>
+	</insert>
+	
+	<insert id="insertSorts" parameterType="hashmap">
+		<selectKey keyProperty="sort_idx" resultType="int" order="BEFORE">
+			select nvl(max(SORT_IDX), 0)+1 from SORT
+		</selectKey>
+		<foreach collection="list" item="sort" index="index" open="insert all" close="select * from dual">
+			into SORT values(#{sort_idx}+#{index}, #{camp.camp_idx}, #{sort.sort_name}, #{sort.site_name}, #{sort.people_num}, 
+			#{sort.site_fee}, #{sort.fname}, #{sort.ofname})
+		</foreach>
+	</insert>
+	
+	<update id="updateOwnerCampIdx" parameterType="hashmap">
+		update OWNER set CAMP_IDX = #{camp.camp_idx} where EMAIL = #{email}
+	</update>
 </mapper>

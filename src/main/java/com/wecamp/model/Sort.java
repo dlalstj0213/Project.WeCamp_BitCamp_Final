@@ -1,5 +1,7 @@
 package com.wecamp.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,8 @@ public class Sort {
 	private String sort_name;
 	private String site_name;
 	private int people_num;
-	private long site_fee;
+	private int site_fee;
 	private String fname;
 	private String ofname;
+	private MultipartFile site_img;
 }

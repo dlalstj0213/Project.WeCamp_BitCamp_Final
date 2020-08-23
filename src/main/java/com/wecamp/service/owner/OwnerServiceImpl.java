@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wecamp.mapper.OwnerMapper;
+import com.wecamp.model.CampAndSortAndImg;
 import com.wecamp.model.Inquiry;
 import com.wecamp.model.Member;
+import com.wecamp.setting.Path;
 import com.wecamp.setting.WebTitle;
+import com.wecamp.utils.FileUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -57,5 +60,13 @@ class OwnerServiceImpl implements OwnerService{
 			response.addObject("result", true);
 		}
 		return response;
+	}
+
+	@Override
+	public ModelAndView addCampService(CampAndSortAndImg model, HttpSession session) {
+		FileUtil fileUtil = new FileUtil();
+		
+		
+		return null;
 	}
 }

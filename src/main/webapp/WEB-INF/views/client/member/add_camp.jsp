@@ -273,7 +273,7 @@
 				</div>
 				<!-- end billing-form-item -->
 				
-				<!-- ////////////////////////////////////////////// -->
+	<!-- ////////////////////////////////////////////// -->
 				
 				<div class="billing-form-item">
 					<div class="billing-title-wrap">
@@ -283,38 +283,138 @@
 					<!-- billing-title-wrap -->
 					<div class="billing-content">
 						<div class="contact-form-action">
-								
-							<div class="col-lg-12">
-								<div class="input-box" style="margin-bottom: 10px">
-									<label class="label-text">캠핑 종류</label>
-									<div class="form-group mb-0">
-										<select id="selectSort" class="select-option-field-2">
-											<option value>Select a Camping</option>
-											<option value="1">캠핑</option>
-											<option value="2">글램핑</option>
-											<option value="3">노지 캠핑</option>
-											<option value="4">차박</option>
-										</select>
+							<!-- 데이터 전송 form --><!-- enctype="multipart/form-data" -->
+							<form id="submit-form" action="upload_camp.wcc" method="post" enctype="multipart/form-data">
+
+								<div class="col-lg-12">
+									<div class="input-box" style="margin-bottom: 10px">
+										
+										<div id="site0" class="billing-form-item">
+										<div class="billing-content" style="padding-bottom: 0%;">
+											<label class="label-text">캠핑장 소개 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<textarea id="intro" name="camp.intro" class="message-control form-control" style="height: 100px;"
+														placeholder="캠핑 사이트 이름을 입력해주세요."></textarea>
+												</div>
+											</div>
+											<div class="billing-content">
+												<label class="label-text">캠핑장 대표 사진(썸네일) <i	class="la la-question tip ml-1" data-toggle="tooltip"
+														data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group mb-0">
+													<input id="img-thumb" type="file" name="imgThumb">
+												</div>
+											</div>
+											<div class="billing-content">
+												<label class="label-text">캠핑장 상세 사진 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+														data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group mb-0">
+													<input id="img-detail" type="file" name="imgDetail" multiple="multiple">
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-							<!-- end col-lg-12 -->
-
-							<!-- 입력 사이트 추가 -->
+								<!-- end col-lg-12 -->
+							
+							
+								<div class="col-lg-12">
+									<div id="site-size-box" class="input-box">
+									<label class="label-text">사이트 추가<span id='count-site'>(1)</span></label>
+									<!-- 전체적인 추가 사이트 -->
+										<div id="site0" class="billing-form-item">
+											<div class="billing-content">
+											
+											<!-- 1 -->
+											<label class="label-text">캠핑 사이트 이름 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input id="site-name0" name="sort[0].site_name" class="message-control form-control" style="height: 50px"
+														placeholder="캠핑 사이트 이름을 입력해주세요.">
+												</div>
+												
+											<!-- custom-checkbox -->
+											<label class="label-text">종류 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+											<div class="billing-form-item">
+												<div class="billing-content">
+													<div class="custom-checkbox" style='margin-bottom: 0px;'>
+														<input type="checkbox" id="chk-sort-0-0" class="choice-sort" name="etc-conv" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+															for="chk-sort-0-0">오토캠핑</label>
+													</div>
+													<div class="custom-checkbox" style='margin-bottom: 0px;'>
+														<input type="checkbox" id="chk-sort-1-0" class="choice-sort" name="etc-conv" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+															for="chk-sort-1-0">글램핑</label>
+													</div>
+													<div class="custom-checkbox" style='margin-bottom: 0px;'>
+														<input type="checkbox" id="chk-sort-2-0" class="choice-sort" name="etc-conv" value="카라반" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+															for="chk-sort-2-0">카라반</label>
+													</div>
+													<div class="custom-checkbox" style='margin-bottom: 0px;'>
+														<input type="checkbox" id="chk-sort-3-0" class="choice-sort" name="etc-conv" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+															for="chk-sort-3-0">노지캠핑</label>
+													</div>
+													<div class="custom-checkbox" style='margin-bottom: 0px;'>
+														<input type="checkbox" id="chk-sort-4-0" class="choice-sort" name="etc-conv" value="기타" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+															for="chk-sort-4-0">기타</label>
+													</div>
+													<div id='etc-input-area-0' class='form-group' style='margin-bottom: 0px;'>
+													</div>
+												</div>
+											</div>
+											
+											<input id="checked-data-0" type="hidden" name="sort[0].sort_name"  value="">
+											
+											<!-- 2 -->
+											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-pencil form-icon"></span>
+													<input id="people-num0" name="sort[0].people_num" class="message-control form-control" style="height: 50px"
+														placeholder="해당 사이트 내 수용 가능한 인원을 입력해주세요.">
+												</div>
+												
+											<!-- 3 -->
+											<label class="label-text">해당 사이트 이용 가격 <i	class="la la-question tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<span class="la la-won form-icon"></span> <input
+														id="site-fee0" class="form-control camp-price" type="text"
+														name="sort[0].site_fee" placeholder="캠핑장 가격을 정확히 입력해 주세요">
+												</div>
+												
+											<!-- 4 -->
+											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
+												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												<div class="form-group">
+													<input id="site-img0" type="file" name="sort[0].site_img">
+												</div>
+											
+											</div>
+											<!-- end billing-content -->
+										</div>
+										<!-- end billing-form-item -->
+									</div>
+									<!-- end input-box -->
+								</div>
+								<!-- end col-lg-12 -->
+							</form>
+							<!-- end form -->
+							
 							<div class="col-lg-12">
 								<div class="input-box">
-									<label class="label-text">캠핑장 최대 수용 인원수</label>
 									<div
 										class="booking-content d-flex align-items-center justify-content-between text-center">
 										<div class="form-group">
 											<div class="input-number-group">
-
-												<div class="input-group-button" onclick="remove_inputs();">
+												<label class="label-text">사이트 추가/제거</label>&nbsp;&nbsp;
+												<div class="input-group-button" onclick="add_inputs();">
 													<span class="input-site-increment">+</span>
 												</div>
-												<input class="input-number" type="number" value="0"
-													min="0" max="1000">
-												<div class="input-group-button" onclick="add_inputs();">
+													<input type='hidden' id='current-site-size' value='0'>
+												<div class="input-group-button" onclick="remove_inputs();">
 													<span class="input-site-decrement">-</span>
 												</div>
 											</div>
@@ -324,128 +424,7 @@
 								</div>
 							</div>
 							<!-- end col-lg-12 -->
-									
-							<form>
-							
-								<div class="col-lg-12">
-									<div class="input-box">
-										<div class="billing-form-item">
-											<div class="billing-content">
-											<!-- 1 -->
-											<label class="label-text">캠핑 사이트 이름 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<span class="la la-pencil form-icon"></span>
-													<input class="message-control form-control" style="height: 50px" name="message"
-														placeholder="캠핑장 소개글을 입력해주세요.">
-												</div>
-											<!-- 2 -->
-											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<span class="la la-pencil form-icon"></span>
-													<input class="message-control form-control" style="height: 50px" name="message"
-														placeholder="캠핑장 소개글을 입력해주세요.">
-												</div>
-											<!-- 3 -->
-											<label class="label-text">해당 사이트 이용 가격 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<span class="la la-pencil form-icon"></span>
-													<input class="message-control form-control" style="height: 50px" name="message"
-														placeholder="캠핑장 소개글을 입력해주세요.">
-												</div>
-											<!-- 4 -->
-											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<input id="site-img" type="file" name="site_img" multiple="multiple">
-												</div>
-											
-											</div>
-											<!-- end billing-content -->
-										</div>
-										<!-- end billing-form-item -->
-									</div>
-									<!-- end input-box -->
-								</div>
-								<!-- end col-lg-12 -->
-								
-								<div class="col-lg-12">
-									<div class="input-box">
-										<div class="billing-form-item">
-											<div class="billing-content">
-											<!-- 1 -->
-											<label class="label-text">캠핑 사이트 이름 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<span class="la la-pencil form-icon"></span>
-													<input class="message-control form-control" style="height: 50px" name="message"
-														placeholder="캠핑장 소개글을 입력해주세요.">
-												</div>
-											<!-- 2 -->
-											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<span class="la la-pencil form-icon"></span>
-													<input class="message-control form-control" style="height: 50px" name="message"
-														placeholder="캠핑장 소개글을 입력해주세요.">
-												</div>
-											<!-- 3 -->
-											<label class="label-text">해당 사이트 이용 가격 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<span class="la la-pencil form-icon"></span>
-													<input class="message-control form-control" style="height: 50px" name="message"
-														placeholder="캠핑장 소개글을 입력해주세요.">
-												</div>
-											<!-- 4 -->
-											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
-												<div class="form-group">
-													<input id="site-img" type="file" name="site_img" multiple="multiple">
-												</div>
-											
-											</div>
-											<!-- end billing-content -->
-										</div>
-										<!-- end billing-form-item -->
-									</div>
-									<!-- end input-box -->
-								</div>
-								<!-- end col-lg-12 -->
-								
-								
-							</form>
 										
-							<div class="col-lg-12">
-								<div class="input-box">
-									<label class="label-text">해당 사이트 사진 <i
-										class="la la-question tip ml-1" data-toggle="tooltip"
-										data-placement="top" title="최대 30글자까지 입력가능합니다."></i>
-									</label>
-									<div class="form-group">
-										<input id="site-img" type="file" name="site_img" multiple="multiple">
-									</div>
-								</div>
-							</div>
-								<!-- end col-lg-12 -->
-
-<!-- 								<div class="col-lg-12">
-									<div class="input-box">
-										<label class="label-text">대표 사진 (썸네일)</label>
-										<div class="form-group">
-											<div class="drag-and-drop-wrap">
-												<div class="drag-and-drop-file">
-														<input type="file" name="files[]" id="filer_input1"
-															multiple="multiple">
-												</div>
-												end custom-file
-											</div>
-										</div>
-									</div>
-								</div> -->
-								
 							<div class="col-lg-12">
 								<div class="input-box">
 									<label class="label-text">바베큐 이용 가능 유/무</label>
@@ -462,24 +441,12 @@
 											<div class="form-group">
 												<span class="la la-dollar form-icon"></span> <input
 													id="bbq-price" class="form-control" type="text"
-													name="name" placeholder="바베큐 이용 가능 시 요금을 입력해 주세요">
+													name="bbq_price" placeholder="바베큐 이용 가능 시 요금을 입력해 주세요">
 											</div>
 										</div>
 										<!-- end billing-content -->
 									</div>
 									<!-- end billing-form-item -->
-								</div>
-							</div>
-							<!-- end col-lg-12 -->
-
-							<div class="col-lg-12">
-								<div class="input-box">
-									<label class="label-text">이용 요금</label>
-									<div class="form-group">
-										<span class="la la-dollar form-icon"></span> <input
-											id="camp-price" class="form-control" type="text"
-											name="name" placeholder="캠핑장 가격을 정확히 입력해 주세요">
-									</div>
 								</div>
 							</div>
 							<!-- end col-lg-12 -->
@@ -506,7 +473,7 @@
                             <label for="chb14">I Agree to Dirto's <a href="#" class="color-text">Terms of Services</a></label>
                         </div>end custom-checkbox -->
 						<div class="btn-box mt-4">
-							<button type="button" class="theme-btn border-0" onclick="test();">캠핑장 업로드</button>
+							<button type="button" class="theme-btn border-0" onclick="uploadCamp();">캠핑장 업로드</button>
 						</div>
 						<!-- end btn-box -->
 					</div>
@@ -521,9 +488,6 @@
 	</div>
 	<!-- end container -->
 </section>
-		<form id="submit-form" action="upload_camp.wcc" method="post" enctype="multipart/form-data">
-			<input type="file" multiple="multiple" name="test">
-		</form>
 <!-- end add-listing-area -->
 <!-- ================================
     END ADD-LISTING AREA
@@ -543,7 +507,6 @@ function bt_addr_click(){
 }
 </script> -->
 
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="/js/add-camp.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script>
 	$(document).ready(function() {
@@ -551,19 +514,8 @@ function bt_addr_click(){
 			alert("사업자 회원만 접근 가능합니다.");
 			location.href = "/";
 		}
-		
-		//포인트 입력 시 자동으로 ',(콤마)' 입력
-		$("input[id='camp-price']").bind('keyup', function(e) {
-			var rgx1 = /\D/g;
-			var rgx2 = /(\d+)(\d{3})/;
-			var num = this.value.replace(rgx1, "");
-
-			while (rgx2.test(num))
-				num = num.replace(rgx2, '$1' + ',' + '$2');
-			this.value = num;
-		});
 	})
-
+	
 	$(document).ready(function() {
 		//포인트 입력 시 자동으로 ',(콤마)' 입력
 		$("input[id='bbq-price']").bind('keyup', function(e) {
@@ -673,6 +625,8 @@ function bt_addr_click(){
 		            }
 		    }
 	
+
+	
 	$('#no').click(function() {
 		$("#bbq-price").attr("disabled",true);
 		});
@@ -680,4 +634,10 @@ function bt_addr_click(){
 	$('#yes').click(function() {
 		$("#bbq-price").removeAttr("disabled");
 		});
+	
+	//컴마 붙은 스트링형 숫자를 넘버형으로 바꿔주는 함수(ex. 2,222-> 2222)
+	function stringNumberToInt(stringNumber){
+	    return parseInt(stringNumber.replace(/,/g , ''));
+	}
+	
 </script>

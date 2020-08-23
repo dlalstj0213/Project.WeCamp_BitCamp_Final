@@ -1,8 +1,5 @@
 package com.wecamp.controller;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wecamp.model.CampAndSortAndImg;
 import com.wecamp.model.Inquiry;
+import com.wecamp.model.Sort;
 import com.wecamp.service.owner.OwnerService;
 import com.wecamp.setting.WebTitle;
 
@@ -44,15 +43,20 @@ public class OwnerController {
 	}
 	
 	@PostMapping("upload_camp.wcc")
-	private String addCamp(ArrayList<MultipartFile> site_img, ArrayList<MultipartFile> test) {
+	private String addCamp(CampAndSortAndImg model, HttpSession session) {
 		log.info("#> addCamp() 접근"); 
-		log.info("#> size : "+site_img.size());
-		for(MultipartFile file : site_img) {
-			log.info("#> file imgs name : " +file.getOriginalFilename());
+		log.info("#> size : "+model.getSort().size());
+		int count = 0;
+		for(Sort detail : model.getSort()) {
+			count++;
+			log.info("#> ("+count+")test name : "+detail);
 		}
-		for(MultipartFile file : test) {
-			log.info("#> test name : "+file.getOriginalFilename());
+		for(MultipartFile file : model.getImgDetail()) {
+			log.info("#> 상세이미지 : "+file.getOriginalFilename());
 		}
+		log.info("#> 대표 이미지 : "+model.getImgThumb().getOriginalFilename());
+		log.info("#> 캠핑장 데이터 : "+model.getCamp());
+		
 		return "client/member/add_camp/"+WebTitle.TITLE+"업체 문의 작성";
 	}
 }

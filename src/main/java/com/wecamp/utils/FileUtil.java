@@ -34,10 +34,10 @@ public class FileUtil {
 		boolean flag = writeFile(file, saveFileName, path);
 		if(flag) {
 			System.out.println("flag : "+flag);
-			log.info("파일 업로드 성공");
+			log.info("#> 파일 업로드 성공");
 		}else {
 			System.out.println("flag : "+flag);
-			log.info("파일 업로드 실패");
+			log.info("#> 파일 업로드 실패");
 		}
 		return saveFileName;
 	}

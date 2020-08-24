@@ -43,7 +43,7 @@ public class OwnerController {
 	}
 	
 	@PostMapping("upload_camp.wcc")
-	private String addCamp(CampAndSortAndImg model, HttpSession session) {
+	private ModelAndView addCamp(CampAndSortAndImg model, HttpSession session) {
 		log.info("#> addCamp() 접근"); 
 		log.info("#> size : "+model.getSort().size());
 		int count = 0;
@@ -57,6 +57,7 @@ public class OwnerController {
 		log.info("#> 대표 이미지 : "+model.getImgThumb().getOriginalFilename());
 		log.info("#> 캠핑장 데이터 : "+model.getCamp());
 		
-		return "client/member/add_camp/"+WebTitle.TITLE+"업체 문의 작성";
+		ModelAndView response = ownerService.addCampService(model, session);
+		return response;
 	}
 }

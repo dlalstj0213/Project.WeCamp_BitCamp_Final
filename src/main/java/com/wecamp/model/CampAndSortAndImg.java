@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class CampAndSortAndImg {
 	private List<Sort> sort;
 	private Camp camp;
-	private Img img;
 	private MultipartFile imgThumb;
 	private List<MultipartFile> imgDetail;
 }

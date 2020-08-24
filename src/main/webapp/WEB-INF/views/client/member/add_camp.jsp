@@ -62,7 +62,7 @@
 											<label class="label-text">캠핑장 이름</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> 
-												<input id="camp-name" class="form-control" type="text" name="name"
+												<input id="camp-name" class="form-control check" type="text" name="name"
 													placeholder="Enter your listing title">
 											</div>
 										</div>
@@ -80,7 +80,7 @@
 											<input class="form-control" type="text" id="sample5_address"
 												placeholder="주소"> <input type="button"
 												onclick="sample5_execDaumPostcode()"
-												class="theme-btn border-0" style="margin-left: 20px"
+												class="theme-btn border-0 check" style="margin-left: 20px"
 												value="주소 검색">
 										</div>
 
@@ -94,7 +94,7 @@
 											<label class="label-text">업체 전화번호</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													id="phoneNum" class="form-control" type="text" name="name"
+													id="phoneNum" class="form-control phoneNum check" type="text" name="name" maxlength="13"
 													placeholder="업체의 전화번호를 정확히 입력해 주세요.">
 											</div>
 										</div>
@@ -106,7 +106,7 @@
 											<label class="label-text">총 사이트 수</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													id="site-num" class="form-control" type="text" name="site-num"
+													id="site-num" class="form-control check" type="text" name="site-num"
 													placeholder="캠핑장 내 가용 가능한 총 사이트 수를 입력해 주세요.">
 											</div>
 										</div>
@@ -118,7 +118,7 @@
 											<label class="label-text">1일 최대 수용 인원 수</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													id="full-num" class="form-control" type="text" name="full-num"
+													id="full-num" class="form-control check" type="text" name="full-num"
 													placeholder="하루 최대 수용 가능한 인원 수를 입력해 주세요.">
 											</div>
 										</div>
@@ -130,7 +130,7 @@
 											<label class="label-text">주차장 이용 가능 수</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													id="parking" class="form-control" type="text" name="name"
+													id="parking" class="form-control check" type="text" name="parking"
 													placeholder="주차할 수 있는 주차대 수를 입력해 주세요.">
 											</div>
 										</div>
@@ -245,7 +245,7 @@
 											<label class="label-text">관리기관명</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													id="agency-name" class="form-control" type="text" name="agency-name"
+													id="agency-name" class="form-control check" type="text" name="agency-name"
 													placeholder="관리기관 이름을 입력해 주세요.">
 											</div>
 										</div>
@@ -257,7 +257,7 @@
 											<label class="label-text">관리기관 전화번호</label>
 											<div class="form-group">
 												<span class="la la-pencil-square-o form-icon"></span> <input
-													id="agency-tel" class="form-control" type="text" name="agency-tel"
+													id="agency-tel" class="form-control phoneNum check" type="text" name="agency-tel"  maxlength="13"
 													placeholder="관리기관 전화번호를 입력해 주세요.">
 											</div>
 										</div>
@@ -295,7 +295,7 @@
 												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<textarea id="intro" name="camp.intro" class="message-control form-control" style="height: 100px;"
+													<textarea id="intro" name="camp.intro" class="message-control form-control check" style="height: 100px;"
 														placeholder="캠핑 사이트 이름을 입력해주세요."></textarea>
 												</div>
 											</div>
@@ -303,14 +303,14 @@
 												<label class="label-text">캠핑장 대표 사진(썸네일) <i	class="la la-question tip ml-1" data-toggle="tooltip"
 														data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group mb-0">
-													<input id="img-thumb" type="file" name="imgThumb">
+													<input id="img-thumb" class="check" type="file" name="imgThumb">
 												</div>
 											</div>
 											<div class="billing-content">
 												<label class="label-text">캠핑장 상세 사진 <i	class="la la-question tip ml-1" data-toggle="tooltip"
 														data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group mb-0">
-													<input id="img-detail" type="file" name="imgDetail" multiple="multiple">
+													<input id="img-detail" class="check" type="file" name="imgDetail" multiple="multiple">
 												</div>
 											</div>
 										</div>
@@ -331,7 +331,7 @@
 												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<input id="site-name0" name="sort[0].site_name" class="message-control form-control" style="height: 50px"
+													<input id="site-name0" name="sort[0].site_name" class="message-control form-control check" style="height: 50px"
 														placeholder="캠핑 사이트 이름을 입력해주세요.">
 												</div>
 												
@@ -341,23 +341,23 @@
 											<div class="billing-form-item">
 												<div class="billing-content">
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-0-0" class="choice-sort" name="etc-conv" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+														<input type="checkbox" id="chk-sort-0-0" class="choice-sort" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
 															for="chk-sort-0-0">오토캠핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-1-0" class="choice-sort" name="etc-conv" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+														<input type="checkbox" id="chk-sort-1-0" class="choice-sort" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
 															for="chk-sort-1-0">글램핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-2-0" class="choice-sort" name="etc-conv" value="카라반" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+														<input type="checkbox" id="chk-sort-2-0" class="choice-sort" value="카라반" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
 															for="chk-sort-2-0">카라반</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-3-0" class="choice-sort" name="etc-conv" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+														<input type="checkbox" id="chk-sort-3-0" class="choice-sort" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
 															for="chk-sort-3-0">노지캠핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-4-0" class="choice-sort" name="etc-conv" value="기타" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
+														<input type="checkbox" id="chk-sort-4-0" class="choice-sort" value="기타" onClick="javascript:chooseOnlyOneSort(this, 0);"> <label
 															for="chk-sort-4-0">기타</label>
 													</div>
 													<div id='etc-input-area-0' class='form-group' style='margin-bottom: 0px;'>
@@ -365,14 +365,14 @@
 												</div>
 											</div>
 											
-											<input id="checked-data-0" type="hidden" name="sort[0].sort_name"  value="">
+											<input id="checked-data-0" type="hidden" class="check" name="sort[0].sort_name"  value="">
 											
 											<!-- 2 -->
 											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
 												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<input id="people-num0" name="sort[0].people_num" class="message-control form-control" style="height: 50px"
+													<input id="people-num0" name="sort[0].people_num" class="message-control form-control check" style="height: 50px"
 														placeholder="해당 사이트 내 수용 가능한 인원을 입력해주세요.">
 												</div>
 												
@@ -381,7 +381,7 @@
 												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group">
 													<span class="la la-won form-icon"></span> <input
-														id="site-fee0" class="form-control camp-price" type="text"
+														id="site-fee0" class="form-control camp-price check" type="text"
 														name="sort[0].site_fee" placeholder="캠핑장 가격을 정확히 입력해 주세요">
 												</div>
 												
@@ -389,7 +389,7 @@
 											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
 												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
 												<div class="form-group">
-													<input id="site-img0" type="file" name="sort[0].site_img">
+													<input id="site-img0" class="check" type="file" name="sort[0].site_img">
 												</div>
 											
 											</div>
@@ -513,6 +513,11 @@ function bt_addr_click(){
 		if(<%=request.getAttribute("result")%> == false){
 			alert("사업자 회원만 접근 가능합니다.");
 			location.href = "/";
+		}else if(<%=request.getAttribute("response")%> == true){
+			alert("good");
+			location.href = "/";
+		}else if(<%=request.getAttribute("response")%> == false){
+			alert("error");
 		}
 	})
 	
@@ -526,7 +531,6 @@ function bt_addr_click(){
 			while (rgx2.test(num))
 				num = num.replace(rgx2, '$1' + ',' + '$2');
 			this.value = num;
-
 		});
 	})
 
@@ -608,11 +612,12 @@ function bt_addr_click(){
 	}
 
 
-	var phoneNum = document.getElementById('phoneNum');
-
-	phoneNum.onkeyup = function(){
-	  console.log(this.value);
-	  this.value = autoHypenPhone( this.value ) ;  
+	var phoneNum = document.getElementsByClassName('phoneNum');
+	for(let k=0; k<phoneNum.length; k++){
+		phoneNum[k].onkeyup = function(){
+		  console.log(this.value);
+		  this.value = autoHypenPhone( this.value ) ;  
+		}
 	}
 	
 	function checkOnly(chk){

@@ -2,6 +2,21 @@
  * 
  */
 function uploadCamp(){
+	let length = document.getElementsByClassName('check').length;
+	for(let k=0; k<length; k++){
+		if(document.getElementsByClassName('check')[k].value == ""){
+			$('.check')[k].focus();
+			alert("모든 정보를 입력해 주세요.");
+			return false;
+		}
+	}
+	
+	if(document.getElementById('chb50').checked == false){
+		$('#chb50').focus();
+		alert("서비스 정책에 동의해 주세요");
+		return false;
+	}
+	
 	let conv = "";
 	let sec_conv = "";
 	let etc_conv = "";
@@ -36,6 +51,9 @@ function uploadCamp(){
 		}
 	}
 	
+	if(document.getElementById('bbq-price').value == ""){
+		document.getElementById('bbq-price').value = 0;
+	}
 	
 	let params = {
 		'camp.camp_name': document.getElementById('camp-name').value,
@@ -43,7 +61,7 @@ function uploadCamp(){
 		'camp.camp_tel': document.getElementById('phoneNum').value,
 		'camp.site_num': document.getElementById('site-num').value,
 		'camp.full_num': document.getElementById('full-num').value,
-		'camp.camp.parking': document.getElementById('parking').value,
+		'camp.parking': document.getElementById('parking').value,
 		'camp.conv': conv,
 		'camp.sec_conv': sec_conv,
 		'camp.etc_conv': etc_conv,
@@ -67,6 +85,7 @@ function uploadCamp(){
 		let val = stringNumberToInt(numberToInt[i].value);
 		numberToInt[i].value = val;
 	}
+	
 	form.submit();
 }
 
@@ -119,7 +138,7 @@ function more_input_html(index){
 			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
 			+ "<div class='form-group'>"
 			+ "<span class='la la-pencil form-icon'></span>"
-			+ "<input id='site-name"+index+"' name='sort["+index+"].site_name' class='message-control form-control' style='height: 50px'"
+			+ "<input id='site-name"+index+"' name='sort["+index+"].site_name' class='message-control form-control check' style='height: 50px'"
 			+ "placeholder='캠핑 사이트 이름을 입력해주세요.'>"
 			+ "</div>"
 			
@@ -131,7 +150,7 @@ function more_input_html(index){
 		let sort_name = ["오토캠핑", "글램핑", "카라반", "노지캠핑", "기타"];
 		for(let i=0; i<sort_name.length; i++){
 			more_html += "<div class='custom-checkbox' style='margin-bottom: 0px;'>"
-			+ "<input type='checkbox' id='chk-sort-"+i+"-"+index+"' class='choice-sort' name='etc-conv' value='"+sort_name[i]+"' onClick='javascript:chooseOnlyOneSort(this, "+index+");''> <label"
+			+ "<input type='checkbox' id='chk-sort-"+i+"-"+index+"' class='choice-sort' value='"+sort_name[i]+"' onClick='javascript:chooseOnlyOneSort(this, "+index+");''> <label"
 			+ " for='chk-sort-"+i+"-"+index+"'>"+sort_name[i]+"</label>"
 			+ "</div>";
 		}
@@ -145,7 +164,7 @@ function more_input_html(index){
 			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
 			+ "<div class='form-group'>"
 			+ "<span class='la la-pencil form-icon'></span>"
-			+ "<input id='people-num"+index+"' name='sort["+index+"].people_num' class='message-control form-control' style='height: 50px'"
+			+ "<input id='people-num"+index+"' name='sort["+index+"].people_num' class='message-control form-control check' style='height: 50px'"
 			+ "placeholder='해당 사이트 내 수용 가능한 인원을 입력해주세요.'>"
 			+ "</div>"
 			// 3 
@@ -153,14 +172,14 @@ function more_input_html(index){
 			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
 			+ "<div class='form-group'>"
 			+ "<span class='la la-won form-icon'></span>"
-			+ "<input id='site-fee"+index+"' class='form-control camp-price' type='text'"
+			+ "<input id='site-fee"+index+"' class='form-control camp-price check' type='text'"
 			+ "name='sort["+index+"].site_fee' placeholder='캠핑장 가격을 정확히 입력해 주세요'>"
 			+ "</div>"
 			// 4
 			+ "<label class='label-text'>해당 사이트 사진 <i	class='la la-file-image-o tip ml-1' data-toggle='tooltip'"
 			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
 			+ "<div class='form-group'>"
-			+ "<input id='site-img"+index+"' type='file' name='sort["+index+"].site_img'>"
+			+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img'>"
 			+ "</div>"
 			+ "</div>"
 			//end billing-content 
@@ -170,6 +189,7 @@ function more_input_html(index){
 		//checkbox form data
 		let checked_data_form = document.createElement('input');
 		checked_data_form.setAttribute('id', 'checked-data-'+index);
+		checked_data_form.setAttribute('class', 'check');
 		checked_data_form.setAttribute('type', 'hidden');
 		checked_data_form.setAttribute('name', "sort["+index+"].sort_name");
 		checked_data_form.setAttribute('value', '');

@@ -58,12 +58,13 @@ class SearchServiceImpl implements SearchService{
 				long minFee = searchMapper.selectMinFeeOfCamp(ci.getCamp_idx());
 				Float avgStar = searchMapper.selectAverageStar(ci.getCamp_idx());
 				if(avgStar == null) avgStar = 0.0f;
-	
 				ci.setMin_fee(minFee);
 				ci.setAvgStar(avgStar);
 				ci.setFullStarNum(starUtil.getFullStarNumber(avgStar));
 				ci.setEmptyStarNum(starUtil.getEmptyStarNumber(avgStar));
 				ci.setHalfStarExist(starUtil.checkHalfStar(avgStar));
+				avgStar = (Math.round(avgStar*10)/10.0f);
+				ci.setAvgStar(avgStar);
 			}
 			sv = new SearchResultVo(list, page);
 		}

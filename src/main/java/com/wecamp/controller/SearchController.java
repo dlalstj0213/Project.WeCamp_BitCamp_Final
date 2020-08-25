@@ -62,15 +62,20 @@ public class SearchController {
 	//String checkIn, String checkOut, String peopleNum 고민해야함(Session?)
 	@GetMapping("search.wcc")
 	private ModelAndView search(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
+		
 		session.setAttribute("cp", 1);
 		SearchResultVo result = searchService.searchCampList(searchPlace, false, session, request);
 		ModelAndView response = new ModelAndView("client/result/map");
 		response.addObject("vo", result);
+		response.addObject("checkIn", checkIn);
+		response.addObject("checkOut", checkOut);		
+		response.addObject("peopleNum", peopleNum);		
+		response.addObject("searchPlace", searchPlace);		
 		return response;
 	}
 	
 	@PostMapping("loadMore.wcc")
-	private ModelAndView loadMore(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
+	private ModelAndView loadMore(String searchPlace, HttpSession session, HttpServletRequest request) {
 		
 		int cp = Integer.parseInt(session.getAttribute("cp").toString()); 
 		cp = cp + 1;

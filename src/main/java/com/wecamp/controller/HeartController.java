@@ -21,7 +21,7 @@ public class HeartController {
 	HeartService heartService;
 	
 	@RequestMapping("insert.wcc")
-	private void insert(String email, int camp_idx, HttpServletResponse httpServletResponse) {
+	private void insert(String email, Integer camp_idx, HttpServletResponse httpServletResponse) {
 		
 		int flag = 0;
 		
@@ -45,7 +45,7 @@ public class HeartController {
 	}
 	
 	@RequestMapping("delete.wcc")
-	private void delete(String email, int camp_idx, HttpServletResponse httpServletResponse) {
+	private void delete(String email, Integer camp_idx, HttpServletResponse httpServletResponse) {
 		
 		int flag = 0;
 		
@@ -69,7 +69,7 @@ public class HeartController {
 	}
 	
 	@RequestMapping("select.wcc")
-	private void select(int camp_idx, HttpServletResponse httpServletResponse) {
+	private void select(Integer camp_idx, HttpServletResponse httpServletResponse) {
 		int count = heartService.selectHeartS(camp_idx);
 		try{
 			httpServletResponse.getWriter().println(count);

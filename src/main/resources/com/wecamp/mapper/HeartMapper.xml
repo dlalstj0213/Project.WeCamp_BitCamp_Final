@@ -22,7 +22,7 @@
 
 <!-- 캠프장 찜하기 취소 액션-->
 <delete id="deleteHeart" parameterType="hashmap">
-	delete * from HEART where EMAIL=#{email} and CAMP_IDX=#{camp_idx}
+	delete from HEART where EMAIL=#{email} and CAMP_IDX=#{camp_idx}
 </delete>
 
 

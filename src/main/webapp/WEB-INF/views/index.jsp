@@ -47,8 +47,6 @@
                                <div class="form-group">
                                    <span class="la la-calendar-o form-icon"></span>
                                    <input id="initDate" class="date-range form-control" type="text" name="daterange" value=""/>
-                                   <input id="check-in" type="hidden" value="">
-                                   <input id="check-out" type="hidden" value="">
                                </div>
                     </div><!-- end main-search-input-item -->
                     </div><!-- end main-search-input-item -->
@@ -90,7 +88,7 @@
         	<input type="hidden" id="searched-place" name="searchPlace" value="">
         	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
         	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">
-        	<input type="hidden" id="peopleNum" name="peopleNum" value="">
+        	<input type="hidden" id="peopleNum" name="peopleNum" value="1">
         </form>
         
     </div><!-- end container -->

@@ -41,8 +41,6 @@
 </head>
 
 <body>
-<!-- member session에 대한 숨김 영역(for 찜)-->
-<input type="hidden" id="initMember" value="${member.email}">
 <section id="body">
 	<div class="grid-container">
 	
@@ -157,7 +155,7 @@
 				sessionStorage.setItem('thumb', ${list.fname});
 				</script> -->
 	
-		    	<div class="list-grid-container" name="${list.camp_idx}">
+		    	<div class="list-grid-container">
 				  <div class="list-campPic" onclick="clickCamp('${list.camp_idx}','${checkIn}','${checkOut}','${peopleNum}','${list.fname}')">
 				  
 				  	<div class="list-campPic-Wrap">
@@ -238,25 +236,6 @@
 	    </div>
 </div>	    
 
-
-<script>
-
-$(".list-grid-container").hover(function(){
-	let markerId = "mark-"+ $(this).attr("name");
-	$("#"+markerId).css('background-color','black');
-	$("#"+markerId).css('color','white');
-	
-}, function(){
-	let markerId = "mark-"+ $(this).attr("name");
-	$("#"+markerId).css('background-color','white');
-	$("#"+markerId).css('color','black');
-	
-})
-
-
-
-</script>
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=76f485124ece8a8f6ef804e2e561062d&libraries=services"></script>
 <script>
 	var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
@@ -292,7 +271,7 @@ $(".list-grid-container").hover(function(){
 	
 		        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
-		        let content = '<div id="mark-'+MyData[i].link+'" style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: black; display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+		        let content = '<div style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: rgb(113, 113, 113); display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
 		        // 결과값으로 받은 위치를 마커로 표시합니다
 		       /*  let marker = new daum.maps.Marker({
 		            map: map,
@@ -416,7 +395,7 @@ $(".list-grid-container").hover(function(){
 		  				        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
 		  				        // 결과값으로 받은 위치를 마커로 표시합니다
-		  				          let content = '<div id="mark-'+MyData[i].link+'" style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: black; display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+		  				          let content = '<div style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: rgb(113, 113, 113); display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
 						      
 							        let customOverlay = new kakao.maps.CustomOverlay({
 							            position: coords,
@@ -481,17 +460,18 @@ $(".list-grid-container").hover(function(){
 
 </script>				    
 
+    
+
+
 <script>
+
 $(".clickedHeart").click(function(e){
 	e.preventDefault();
-	e.stopPropagation();
-	
-	
 	let flag = false;
 	
 	var strList = $(this).attr('id').split('-');
 	const camp_idx = strList[1];
-	const email = $("#initMember").val();
+	const email = '${member.email}';
 	
 	if(email===""){
 		alert("로그인이 필요합니다.");
@@ -531,13 +511,11 @@ $(".clickedHeart").click(function(e){
 $(".heart").click(function(e){
 
 	e.preventDefault();
-	e.stopPropagation();
-	
 	let flag = false;
 	
 	var strList = $(this).attr('id').split('-');
 	const camp_idx = strList[1];
-	const email = $("#initMember").val();
+	const email = '${member.email}';
 	
 	if(email===""){
 		alert("로그인이 필요합니다.");
@@ -572,8 +550,8 @@ $(".heart").click(function(e){
 });
 
 
-</script>
-<script src="/js/heart.js"></script>
+
+</script>  
 
 
 

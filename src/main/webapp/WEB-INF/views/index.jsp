@@ -512,6 +512,74 @@
                     </div><!-- end blog-post-body -->
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
+            
+            <div class="col-lg-4 column-td-6">
+                <div class="card-item blog-card">
+                    <a href="blog-single.html" class="card-image-wrap" id="instaLink3">
+                        <div class="card-image">
+                            <img id="insta3" src="images/img31.jpg" alt="blog image" class="card__img">
+                        </div><!-- end card-image -->
+                    </a>
+                    <div class="card-content pl-0 pr-0">
+                        <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
+                            <li id="instaTime3">25 Dec, 2018</li>
+                            <li></a></li>
+                        </ul>
+                        <p class="card-sub mt-3" id="instaContent3">
+                            Sed ut perspiciatis unde omnis iste natus error sit
+                            voluptatem eaque ipsa quae ab illo inventore
+                            incididunt ut labore et dolore magna
+                        </p>
+
+                    </div><!-- end blog-post-body -->
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            
+            <div class="col-lg-4 column-td-6">
+                <div class="card-item blog-card">
+                    <a href="blog-single.html" class="card-image-wrap" id="instaLink4">
+                        <div class="card-image">
+                            <img id="insta4" src="images/img31.jpg" alt="blog image" class="card__img">
+                        </div><!-- end card-image -->
+                    </a>
+                    <div class="card-content pl-0 pr-0">
+                        <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
+                            <li id="instaTime4">25 Dec, 2018</li>
+                            <li></a></li>
+                        </ul>
+                        <p class="card-sub mt-3" id="instaContent4">
+                            Sed ut perspiciatis unde omnis iste natus error sit
+                            voluptatem eaque ipsa quae ab illo inventore
+                            incididunt ut labore et dolore magna
+                        </p>
+
+                    </div><!-- end blog-post-body -->
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            
+            <div class="col-lg-4 column-td-6">
+                <div class="card-item blog-card">
+                    <a href="blog-single.html" class="card-image-wrap" id="instaLink5">
+                        <div class="card-image">
+                            <img id="insta5" src="images/img31.jpg" alt="blog image" class="card__img">
+                        </div><!-- end card-image -->
+                    </a>
+                    <div class="card-content pl-0 pr-0">
+                        <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
+                            <li id="instaTime5">25 Dec, 2018</li>
+                            <li></a></li>
+                        </ul>
+                        <p class="card-sub mt-3" id="instaContent5">
+                            Sed ut perspiciatis unde omnis iste natus error sit
+                            voluptatem eaque ipsa quae ab illo inventore
+                            incididunt ut labore et dolore magna
+                        </p>
+
+                    </div><!-- end blog-post-body -->
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            
+            
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end blog-area -->
@@ -534,22 +602,22 @@
             <div class="col-lg-12">
                 <div class="client-logo text-center">
                     <div class="client-logo-item">
-                        <img src="images/client-logo.png" alt="brand image">
+                        <img src="/images/index-logo/그레고리.png" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="images/client-logo.png" alt="brand image">
+                        <img src="/images/index-logo/네파.png" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="images/client-logo.png" alt="brand image">
+                        <img src="/images/index-logo/노스페이스.png" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="images/client-logo.png" alt="brand image">
+                        <img src="/images/index-logo/파타고니아.png" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="images/client-logo.png" alt="brand image">
+                        <img src="/images/index-logo/한국관광공사.png" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="images/client-logo.png" alt="brand image">
+                        <img src="/images/index-logo/한국캠핑협회.png" alt="brand image">
                     </div><!-- end client-logo-item -->
                 </div><!-- end client-logo -->
             </div><!-- end col-lg-12 -->
@@ -580,7 +648,7 @@
                       if(!responseData){
 						  return false;
 					  }else{
-						  for(i=0;i<3;i++){
+						  for(i=0;i<6;i++){
 							 $("#insta"+i).attr('src', responseData.data[i].media_url);
 							 $("#instaLink"+i).attr('href', responseData.data[i].permalink);
 							 var time = responseData.data[i].timestamp.split("T");

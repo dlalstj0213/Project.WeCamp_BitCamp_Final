@@ -276,3 +276,28 @@ color:gray;
 	color:black;
 }
 
+.myOverlay{
+	align-items: center; 
+	background-color: rgb(255, 255, 255); 
+	border-radius: 28px; 
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; 
+	color: black; 
+	display: flex; 
+	height: 28px; 
+	justify-content: center; 
+	padding: 0px 8px; 
+	position: relative; 
+	white-space: nowrap;
+	font-weight:bold;
+	font-color:#141414 !important;
+	cursor:pointer;
+	transition-timing-function: linear;
+	
+}
+.myOverlay:hover{
+	-webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);   
+    -o-transform:scale(1.1);
+    transform:scale(1.1);
+}

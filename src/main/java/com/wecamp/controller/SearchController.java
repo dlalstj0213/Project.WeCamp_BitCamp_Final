@@ -85,7 +85,7 @@ public class SearchController {
 		if(result!=null) {
 			response.addObject("vo", result);
 		}else {
-			response = new ModelAndView();
+			response = null;
 		}
 		return response;
 	}

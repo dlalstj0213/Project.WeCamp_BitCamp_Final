@@ -52,10 +52,10 @@ function emptyHeart(e){
 			if(xhttp.readyState === XMLHttpRequest.DONE) {
 				var status = xhttp.status;
 				if(status === 200) {
-					let result = xmlHttp.responseText;
+					let result = xhttp.responseText;
 					if (result*1!==0) {
 					    alert("해당 캠핑장에 찜하기가 취소되었습니다.");
-					    e.previousElementSibling.style.display = "inline";
+						e.previousElementSibling.style.display = "inline";
 						e.style.display = "none";
 					   
 					}else{
@@ -118,8 +118,6 @@ function fillHeart(e){
 					alert("request에 문제가 발생했습니다.");
 				}
 				
-			}else{
-				alert("잘못된 접근입니다. 다시 시도해주세요..");
 			}
 			
 	}catch(exception) {

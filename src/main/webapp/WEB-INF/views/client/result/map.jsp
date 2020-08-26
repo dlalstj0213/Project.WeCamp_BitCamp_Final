@@ -172,12 +172,12 @@
 				   		   <input class="testLink" type="hidden" value="${list.camp_idx}">
 				    </div>
 				    <div class="list-campJJim">
-				     <button class="heart" id="heart-${list.camp_idx}">
+				     <button class="heart" id="heart-${list.camp_idx}" onclick="fillHeart(this)">
 				    	<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	 					 <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 						</svg>
 					</button>
-				     <button class="clickedHeart" id="heart-${list.camp_idx}" style="display:none;">
+				     <button class="clickedHeart" id="heart-${list.camp_idx}" style="display:none;" onclick="emptyHeart(this)">
 				    	<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="#ff6b6b" xmlns="http://www.w3.org/2000/svg">
 				    	<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
 					</button>
@@ -238,7 +238,6 @@
 	    </div>
 </div>	    
 
-
 <script>
 
 $(".list-grid-container").hover(function(){
@@ -292,12 +291,8 @@ $(".list-grid-container").hover(function(){
 	
 		        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
-		        let content = '<div id="mark-'+MyData[i].link+'" style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: black; display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		       /*  let marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        }); */
+		        let content = '<div class="myOverlay" id="mark-'+MyData[i].link+'" onclick="gotoCamp(this)" onmouseover="showInfo(this)" onmouseleave="closeInfo(this)"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+		        
 		        
 		        let customOverlay = new kakao.maps.CustomOverlay({
 		        	map: map,
@@ -305,41 +300,38 @@ $(".list-grid-container").hover(function(){
 		            content: content,
 		            clickable: true
 		        });
-		        
-		        //customOverlay.setMap(map);
-		        
-				let myContent = "<br/> <a href='../search/camp_detail.wcc?camp_idx="+MyData[i].link+"' style='color:blue' target='_blank'>"+MyData[i].charge+"원/1박</a>";
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        let infowindow = new daum.maps.InfoWindow({
-		            content: myContent
-		        });
-		        
-		        
-		        kakao.maps.event.addListener(customOverlay, 'mouseon', function() {
-		        	infowindow.open(map, customOverlay);
-		      });
-		        
-		        kakao.maps.event.addListener(customOverlay, 'mouseout', function() {
-		        	infowindow.close();
-		      });
-				
-		        kakao.maps.event.addListener(customOverlay, 'click', function() {
-		        	alert("bye");
-		        	location.href = "../search/camp_detail.wcc?camp_idx="+MyData[i].link 
-		      });
-		        
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
+  
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        var markerPosition = customOverlay.getPosition(); 
+		        map.relayout();
+		        map.setCenter(markerPosition);
 		    } 
 		})
 		
 	}
 	
-	
-
-	
 
 </script>	
+
+
+
+<script>
+
+function gotoCamp(e){
+	const buttonId = e.getAttribute('id');
+	const strList = buttonId.split('-');
+	const camp_idx = strList[1];
+	alert("bye");
+  	location.href = "../search/camp_detail.wcc?camp_idx="+camp_idx 
+}
+function closeInfo(e){
+	//만들고싶어용...
+}
+function showInfo(e){
+	//만들고싶어용...
+}
+
+</script>
 
 
 
@@ -416,45 +408,24 @@ $(".list-grid-container").hover(function(){
 		  				        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
 		  				        // 결과값으로 받은 위치를 마커로 표시합니다
-		  				          let content = '<div id="mark-'+MyData[i].link+'" style="align-items: center; background-color: rgb(255, 255, 255); border-radius: 28px; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px; color: black; display: flex; height: 28px; justify-content: center; padding: 0px 8px; position: relative; white-space: nowrap;font-weight:bold;font-color:#141414 !important;"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
-						      
+		  				         let content = '<div class="myOverlay" id="mark-'+MyData[i].link+'" onclick="gotoCamp(this)" onmouseover="showInfo(this)" onmouseleave="closeInfo(this)"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+							        
 							        let customOverlay = new kakao.maps.CustomOverlay({
+							        	map: map,
 							            position: coords,
 							            content: content,
 							            clickable: true
 							        });
-						        
-						        customOverlay.setMap(map);
-		  						let myContent = "<br/> <a href='../search/camp_detail.wcc?camp_idx="+MyData[i].link+"' style='color:blue' target='_blank'>"+MyData[i].charge+"원/1박</a>";
-		  				        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		  				        let infowindow = new daum.maps.InfoWindow({
-		  				            content: myContent
-		  				        });
-		  				        
-		  				      $(customOverlay).on('mouseover', function() {
-		  				        	infowindow.open(map, customOverlay);
-		  				      });
-		  				      
-		  				      $(customOverlay).on('mouseout', function() {
-		  				        	infowindow.close();
-		  				      });
-		  				      
-		  				      $(customOverlay).on('click', function() {
-		  				    	location.href = "../search/camp_detail.wcc?camp_idx="+MyData[i].link
-		  				      });
-		  				      
-		  				      /*   kakao.maps.event.addListener(customOverlay, 'mouseover', function() {
-		  				        	infowindow.open(map, customOverlay);
-		  				      });
-		  				        
-		  				        kakao.maps.event.addListener(customOverlay, 'mouseout', function() {
-		  				        	infowindow.close();
-		  				      });
-		  						
-		  				        kakao.maps.event.addListener(customOverlay, 'click', function() {
-		  				        	location.href = "../search/camp_detail.wcc?camp_idx="+MyData[i].link 
-		  				      }); */
-		  				        
+							    
+							      
+							  	 /*  let infowindow = new daum.maps.InfoWindow({
+							          map: map,  
+							  		  content: myContent,
+							  		  position: coords,
+							  		  removable: true
+							        });      */
+							        
+							        
 		  				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		  				        var markerPosition = customOverlay.getPosition(); 
 		  				        map.relayout();
@@ -463,6 +434,7 @@ $(".list-grid-container").hover(function(){
 		  				})
 		  				
 		  			}	 
+		  			
 		  			
 		  			location.href='#'; 
 		   ///////////////////////
@@ -481,98 +453,7 @@ $(".list-grid-container").hover(function(){
 
 </script>				    
 
-<script>
-$(".clickedHeart").click(function(e){
-	e.preventDefault();
-	e.stopPropagation();
-	
-	
-	let flag = false;
-	
-	var strList = $(this).attr('id').split('-');
-	const camp_idx = strList[1];
-	const email = $("#initMember").val();
-	
-	if(email===""){
-		alert("로그인이 필요합니다.");
-		location.href="https://127.0.0.1:8443/login/login.wcc";
-		return false;
-	}
-	
-	$.ajax({
-	      url:"../heart/delete.wcc",
-	      type:"GET",
-	      async : false,
-	      data: { email : email, camp_idx : camp_idx },
-	      dataType: "HTML",
-	      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-	      success: function(result) {
-	          if (result*1!==0) {
-	        	 alert("해당 캠핑장에 찜하기가 취소되었습니다.");
-	        	 flag = true;
-	          }else{
-	              alert("해당 캠핑장에 찜 내역이 없습니다.");
-	          }
-	      },
-	      error: function(request, status, error) {
-	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	      }
-	  });	
-	
 
-	
-	if(flag){
-		 $(this).css("display","none");
-		 $(this).prev().css("display","inline");
-	}
-	
-});
-
-$(".heart").click(function(e){
-
-	e.preventDefault();
-	e.stopPropagation();
-	
-	let flag = false;
-	
-	var strList = $(this).attr('id').split('-');
-	const camp_idx = strList[1];
-	const email = $("#initMember").val();
-	
-	if(email===""){
-		alert("로그인이 필요합니다.");
-		location.href="https://127.0.0.1:8443/login/login.wcc";
-		return false;
-	}
-	
-	$.ajax({
-	      url:"../heart/insert.wcc",
-	      type:"GET",
-	      async : false,
-	      data: { email : email, camp_idx : camp_idx },
-	      dataType: "HTML",
-	      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-	      success: function(result) {
-	          if (result*1!==0) { 
-	        	 alert("성공적으로 처리되었습니다.");
-	        	flag = true;
-	          } else {
-	              alert("이미 찜한 캠핑장입니다.");
-	          }
-	      },
-	      error: function(request, status, error) {
-	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	      }
-	  });	
-	if(flag){
-		 $(this).css("display","none");
-		 $(this).next().css("display","");
-	}
-	
-});
-
-
-</script>
 <script src="/js/heart.js"></script>
 
 

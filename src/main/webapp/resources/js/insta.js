@@ -1,6 +1,3 @@
-/**
- * 
- */
 $(document).ready(function(){ 
 			   console.log("hello world");
 			   
@@ -15,12 +12,12 @@ $(document).ready(function(){
                       if(!responseData){
 						  return false;
 					  }else{
-						  for(i=0;i<3;i++){
-							 $("#insta"+i).attr('src', responseData.data[i].media_url);
-							 $("#instaLink"+i).attr('href', responseData.data[i].permalink);
-							 var time = responseData.data[i].timestamp.split("T");
-							 $("#instaTime"+i).html(time[0]);
-							 $("#instaContent"+i).html(responseData.data[i].caption);
+						  for(i=0;i<6;i++){
+							 $(".insta"+i).attr('src', responseData.data[i].media_url);
+							 $(".instaLink"+i).attr('href', responseData.data[i].permalink);
+							 const time = responseData.data[i].timestamp.split("T");
+							 $(".instaTime"+i).html(time[0]);
+							 $(".instaContent"+i).html(responseData.data[i].caption);
 
 								//alert("good");
 						  }

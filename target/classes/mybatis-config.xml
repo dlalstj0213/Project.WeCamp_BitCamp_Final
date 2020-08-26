@@ -9,6 +9,7 @@
    	   <typeAlias alias="Booking" type="com.wecamp.model.Booking"/>
    	   <typeAlias alias="Camp" type="com.wecamp.model.Camp"/>
    	   <typeAlias alias="CampAndImg" type="com.wecamp.model.CampAndImg"/>
+   	   <typeAlias alias="CampAndEtc" type="com.wecamp.model.CampAndEtc"/>
    	   <typeAlias alias="Heart" type="com.wecamp.model.Heart"/>  	
    	   <typeAlias alias="Img" type="com.wecamp.model.Img"/>  	
    	   <typeAlias alias="Inquiry" type="com.wecamp.model.Inquiry"/>  	

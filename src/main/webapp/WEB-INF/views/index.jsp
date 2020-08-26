@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
  <style>
     
     .card-image:after {
-		background-color:#FFFFFF !important;
-		opacity: 0% !important;
+		background-color:transparent !important;
     }
 
 
@@ -26,8 +26,8 @@
                 <div class="hero-heading">
                     <div class="section-heading">
                         <h2 class="sec__title">You camp? We camp!</h2>
-                        <p class="sec__desc">
-                           머물고 쉬다 갈 캠핑장 찾아볼까요?
+                        <p class="sec__desc" style="color:white">
+                          	신나는 OutDoor Day! 위캠프와 함께하세요.
                         </p>
                     </div>
                 </div><!-- end hero-heading -->
@@ -117,21 +117,21 @@
 					  data-show-faces="true">
 					</div>
                     <p class="sec__desc">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                        a feugiat eros. Nunc ut lacinia tortors.
+                     	많은 위캠퍼(WeCamper)에게 사랑받은 캠핑장을 확인해보세요!
                     </p>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
-            <div class="col-lg-12">
+        	<div class="col-lg-12">
                 <div class="card-carousel mt-5">
+                <c:forEach var="unit" items="${bestCamp}">
                     <div class="card-item">
-                        <a href="listing-details.html" class="card-image-wrap">
+                        <a href="search/camp_detail.wcc?camp_idx=${unit.camp_idx}" class="card-image-wrap">
                             <div class="card-image">
-                                <img src="images/img28.jpg" class="card__img" alt="">
-                                <span class="badge">now open</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="22 Likes">
+                                <img src="/images/camp-img/thumb/${unit.fname}" class="card__img" alt="">
+                                <span class="badge">운영중</span>
+                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="${unit.countHeart}">
                                     <i class="la la-heart-o"></i>
                                 </span>
                             </div>
@@ -139,290 +139,47 @@
                         <div class="card-content-wrap">
                             <div class="card-content">
                                 <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-cutlery"></span> Restaurant</h5>
-                                    <h4 class="card-title">Favorite Place Food Bank
-                                        <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Claimed"></i>
-                                    </h4>
-                                    <p class="card-sub">Bishop Avenue, New York</p>
-                                </a>
-                                <a href="#" class="author-img">
-                                    <img src="images/small-team1.jpg" alt="author-img">
-                                </a>
-                                <ul class="info-list padding-top-20px">
-                                    <li><span class="la la-phone"></span> (416) 551-0589</li>
-                                    <li><span class="la la-link"></span>
-                                        <a href="#"> www.mysitelink.com</a>
-                                    </li>
-                                    <li><span class="la la-calendar-check-o"></span>
-                                        Posted 1 month ago
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="rating-row">
-                                <div class="rating-rating">
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-half-full"></span>
-                                    <span class="la la-star last-star"></span>
-                                    <span class="rating-count">4.5</span>
-                                </div>
-                                <div class="listing-info">
-                                    <ul>
-                                        <li><span class="la la-eye info__count"></span> 247</li>
-                                        <li><span class="la la-heart-o info__save" data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- end card-content-wrap -->
-                    </div><!-- end card-item -->
-                    <div class="card-item">
-                        <a href="listing-details.html" class="card-image-wrap">
-                            <div class="card-image">
-                                <img src="images/img29.jpg" class="card__img" alt="">
-                                <span class="badge badge-closed">closed</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="22 Likes">
-                                    <i class="la la-heart-o"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <div class="card-content-wrap">
-                            <div class="card-content">
-                                <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-plane"></span> travel</h5>
-                                    <h4 class="card-title">beach blue boardwalk</h4>
-                                    <p class="card-sub">Bishop Avenue, New York</p>
-                                </a>
-                                <a href="#" class="author-img">
-                                    <img src="images/small-team2.jpg" alt="author-img">
-                                </a>
-                                <ul class="info-list padding-top-20px">
-                                    <li><span class="la la-phone"></span> (416) 551-0589</li>
-                                    <li><span class="la la-link"></span>
-                                        <a href="#"> www.mysitelink.com</a>
-                                    </li>
-                                    <li><span class="la la-calendar-check-o"></span>
-                                        Posted 1 month ago
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="rating-row">
-                                <div class="rating-rating">
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-half-full"></span>
-                                    <span class="la la-star last-star"></span>
-                                    <span class="rating-count">4.6</span>
-                                </div>
-                                <div class="listing-info">
-                                    <ul>
-                                        <li><span class="la la-eye info__count"></span> 247</li>
-                                        <li><span class="la la-heart-o info__save" data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- end card-content-wrap -->
-                    </div><!-- end card-item -->
-                    <div class="card-item">
-                        <a href="listing-details.html" class="card-image-wrap">
-                            <div class="card-image">
-                                <img src="images/img30.jpg" class="card__img" alt="">
-                                <span class="badge">now open</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="22 Likes">
-                                    <i class="la la-heart-o"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <div class="card-content-wrap">
-                            <div class="card-content">
-                                <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-hotel"></span> hotel</h5>
+                                    <h5 class="card-meta"><span class="la la-hotel"></span> 캠핑장</h5>
                                     <h4 class="card-title">
-                                        hotel govendor <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Claimed"></i>
+                                       ${unit.camp_name} <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Claimed"></i>
                                     </h4>
-                                    <p class="card-sub">Bishop Avenue, New York</p>
+                                    <p class="card-sub">${unit.address}</p>
                                 </a>
-                                <a href="#" class="author-img">
-                                    <img src="images/small-team3.jpg" alt="author-img">
-                                </a>
+                                
                                 <ul class="info-list padding-top-20px">
-                                    <li><span class="la la-phone"></span> (416) 551-0589</li>
-                                    <li><span class="la la-link"></span>
-                                        <a href="#"> www.mysitelink.com</a>
+                                    <li><span class="la la-phone"></span>${unit.camp_tel}</li>
+                                    <li>
+                                        
                                     </li>
                                     <li><span class="la la-calendar-check-o"></span>
-                                        Posted 1 month ago
+                                        ${unit.intro}
                                     </li>
                                 </ul>
                             </div>
                             <div class="rating-row">
                                 <div class="rating-rating">
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-half-full"></span>
-                                    <span class="la la-star last-star"></span>
-                                    <span class="rating-count">4.7</span>
+                                    <c:forEach begin="1" end="${unit.fullStarNum}" step="1">
+									<span class="la la-star"></span>
+								</c:forEach>
+								<c:if test="${unit.halfStarExist}">
+									<span class="la la-star-half-full"></span>
+								</c:if>
+	                            <c:forEach begin="1" end="${unit.emptyStarNum}" step="1">
+									<span class="la la-star last-star"></span>
+								</c:forEach>
+	                             <span class="rating-count">${unit.avgStar}</span>
                                 </div>
                                 <div class="listing-info">
                                     <ul>
                                         <li><span class="la la-eye info__count"></span> 247</li>
-                                        <li><span class="la la-heart-o info__save" data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div><!-- end card-content-wrap -->
                     </div><!-- end card-item -->
-                    <div class="card-item">
-                        <a href="listing-details.html" class="card-image-wrap">
-                            <div class="card-image">
-                                <img src="images/img31.jpg" class="card__img" alt="">
-                                <span class="badge">now open</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom"
-                                      title="22 Likes">
-                                    <i class="la la-heart-o"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <div class="card-content-wrap">
-                            <div class="card-content">
-                                <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-music"></span> event</h5>
-                                    <h4 class="card-title">sticky band party</h4>
-                                    <p class="card-sub">Bishop Avenue, New York</p>
-                                </a>
-                                <a href="#" class="author-img">
-                                    <img src="images/small-team4.jpg" alt="author-img">
-                                </a>
-                                <ul class="info-list padding-top-20px">
-                                    <li><span class="la la-phone"></span> (416) 551-0589</li>
-                                    <li><span class="la la-link"></span>
-                                        <a href="#"> www.mysitelink.com</a>
-                                    </li>
-                                    <li><span class="la la-calendar-check-o"></span>
-                                        Posted 1 month ago
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="rating-row">
-                                <div class="rating-rating">
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-half-full"></span>
-                                    <span class="la la-star last-star"></span>
-                                    <span class="rating-count">4.5</span>
-                                </div>
-                                <div class="listing-info">
-                                    <ul>
-                                        <li><span class="la la-eye info__count"></span> 247</li>
-                                        <li><span class="la la-heart-o info__save" data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- end card-content-wrap -->
-                    </div><!-- end card-item -->
-                    <div class="card-item">
-                        <a href="listing-details.html" class="card-image-wrap">
-                            <div class="card-image">
-                                <img src="images/img32.jpg" class="card__img" alt="">
-                                <span class="badge badge-closed">closed</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="22 Likes">
-                                    <i class="la la-heart-o"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <div class="card-content-wrap">
-                            <div class="card-content">
-                                <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-shopping-cart"></span> shop</h5>
-                                    <h4 class="card-title">Sena Clothing Shopping Mall</h4>
-                                    <p class="card-sub">Bishop Avenue, New York</p>
-                                </a>
-                                <a href="#" class="author-img">
-                                    <img src="images/small-team5.jpg" alt="author-img">
-                                </a>
-                                <ul class="info-list padding-top-20px">
-                                    <li><span class="la la-phone"></span> (416) 551-0589</li>
-                                    <li><span class="la la-link"></span>
-                                        <a href="#"> www.mysitelink.com</a>
-                                    </li>
-                                    <li><span class="la la-calendar-check-o"></span>
-                                        Posted 1 month ago
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="rating-row">
-                                <div class="rating-rating">
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-half-full"></span>
-                                    <span class="la la-star last-star"></span>
-                                    <span class="rating-count">4.6</span>
-                                </div>
-                                <div class="listing-info">
-                                    <ul>
-                                        <li><span class="la la-eye info__count"></span> 247</li>
-                                        <li><span class="la la-heart-o info__save" data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- end card-content-wrap -->
-                    </div><!-- end card-item -->
-                    <div class="card-item">
-                        <a href="listing-details.html" class="card-image-wrap">
-                            <div class="card-image">
-                                <img src="images/img30.jpg" class="card__img" alt="">
-                                <span class="badge">now open</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="22 Likes">
-                                    <i class="la la-heart-o"></i>
-                                </span>
-                            </div>
-                        </a>
-                        <div class="card-content-wrap">
-                            <div class="card-content">
-                                <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-hotel"></span> hotel</h5>
-                                    <h4 class="card-title">
-                                        hotel govendor <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Claimed"></i>
-                                    </h4>
-                                    <p class="card-sub">Bishop Avenue, New York</p>
-                                </a>
-                                <a href="#" class="author-img">
-                                    <img src="images/small-team6.jpg" alt="author-img">
-                                </a>
-                                <ul class="info-list padding-top-20px">
-                                    <li><span class="la la-phone"></span> (416) 551-0589</li>
-                                    <li><span class="la la-link"></span>
-                                        <a href="#"> www.mysitelink.com</a>
-                                    </li>
-                                    <li><span class="la la-calendar-check-o"></span>
-                                        Posted 1 month ago
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="rating-row">
-                                <div class="rating-rating">
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-half-full"></span>
-                                    <span class="la la-star last-star"></span>
-                                    <span class="rating-count">4.7</span>
-                                </div>
-                                <div class="listing-info">
-                                    <ul>
-                                        <li><span class="la la-eye info__count"></span> 247</li>
-                                        <li><span class="la la-heart-o info__save" data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- end card-content-wrap -->
-                    </div><!-- end card-item -->
+               		</c:forEach>       
                 </div><!-- end card-carousel -->
-            </div><!-- end col-lg-12 -->
+            </div><!-- end col-lg-12 -->    
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end card-area -->
@@ -453,15 +210,15 @@
                 <div class="card-item blog-card">
                     <a href="blog-single.html" class="card-image-wrap" id="instaLink0">
                         <div class="card-image">
-                            <img id="insta0" src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img src="images/img31.jpg" alt="blog image" class="card__img insta0">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li id="instaTime0">25 Dec, 2018</li>
-                            <li></a></li>
+                            <li class="instaTime0">25 Dec, 2018</li>
+                            <li></li>
                         </ul>
-                        <p class="card-sub mt-3" id="instaContent0">
+                        <p class="card-sub mt-3 instaContent0">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
@@ -472,17 +229,17 @@
             
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap" id="instaLink1">
+                    <a href="blog-single.html" class="card-image-wrap instaLink1">
                         <div class="card-image">
-                            <img id="insta1" src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img src="images/img31.jpg" alt="blog image" class="card__img insta1">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li id="instaTime1">25 Dec, 2018</li>
-                            <li></a></li>
+                            <li class="instaTime1">25 Dec, 2018</li>
+                            <li></li>
                         </ul>
-                        <p class="card-sub mt-3" id="instaContent1">
+                        <p class="card-sub mt-3 instaContent1">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
@@ -493,17 +250,17 @@
             
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap" id="instaLink2">
+                    <a href="blog-single.html" class="card-image-wrap instaLink2">
                         <div class="card-image">
-                            <img id="insta2" src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img class="card__img insta2" src="images/img31.jpg" alt="blog image" >
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li id="instaTime2">25 Dec, 2018</li>
-                            <li></a></li>
+                            <li class="instaTime2">25 Dec, 2018</li>
+                            <li></li>
                         </ul>
-                        <p class="card-sub mt-3" id="instaContent2">
+                        <p class="card-sub mt-3 instaContent2">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
@@ -515,17 +272,17 @@
             
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap" id="instaLink3">
+                    <a href="blog-single.html" class="card-image-wrap instaLink3">
                         <div class="card-image">
-                            <img id="insta3" src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img class="card__img insta3" src="images/img31.jpg" alt="blog image">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li id="instaTime3">25 Dec, 2018</li>
-                            <li></a></li>
+                            <li class="instaTime3">25 Dec, 2018</li>
+                            <li></li>
                         </ul>
-                        <p class="card-sub mt-3" id="instaContent3">
+                        <p class="card-sub mt-3 instaContent3">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
@@ -537,17 +294,17 @@
             
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap" id="instaLink4">
+                    <a href="blog-single.html" class="card-image-wrap instaLink4">
                         <div class="card-image">
-                            <img id="insta4" src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img class="card__img insta4" src="images/img31.jpg" alt="blog image">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li id="instaTime4">25 Dec, 2018</li>
-                            <li></a></li>
+                            <li class="instaTime4">25 Dec, 2018</li>
+                            <li></li>
                         </ul>
-                        <p class="card-sub mt-3" id="instaContent4">
+                        <p class="card-sub mt-3 instaContent4">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
@@ -559,17 +316,17 @@
             
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap" id="instaLink5">
+                    <a href="blog-single.html" class="card-image-wrap instaLink5">
                         <div class="card-image">
-                            <img id="insta5" src="images/img31.jpg" alt="blog image" class="card__img">
+                            <img class="card__img insta5" src="images/img31.jpg" alt="blog image">
                         </div><!-- end card-image -->
                     </a>
                     <div class="card-content pl-0 pr-0">
                         <ul class="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                            <li id="instaTime5">25 Dec, 2018</li>
-                            <li></a></li>
+                            <li class="instaTime5">25 Dec, 2018</li>
+                            <li></li>
                         </ul>
-                        <p class="card-sub mt-3" id="instaContent5">
+                        <p class="card-sub mt-3 instaContent5">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem eaque ipsa quae ab illo inventore
                             incididunt ut labore et dolore magna
@@ -578,8 +335,6 @@
                     </div><!-- end blog-post-body -->
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
-            
-            
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end blog-area -->
@@ -589,35 +344,43 @@
 
 <div class="section-block"></div>
 
-	<div class="playon-instagarm"></div>
-
-<div class="section-block"></div>
-
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
 <section class="clientlogo-area padding-top-80px padding-bottom-80px">
+		<div class="container">	
+				<div class="row">
+		            <div class="col-lg-12">
+		                <div class="section-heading text-center">
+		                    <h2 class="sec__title before-none pt-0">협력사</h2>
+		                    <p class="sec__desc">
+		                        WeCamp와 함께합니다.
+		                    </p>
+		                </div><!-- end section-heading -->
+		            </div><!-- end col-lg-12 -->
+		        </div><!-- end row -->
+		   </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+        	<div class="col-lg-12" style="padding-top:80px;">
                 <div class="client-logo text-center">
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/그레고리.png" alt="brand image">
+                        <img src="/images/index-logo/1.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/네파.png" alt="brand image">
+                        <img src="/images/index-logo/2.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/노스페이스.png" alt="brand image">
+                        <img src="/images/index-logo/3.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/파타고니아.png" alt="brand image">
+                        <img src="/images/index-logo/4.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/한국관광공사.png" alt="brand image">
+                        <img src="/images/index-logo/5.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/한국캠핑협회.png" alt="brand image">
+                        <img src="/images/index-logo/6.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                 </div><!-- end client-logo -->
             </div><!-- end col-lg-12 -->
@@ -630,43 +393,7 @@
 <!-- ================================
        START INSTAGRAM AREA
 ================================= -->
-<script type="text/javascript" language="javascript" 
-	 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script type="text/javascript">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/insta.js"></script>
+<script src="/js/search.js"></script>
 
-		   $(document).ready(function(){ 
-			   console.log("hello world");
-			   
-			   $.ajax({
-				   url: "insta/getGrid.json", 
-				   type: "GET",
-				   contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				   success: function(responseData){
-					  //var jsObj = JSON.parse(responseData); //jQuery 버젼을 올려서 필요 없음
-					  //encodeURIComponent(responseData);
-					  //alert(responseData);
-                      if(!responseData){
-						  return false;
-					  }else{
-						  for(i=0;i<6;i++){
-							 $("#insta"+i).attr('src', responseData.data[i].media_url);
-							 $("#instaLink"+i).attr('href', responseData.data[i].permalink);
-							 var time = responseData.data[i].timestamp.split("T");
-							 $("#instaTime"+i).html(time[0]);
-							 $("#instaContent"+i).html(responseData.data[i].caption);
-
-								//alert("good");
-						  }
-					  }
-				   },
-				 error: function(request, status, error){
-					 alert(request);
-					 alert(status);
-					 alert(error);
-				 }
-			   });
-			   
-			});
-	</script>
-	
-	<script src="/js/search.js"></script>

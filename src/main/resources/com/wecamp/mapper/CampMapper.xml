@@ -4,6 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wecamp.mapper.CampMapper">
 
+	<!-- 캠핑장 정보, 이미지, 별점평균, 찜 횟수(at index.jsp) -->
+	<select id="selectCampAndEtc" resultType="CampAndEtc">
+		<![CDATA[
+			select ROWNUM rnum, aa.* from (
+				select * from CAMP left outer join IMG on CAMP.CAMP_IDX = IMG.CAMP_IDX
+				left outer join (
+					select CAMP_IDX, count(CAMP_IDX) countHeart from HEART group by CAMP_IDX) cc on CAMP.CAMP_IDX = cc.CAMP_IDX
+				left outer join (
+					select avg(STAR) avgStar, CAMP_IDX from REVIEW group by CAMP_IDX) bb on CAMP.CAMP_IDX = bb.CAMP_IDX
+				where IMG.DIVISION='thumb' order by TOTAL_BOOKING desc) aa where ROWNUM <= 6
+		]]>
+	</select>
+	
 	<!-- camp_idx에 해당하는 캠핑장 정보 검색 -->
 	<select id="selectCampInfo" parameterType="int" resultType="Camp">
 		select * from CAMP where CAMP_IDX=#{camp_idx}
@@ -14,7 +27,7 @@
 		select * from IMG where CAMP_IDX=#{camp_idx} and DIVISION='detail' 
 	</select>
 
-	<!-- 캠프장 전체 목록 검색 -->
+	<!-- 캠핑장 전체 목록 검색 -->
 	<select id="selectCamp" resultType="Camp">
 		select * from CAMP
 	</select>

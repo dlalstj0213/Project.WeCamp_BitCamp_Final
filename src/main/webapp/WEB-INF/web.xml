@@ -47,9 +47,8 @@
 	
 	<error-page>
 		<error-code>404</error-code>
-		<location>/common/error/404code.jsp</location>
+		<location>/resources/common/error/404code.jsp</location>
 	</error-page>
-
 
 	<security-constraint>
 		<web-resource-collection>

@@ -15,7 +15,6 @@
 //	return xhttp;
 //}
 
-
 //메인서비스로직
 function emptyHeart(e){
 	//e.preventDefault();

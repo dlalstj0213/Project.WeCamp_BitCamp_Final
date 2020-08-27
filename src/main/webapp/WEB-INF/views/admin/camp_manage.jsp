@@ -114,9 +114,9 @@
 	<script>
 
 	// START CODE FOR Child rows (show extra / detailed information) DATA TABLE 
-	function format ( d ) {
+	function format (d) {
 		// `d` is the original data object for the row
-		return '<div class="table-responsive" style="width:2300px; height:200px; overflow-x:auto;">'+
+		return '<div class="table-responsive" style="width:auto; height:200px; overflow-x:auto;" padding:50px>'+
 			'<table class="table table-hover" style="width:auto; display: block;">'+
 			'<thead>'+
 			'<tr>'+
@@ -136,24 +136,24 @@
 			'</thead>'+
 			'<tbody style="text-align:center;" border="1">'+
 			'<tr>'+
-				'<td>'+d.camp_name+'</td>'+
-				'<td>'+d.address+'</td>'+
-				'<td>'+d.camp_tel+'</td>'+
-				'<td>'+d.site_num+'</td>'+
-				'<td>'+d.full_num+'</td>'+
-				'<td>'+d.parking+'</td>'+
-				'<td>'+d.conv+'</td>'+
-				'<td>'+d.sec_conv+'</td>'+
-				'<td>'+d.etc_conv+'</td>'+
-				'<td>'+d.agency_name+'</td>'+
-				'<td>'+d.agency_tel+'</td>'+
-				'<td>'+d.intro+'</td>'+
+				'<td><textarea name="camp_name">'+d.camp_name+'</textarea></td>'+
+				'<td><textarea name="camp_name">'+d.address+'</textarea></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.camp_tel+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.site_num+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.full_num+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.parking+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.conv+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.sec_conv+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.etc_conv+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.agency_name+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.agency_tel+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.intro+'"></td>'+
 			'</tr>'+
 			'</tbody>'+
 			'<tfoot>'+
 			'<tr>'+
 				'<input type="button" class="btn btn-outline-danger" id="del_camp" value="삭제">'+
-				'&nbsp;'+ '<input type="button" class="btn btn-outline-primary" value="수정">'+
+				'&nbsp;'+ '<input type="button" class="edit btn btn-outline-primary" value="수정">'+
 			'</tr>'+
 			'</tfoot>'+
 		'</table>'+
@@ -182,6 +182,28 @@
 			'})'+ 
 			'<\/script>';
 	}
+	
+	function formatt(d) {
+		// `d` is the original data object for the row
+		return 
+			'<tbody style="text-align:center;" border="1">'+
+			'<tr>'+
+				'<td><input type="text" name="camp_name" value="'+d.camp_name+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.address+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.camp_tel+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.site_num+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.full_num+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.parking+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.conv+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.sec_conv+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.etc_conv+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.agency_name+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.agency_tel+'"></td>'+
+				'<td><input type="text" name="camp_name" value="'+d.intro+'"></td>'+
+			'</tr>'+
+			'</tbody>';
+	}
+	
 		
 		$(document).ready(function() {
 			var table = $('#example2').DataTable( {
@@ -215,16 +237,15 @@
 			// Add event listener for opening and closing details
 			$('#example2 tbody').on('click', 'td.details-control', function () {
 				var tr = $(this).closest('tr');
-				var row = table.row( tr );
+				var row = table.row(tr);
 		 
 				if ( row.child.isShown() ) {
 					// This row is already open - close it
 					row.child.hide();
 					tr.removeClass('shown');
-				}
-				else {
+				}else {
 					// Open this row
-					row.child( format(row.data()) ).show();
+					row.child( format(row.data())).show();
 					tr.addClass('shown');
 				}
 			} );
@@ -233,7 +254,14 @@
 		
 				
 		
-
+	document.getElementsByClassName("edit").onclick = function(){
+		let tr = this.closest('table');
+		let row = table.row(tr);
+		
+		
+			
+			
+	}
 		
 		
 			

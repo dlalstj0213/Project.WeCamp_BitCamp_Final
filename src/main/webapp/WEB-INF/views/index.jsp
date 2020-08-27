@@ -18,7 +18,7 @@
 <section class="hero-wrapper hero-wrapper4">
     <div class="hero-overlay"></div><!-- end hero-overlay -->
     <div class="video-bg">
-        <video src="video/slice-video.mp4" autoplay="true" muted loop="true"></video>
+        <video src="video/slice-video.mov" autoplay="true" muted loop="true"></video>
     </div>
     <div class="container">
         <div class="row">
@@ -131,15 +131,15 @@
                             <div class="card-image">
                                 <img src="/images/camp-img/thumb/${unit.fname}" class="card__img" alt="">
                                 <span class="badge">운영중</span>
-                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="${unit.countHeart}">
+                                <span class="badge-toggle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="${unit.countHeart}명이 찜했습니다.">
                                     <i class="la la-heart-o"></i>
                                 </span>
                             </div>
                         </a>
                         <div class="card-content-wrap">
                             <div class="card-content">
-                                <a href="listing-details.html">
-                                    <h5 class="card-meta"><span class="la la-hotel"></span> 캠핑장</h5>
+                                <a href="search/camp_detail.wcc?camp_idx=${unit.camp_idx}">
+                                    <h5 class="card-meta"><span class="la la-home"></span> 캠핑장</h5>
                                     <h4 class="card-title">
                                        ${unit.camp_name} <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Claimed"></i>
                                     </h4>

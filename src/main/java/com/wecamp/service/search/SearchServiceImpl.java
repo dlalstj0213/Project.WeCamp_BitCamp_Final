@@ -3,12 +3,14 @@ package com.wecamp.service.search;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.wecamp.mapper.SearchMapper;
 import com.wecamp.model.CampAndImg;
 import com.wecamp.utils.PageUtil;
@@ -26,8 +28,10 @@ class SearchServiceImpl implements SearchService{
 	private SearchMapper searchMapper;
 	
 	@Override
-	public SearchResultVo searchCampList(String searchPlace, boolean isMore, HttpSession session, HttpServletRequest request) {
+	public	Optional<SearchResultVo> searchCampList(String searchPlace, boolean isMore, HttpSession session, HttpServletRequest request) {
+		
 		SearchResultVo sv = null;
+		Optional<SearchResultVo> maybeSV = Optional.ofNullable(sv);
 		
 		String cpStr = Integer.toString((Integer)session.getAttribute("cp"));
 		//String psStr = (String)session.getAttribute("ps");
@@ -52,7 +56,10 @@ class SearchServiceImpl implements SearchService{
 		query.put("page", page);
 		List<CampAndImg> list = searchMapper.selectSearchedListOfCamp(query);
 		
-		if(list !=null) {
+		System.out.println("$$$$$$ list: " + list);
+		if(list.isEmpty()) {
+			return maybeSV;
+		}else {
 			StarUtil starUtil = new StarUtil();
 			for(CampAndImg ci : list) {
 				long minFee = searchMapper.selectMinFeeOfCamp(ci.getCamp_idx());
@@ -67,9 +74,9 @@ class SearchServiceImpl implements SearchService{
 				ci.setAvgStar(avgStar);
 			}
 			sv = new SearchResultVo(list, page);
+			maybeSV = Optional.ofNullable(sv);
 		}
-
 		
-		return sv;
+		return maybeSV;
 	}
 }

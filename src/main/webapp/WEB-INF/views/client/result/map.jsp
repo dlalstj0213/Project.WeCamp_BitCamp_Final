@@ -122,7 +122,7 @@
 
             </div>
             <ul class="side-menu-ul">
-            <c:if test="${member != null}">
+            <c:if test="${not empty member}">
                 <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
                 <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
                 <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
@@ -130,10 +130,10 @@
             </c:if>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
                 <li><a href="#"><span class="la la-gear user-icon"></span> 개인정보 수정</a></li>
-                <c:if test="${member == null }">
+                <c:if test="${empty member}">
                 <li><a onclick="location.href='/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
                 </c:if>
-                <c:if test="${member != null }">
+                <c:if test="${not empty member}">
                 <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
                 </c:if>
             </ul>
@@ -208,7 +208,8 @@
 	                        	</div>
 				    </div>
 				    <div class="list-campCharge" onclick="clickCamp('${list.camp_idx}','${checkIn}','${checkOut}','${peopleNum}','${list.fname}')">
-				    	<span>₩</span><span class="charge">${list.min_fee}</span><span style="font-weight: 300 !important;">/1박</span>
+				    	<span>₩</span><span class="charge">${list.min_fee}</span>
+				    	<span style="font-weight: 300 !important;"><span>/</span><span class="campNight">1</span><span>박</span></span>
 				    </div>
 				  </div>
 				</div>
@@ -216,9 +217,12 @@
 				<div class="list-under-decoBar">
 				  <hr style="border:1px;width:56.25rem;background-color:#9d9a9a;height:1px;">
 				</div>
-	</c:forEach>
-	
-		    	
+				
+				</c:forEach>
+				<c:if test="${empty vo}">
+					<h3 style="text-align:center;">"검색 결과가 존재하지 않습니다."</h3>
+				</c:if>
+	    	
 			</div>					
 			
 			<div class="list-list-button">
@@ -237,6 +241,20 @@
 	    	</div>	    	
 	    </div>
 </div>	    
+
+
+
+<script>
+
+window.addEventListener('DOMContentLoaded', function(){
+	<c:if test="${empty vo}">
+		document.body.style.display = "none";
+		alert("검색 결과가 존재하지 않습니다.");
+		location.href="../"
+	</c:if>
+})
+
+</script>
 
 <script>
 
@@ -345,6 +363,7 @@ function showInfo(e){
 	        qs[i] = qs[i].split('=');
 	        result[qs[i][0]] = decodeURIComponent(qs[i][1]);
 	    }
+	    
 	    return result;
 	}
 
@@ -454,7 +473,7 @@ function showInfo(e){
 </script>				    
 
 
-<script src="/js/heart.js"></script>
+
 
 
 
@@ -593,6 +612,9 @@ function showInfo(e){
 </script>
 <!-- for search JS -->
 <script src="/js/search.js"></script>
+<!-- for heart JS -->
+<script src="/js/heart.js"></script>
+
 
 <!-- Template JS Files -->
 <script src="/js/jquery.min.js"></script>

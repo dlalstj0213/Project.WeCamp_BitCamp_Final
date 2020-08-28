@@ -17,7 +17,7 @@ body, html {
 .bgimg {
     border: 0;
     padding: 0; 
-    background-image: url('admin/images/camp_background.jpg');
+    background-image: url('../admin/images/camp_background.jpg');
     min-height: 100%;
     background-position: center;
     background-size: cover;
@@ -47,12 +47,12 @@ body, html {
             </button>
             </a>
             </div>
-            <form action="admin_login.do" method="post">
+            <form action="login.wcc" method="post">
             <div class="modal-body" style="text-align:center">
                 로그인:
-                <br/><input id="admin-id" name="" type="text" value="" placeholder="아이디"><br/>
+                <br/><input id="admin-id" name="name" type="text" value="" placeholder="아이디"><br/>
                 비밀번호:
-                <br/><input id="admin-pwd" name="" type="password" value="" placeholder="비밀번호"><br/>
+                <br/><input id="admin-pwd" name="pwd" type="password" value="" placeholder="비밀번호"><br/>
             </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">로그인</button>

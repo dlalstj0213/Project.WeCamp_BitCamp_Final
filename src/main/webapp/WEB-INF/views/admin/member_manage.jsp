@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 		<!-- BEGIN CSS for this page -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>	
@@ -50,75 +51,24 @@
 									 특정 회원 정보를 수정 하려면 원하시는 회원을 클릭 후 수정 하실 수 있습니다.<a target="_blank" href="https://datatables.net/"></a>
 									 <div class="input-group">
 									 <div class="input-group-prepend">
-									    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+									    <label class="input-group-text" for="inputGroupSelect01">검색 분류</label>
 									  </div>
-									    <select class="custom-select" id="inputGroupSelect01">
-										    <option selected>Choose...</option>
-										    <option value="1">One</option>
-										    <option value="2">Two</option>
-										    <option value="3">Three</option>
+									    <select class="custom-select" id="category-search">
+										    <option value="name" selected>이름</option>
+										    <option value="email">이메일</option>
+										    <option value="birth">생년월일</option>
+										    <option value="grade">등급</option>
+										    <option value="authority">권한</option>
 										  </select>
 									  <div class="input-group-prepend">
 									    <label class="input-group-text" for="inputGroupSelect01">검색</label>
 									  </div>
-									  <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+									  <input id="search" onkeyup="search_word(1);" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 									</div>
 								</div>
 									
-								<div class="card-body">
-								<!-- Table -->
-									<table class="table table-sm table-hover">
-									  <thead>
-									    <tr>
-									      <th scope="col">#</th>
-									      <th scope="col">이름</th>
-									      <!-- <th scope="col">닉네임</th> -->
-									      <th scope="col">이메일</th>
-									      <th scope="col">생년월일</th>
-									      <th scope="col">포인트</th>
-									      <th scope="col">등급</th>
-									      <th scope="col">권한</th>
-									    </tr>
-									  </thead>
-									  <tbody>
-									    <tr id="member1" class="click-table-row">
-									      <th scope="row">1</th>
-									      <td>이름</td>
-									      <td>이메일1</td>
-									      <td>생년월일</td>
-									      <td>포인트</td>
-									      <td>등급</td>
-									      <td>권한</td>
-									    </tr>
-									    <tr id="member2" class="click-table-row">
-									      <th scope="row">1</th>
-									      <td>이름</td>
-									      <td>이메일2</td>
-									      <td>생년월일</td>
-									      <td>포인트</td>
-									      <td>등급</td>
-									      <td>권한</td>
-									    </tr>
-									  </tbody>
-									</table>
-									
-									<!-- Pagination -->
-									<nav aria-label="...">
-									  <ul class="pagination justify-content-center">
-									    <li class="page-item disabled">
-									      <a class="page-link" href="#" tabindex="-1">Previous</a>
-									    </li>
-									    <li class="page-item"><a class="page-link" href="#">1</a></li>
-									    <li class="page-item active">
-									      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-									    </li>
-									    <li class="page-item"><a class="page-link" href="#">3</a></li>
-									    <li class="page-item">
-									      <a class="page-link" href="#">Next</a>
-									    </li>
-									  </ul>
-									</nav>
-									
+								<div id="card-body-table" class="card-body">
+									<!-- <<ajax 통신>> -->
 								</div><!-- end card body -->										
 							</div><!-- end card-->					
 						</div><!-- end col -->

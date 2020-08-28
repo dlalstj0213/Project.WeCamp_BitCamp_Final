@@ -47,7 +47,7 @@ public class Pagination {
 		setStartAndEndRow(currentPage, pageSize);
 		setStartIndex(currentPage);
 	}
-	
+
 	public Pagination(long listCount, int currentPage, int pageSize) {
 		this.listCount = listCount;
 		this.currentPage = currentPage;

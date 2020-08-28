@@ -1,6 +1,5 @@
 package com.wecamp.service.search;
 
-
 import java.util.HashMap;
 import java.util.List;
 

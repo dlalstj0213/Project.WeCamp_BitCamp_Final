@@ -275,19 +275,22 @@ body {
 										</div>
 									</div>
 									<!-- end col-lg-12 -->
+
+
 									<div class="col-lg-12">
-										<div class="input-box">
-											<label class="label-text">이메일(*실시간 에이젝스로 중복확인 주기)</label>
+										<div class="input-box" style="margin-bottom: 15px;">
+											<label class="label-text" style="margin-left: 15px;">이메일(*실시간 에이젝스로 중복확인 주기)</label>
 											<div class="input-group">
-												<input class="form-control input-check-email" id="realemail"
-													type="email" name="realemail" placeholder="이메일을 입력해 주세요"
-													required> <input type="button" id="check"
-													class="theme-btn border-0" style="margin-left: 20px"
+												<input id="realemail" type="email" name="realemail"
+													placeholder="이메일을 입력해 주세요" required="" class="form-control"
+													style="left: 15px; padding-left: 15px;"> <input
+													type="button" id="check" class="theme-btn border-0"
+													style="margin-left: 20px; margin-right: 15px;"
 													value="중복 확인">
 											</div>
 											<!-- <div class="alert alert-success" id="result-check">비밀번호가 일치합니다.</div> -->
 											<div class="alert alert-danger" id="result-check"></div>
-											<div class="alert alert-danger" id="email-check"></div>
+											<div class="alert alert-danger" id="email-check" style="display: block;margin-left: 15px;margin-right: 15px;margin-top: 15px;padding-top: 10px;padding-bottom: 10px;"></div>
 										</div>
 									</div>
 								</div>
@@ -528,57 +531,84 @@ start back-to-top -->
  -->
 <script src="/js/custom-signup.js"></script>
 <script>
-	$(document).ready(
-		function(e) {
-			var idx = false;
-				$('#sign-up').click(function() {
-					if ($.trim($('#email').val()) == '') {
-						alert("아이디 입력.");
-							$('#email').focus();
-						return;
-					} else if ($.trim($('#pwd').val()) == '') {
-						alert("패스워드 입력.");
-							$('#pwd').focus();
-						return;
-					} if (idx == false) {
-						alert("아이디 중복체크를 해주세요.");
-						return;
-					} else {
-						$('#sign-up-form').submit();
-					}
-				});
-// 이메일 중복 체크(Ajax)
-	$("#email-check").hide();
-		$('#check').click(
-			function() {
-			$.ajax({
-				url : "${pageContext.request.contextPath}/sign_up/email_check.wcc",
-				type : "POST",
-				data : {
-						"realemail" : $('#realemail').val()
-						},
-				success : function(result) {
-					console.log("realemail" + realemail);
-							if (result == 0 && $.trim($('#realemail').val()) !== '') {
-								idx = true;
-								//$('#email2').attr("readonly",true);
-								$("#email-check").show();
-								var html = "<div>사용 가능한 아이디입니다 </div>";
-								$('#email-check').empty();
-								$('#email-check').append(html);
-							} else {
-								$("#email-check").show();
-								var html = "<div>이미 사용중인 아이디입니다 </div>";
-								$('#email-check').empty();
-								$('#email-check').append(html);
+	$(document)
+			.ready(
+					function(e) {
+						var idx = false;
+						$('#sign-up').click(function() {
+							if ($.trim($('#email').val()) == '') {
+								alert("아이디 입력.");
+								$('#email').focus();
+								return;
+							} else if ($.trim($('#pwd').val()) == '') {
+								alert("패스워드 입력.");
+								$('#pwd').focus();
+								return;
 							}
-						},
-				error : function() {
-					alert("서버에러");
-				}
-			});
-		});
-	});
+							if (idx == false) {
+								alert("아이디 중복체크를 해주세요.");
+								return;
+							} else {
+								$('#sign-up-form').submit();
+							}
+						});
+						// 이메일 중복 체크(Ajax)
+						$("#email-check").hide();
+						$('#check')
+								.click(
+										function() {
+											$
+													.ajax({
+														url : "${pageContext.request.contextPath}/sign_up/email_check.wcc",
+														type : "POST",
+														data : {
+															"realemail" : $(
+																	'#realemail')
+																	.val()
+														},
+														success : function(
+																result) {
+															console
+																	.log("realemail"
+																			+ realemail);
+															if (result == 0
+																	&& $
+																			.trim($(
+																					'#realemail')
+																					.val()) !== '') {
+																idx = true;
+																//$('#email2').attr("readonly",true);
+																$(
+																		"#email-check")
+																		.show();
+																var html = "<div>사용 가능한 아이디입니다 </div>";
+																$(
+																		'#email-check')
+																		.empty();
+																$(
+																		'#email-check')
+																		.append(
+																				html);
+															} else {
+																$(
+																		"#email-check")
+																		.show();
+																var html = "<div>이미 사용중인 아이디입니다 </div>";
+																$(
+																		'#email-check')
+																		.empty();
+																$(
+																		'#email-check')
+																		.append(
+																				html);
+															}
+														},
+														error : function() {
+															alert("서버에러");
+														}
+													});
+										});
+					});
 </script>
 
 

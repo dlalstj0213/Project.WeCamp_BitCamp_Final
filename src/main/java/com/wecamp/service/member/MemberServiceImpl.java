@@ -3,8 +3,11 @@ package com.wecamp.service.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -12,10 +15,20 @@ import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.wecamp.mapper.BookingMapper;
+import com.wecamp.mapper.HeartMapper;
 import com.wecamp.mapper.LMemberMapper;
 import com.wecamp.mapper.MemberMapper;
+import com.wecamp.mapper.ReviewMapper;
+import com.wecamp.model.BookingAndCampAndImg;
+import com.wecamp.model.HeartAndCampAndImg;
 import com.wecamp.model.Member;
+import com.wecamp.model.Review;
+import com.wecamp.setting.WebTitle;
+import com.wecamp.utils.PageUtil;
+import com.wecamp.vo.Pagination;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -26,6 +39,9 @@ import lombok.extern.log4j.Log4j;
 public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 	private LMemberMapper lMemberMapper;
+	private BookingMapper bookingMapper;
+	private ReviewMapper reviewMapper;
+	private HeartMapper heartMapper;
 	
 	// 이메일 중복검사 AJAX 
 	@Override
@@ -94,7 +110,7 @@ public class MemberServiceImpl implements MemberService {
 			msg += member.getEmail() + "님 회원가입을 환영합니다.</h3>";
 			msg += "<div style='font-size: 130%'>";
 			msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			msg += "<form method='post' action='http://localhost:8080/sign_up/approval_member.wcc'>";
+			msg += "<form method='post' action='https://localhost:8443/sign_up/approval_member.wcc'>";
 			msg += "<input type='hidden' name='email' value='" + member.getEmail() + "'>";
 			msg += "<input type='hidden' name='approval_key' value='" + member.getApproval_key() + "'>";
 			msg += "<input type='submit' value='인증'></form><br/></div>";
@@ -200,8 +216,8 @@ public class MemberServiceImpl implements MemberService {
 			out.println("</script>");
 			out.close();
 		} catch (IOException e) {
-			String errorMsg = e.getMessage();
-			String errorPage = "404_wecamp_error";
+			//String errorMsg = e.getMessage();
+			//String errorPage = "404_wecamp_error";
 		}
 	}
 	
@@ -291,4 +307,108 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+	//회원정보 수정
+	@Override
+	public Member update_member(Member member) throws Exception {
+		log.info("#>member:" + member);
+		memberMapper.update_member(member);
+		return memberMapper.login(member.getEmail());
+	}
+	
+	@Override
+	public ModelAndView show_booking_info(String email, Integer nextPage, HttpSession session) {
+		//Member member = (Member)session.getAttribute("member");
+		
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		query.put("email", email);
+		
+		//세션에 설정된 현재페이지를 가지고 오는 소스 코드
+		//String psStr = (String)session.getAttribute("ps");
+		int currentPage = 1;
+		
+		if(session.getAttribute("cp") == null) {
+			session.setAttribute("cp", 1);
+		}
+		if(nextPage != null) {
+			currentPage = nextPage;
+		}
+		
+		
+		//F3 누르면 거기로 감
+		PageUtil pageUtil = new PageUtil();
+		currentPage = pageUtil.getCurrentPageSession(String.valueOf(currentPage), session);
+		int pageSize = pageUtil.getPageSize("6", session);
+		long listCount = bookingMapper.select_booking_count(query);
+		Pagination page = new Pagination(listCount, currentPage, pageSize);
+		query.put("page", page);
+		
+		List<BookingAndCampAndImg> list = bookingMapper.select_booking(query);
+		
+		ModelAndView response = new ModelAndView("/client/member/booking_list");
+		response.addObject("page", page);
+		response.addObject("list", list);
+		log.info("#> page: " + page);
+		log.info("#> cp: " + session.getAttribute("cp"));
+		log.info("#> cp: " + currentPage);
+		log.info("#> nextPage: " + nextPage);
+		
+		return response;
+	}
+	
+	@Transactional
+	@Override
+	public boolean add_reivew_service(Review review, int booking_idx, HttpSession session) {
+		Member member = (Member)session.getAttribute("member");
+		review.setEmail(member.getEmail());
+		review.setNickname(member.getNickname());
+		
+		if(reviewMapper.insert_review(review)) {
+			return bookingMapper.update_state(booking_idx);
+		}
+		return false;
+	}
+	
+	@Override
+	public ModelAndView show_heart_list(String email, Integer nextPage, HttpSession session) {
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		query.put("email", email);
+		
+		int currentPage = 1;
+		
+		if(session.getAttribute("cp") == null) {
+			session.setAttribute("cp", 1);
+		}
+		if(nextPage != null) {
+			currentPage = nextPage;
+		}
+		
+		PageUtil pageUtil = new PageUtil();
+		currentPage = pageUtil.getCurrentPageSession(String.valueOf(currentPage), session);
+		int pageSize = pageUtil.getPageSize("6", session);
+		long listCount = heartMapper.select_heart_count(query);
+		Pagination page = new Pagination(listCount, currentPage, pageSize);
+		query.put("page", page);
+		
+		List<HeartAndCampAndImg> hlist = heartMapper.select_heart(query);
+		
+		ModelAndView response = new ModelAndView("/client/member/heart_list");
+		response.addObject("page", page);
+		response.addObject("hlist", hlist);
+		
+		return response;
+	}
+	
+	@Override
+	public int delete_heart_list(String email, int camp_idx) {
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		query.put("email", email);
+		query.put("camp_idx", camp_idx);
+		
+		try {
+			heartMapper.deleteHeart(query);
+			return 1;
+		}catch(Exception e) {
+			return 0;
+		}
+	}
 }

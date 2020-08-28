@@ -1,9 +1,16 @@
 package com.wecamp.service.member;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.servlet.ModelAndView;
+
+import com.wecamp.model.BookingAndCampAndImg;
 import com.wecamp.model.Member;
+import com.wecamp.model.Review;
 
 
 public interface MemberService {
@@ -27,4 +34,14 @@ public interface MemberService {
 	boolean delete_member(Member member, HttpSession session, HttpServletResponse response);
 	//비밀번호 변경
 	Member update_pwd(Member member, String old_pwd, HttpServletResponse response);
+	//회원정보 수정
+	Member update_member(Member member) throws Exception;
+	//예약 내역
+	ModelAndView show_booking_info(String email, Integer nextPage, HttpSession session);
+	//리뷰 작성
+	boolean add_reivew_service(Review review, int booking_idx, HttpSession session);
+	//찜 리스트
+	ModelAndView show_heart_list(String email, Integer nextPage, HttpSession session);
+	//찜 리스트 삭제
+	int delete_heart_list(String email, int camp_idx);
 }

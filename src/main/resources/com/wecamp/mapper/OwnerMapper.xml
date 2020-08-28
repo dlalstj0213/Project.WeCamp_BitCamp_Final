@@ -6,4 +6,20 @@
 	<insert id="insertInquiry" parameterType="hashmap">
 		insert into INQUIRY values(INQUIRY_SEQ.nextval, #{query.email}, 1, #{query.title}, #{query.owner_num}, #{query.content}, SYSDATE)
 	</insert>
+	
+	<select id="select_owner" resultType="Owner" parameterType="String">
+		select * from OWNER where email = #{email}
+	</select>
+	
+	<select id="select_camp" resultType="Camp" parameterType="int">
+		select * from CAMP where camp_idx = #{camp_idx}
+	</select>
+	
+	<select id="select_img" resultType="Img" parameterType="int">
+		select * from IMG where camp_idx = #{camp_idx}
+	</select>
+	
+	<select id="select_sort" resultType="Sort" parameterType="int">
+		select * from SORT where camp_idx = #{camp_idx}
+	</select>
 </mapper>

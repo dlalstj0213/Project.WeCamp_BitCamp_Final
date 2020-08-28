@@ -1,12 +1,12 @@
 package com.wecamp.controller;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,5 +54,12 @@ public class OwnerController {
 			log.info("#> test name : "+file.getOriginalFilename());
 		}
 		return "client/member/add_camp/"+WebTitle.TITLE+"업체 문의 작성";
+	}
+	
+	@GetMapping("owner_detail")
+	private ModelAndView owner_detail(HttpSession session) {
+		ModelAndView response = ownerService.get_owner_full_detail(session);
+		response.setViewName("client/member/owner_detail");
+		return response;
 	}
 }

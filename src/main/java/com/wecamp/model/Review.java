@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Review {
-	private long review_idx;
-	private long camp_idx;
+	private int review_idx;
+	private int camp_idx;
 	private String email;
 	private String nickname;
 	private String content;
 	private Date wdate;
-	private float star; 
+	private int star; 
 }

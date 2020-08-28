@@ -9,4 +9,5 @@ public interface MemberMapper {
 	public Member login(String email);
 	public int update_pwd(Member member);
 	public int delete_member(Member member);
+	public boolean update_member(Member member);
 }

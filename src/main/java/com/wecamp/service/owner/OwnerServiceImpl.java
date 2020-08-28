@@ -10,7 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.wecamp.mapper.OwnerMapper;
 import com.wecamp.model.Inquiry;
 import com.wecamp.model.Member;
+import com.wecamp.model.Owner;
 import com.wecamp.setting.WebTitle;
+import com.wecamp.vo.OwnerDetailVo;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -57,5 +59,19 @@ class OwnerServiceImpl implements OwnerService{
 			response.addObject("result", true);
 		}
 		return response;
+	}
+	
+	@Override
+	public ModelAndView get_owner_full_detail(HttpSession session) {
+		Member member = (Member)session.getAttribute("member");
+		Owner owner = ownerMapper.select_owner(member.getEmail());
+		OwnerDetailVo result = new OwnerDetailVo(
+				ownerMapper.select_camp(owner.getCamp_idx()),
+				owner,
+				ownerMapper.select_img(owner.getCamp_idx()),
+				ownerMapper.select_sort(owner.getCamp_idx())
+				);
+		ModelAndView response =  new ModelAndView();
+		return response.addObject("vo", result);
 	}
 }

@@ -1,17 +1,24 @@
 package com.wecamp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.wecamp.model.Member;
 import com.wecamp.service.member.MemberService;
 import com.wecamp.setting.WebTitle;
+import com.wecamp.utils.NaverLoginBO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -22,6 +29,7 @@ public class LogInController {
     
 	@Autowired
 	private MemberService service;
+	
 	
 	// 로그인 폼으로 이동
 	@RequestMapping(value = "login.wcc", method = RequestMethod.GET)
@@ -51,5 +59,11 @@ public class LogInController {
 	@RequestMapping(value = "/find_pwd.wcc", method = RequestMethod.POST)
 	private void find_pwd(@ModelAttribute Member member, HttpServletResponse response) throws Exception {
 		service.find_pwd(response, member);
+	}
+	
+	@RequestMapping(value="loginPostNaver", method=RequestMethod.GET)
+	public String loginPOSTNaver(HttpSession session) {
+		
+		return "redirect:../";
 	}
 }

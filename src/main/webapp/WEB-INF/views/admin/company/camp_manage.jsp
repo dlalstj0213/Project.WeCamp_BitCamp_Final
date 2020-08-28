@@ -14,6 +14,13 @@
 		tr.shown td.details-control {
 		background: url('/admin/plugins/datatables/img/details_close.png') no-repeat center center;
 		}
+		
+		textarea.child {
+			resize: none;
+			border: none;
+			background: transparent;
+		}
+		
 		</style>		
 		<!-- END CSS for this page -->
 		
@@ -71,8 +78,6 @@
 												<th>캠핑장 이름</th>
 												<th>캠핑장 종류</th>
 												<th>지번 주소</th>
-												<th>캠핑장 관리기관</th>
-												<th>캠핑장 예약횟수</th>
 											</tr>
 										</thead>
 										<!-- <tfoot>
@@ -88,7 +93,7 @@
 							</div><!-- end card-->					
 						</div>
 						
-
+						
 				</div>
 
 
@@ -116,7 +121,8 @@
 	// START CODE FOR Child rows (show extra / detailed information) DATA TABLE 
 	function format (d) {
 		// `d` is the original data object for the row
-		return '<div class="table-responsive" style="width:auto; height:200px; overflow-x:auto;" padding:50px>'+
+		return '<div class="table-responsive" style="width:auto; height:auto; overflow-x:auto;padding:20px;">'+
+			'<form action="campEdit.wcc" method="post">'+
 			'<table class="table table-hover" style="width:auto; display: block;">'+
 			'<thead>'+
 			'<tr>'+
@@ -132,31 +138,36 @@
 				'<th>관리기관명</th>'+
 				'<th>관리기관 전화번호</th>'+
 				'<th>캠핑장 설명</th>'+
+				'<th>바베큐 가격</th>'+
 			'</tr>'+
 			'</thead>'+
 			'<tbody style="text-align:center;" border="1">'+
 			'<tr>'+
-				'<td><textarea name="camp_name">'+d.camp_name+'</textarea></td>'+
-				'<td><textarea name="camp_name">'+d.address+'</textarea></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.camp_tel+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.site_num+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.full_num+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.parking+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.conv+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.sec_conv+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.etc_conv+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.agency_name+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.agency_tel+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.intro+'"></td>'+
+				'<input type="hidden" name="camp_idx" value="'+d.camp_idx+'">'+
+				'<td><textarea class="child" name="camp_name" readonly>'+d.camp_name+'</textarea></td>'+
+				'<td><textarea class="child" name="address" readonly>'+d.address+'</textarea></td>'+
+				'<td><textarea class="child" name="camp_tel" readonly>'+d.camp_tel+'</textarea></td>'+
+				'<td><textarea class="child" name="site_num" readonly>'+d.site_num+'</textarea></td>'+
+				'<td><textarea class="child" name="full_num" readonly>'+d.full_num+'</textarea></td>'+
+				'<td><textarea class="child" name="parking" readonly>'+d.parking+'</textarea></td>'+
+				'<td><textarea class="child" name="conv" readonly>'+d.conv+'</textarea></td>'+
+				'<td><textarea class="child" name="sec_conv" readonly>'+d.sec_conv+'</textarea></td>'+
+				'<td><textarea class="child" name="etc_conv" readonly>'+d.etc_conv+'</textarea></td>'+
+				'<td><textarea class="child" name="agency_name" readonly>'+d.agency_name+'</textarea></td>'+
+				'<td><textarea class="child" name="agency_tel" readonly>'+d.agency_tel+'</textarea></td>'+
+				'<td><textarea class="child" name="intro" readonly>'+d.intro+'</textarea></td>'+
+				'<td><textarea class="child" name="intro" readonly>'+d.bbq_fee+'</textarea></td>'+
 			'</tr>'+
 			'</tbody>'+
 			'<tfoot>'+
 			'<tr>'+
 				'<input type="button" class="btn btn-outline-danger" id="del_camp" value="삭제">'+
-				'&nbsp;'+ '<input type="button" class="edit btn btn-outline-primary" value="수정">'+
+				'&nbsp;'+ '<input type="button" class="btn btn-outline-primary" value="수정" onclick="changeOnChild(this)">'+
+				'<input type="submit" class="btn btn-outline-success" value="수정 완료" style="display:none;">'+
 			'</tr>'+
 			'</tfoot>'+
 		'</table>'+
+		'</form>'+
 		'<div>'+
 		'<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
 				'<div class="modal-dialog" role="document">'+
@@ -182,28 +193,7 @@
 			'})'+ 
 			'<\/script>';
 	}
-	
-	function formatt(d) {
-		// `d` is the original data object for the row
-		return 
-			'<tbody style="text-align:center;" border="1">'+
-			'<tr>'+
-				'<td><input type="text" name="camp_name" value="'+d.camp_name+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.address+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.camp_tel+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.site_num+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.full_num+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.parking+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.conv+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.sec_conv+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.etc_conv+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.agency_name+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.agency_tel+'"></td>'+
-				'<td><input type="text" name="camp_name" value="'+d.intro+'"></td>'+
-			'</tr>'+
-			'</tbody>';
-	}
-	
+
 		
 		$(document).ready(function() {
 			var table = $('#example2').DataTable( {
@@ -223,12 +213,9 @@
 						"defaultContent": ''
 					},
 					{ data: "camp_idx" },
-					{ data: "camp_name" },
-					{ data: "conv" },
-					{ data: "address" },
-					{ data: "agency_name" },
-					{ data: "total_booking",
-					defaultContent : "<i>없음</i>"}
+					{ data: "camp_name" , defaultContent : "<i>없음</i>"},
+					{ data: "conv" , defaultContent : "<i>없음</i>"},
+					{ data: "address" , defaultContent : "<i>없음</i>"}
 					
 				]/* ,
 				"order": [[1, 'asc']] */
@@ -252,18 +239,17 @@
 		} );
 		// END CODE FOR Child rows (show extra / detailed information) DATA TABLE 		
 		
-				
-		
-	document.getElementsByClassName("edit").onclick = function(){
-		let tr = this.closest('table');
-		let row = table.row(tr);
-		
-		
-			
-			
-	}
-		
-		
+		function changeOnChild(e){	
+			e.nextElementSibling.style.display = "inline";
+       	 	e.style.display = "none";
+       	 	const list = document.querySelectorAll('.child');
+       	 	for (let i of list){
+	       	 	i.readOnly = false;
+	       	 	//alert("i: " +i);
+	       	 	i.style.border = 'solid 1px #d0cfcf';
+	       	 	i.style.background = '#efefef';
+       	 	}
+		}
 			
 	</script>	
 <!-- END Java Script for this page -->

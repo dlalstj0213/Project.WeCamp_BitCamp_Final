@@ -54,20 +54,4 @@ public class AdminController {
 		return "admin/sales_chart_yearly/"+WebTitle.TITLE+"매출 통계";
 	}
 
-	@RequestMapping("camp_manage.wcc")
-	private String campManage() {
-		return "admin/camp_manage/"+WebTitle.TITLE+"캠핑 관리";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="campData.wcc", produces = "application/text; charset=UTF-8")
-	private String campData() {
-		return adminService.get_campList();
-	}
-	
-	@GetMapping("campDel.wcc")
-	private String campDelete(Long camp_idx) {
-		adminService.del_campList(camp_idx);
-		return "redirect:camp_manage.wcc";
-	}
 }

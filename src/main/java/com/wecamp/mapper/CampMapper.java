@@ -9,4 +9,5 @@ public interface CampMapper {
 	List<Camp> selectCamp();
 	void deleteCamp(long camp_idx);
 	List<CampAndEtc> selectCampAndEtc();
+	void updateCamp(Camp camp);
 }

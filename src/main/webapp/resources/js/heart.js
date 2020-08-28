@@ -26,7 +26,7 @@ function emptyHeart(e){
 
 	if(email===""){
 		alert("로그인이 필요합니다.");
-		location.href="https://127.0.0.1:8443/login/login.wcc";
+		location.href="../login/login.wcc";
 		return false;
 	}
 	
@@ -82,7 +82,7 @@ function fillHeart(e){
 	
 	if(email===""){
 		alert("로그인이 필요합니다.");
-		location.href="https://127.0.0.1:8443/login/login.wcc";
+		location.href="../login/login.wcc";
 		return false;
 	}
 	

@@ -20,4 +20,10 @@ public class BookingController {
 	private String bookingConfirm() {
 		return "client/booking/booking_confirm/"+WebTitle.TITLE+"예약확인";
 	}
+	
+	@RequestMapping("payment.wcc")
+	private String getPayImformation() {
+		
+		return "client/booking/booking_confirm/"+WebTitle.TITLE+"결제완료";
+	}
 }

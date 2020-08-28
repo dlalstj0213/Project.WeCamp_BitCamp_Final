@@ -1,13 +1,44 @@
 /**
  * 
  */
+
+$("#loadMore").click(function(){
+	  let pageCount = document.getElementById("pageCount").value;
+	  let nextPage = document.getElementById("nextPage").value;
+	  let campIdx = document.getElementById("campIdx").value;
+	 //console.log("nextPage : "+nextPage+", pageCount : "+pageCount );
+	 if(nextPage > pageCount) {
+         $('#loadMore').attr("disabled", "disabled");
+         $('#loadMore').text("END");
+         return false;
+     }
+  $.ajax({
+      url:"./loadMore.wcc",
+      type:"POST",
+      data: {
+    	  camp_idx : campIdx,
+    	  nextPage : nextPage
+    	 // cp : ${cp}
+      },
+      dataType: "HTML",
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      success: function(result) {
+    	  	document.getElementById("nextPage").value = Number(nextPage)+1;
+          if (result) {
+        	  $(".reviewList").append(result);
+        	 // alert(">>${cp} : "+${cp}+", pageCount : "+pageCount );
+          }
+      }
+   });
+});
+
 function setSessionAndSubmit(){
 //	var test = document.getElementsByClassName("check-bbq")[0];
-	var checkbbq = document.getElementsByClassName("check-bbq")[0];
+	var checkbbq = document.getElementsByClassName("check-bbq");
 	var isBbqChecked = $(checkbbq).is(":checked");
 	var bbqPrice = 0;
 	if(isBbqChecked){
-		bbqPrice = document.getElementsByClassName("check-bbq")[0].value;
+		bbqPrice = document.getElementById("bbqPrice").value;
 	} else {
 		bbqPrice = 0;
 	}
@@ -17,13 +48,11 @@ function setSessionAndSubmit(){
 			campZone : campZone,
 			peopleNum : document.getElementById('peopleNum').value, 
 			category : category,
-			campPrice : Number(campPrice),
+			campPrice : campPrice,
 			bbqPrice : bbqPrice,
-			totalPrice : Number(campPrice)+10000,
-			checkIn : document.getElementById('check-in').value,
-			checkOut : document.getElementById('check-out').value
+			//totalPrice : Number(campPrice),
+			checkDate : document.getElementById('checkDate').value
 	};
-	
 	sessionStorage.setItem("bookingInfo", JSON.stringify(bookingInfo)); //세션저장
 	
 	var sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));
@@ -65,18 +94,21 @@ window.onload = function setCalender(){
 	        $(this).text().format()
 	    );
 	});
-	//location.href = "booking.do";
 	
-	$('input[name="daterange"]').val(getCurrentDate()+" - "+getCurrentDate());
-	$('#check-in').val(getCurrentDate());
-	$('#check-out').val(getCurrentDate());
+	$("#bbqPrice").text(function() {//1000단위 컴마처리
+	    $(this).val(
+	        $(this).val().format()
+	    );
+	});
+	
+	//$('input[name="daterange"]').val(getCurrentDate()+" - "+getCurrentDate());
 	//예약버튼 비활성화
 	document.getElementById('booking-event').style.pointerEvents = 'none';
 	$('#booking-event').css({cursor: 'pointer'});
 }
 
 /***added by rhie (not used yet)***/
-function getCurrentDate(){
+/*function getCurrentDate(){
     var now = new Date();
     var nowYear = now.getFullYear();
     var nowMonth = now.getMonth() + 1;
@@ -121,3 +153,4 @@ function getDay(idx){
    }
    return date;    	   
 }
+*/

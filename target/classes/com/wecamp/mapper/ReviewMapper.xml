@@ -3,16 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wecamp.mapper.ReviewMapper">
-
-	<!-- 캠핑장 별 리뷰 검색 -->
-	<select id="selectReview" resultType="Review" parameterType="long">
-		select * from REVIEW where CAMP_IDX=#{camp_idx}
-	</select>
-	
-	<!-- 캠핑장 별 리뷰 삭제 -->
-	<delete id="deleteReview" parameterType="long">
-		delete * from REVIEW where CAMP_IDX=#{camp_idx}
-	</delete>	
 	
 	<!-- 회원 별 리뷰 검색 -->
 	<select id="selectReviewForMember" resultType="Review" parameterType="String">
@@ -28,5 +18,26 @@
 	<update id="updateReviewForMember" parameterType="Review">
 		update REVIEW set CONTENT=#{content}, STAR=#{star} where REVIEW_IDX=#{review_idx}
 	</update>	
+	
+	<!-- 캠핑장 리뷰 띄우기-->
+	<select id="selectReview" parameterType="hashmap" resultType="Review">
+		<![CDATA[
+		select * from (
+		select ROWNUM rnum, aa.* from (
+		select * from REVIEW where CAMP_IDX=#{camp_idx} order by REVIEW_IDX desc
+		)aa) 
+		where rnum>#{page.startRow} and rnum<=#{page.endRow}
+		]]>
+	</select>
+	
+	<!--리뷰 개수 구하기-->
+	<select id="selectCountReview" parameterType="int" resultType="int">
+		select count(REVIEW_IDX) from REVIEW where CAMP_IDX=#{camp_idx}
+	</select>
+	
+	<!--리뷰 별점 평균 -->
+	<select id="selectStarAvg" parameterType="int" resultType="Float">
+		select AVG(STAR) from REVIEW where CAMP_IDX=#{camp_idx}
+	</select> 
 	
 </mapper>	

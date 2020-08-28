@@ -1,5 +1,8 @@
 package com.wecamp.mapper;
 
+import java.util.HashMap;
+import java.util.List;
+
 import com.wecamp.model.Review;
 
 public interface ReviewMapper {
@@ -8,5 +11,7 @@ public interface ReviewMapper {
 	Review selectReviewForMember(String email);
 	void deleteReviewForMember(Review review);
 	void updateReviewForMember(Review review);
-	
+	List<Review> selectReview(HashMap<String, Object> query);
+	int selectCountReview(int camp_idx);
+	float selectStarAvg(int camp_idx);
 }

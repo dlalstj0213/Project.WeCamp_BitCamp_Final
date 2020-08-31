@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
 		<!-- BEGIN CSS for this page -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>	
 		<style>	
@@ -50,18 +48,15 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">						
 							<div class="card mb-6">
 								<div class="card-header">
-									<h3><i class="fa fa-table"></i> 회원 정보</h3>
+									<h3><i class="fa fa-table"></i>탈퇴 회원 정보</h3>
 									 특정 회원 정보를 수정 하려면 원하시는 회원을 클릭 후 수정 하실 수 있습니다.<a target="_blank" href="https://datatables.net/"></a>
 									 <div class="input-group">
 									 <div class="input-group-prepend">
 									    <label class="input-group-text" for="inputGroupSelect01">검색 분류</label>
 									  </div>
 									    <select class="custom-select" id="category-search">
-										    <option value="name" selected>이름</option>
-										    <option value="email">이메일</option>
-										    <option value="birth">생년월일</option>
-										    <option value="grade">등급</option>
-										    <option value="authority">권한</option>
+										    <option value="email" selected>이메일</option>
+										    <option value="name">이름</option>
 										  </select>
 									  <div class="input-group-prepend">
 									    <label class="input-group-text" for="inputGroupSelect01">검색</label>
@@ -94,4 +89,4 @@
 
     </div><!-- END content-page -->
 
-    <script src="/admin/js/member_manage.js"></script>
+    <script src="/admin/js/leave_member_manage.js"></script>

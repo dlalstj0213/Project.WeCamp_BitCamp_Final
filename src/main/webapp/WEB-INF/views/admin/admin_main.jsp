@@ -22,45 +22,47 @@
 						</div>
 						<!-- end row -->
 
-						<div class="alert alert-danger" role="alert">
-						<h4 class="alert-heading">Info!</h4>
-						<p>Do you want custom development to integrate this theme in your project? Or add new features? Contact us on <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin Website</b></a></p>
-						<p>Or try our PRO version: <b>Save over 50 hours of development with our Pro Framework: Registration / Login / Users Management, CMS, Front-End Template (who will load contend added in admin area and saved in MySQL database), Contact Messages Management, manage Website Settings and many more, at an incredible price!</b></p>
-						<p>Read more about all PRO features here: <a target="_blank" href="https://www.pikeadmin.com/pike-admin-pro"><b>Pike Admin PRO features</b></a></p>
-						</div>
-						
 							<div class="row">
 									<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 											<div class="card-box noradius noborder bg-default">
-													<i class="fa fa-file-text-o float-right text-white"></i>
-													<h6 class="text-white text-uppercase m-b-20">Orders</h6>
-													<h1 class="m-b-20 text-white counter">1,587</h1>
-													<span class="text-white">15 New Orders</span>
+													<i class="fas fa-file-invoice float-right text-white"></i>
+													<h6 class="text-white text-uppercase m-b-20">예약 수</h6>
+													<h1 id="total-booking" class="m-b-20 text-white counter">1,587</h1>
+													<span id="total-current-booking" class="text-white">최근 예약 : 15</span>
 											</div>
 									</div>
 
 									<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 											<div class="card-box noradius noborder bg-warning">
-													<i class="fa fa-bar-chart float-right text-white"></i>
-													<h6 class="text-white text-uppercase m-b-20">Visitors</h6>
-													<h1 class="m-b-20 text-white counter">250</h1>
-													<span class="text-white">Bounce rate: 25%</span>
+													<i class="fas fa-campground float-right text-white"></i>
+													<h6 class="text-white text-uppercase m-b-20">캠핑장 수</h6>
+													<h1 id="total-camp" class="m-b-20 text-white counter">100</h1>
+													<span class="text-white">&nbsp;</span>
 											</div>
 									</div>
 
 									<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 											<div class="card-box noradius noborder bg-info">
-													<i class="fa fa-user-o float-right text-white"></i>
-													<h6 class="text-white text-uppercase m-b-20">Users</h6>
-													<h1 class="m-b-20 text-white counter">120</h1>
-													<span class="text-white">25 New Users</span>
+													<i class="fas fa-users float-right text-white"></i>
+													<h6 class="text-white text-uppercase m-b-20">회원 수</h6>
+													<h1 id="total-member" class="m-b-20 text-white counter">120</h1>
+													<span id="total-leave-member" class="text-white">탈퇴 : </span>
 											</div>
 									</div>
 
 									<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 											<div class="card-box noradius noborder bg-danger">
-													<i class="fa fa-bell-o float-right text-white"></i>
-													<h6 class="text-white text-uppercase m-b-20">Alerts</h6>
+													<i class="fas fa-envelope-open-text float-right text-white"></i>
+													<h6 class="text-white text-uppercase m-b-20">문의 수</h6>
+													<h1 id="total-inquiry" class="m-b-20 text-white counter">58</h1>
+													<span id="total-unchecked-inquiry" class="text-white">미처리 : </span>
+											</div>
+									</div>
+									
+									<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+											<div class="card-box noradius noborder bg-danger">
+													<i class="fa fa-bar-chart float-right text-white"></i>
+													<h6 class="text-white text-uppercase m-b-20">통계관련 하나(ex)매출)</h6>
 													<h1 class="m-b-20 text-white counter">58</h1>
 													<span class="text-white">5 New Alerts</span>
 											</div>
@@ -468,3 +470,5 @@
 		<!-- END content -->
 
     </div>
+    
+<script src="/admin/js/admin-main.js"></script>

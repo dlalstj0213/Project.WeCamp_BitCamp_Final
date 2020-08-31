@@ -11,19 +11,23 @@
 			<ul>
 
 					<li class="submenu">
+						<a class="" href="main.wcc"><i class="fa fa-fw fa fa-home"></i><span> 관리자 메인 </span> </a>
+                    </li>
+					<li class="submenu">
 						<a class="" href="/"><i class="fa fa-fw fa fa-home"></i><span> 위캠프 홈 </span> </a>
                     </li>
 
 					<li class="submenu1">
-                        <a id="member-menu" href="#"><span class="label radius-circle bg-primary float-right">9</span><i class="fa fa-group bigfonts" aria-hidden="true"></i>
+                        <a id="member-menu" href="#"><i class="fa fa-group bigfonts" aria-hidden="true"></i>
                         	<span> 회원 관리 </span>
+                        	<span class="menu-arrow"></span>
                         </a>
-                            <ul>
-								<li id="member-submenu">
+                            <ul class="list-unstyled">
+								<li class="active" id="member-submenu">
                                     <a href="member_manage.wcc"><span>회원</span></a>
                                 </li>
                                 <li id="withdrawal-member-submenu">
-                                    <a href="#"><span>탈퇴 회원</span> </a>
+                                    <a href="leave_member_manage.wcc"><span>탈퇴 회원</span> </a>
                                 </li>                                
                             </ul>
                     </li>
@@ -37,7 +41,9 @@
                     </li>
                     
             </ul>
+            <div class="clearfix"></div>
         </div>
+        <div class="clearfix"></div>
       </div>
 	</div>
 	<!-- End Sidebar -->

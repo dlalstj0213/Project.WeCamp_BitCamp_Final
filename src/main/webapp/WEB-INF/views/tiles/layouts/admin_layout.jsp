@@ -2,31 +2,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><tiles:getAsString name="title" /></title>
+	<title><tiles:getAsString name="title" /></title>
 	<meta name="description" content="Free Bootstrap 4 Admin Theme | Pike Admin">
 	<meta name="author" content="Pike Web Development - https://www.pikephp.com">
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/admin/images/favicon2.png">
+	<script src="/admin/js/jquery.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<!-- Bootstrap CSS -->
 	<link href="/admin/css/bootstrap.min.css?ver=<%=System.currentTimeMillis()%>" rel="stylesheet" type="text/css" />
 	
 	<!-- Font Awesome CSS -->
 	<link href="/admin/font-awesome/css/font-awesome.min.css?ver=<%=System.currentTimeMillis()%>" rel="stylesheet" type="text/css" />
-	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />	
 	<!-- Custom CSS -->
 	<link href="/admin/css/style.css?ver=<%=System.currentTimeMillis()%>" rel="stylesheet" type="text/css" />
 	
 </head>
   
 <!-- <body class="adminbody"> -->
-<body>
-<!--     <div id="main"> -->
+<body class="adminbody">
+    <div id="main">
     <header id="header">
         <tiles:insertAttribute name="header" />
     </header>
@@ -43,13 +44,12 @@
     <footer id="footer">
         <tiles:insertAttribute name="footer" />
     </footer>
-<!--     </div> -->
+    </div>
     <!-- END main -->
-</body>
-
+    
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script src="/admin/js/modernizr.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/jquery.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+
 <script src="/admin/js/moment.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="/admin/js/popper.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="/admin/js/bootstrap.min.js?ver=<%=System.currentTimeMillis()%>"></script>
@@ -71,15 +71,6 @@
 	<script src="/admin/plugins/waypoints/lib/jquery.waypoints.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="/admin/plugins/counterup/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>			
 
-	<script>
-		$(document).ready(function() {
-			// counter-up
-			$('.counter').counterUp({
-				delay: 10,
-				time: 600
-			});
-		} );		
-	</script>
 	
 	<script>
 	var ctx1 = document.getElementById("lineChart").getContext('2d');
@@ -178,4 +169,5 @@
 	});
 	</script>
 <!-- END Java Script for this page -->	
+</body>
 </html>

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css?ver=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="/css/font-awesome.css?ver=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="/css/line-awesome.css?ver=<%=System.currentTimeMillis()%>">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css?ver=<%=System.currentTimeMillis()%>">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css?ver=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="/css/owl.theme.default.min.css?ver=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="/css/magnific-popup.css?ver=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="/css/animated-headline.css?ver=<%=System.currentTimeMillis()%>">

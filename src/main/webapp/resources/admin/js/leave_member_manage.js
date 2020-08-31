@@ -34,7 +34,6 @@ function showDetail(responseData, currnetPage, isSearched){
 		+ "정보를 수정 후 하단의 수정 버튼을 클릭해주세요."
 		+ "</div>"
 		+ "<div class='card-body'>"
-		+ "<form>"
 		+ "<div class='form-group row'>"
 		+	"<label for='detail-name' class='col-sm-2 col-form-label'>이름 :</label>"
 	    + "<div class='col-sm-10'>"
@@ -60,55 +59,16 @@ function showDetail(responseData, currnetPage, isSearched){
 	    + "</div>"
 	    + "</div>"
 	    + "<div class='form-group row'>"
-	    + "<label for='detail-point' class='col-sm-2 col-form-label'>포인트 :</label>"
+	    +	"<label for='detail-birth' class='col-sm-2 col-form-label'>탈퇴일 :</label>"
 	    + "<div class='col-sm-10'>"
-	    + "<input type='text' readonly class='form-control-plaintext' id='detail-point' value='"+responseData.point+"'>"
+	    + "<input type='text' readonly class='form-control-plaintext' id='detail-ldate' value='"+dataForm(responseData.ldate)+"'>"
 	    + "</div>"
 	    + "</div>"
-	    + "<div class='form-group row'>"
-	    + "<label for='detail-grade' class='col-sm-2 col-form-label'>등급 :</label>"
-	    + "<div class='col-sm-10'>"
-	    + "<input type='text' readonly class='form-control-plaintext modify-input' id='detail-grade' value='"+responseData.grade+"'>"
-	    + "</div>"
-	    + "</div>"
-	    + "<div class='form-group row'>"
-	    + "<label for='detail-a-name' class='col-sm-2 col-form-label'>권한 :</label>"
-	    + "<div class='col-sm-10'>"
-	    + "<input type='text' readonly class='form-control-plaintext modify-input' id='detail-a-name' value='"+responseData.a_name+"'>"
-	    + "</div>"
-		+ "</div>";
-	    if(responseData.owner_num != null){
-	    	detail_html += "<div class='form-group row'>"
-	    		+ "<label for='detail-owner-num' class='col-sm-2 col-form-label'>사업자번호 :</label>"
-	    		+ "<div class='col-sm-10'>"
-	    		+ "<input type='text' readonly class='form-control-plaintext modify-input' id='detail-owner-num' value='"+responseData.owner_num+"'>"
-	    		+ "</div>"
-	    		+ "</div>"
-		    	+ "<div class='form-group row'>"
-		    	+ "<label for='detail-com-name' class='col-sm-2 col-form-label'>회사명 :</label>"
-		    	+ "<div class='col-sm-10'>"
-		    	+ "<input type='text' readonly class='form-control-plaintext modify-input' id='detail-com-name' value='"+responseData.com_name+"'>"
-		    	+ "</div>"
-		    	+ "</div>"
-		    	+ "<div class='form-group row'>"
-		    	+ "<label for='detail-com-addr' class='col-sm-2 col-form-label'>회사주소 :</label>"
-		    	+ "<div class='col-sm-10'>"
-		    	+ "<input type='text' readonly class='form-control-plaintext modify-input' id='detail-com-addr' value='"+responseData.com_addr+"'>"
-		    	+ "</div>"
-		    	+ "</div>"
-		    	+ "<div class='form-group row'>"
-		    	+ "<label for='detail-com-tel' class='col-sm-2 col-form-label'>회사번호 :</label>"
-		    	+ "<div class='col-sm-10'>"
-		    	+ "<input type='text' readonly class='form-control-plaintext modify-input' id='detail-com-tel' value='"+responseData.com_tel+"'>"
-		    	+ "</div>"
-		    	+ "</div>";
-	    }
-	    detail_html += "</form>"
 	    + "<div id='button_center'>";
 	    if(isSearched == true){
-	    	detail_html += "<button type='button' class='btn btn-outline-warning' onclick='leaveMember(\""+responseData.email+"\", \""+currnetPage+"\", "+isSearched+");'>탈퇴</button>";
+	    	detail_html += "<button type='button' class='btn btn-outline-warning' onclick='deleteMember(\""+responseData.email+"\", \""+currnetPage+"\", "+isSearched+");'>삭제</button>";
 	    }else{
-	    	detail_html += "<button type='button' class='btn btn-outline-warning' onclick='leaveMember(\""+responseData.email+"\", \""+currnetPage+"\", \""+isSearched+"\");'>탈퇴</button>";
+	    	detail_html += "<button type='button' class='btn btn-outline-warning' onclick='deleteMember(\""+responseData.email+"\", \""+currnetPage+"\", \""+isSearched+"\");'>삭제</button>";
 	    }
 	    detail_html += "</div>" 
 	    + "</div>" //end card body
@@ -123,7 +83,7 @@ function row_click(row, currnetPage, isSearched){
 	let class_id = $(row).prop('id');
 	
 	$.ajax({
-		url: "member_datail.json",
+		url: "leave_member_datail.json",
 		method: "GET",
 		data: {
 			email: class_id
@@ -141,7 +101,7 @@ window.onload = function(){
 
 function getMemberList(cp){
 	$.ajax({
-		url: "member.json",
+		url: "leave_member.json",
 		method: "GET",
 		data: {
 			currentPage: cp
@@ -153,9 +113,9 @@ function getMemberList(cp){
 	});
 }
 
-function leaveMember(email, currentPage, isSearched){
+function deleteMember(email, currentPage, isSearched){
 	$.ajax({
-		url: "leave_member.json",
+		url: "delete_leave_member.json",
 		method: "POST",
 		//contentType: "application/json",
 		data: {
@@ -185,7 +145,7 @@ function search_word(currentPage){
 	let keyword = document.getElementById('search').value;
 	let category = document.getElementById('category-search').value;
 	$.ajax({
-		url: "search_member.json",
+		url: "search_leave_member.json",
 		type: "GET",
 		data: {
 			"currentPage": currentPage,
@@ -202,7 +162,7 @@ function search_word(currentPage){
 function success_msg(email){
 	let msg = "";
 	msg += "<div class='alert alert-success' role='alert'>"
-		+ "<h4 class='alert-heading'>탈퇴 성공 => "+ email+"</h4>"
+		+ "<h4 class='alert-heading'>삭제 성공 => "+ email+"</h4>"
 		+ "<p></p>"
 		+ "</div>";
 	return msg;

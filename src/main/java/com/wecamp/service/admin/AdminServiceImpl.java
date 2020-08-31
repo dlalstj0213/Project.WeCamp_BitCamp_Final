@@ -7,8 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -16,12 +14,7 @@ import com.wecamp.mapper.AdminMapper;
 import com.wecamp.mapper.CampMapper;
 import com.wecamp.model.Admin;
 import com.wecamp.model.Camp;
-import com.wecamp.model.LMember;
-import com.wecamp.model.Member;
-import com.wecamp.model.MemberAndAuthority;
-import com.wecamp.model.MemberAndOwner;
-import com.wecamp.utils.PageUtil;
-import com.wecamp.vo.Pagination;
+import com.wecamp.vo.TotalResultVo;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -103,69 +96,33 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public MemberAndOwner getMemberInfoService(String email) {
-		return adminMapper.selectMemberInfo(email);
-	}
-	
-	@Override
-	public ModelAndView getListOfMembersService(String cpStr, HttpSession session) {
-		ModelAndView response = new ModelAndView();
-		PageUtil pageUtil = new PageUtil();
-		
-		int currentPage = pageUtil.getCurrentPageSession(cpStr, session);
-		int pageSize = pageUtil.getPageSize("10", session);
-		int listCount = adminMapper.selectCountMember();
-		
-		Pagination page = new Pagination(listCount, currentPage, pageSize);
-		response.addObject("page", page);
-		
-		HashMap<String, Object> query = new HashMap<String, Object>();
-		query.put("page", page);
-		List<MemberAndAuthority> memberList = adminMapper.selectMembers(query);
-		response.addObject("list", memberList);
-		
-		return response;
-	}
-	
-	@Transactional
-	@Override
-	public boolean leaveMemberService(String email) {
-		Member member = adminMapper.selectMember(email);
-		LMember lmember = new LMember();
-		if(member != null) {
-			lmember.setEmail(email);
-			lmember.setBirth(member.getBirth());
-			lmember.setName(member.getName());
-			lmember.setNickname(member.getNickname());
-			if(adminMapper.insertLMember(lmember)) {
-				if(adminMapper.deleteMember(email))	{
-					return true;
-				}
-			}
-			return false;
-		}else {
-			return false;
+	public TotalResultVo getTotalValuesService() {
+		Integer totalMember = adminMapper.selectCountMember();
+		if(totalMember == null) {
+			totalMember = 0;
 		}
-	}
-	
-	@Override
-	public ModelAndView searhMemberService(String keyword, String category, String cpStr, HttpSession session) {
-		PageUtil pageUtil = new PageUtil();
-		HashMap<String, Object> query = new HashMap<String, Object>();
-		query.put("keyword", keyword.trim());
-		query.put("category", category.trim());
-		int listCount = adminMapper.selectCountMembersByKeyword(query);
-		int currentPage = pageUtil.getCurrentPageSession(cpStr, session);
-		int pageSize = pageUtil.getPageSize("10", session);
-		
-		Pagination paging = new Pagination(listCount, currentPage, pageSize);
-		query.put("page", paging);
-		List<MemberAndAuthority> memberList = adminMapper.selectMembersByKeyword(query);
-		
-		ModelAndView response = new ModelAndView();
-		response.addObject("list", memberList);
-		response.addObject("page", paging);
-		response.addObject("search", "search");
-		return response;
+		Integer totalCamp = adminMapper.selectCountCamp();
+		if(totalCamp == null) {
+			totalCamp = 0;
+		}
+		Integer totalBooking = adminMapper.selectCountBooking();
+		if(totalBooking == null) {
+			totalBooking = 0;
+		}
+		Integer totalInquiry = adminMapper.selectCountInquiry();
+		if(totalInquiry == null) {
+			totalInquiry = 0;
+		}
+		Integer totalLMember = adminMapper.selectCountLeaveMember();
+		if(totalLMember == null) {
+			totalLMember = 0;
+		}
+		Integer totalCurrentBooking = adminMapper.selectCountCurrentBooking();
+		if(totalCurrentBooking == null) {
+			totalCurrentBooking = 0;
+		}
+		int totalUncheckedInquiry = adminMapper.selectCountInquiryUnchecked();
+		return new TotalResultVo(totalMember, totalCamp, totalBooking, totalInquiry,
+				totalLMember, totalCurrentBooking, totalUncheckedInquiry);
 	}
 }

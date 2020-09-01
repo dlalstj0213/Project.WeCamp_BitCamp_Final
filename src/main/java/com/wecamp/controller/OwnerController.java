@@ -24,14 +24,19 @@ import lombok.extern.log4j.Log4j;
 public class OwnerController {
 	@Autowired
 	private OwnerService ownerService;
+	@Autowired
+	private HttpSession session;
 	
 	@RequestMapping(value = "com_inquiry.wcc", method = RequestMethod.GET)
 	private String comInquiry() {
+		if(session.getAttribute("member") == null) {
+			return "redirect:../";
+		}
 		return "client/member/com_inquiry/"+WebTitle.TITLE+"업체 문의 작성";
 	}
 	
 	@RequestMapping(value = "add_camp.wcc", method = RequestMethod.GET)
-	private ModelAndView addListing(HttpSession session) {
+	private ModelAndView addListing() {
 		ModelAndView response = ownerService.checkOwner(session);
 		return response;
 	}
@@ -39,11 +44,12 @@ public class OwnerController {
 	@PostMapping("inquiry.wcc")
 	private ModelAndView inquiry(Inquiry inquiry) {
 		ModelAndView response = ownerService.submitInquiryService(inquiry);
+		response.setViewName("client/member/com_inquiry/"+WebTitle.TITLE+"캠핑장 등록");
 		return response;
 	}
 	
 	@PostMapping("upload_camp.wcc")
-	private ModelAndView addCamp(CampAndSortAndImg model, HttpSession session) {
+	private ModelAndView addCamp(CampAndSortAndImg model) {
 		log.info("#> addCamp() 접근"); 
 		log.info("#> size : "+model.getSort().size());
 		int count = 0;

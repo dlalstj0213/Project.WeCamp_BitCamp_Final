@@ -31,7 +31,7 @@ public class AdminController {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:login.wcc";
 		}
-		return "admin/admin_main/"+WebTitle.TITLE+"관리자";
+		return "admin/main/admin_main/"+WebTitle.TITLE+"관리자";
 	}
 	
 	@ResponseBody
@@ -43,7 +43,7 @@ public class AdminController {
 	//tiles를 거쳐가지 않는 메소드
 	@GetMapping("login.wcc")
 	private String login() {
-		return "admin/admin_login";
+		return "admin/login/admin_login";
 	}
 	
 	//관리자 로그인
@@ -60,14 +60,14 @@ public class AdminController {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:login.wcc";
 		}
-		return "admin/sales_chart_monthly/"+WebTitle.TITLE+"매출 통계";
+		return "admin/camp/sales_chart_monthly/"+WebTitle.TITLE+"매출 통계";
 	}
 	@RequestMapping("sales_chart_yearly.wcc")
 	private String salesChartY() {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:login.wcc";
 		}
-		return "admin/sales_chart_yearly/"+WebTitle.TITLE+"매출 통계";
+		return "admin/camp/sales_chart_yearly/"+WebTitle.TITLE+"매출 통계";
 	}
 
 	@RequestMapping("camp_manage.wcc")
@@ -75,7 +75,7 @@ public class AdminController {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:login.wcc";
 		}
-		return "admin/camp_manage/"+WebTitle.TITLE+"캠핑 관리";
+		return "admin/camp/camp_manage/"+WebTitle.TITLE+"캠핑 관리";
 	}                                                                                                                                                                                                                                                                                                                         
 	
 	@ResponseBody

@@ -7,15 +7,18 @@ function getTotalValues(){
 		method: "GET",
 		data: {},
 		dataType: "JSON",
+		error: function(){
+			clearInterval(playAlert);
+		},
 		success: function(responseData){
-			console.log("통신 성공");
-			console.log("totalMember : "+responseData.totalMember);
-			console.log("totalCamp : "+responseData.totalCamp);
-			console.log("totalBooking : "+responseData.totalBooking);
-			console.log("totalInquiry : "+responseData.totalInquiry);
-			console.log("totalLMember : "+responseData.totalLMember);
-			console.log("totalCurrentBooking : "+responseData.totalCurrentBooking);
-			console.log("totalUncheckedInquiry : "+responseData.totalUncheckedInquiry);
+//			console.log("통신 성공");
+//			console.log("totalMember : "+responseData.totalMember);
+//			console.log("totalCamp : "+responseData.totalCamp);
+//			console.log("totalBooking : "+responseData.totalBooking);
+//			console.log("totalInquiry : "+responseData.totalInquiry);
+//			console.log("totalLMember : "+responseData.totalLMember);
+//			console.log("totalCurrentBooking : "+responseData.totalCurrentBooking);
+//			console.log("totalUncheckedInquiry : "+responseData.totalUncheckedInquiry);
 			
 			$('#total-booking').text(responseData.totalBooking);
 			//$('#total-booking').text("1,500");

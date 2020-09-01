@@ -40,8 +40,12 @@
 	      <td>${member.a_name}</td>
 	    </tr>
   	</c:if>
-
     </c:forEach>
+    <c:if test="${empty list}">
+    	<tr>
+    		<td colspan="5" style="text-align:center">데이터가 없습니다</td>
+    	</tr>
+    </c:if>
   </tbody>
 </table>
 
@@ -91,7 +95,7 @@
   </ul>
 </nav>
 </c:if>
-
+<c:if test="${!empty list}">
 <c:if test="${!empty search}">
 <!-- Pagination -->
 <nav aria-label="...">
@@ -137,4 +141,5 @@
  	</c:choose>
   </ul>
 </nav>
+</c:if>
 </c:if>

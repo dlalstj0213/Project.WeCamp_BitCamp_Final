@@ -33,7 +33,7 @@
                     </li>
 
 					<li class="submenu">
-                        <a href="charts.html"><i class="fa fa-list-alt bigfonts" aria-hidden="true"></i><span> 업체문의 관리 </span> </a>
+                        <a href="inquiry_manage.wcc"><i class="fa fa-list-alt bigfonts" aria-hidden="true"></i><span> 업체문의 관리 </span> </a>
                     </li>
                     
 					<li class="submenu">

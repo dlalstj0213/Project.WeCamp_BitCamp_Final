@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wecamp.mapper.OwnerMapper"><!-- route of mapping to java -->
 	<insert id="insertInquiry" parameterType="hashmap">
-		insert into INQUIRY values(INQUIRY_SEQ.nextval, #{query.email}, 1, #{query.title}, #{query.owner_num}, #{query.content}, SYSDATE)
+		insert into INQUIRY values(INQUIRY_SEQ.nextval, #{query.email}, 1, #{query.title}, #{query.owner_num}, #{query.content}, SYSDATE, #{query.com_name}, #{query.com_addr}, #{query.com_tel})
 	</insert>
 	
 	<insert id="insertCamp" parameterType="Camp">

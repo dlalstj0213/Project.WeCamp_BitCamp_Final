@@ -27,7 +27,7 @@
 											<div class="card-box noradius noborder bg-default">
 													<i class="fas fa-file-invoice float-right text-white"></i>
 													<h6 class="text-white text-uppercase m-b-20">예약 수</h6>
-													<h1 id="total-booking" class="m-b-20 text-white counter">1,587</h1>
+													<h1 id="total-booking" class="m-b-20 text-white counter"></h1>
 													<span id="total-current-booking" class="text-white">최근 예약 : 15</span>
 											</div>
 									</div>
@@ -36,7 +36,7 @@
 											<div class="card-box noradius noborder bg-warning">
 													<i class="fas fa-campground float-right text-white"></i>
 													<h6 class="text-white text-uppercase m-b-20">캠핑장 수</h6>
-													<h1 id="total-camp" class="m-b-20 text-white counter">100</h1>
+													<h1 id="total-camp" class="m-b-20 text-white counter"></h1>
 													<span class="text-white">&nbsp;</span>
 											</div>
 									</div>
@@ -45,7 +45,7 @@
 											<div class="card-box noradius noborder bg-info">
 													<i class="fas fa-users float-right text-white"></i>
 													<h6 class="text-white text-uppercase m-b-20">회원 수</h6>
-													<h1 id="total-member" class="m-b-20 text-white counter">120</h1>
+													<h1 id="total-member" class="m-b-20 text-white counter"></h1>
 													<span id="total-leave-member" class="text-white">탈퇴 : </span>
 											</div>
 									</div>
@@ -54,7 +54,7 @@
 											<div class="card-box noradius noborder bg-danger">
 													<i class="fas fa-envelope-open-text float-right text-white"></i>
 													<h6 class="text-white text-uppercase m-b-20">문의 수</h6>
-													<h1 id="total-inquiry" class="m-b-20 text-white counter">58</h1>
+													<h1 id="total-inquiry" class="m-b-20 text-white counter"></h1>
 													<span id="total-unchecked-inquiry" class="text-white">미처리 : </span>
 											</div>
 									</div>
@@ -63,7 +63,7 @@
 											<div class="card-box noradius noborder bg-danger">
 													<i class="fa fa-bar-chart float-right text-white"></i>
 													<h6 class="text-white text-uppercase m-b-20">통계관련 하나(ex)매출)</h6>
-													<h1 class="m-b-20 text-white counter">58</h1>
+													<h1 class="m-b-20 text-white counter">3213</h1>
 													<span class="text-white">5 New Alerts</span>
 											</div>
 									</div>

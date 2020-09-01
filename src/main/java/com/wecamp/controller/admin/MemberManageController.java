@@ -34,7 +34,7 @@ public class MemberManageController {
 			response = new ModelAndView("redirect:login.wcc");
 			return response;
 		}
-		response = new ModelAndView("admin/member_manage/"+WebTitle.TITLE+"회원 관리");
+		response = new ModelAndView("admin/member/member_manage/"+WebTitle.TITLE+"회원 관리");
 		return response;
 	}
 	
@@ -42,7 +42,7 @@ public class MemberManageController {
 	@GetMapping("member")
 	private ModelAndView getMemberList(String currentPage) {
 		ModelAndView response = memberService.getListOfMembersService(currentPage, session);
-		response.setViewName("admin/memberList");
+		response.setViewName("admin/member/member_list");
 		return response;
 	}
 	
@@ -51,7 +51,7 @@ public class MemberManageController {
 	@GetMapping("search_member")
 	private ModelAndView searchMember(String keyword, String category, String currentPage) {
 		ModelAndView response = memberService.searhMemberService(keyword, category, currentPage, session);
-		response.setViewName("admin/memberList");
+		response.setViewName("admin/member/member_list");
 		return response;
 	}
 	
@@ -78,7 +78,7 @@ public class MemberManageController {
 			response = new ModelAndView("redirect:login.wcc");
 			return response;
 		}
-		response = new ModelAndView("admin/leave_member_manage/"+WebTitle.TITLE+"회원 관리");
+		response = new ModelAndView("admin/member/leave_member_manage/"+WebTitle.TITLE+"회원 관리");
 		return response;
 	}
 	
@@ -86,7 +86,7 @@ public class MemberManageController {
 	@GetMapping("leave_member")
 	private ModelAndView getLeaveMemberList(String currentPage) {
 		ModelAndView response = memberService.getListOfLeaveMembersService(currentPage, session);
-		response.setViewName("admin/leave_member_list");
+		response.setViewName("admin/member/leave_member_list");
 		return response;
 	}
 	
@@ -95,7 +95,7 @@ public class MemberManageController {
 	@GetMapping("search_leave_member")
 	private ModelAndView searchLeaveMember(String keyword, String category, String currentPage) {
 		ModelAndView response = memberService.searhLeaveMemberService(keyword, category, currentPage, session);
-		response.setViewName("admin/leave_member_list");
+		response.setViewName("admin/member/leave_member_list");
 		return response;
 	}
 

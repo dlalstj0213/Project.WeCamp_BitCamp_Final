@@ -29,26 +29,14 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 class OwnerServiceImpl implements OwnerService{
 	private OwnerMapper ownerMapper;
-	
+
 	@Override
 	public ModelAndView submitInquiryService(Inquiry inquiry) {
 		ModelAndView response = new ModelAndView();
-		response.setViewName("client/member/com_inquiry/"+WebTitle.TITLE+"캠핑장 등록");
-		boolean result = false;
-		StringBuffer remake = new StringBuffer();
-		if(inquiry.getOwner_num().length() != 10) {
-			result = false;
-		} else {
-			remake.append(inquiry.getOwner_num().substring(0, 3));
-			remake.append("-");
-			remake.append(inquiry.getOwner_num().substring(3, 5));
-			remake.append("-");
-			remake.append(inquiry.getOwner_num().substring(5, 10));
-			inquiry.setOwner_num(remake.toString().trim());
-			HashMap<String, Object> query = new HashMap<String, Object>();
-			query.put("query", inquiry);
-			result = ownerMapper.insertInquiry(query);
-		}
+
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		query.put("query", inquiry);
+		boolean result = ownerMapper.insertInquiry(query);
 		response.addObject("result", result);
 		return response;
 	}
@@ -67,7 +55,7 @@ class OwnerServiceImpl implements OwnerService{
 		}
 		return response;
 	}
-	
+
 	@Transactional
 	@Override
 	public ModelAndView addCampService(CampAndSortAndImg model, HttpSession session) {
@@ -112,7 +100,7 @@ class OwnerServiceImpl implements OwnerService{
 		response.setViewName("client/member/add_camp/"+WebTitle.TITLE+"캠핑장 등록");
 		return response;
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(Path.CAMP_IMG_THUMB);
 	}

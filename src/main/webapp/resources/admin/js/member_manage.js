@@ -30,7 +30,7 @@ function showDetail(responseData, currnetPage, isSearched){
 	let detail_html = "";
 	detail_html += "<div class='card mb-3'>"
 		+ "<div class='card-header'>"
-		+ "<h3><i class='fa fa-id-card-o bigfonts'></i> "+responseData.name+" - 회원 정보 수정</h3>"
+		+ "<h3><i class='far fa-id-card bigfonts'></i> "+responseData.name+" - 회원 정보 수정</h3>"
 		+ "정보를 수정 후 하단의 수정 버튼을 클릭해주세요."
 		+ "</div>"
 		+ "<div class='card-body'>"

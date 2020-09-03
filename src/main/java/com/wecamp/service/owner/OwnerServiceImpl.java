@@ -61,15 +61,21 @@ class OwnerServiceImpl implements OwnerService{
 		return response;
 	}
 	
+	//마이페이지 내 사업자 정보 디테일
 	@Override
 	public ModelAndView get_owner_full_detail(HttpSession session) {
 		Member member = (Member)session.getAttribute("member");
 		Owner owner = ownerMapper.select_owner(member.getEmail());
+		Integer total_heart = ownerMapper.select_heart(owner.getCamp_idx());
+		if(total_heart == null) {
+			total_heart = 0;
+		}
 		OwnerDetailVo result = new OwnerDetailVo(
 				ownerMapper.select_camp(owner.getCamp_idx()),
 				owner,
 				ownerMapper.select_img(owner.getCamp_idx()),
-				ownerMapper.select_sort(owner.getCamp_idx())
+				ownerMapper.select_sort(owner.getCamp_idx()),
+				total_heart
 				);
 		ModelAndView response =  new ModelAndView();
 		return response.addObject("vo", result);

@@ -19,4 +19,5 @@ public class OwnerDetailVo {
 	private Owner owner;
 	private List<Img> img_list;
 	private List<Sort> sort_list;
+	private int total_heart;
 }

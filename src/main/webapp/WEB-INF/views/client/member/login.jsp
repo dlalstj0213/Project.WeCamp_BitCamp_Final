@@ -231,8 +231,13 @@ body {
 									<div class="col text-center">
 										<p class="font-size-16 font-weight-medium">네이버 / 카카오 아이디가
 											있으신가요?</p>
-										<div id="naver_id_login" style="margin-top:10px"></div>
+										<div id="naver_id_login" style="margin-top:10px">HELLO</div>
+										
+										<div style="text-align:center">
+											<a href="${naver_url}"><img width="223" src="${pageContext.request.contextPath}/resources/images/Naver_Login_Button_White.PNG"></a>
+										</div>
 									</div>
+									
 									<div class="col-lg-12">
 										<div class="account-assist mt-4 mb-4 text-center">
 											<p class="account__desc">or</p>
@@ -356,7 +361,7 @@ body {
 
 <script type="text/javascript">
  
-         var naver_id_login = new naver_id_login("YtUqxw72XK5MQyMaFC_R", "https://localhost:8443/");    // Client ID, CallBack URL 삽입
+         var naver_id_login = new naver_id_login("YtUqxw72XK5MQyMaFC_R", "https://localhost:8443/naver/callback");    // Client ID, CallBack URL 삽입
                                             // 단 'localhost'가 포함된 CallBack URL
          var state = naver_id_login.getUniqState();
         

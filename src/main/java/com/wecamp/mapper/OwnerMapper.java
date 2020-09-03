@@ -14,4 +14,5 @@ public interface OwnerMapper {
 	Camp select_camp(int camp_idx);
 	List<Img> select_img(int camp_idx);
 	List<Sort> select_sort(int camp_idx);
+	Integer select_heart(int camp_idx);
 }

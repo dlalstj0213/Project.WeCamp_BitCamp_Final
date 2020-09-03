@@ -16,10 +16,14 @@
 	</select>
 	
 	<select id="select_img" resultType="Img" parameterType="int">
-		select * from IMG where camp_idx = #{camp_idx}
+		select * from IMG where camp_idx = #{camp_idx} and DIVISION = 'detail'
 	</select>
 	
 	<select id="select_sort" resultType="Sort" parameterType="int">
 		select * from SORT where camp_idx = #{camp_idx}
+	</select>
+	
+	<select id="select_heart" resultType="int" parameterType="int">
+		select count(*) from HEART where CAMP_IDX = #{camp_idx}
 	</select>
 </mapper>

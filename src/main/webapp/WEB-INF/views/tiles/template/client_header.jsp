@@ -62,7 +62,14 @@
                 <li><a onclick="location.href='/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
                 </c:if>
                 <c:if test="${member != null }">
-                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                <c:choose>
+                	<c:when test="${member.accessToken ne null}">
+		                <li><a onclick="location.href='/login/logout_naver?accessToken=${member.accessToken}'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                	</c:when>
+                	<c:otherwise>
+		                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                	</c:otherwise>
+                </c:choose>
                 </c:if>
             </ul>
             <div class="side-user-search contact-form-action">

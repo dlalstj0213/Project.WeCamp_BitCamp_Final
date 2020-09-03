@@ -315,6 +315,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.login(member.getEmail());
 	}
 	
+	//예약 내역 확인 리스트
 	@Override
 	public ModelAndView show_booking_info(String email, Integer nextPage, HttpSession session) {
 		//Member member = (Member)session.getAttribute("member");
@@ -368,6 +369,7 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 	}
 	
+	//찜 목록 리스트 확인
 	@Override
 	public ModelAndView show_heart_list(String email, Integer nextPage, HttpSession session) {
 		HashMap<String, Object> query = new HashMap<String, Object>();
@@ -398,6 +400,7 @@ public class MemberServiceImpl implements MemberService {
 		return response;
 	}
 	
+	//찜 삭제
 	@Override
 	public int delete_heart_list(String email, int camp_idx) {
 		HashMap<String, Object> query = new HashMap<String, Object>();

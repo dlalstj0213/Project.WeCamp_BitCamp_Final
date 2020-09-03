@@ -43,13 +43,26 @@ function owner_info(){
 		//data: {},
 		dataType: "HTML",
 		success: function(responseData){
-			alert(responseData);
+			console.log("ajax communication - success");
+			$('#owner-info').html(responseData);
 			//let test = $('#nav-camping').html(responseData);
 			//test.trigger('create');
 
-			document.getElementById('nav-camping').innerHTML = responseData;
-			//$('#owner-info').html(responseData);
+			owlCarousel();
 		}
+	});
+}
 
+// 올빼미 회전목마(owl-carousel) 기능 재정의 함수
+function owlCarousel(){
+	$('.gallery-carousel').owlCarousel({
+		loop: true,
+		items: 1,
+		nav: true,
+		dots: true,
+		smartSpeed: 700,
+		autoplay: false,
+		dotsData: true,
+		navText: ["<span class=\"la la-chevron-left\"></span>", "<span class=\"la la-chevron-right\"></span>"]
 	});
 }

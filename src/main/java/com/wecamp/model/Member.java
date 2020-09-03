@@ -20,4 +20,5 @@ public class Member {
 	private String approval_status;
 	private String approval_key;
 	private String grade;
+	private String accessToken;
 }

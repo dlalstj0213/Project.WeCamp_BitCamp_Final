@@ -231,13 +231,12 @@ body {
 										<p class="font-size-16 font-weight-medium">카카오톡 아이디가
 											있으신가요?</p>
 										<div class="form-group">
-											<a id="kakao-login-btn"></a> <a onclick="loginWithKakao()">카카오
-												로그인</a>
+											<a id="kakao-login-btn"></a> <a onclick="loginWithKakao()"></a>
 											<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
 											<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
 											<div id="naver_id_login" style="text-align: center">
 												<a href="${naver_url}"><img width="223"
-													src="${pageContext.request.contextPath}/resources/img/naver_Bn_Green.PNG" /></a>
+													src="${pageContext.request.contextPath}/resources/images/Naver_Login_Button_Green.PNG" /></a>
 											</div>
 											<!-- 네이버 여기까지  -->
 										</div>

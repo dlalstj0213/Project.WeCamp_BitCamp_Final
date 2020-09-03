@@ -1,7 +1,6 @@
 package com.wecamp.auth;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
 
 import com.github.scribejava.core.builder.api.DefaultApi20;
 
@@ -19,12 +18,19 @@ public class SnsValue implements SnsUrls{
 	private boolean isNaver;
 	
 	//customize
-	public SnsValue() {
+	public SnsValue(String service) {
+		this.service = service;
 		this.clientId = "xePwNGhnHIDELelwGQ3S";
 		this.clientSecret="IM8uxljwiC";
 		this.redirectUrl="https://localhost:8443/auth/naver/callback";
-		this.api20Instance = NaverApi20.instance();
-		this.profileUrl = NAVER_PROFILE_URL;
+		//this.api20Instance = NaverApi20.instance();
+		//this.profileUrl = NAVER_PROFILE_URL;
+		
+		this.isNaver = StringUtils.equalsIgnoreCase("naver", this.service);
+		if (isNaver) {
+			this.api20Instance = NaverApi20.instance();
+			this.profileUrl = NAVER_PROFILE_URL;
+		} 
 	}
 	
 	public SnsValue(String service, String clientId, String clientSecret, String redirectUrl) {

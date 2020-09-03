@@ -24,7 +24,7 @@ public class IndexController {
 																										0,
 																										"true", 
 																										"te122tt231",
-																										"SILVER")
+																										"SILVER", "")
 				);
 		return "index";
 	}

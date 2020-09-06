@@ -37,12 +37,14 @@ function setSessionAndSubmit(){
 	var checkbbq = document.getElementsByClassName("check-bbq");
 	var isBbqChecked = $(checkbbq).is(":checked");
 	var bbqPrice = 0;
+		
 	if(isBbqChecked){
 		bbqPrice = document.getElementById("bbqPrice").value;
 	} else {
 		bbqPrice = 0;
 	}
 	var bookingInfo = {
+			campIdx : document.getElementById('campIdx').value,
 			campName : campName,
 			address : document.getElementById("address").value,
 			campZone : campZone,
@@ -53,13 +55,14 @@ function setSessionAndSubmit(){
 			//totalPrice : Number(campPrice),
 			checkDate : document.getElementById('checkDate').value
 	};
+	console.log("bookingInfo.camp_idx : "+bookingInfo.campIdx);
 	sessionStorage.setItem("bookingInfo", JSON.stringify(bookingInfo)); //세션저장
 	
 	var sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));
-	console.log(
-			sessionItem
-	);
+	
+	
 	location.href = "../booking/booking.wcc";
+	//location.href = "../booking/booking.wcc?camp_idx="+camp_idx;
 }
 
 

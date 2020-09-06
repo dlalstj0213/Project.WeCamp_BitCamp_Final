@@ -9,17 +9,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Booking {
-	private String imp_uid;
+public class BookingBack {
+	private long booking_idx;
 	private String email;
-	private int camp_idx;
+	private long camp_idx;
 	private int s_no;
 	private long total_fee;
 	private Date bdate;
-	private String udate;
+	private Date udate;
 	private String tel;
 	private String memo;
 	private int p_num;
 	private String review_state;
-	private String name;
+
 }

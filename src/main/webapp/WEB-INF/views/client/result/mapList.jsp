@@ -7,13 +7,13 @@
 	    	<c:forEach items="${vo.list}" var="list">
 	
 		    	<div class="list-grid-container">
-				  <div class="list-campPic" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				  <div class="list-campPic" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				  	<div class="list-campPic-Wrap">
 				  		<img class="campPic" src="/images/camp-img/thumb/${list.fname}">
 				  	</div>
 				  </div>
 				  <div class="list-campInform">
-				    <div class="list-campType" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				    <div class="list-campType" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				    <c:set var="fullAddr" value="${list.address}"/> 
 				   		  <span class="location">${fn:substring(fullAddr, 0, 2)}</span> 지역의 <span class="type">캠핑장</span>
 				   		   <input class="testAddr" type="hidden" value="${list.address}">
@@ -26,18 +26,18 @@
 						</svg>
 					</button>
 				    </div>
-				    <div class="list-campName" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				    <div class="list-campName" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				    	<h3 class="card-title">${list.camp_name}
 	                      <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="안전 캠핑 인증"></i>
 	                   </h3>	
 				    </div>
-				    <div class="list-decoBar" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				    <div class="list-decoBar" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				   		<hr style="border:0; height:1px; width:3rem; background-color:#cacaca;">
 				    </div>
-				    <div class="list-campMoreInform" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				    <div class="list-campMoreInform" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				    	 ${list.intro}
 				    </div>
-				    <div class="list-campRating" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				    <div class="list-campRating" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				 		   <div class="rating-rating">
 	                            <c:forEach begin="1" end="${list.fullStarNum}" step="1">
 									<span class="la la-star"></span>
@@ -51,7 +51,7 @@
 	                             <span class="rating-count">${list.avgStar}</span>
 	                        	</div>
 				    </div>
-				    <div class="list-campCharge" onclick="location.href='../search/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
+				    <div class="list-campCharge" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				    	<span>₩</span><span class="charge">${list.min_fee}</span><span style="font-weight: 300 !important;">/1박</span>
 				    </div>
 				  </div>

@@ -85,16 +85,14 @@
 			<div class="row">
 				<div class="col-lg-12 position-relative">
 					<div class="breadcrumb-content">
-
-						<input type="hidden" name="campName" id="campName"
-							value="${camp.camp_name}"> <input type="hidden"
-							name="address" id="address" value="${camp.address}"> <input
-							type="hidden" name="camp_idx" id="camp_idx" value="1"> <input
-							type="hidden" class="price" name="bbqPrice" id="bbqPrice"
-							value="${camp.bbq_fee}"> <input type="hidden"
-							id="campIdx" value="${camp.camp_idx}"> <input
-							type="hidden" id="nextPage" value="${page.nextPage}"> <input
-							type="hidden" id="pageCount" value="${page.pageCount}">
+						<input type="hidden" name="campName" id="campName" value="${camp.camp_name}">
+						<input type="hidden" name="address" id="address" value="${camp.address}">
+						<input type="hidden" name="camp_idx" id="camp_idx" value="1">
+						<input type="hidden" class="price" name="bbqPrice" id="bbqPrice" value="${camp.bbq_fee}">
+						<input type="hidden" id="campIdx" value="${camp.camp_idx}">
+						<input type="hidden" id="nextPage" value="${page.nextPage}">
+						<input type="hidden" id="pageCount" value="${page.pageCount}">
+						
 						<h2 class="breadcrumb__title">${camp.camp_name}</h2>
 						<p class="breadcrumb__desc">
 							<span class="la la-map-marker"></span> ${camp.address}
@@ -110,7 +108,8 @@
 									
 										<i class="la la-star"></i>
 										<c:if test="${empty reviewVo}">0.0</c:if>
-										${reviewVo.avgStar} 
+										${reviewVo.avgStar}
+										<input type="hidden" id="avgStar" value="${reviewVo.avgStar}">
 									</span> <span><strong>
 									<c:if test="${empty reviewVo}">0</c:if>
 									${page.listCount}</strong> Reviews</span>
@@ -632,7 +631,7 @@
 									<span class="input-number-decrement">-</span>
 								</div>
 								<input id="peopleNum" class="input-number peopleNum"
-									type="number" value="${peopleNum}" min="0" max="0">
+									type="number" value="${peopleNum}" min="0" max="0" readonly="readonly" >
 								<div class="input-group-button">
 									<span class="input-number-increment">+</span>
 								</div>
@@ -641,8 +640,7 @@
 						</div>
 						<!-- end booking-content -->
 						<div class="btn-box text-center padding-top-35px">
-							<div id="booking-event" class="theme-btn d-block"
-								onclick="setSessionAndSubmit()">캠핑장을 선택해주세요</div>
+							<div id="booking-event" class="theme-btn d-block" onclick="setSessionAndSubmit()">캠핑장을 선택해주세요</div>
 						</div>
 						<!-- end btn-box -->
 					</div>

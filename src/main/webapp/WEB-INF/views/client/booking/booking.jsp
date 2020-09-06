@@ -62,7 +62,7 @@
                     </div><!-- billing-title-wrap -->
                     <div class="billing-content">
                         <div class="contact-form-action">
-                            <form method="post">
+                            <!-- <form method="post"> -->
                                 <!-- <div class="row"> -->
                                  <div class="col-lg-6">
                                         <div class="input-box">
@@ -94,12 +94,22 @@
                                             <label class="label-text">예약자 번호</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input id="phone_num" onkeyup="setTel();" class="form-control" type="text" name="text" placeholder="휴대폰 번호를 입력하세요." value="">
+                                                <input id="phone_num" class="form-control" type="text" name="text" placeholder="휴대폰 번호를 입력하세요." value="">
+                                            </div>
+                                        </div>
+                                 </div><!-- end col-lg-6 -->
+                                 <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <label class="label-text">메모</label>
+                                            <div class="form-group">
+                                             <span class="la la-pencil form-icon"></span>
+                                                <textarea class="form-control" id="buyer_memo" onkeyup="setMemo();" rows="5" placeholder="요청사항을 입력해주세요."></textarea>
+                                                <!-- <input id="buyer_memo" class="form-control" type="text" name="text" placeholder="요청사항을 입력해주세요." value="" style="height:30px"> -->
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
                                <!--  </div>end row -->
-                            </form>
+                           <!-- </form> -->
                         </div><!-- end contact-form-action -->
                     </div><!-- end billing-content -->
                      
@@ -125,7 +135,7 @@
                                 <li class="d-flex align-items-center justify-content-between"
                                     style="font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:3px; margin-left:40px;margin-right:20px;">
                                                                                 포인트(P)<input id="point" class="form-control point" type="text" style="width:170px; text-align:right;"  placeholder="0" value=""></li>
-                                <li style="text-align:right; font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
+                                <li style="cursor:pointer; text-align:right; font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
                                                                                  보유 : <span id="my_point">${member.point}</span>P&nbsp;&nbsp;<a id="bt_use_point"type="button" style="text-decoration:underline; color:#ff6b6b"> 전액 사용</a></li>
 								<!-- <li style="cursor:pointer; font-size:15px;color:#ff6b6b;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:600px;margin-right:20px;">
 									 &nbsp;<u>전액 사용</u>
@@ -169,7 +179,7 @@
                         </div><!-- billing-title-wrap -->
                         <div class="payment-method-wrap p-4">
                         
-                        <div class="payment-tab">
+                        <!-- <div class="payment-tab">
                                 <div class="payment-trigger">
                                     <label class="payment-radio">
                                         <input type="radio" name="radio">
@@ -177,13 +187,13 @@
                                          <img src="/images/kakaopay.png"/>
                                        <span>&nbsp; 카카오 페이</span>
                                     </label>
-                                </div><!-- end payment-trigger -->
-                        </div><!-- end payment-tab -->
+                                </div>end payment-trigger
+                        </div>end payment-tab -->
                         
                         <div class="payment-tab">
                                 <div class="payment-trigger">
                                     <label class="payment-radio">
-                                        <input type="radio" name="radio">
+                                        <input type="radio" name="radio" checked="checked">
                                         <span class="checkmark"></span>
                                        <img src="https://img.icons8.com/android/24/000000/bank-card-back-side.png"/>
                                        </span><span> &nbsp;카드</span>
@@ -353,7 +363,7 @@
                     <!--  <a class="card-image-wrap"> -->
                         <div class="card-image">
                             <img id="camp_thumb" src="" class="card__img" alt="">
-                            <span class="badge" style="color:white"> <span class="la la-star"></span>4.6</span>
+                            <span class="badge" style="color:white"> <span class="la la-star"></span><span id="avgStar">4.6</span></span>
                         </div>
                     <!-- </a> -->
                     <div class="card-content-wrap">
@@ -423,11 +433,20 @@
     FORM AREA
 ================================= -->
 
-<form method="post" action="">
-<input id="buyer_email" type="text" value="${member.email}">
-<input id="buyer_name" type="text" value="${member.name}">
-<input id="buyer_tel" type="text" value="">
-<input id="buyer_addr" type="text" value="${member.address}">
+<form name="buyerInformation" method="post" action="./payment.wcc">
+<input id="camp_idx" name="camp_idx" type="text" value="0">
+<input id="imp_uid" name="imp_uid" type="text" value="0">
+<input id="buyer_email" name="email" type="text" value="${member.email}">
+<input id="amount" name="total_fee" type="text" value="0">
+<input id="check_date" name="udate" type="text" value="0">
+<input id="buyer_tel" name="tel" type="text" value="0">
+<input id="memo" name="memo" type="text" value="요청사항이 없습니다.">
+<input id="people_num" name="p_num" type="text" value="0">
+<input id="buyer_name" name="name" type="text" value="${member.name}">
+
+<input id="my_points" name="my_point" type="text" value="1">
+<!--포인트 사용 후 남은 포인트 값-->
+<input id="remaining_point" name="remaining_point" type="text" value="1">
 </form>
 <!-- iamport.payment.js -->
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>

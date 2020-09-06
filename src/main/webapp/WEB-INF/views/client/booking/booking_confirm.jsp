@@ -11,7 +11,28 @@
                     <span class="la la-check-circle-o"></span>
                     <div class="section-heading pt-3">
                         <h2 class="sec__title pt-0 mb-2 before-none">예약이 성공적으로 완료되었습니다!</h2>
-                        <p class="sec__desc">You'll receive a confirmation email at mail@example.com</p>
+                        <!-- <p class="sec__desc">You'll receive a confirmation email at mail@example.com</p> -->
+                        
+                        <%-- 	imp_uid : ${imp_uid} <br/>
+					        email : ${email} <br/>
+					        total_fee : ${total_fee} <br/>
+					        check_date : ${bdate} <br/>
+					        buyer_tel : ${tel} <br/>
+					        memo : ${memo} <br/>
+					        p_num : ${p_num} <br/>
+					        buyer_name : ${name} <br/> --%>
+					        
+					       <%--  imp_uid : ${booking.imp_uid} <br/>
+					        email : ${booking.email} <br/>
+					        total_fee : ${booking.total_fee} <br/>
+					        check_date : ${booking.udate} <br/>
+					        buyer_tel : ${booking.tel} <br/>
+					        memo : ${booking.memo} <br/>
+					        p_num : ${booking.p_num} <br/>
+					        buyer_name : ${booking.name} <br/>
+					        camp_idx : ${booking.camp_idx} <br/>
+					        my_point : ${my_point} <br/>
+					        remaining_point : ${remaining_point} <br/> --%>
                     </div>
                     <div class="btn-box padding-top-30px">
                         <a href="./mypage.com" class="theme-btn">예약 내역</a>

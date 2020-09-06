@@ -8,11 +8,38 @@ var maxPeople;
 var category;
 var campPrice;
 var bbqPrice;
+var peopleNum;
+
+$(document).ready(function(){
+	//avgStar Booking.jsp에 평점 띄우기 위해 localStorage로 넘김
+	avgStar = $('#avgStar').val();
+	console.log(" : "+avgStar+"type of : "+typeof avgStar);
+	if(avgStar===""){
+		avgStar="0.0";
+	}
+	localStorage.setItem("avgStar",avgStar);
+})
+
 function selectSite(index){
 	//예약 버튼 활성화
-	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
+	//document.getElementById('booking-event').style.pointerEvents = 'auto'; 
 	$('#booking-event').empty();
 	$('#booking-event').append("예약하기");
+	
+	
+	//.input-number-decrement, .input-number-increment
+	$("#peopleNum").bind('keyup mouseup',function(){
+		peopleNum = Number(document.getElementById("peopleNum").value);
+		//alert(peopleNum);
+		if(peopleNum>=1){
+			alert("1>>" +peopleNum);
+			//예약 버튼 활성화
+			document.getElementById('booking-event').style.pointerEvents = 'auto'; 
+		}else{
+			document.getElementById('booking-event').style.pointerEvents = 'none';
+		}
+	});
+
 	// == $('#booking-event').text("예약하기");
 	imgs = document.getElementById('img'+index).getAttribute('src');
 	campName = document.getElementById('campName').value;
@@ -57,7 +84,9 @@ function selectSite(index){
 		// peopleNum class 의 속성인 max 를 maxPeople 값으로 변경
 		document.getElementById("peopleNum").setAttribute("max", maxPeople);
 		//peopleNum class 의 value 값이 maxPeople보다 큰 경우 maxPoeple값으로 설정(ex 예약시 선택한 인원수가 6인데 선택한 캠핑장의 수용 가능 인원수가 4라면 6->4로 설정됨)
-		if(Number(document.getElementById("peopleNum").value)>Number(maxPeople)){
+		peopleNum = Number(document.getElementById("peopleNum").value);
+		if(peopleNum>Number(maxPeople)){
+			alert("2>>"+peopleNum);
 			document.getElementById("peopleNum").value = Number(maxPeople);
 		}
 		$("#selectedBody").html(selectedBody_html);

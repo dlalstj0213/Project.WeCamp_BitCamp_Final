@@ -223,7 +223,7 @@ public class CampDetailServiceImpl implements CampDetailService {
 
 		List<Img> ImgDetailList = mapper.selectDetailImg(camp_idx);
 		String campName = camp.getCamp_name();
-		ModelAndView mv = new ModelAndView("client/search/camp_detail/"+WebTitle.TITLE+campName);
+		ModelAndView mv = new ModelAndView("client/camp/camp_detail/"+WebTitle.TITLE+campName);
 
 		List<String> sortNameList = mapper.selectSortName(camp_idx);
 		List<List<Sort>> list= new ArrayList<List<Sort>>();

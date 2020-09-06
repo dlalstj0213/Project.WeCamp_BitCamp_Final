@@ -1,8 +1,9 @@
 const sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));
-
+var use_point_type_num = 0;
+var my_point_type_num = 0;
+var after_payment_my_point = 0;
 
 $(document).ready(function(){
-	
 	
 	var my_point = $("#my_point").text();
 	$("#my_point").text(function() {//1000단위 컴마처리
@@ -11,13 +12,15 @@ $(document).ready(function(){
 	    );
 	});
 	
-	var my_point_type_num = stringNumberToInt(my_point)//컴마 붙은 포인트 숫자형으로 바꿔줌(ex 1,000->1000)
+	my_point_type_num = stringNumberToInt(my_point)//컴마 붙은 포인트 숫자형으로 바꿔줌(ex 1,000->1000)
 	
-	//session 객체 테스트
-	//var sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));
-	var localItem = localStorage.getItem("thumb");
-	console.log(sessionItem);
-	$("#camp_thumb").attr("src", "/images/camp-img/thumb/"+localItem);
+	thumb = localStorage.getItem("thumb");
+	avgStar = localStorage.getItem("avgStar");
+	console.log("sessionItem : "+sessionItem);
+	console.log("thumb : "+thumb);
+	console.log("avgStar : "+avgStar);
+	$("#camp_thumb").attr("src", "/images/camp-img/thumb/"+thumb);
+	$("#avgStar").text(avgStar);
 	$("#campName").append(sessionItem.campName);
 	$("#campAddress").append(sessionItem.address);
 	dateTemp = sessionItem.checkDate.split("-");
@@ -29,8 +32,8 @@ $(document).ready(function(){
     
     checkIn = new Date(checkInTemp[0], checkInTemp[1], checkInTemp[2]);
     checkOut = new Date(checkOutTemp[0], checkOutTemp[1], checkOutTemp[2]);
-    var night = (checkOut-checkIn)/(24 * 3600 * 1000);
-    var days = night+1;
+    night = (checkOut-checkIn)/(24 * 3600 * 1000);
+    days = night+1;
     $(".booking_date").append(sessionItem.checkDate+" ("+night+"박 "+days+"일)");
 	
 	$(".peopleNum").append(sessionItem.peopleNum+"명");
@@ -44,8 +47,6 @@ $(document).ready(function(){
 	});
 
     var camp_fee_type_num = stringNumberToInt($('.camp_fee').eq(0).text());
-    
-    
     
     $(".bbq_fee").append(sessionItem.bbqPrice);
 
@@ -69,7 +70,7 @@ $(document).ready(function(){
 		
 		while (rgx2.test(num)) num = num.replace(rgx2, '$1' + ',' + '$2');
 		this.value = num;
-		var use_point_type_num = stringNumberToInt(this.value);
+		use_point_type_num = stringNumberToInt(this.value);
 		if(use_point_type_num>my_point_type_num&&my_point_type_num>=camp_total_type_num){//입력한 포인트 값이 보유한 포인트값보다 크거나 같고, 입력한 포인트가 총액보다 클 때 포인트 값을 결제할 총 액으로 설정
 			this.value =camp_total_type_num.format();
 			$("#use_point").text(camp_total_type_num.format());
@@ -97,33 +98,38 @@ $(document).ready(function(){
 		}
 		//$("#my_point").text((my_point_type_num-use_point_type_num).format());
 		//console.log("my_point_type_num : "+my_point_type_num+", use_point_type_num : "+use_point_type_num+", point : "+$("#my_point").text());
+		
+		after_payment_my_point = my_point_type_num-use_point_type_num;
+		$("#my_point").text(after_payment_my_point.format());
+		
 	});
 	
 	//포인트 전액 사용 버튼 눌렀을 시 포인트 값 띄우기 and 포인트 값 뺀 총액 띄우기
 	$("#bt_use_point").click(function(){
 		$("#use_point").text(my_point);
-		var my_point_type_num = stringNumberToInt(my_point);
+		my_point_type_num = stringNumberToInt(my_point);
 		$("#point").val(my_point_type_num);
 		var camp_total_type_num = (camp_fee_type_num)+(bbq_fee_type_num)+(service_fee_type_num);
 		
 		if(my_point_type_num>=camp_total_type_num){//전액 포인트 값이 총 결제 액보다 크거나 같을 때 포인트 값을 총 결제 액으로 설정해주기 and 총결제 액 0원으로 설정
 			this.value=camp_total_type_num;
-			$("#point").val(camp_total_type_num);
+			$("#point").val(camp_total_type_num.format());
 			$("#use_point").text(this.value.format());
 			var total = 0;
 		    $(".camp_total").text(total);
 		    console.log("포인트 전액 사용 버튼 눌럿을 때(포인트>총액) : "+((my_point_type_num)-(camp_total_type_num)));
-		    console.log("1/포인트 전액 사용 버튼 눌럿을 때(포인트>총액) : "+my_point_type_num+"   "+camp_total_type_num);
+		    console.log("1/포인트 전액 사용 버튼 눌럿을 때(포인트>총액) : "+my_point_type_num+" > "+camp_total_type_num);
+		    after_payment_my_point = my_point_type_num-camp_total_type_num;
 		}else{
 			var use_point =my_point_type_num;
 			var total = (camp_total_type_num)-(use_point);
 			var camp_total_type_num = total.format();
 		    $(".camp_total").text(camp_total_type_num);
 		    console.log("포인트 전액 사용 버튼 눌럿을 때(포인트<총액) : "+(my_point_type_num-use_point));
-		    console.log("2/포인트 전액 사용 버튼 눌럿을 때(포인트<총액) : "+my_point_type_num+"   "+use_point);
+		    console.log("2/포인트 전액 사용 버튼 눌럿을 때(포인트<총액) : "+my_point_type_num+" > "+use_point);
+		    after_payment_my_point = my_point_type_num-use_point;
 		}
-		
-		
+		$("#my_point").text(after_payment_my_point.format());
 	});
     
     //전체 동의 클릭 시 전체 선택되는 function
@@ -230,10 +236,14 @@ $(document).ready(function(){
 
 
     var phoneNum = document.getElementById('phone_num');
-
+    
     phoneNum.onkeyup = function(){
-      console.log(this.value);
       this.value = autoHypenPhone( this.value ) ;  
+    		let buyer_tel = document.getElementById("phone_num").value;
+    		document.getElementById("buyer_tel").value=buyer_tel;
+    		console.log(this.value);
     }
     
+    //사용할 포인트를 입력하지 않았을 경우 원래의 포인트로 설정
+    after_payment_my_point = my_point_type_num;
 })

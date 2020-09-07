@@ -91,7 +91,7 @@
         	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
         	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">
         	<input type="hidden" id="peopleNum" name="peopleNum" value="">
-        </form>                           
+        </form>                          
         
     </div><!-- end container -->
     <div class="hero-svg-content text-center">
@@ -128,7 +128,7 @@
                 <div class="card-carousel mt-5">
                 <c:forEach var="unit" items="${bestCamp}">
                     <div class="card-item">
-                        <a href="search/camp_detail.wcc?camp_idx=${unit.camp_idx}" class="card-image-wrap">
+                        <a href="camp/camp_detail.wcc?camp_idx=${unit.camp_idx}" class="card-image-wrap">
                             <div class="card-image">
                                 <img src="/images/camp-img/thumb/${unit.fname}" class="card__img" alt="">
                                 <span class="badge">운영중</span>
@@ -139,7 +139,7 @@
                         </a>
                         <div class="card-content-wrap">
                             <div class="card-content">
-                                <a href="search/camp_detail.wcc?camp_idx=${unit.camp_idx}">
+                                <a href="camp/camp_detail.wcc?camp_idx=${unit.camp_idx}">
                                     <h5 class="card-meta"><span class="la la-home"></span> 캠핑장</h5>
                                     <h4 class="card-title">
                                        ${unit.camp_name} <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Claimed"></i>

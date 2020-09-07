@@ -17,10 +17,6 @@
    	   <typeAlias alias="Member" type="com.wecamp.model.Member"/>  	
    	   <typeAlias alias="Owner" type="com.wecamp.model.Owner"/>  	
    	   <typeAlias alias="Review" type="com.wecamp.model.Review"/>  	
-   	   <typeAlias alias="Sort" type="com.wecamp.model.Sort"/>  	
+   	   <typeAlias alias="Sort" type="com.wecamp.model.Sort"/>
    </typeAliases>
-   
-   <mappers>
-   		 <mapper resource="com/wecamp/mapper/CampDetailMapper.xml"/>
-   </mappers>
 </configuration>

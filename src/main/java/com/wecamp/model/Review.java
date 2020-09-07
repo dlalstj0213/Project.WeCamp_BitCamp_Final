@@ -1,7 +1,6 @@
 package com.wecamp.model;
 
 import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +15,12 @@ public class Review {
 	private String nickname;
 	private String content;
 	private Date wdate;
-	private int star; 
+	private int star;
+	//review average 사용한 컬럼
+	private float avgStar;
+	private int fullStarNum;
+	private boolean isHalfStarExist;
+	private int emptyStarNum;
+	//리뷰 며칠전 띄우기위한 컬럼
+	private long diffDays;
 }

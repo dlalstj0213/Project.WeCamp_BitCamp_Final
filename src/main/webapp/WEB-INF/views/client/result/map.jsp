@@ -270,8 +270,6 @@ $(".list-grid-container").hover(function(){
 	
 })
 
-
-
 </script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=76f485124ece8a8f6ef804e2e561062d&libraries=services"></script>
@@ -332,7 +330,6 @@ $(".list-grid-container").hover(function(){
 </script>	
 
 
-
 <script>
 
 function gotoCamp(e){
@@ -340,7 +337,7 @@ function gotoCamp(e){
 	const strList = buttonId.split('-');
 	const camp_idx = strList[1];
 	alert("bye");
-  	location.href = "../search/camp_detail.wcc?camp_idx="+camp_idx 
+  	location.href = "../camp/camp_detail.wcc?camp_idx="+camp_idx 
 }
 function closeInfo(e){
 	//만들고싶어용...
@@ -436,7 +433,6 @@ function showInfo(e){
 							            content: content,
 							            clickable: true
 							        });
-							    
 							      
 							  	 /*  let infowindow = new daum.maps.InfoWindow({
 							          map: map,  
@@ -444,8 +440,6 @@ function showInfo(e){
 							  		  position: coords,
 							  		  removable: true
 							        });      */
-							        
-							        
 							        
 		  				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		  				        var markerPosition = customOverlay.getPosition(); 
@@ -473,11 +467,6 @@ function showInfo(e){
 	})
 
 </script>				    
-
-
-
-
-
 
 <!--컴마 표시 -->
 <script>
@@ -617,7 +606,6 @@ function showInfo(e){
 <!-- for heart JS -->
 <script src="/js/heart.js"></script>
 
-
 <!-- Template JS Files -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery-ui.js"></script>
@@ -638,6 +626,3 @@ function showInfo(e){
 <script src="/js/smooth-scrolling.js"></script>
 <script src="/js/main.js"></script>
 </body>
-
-			
-

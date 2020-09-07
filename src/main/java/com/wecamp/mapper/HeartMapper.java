@@ -6,6 +6,7 @@ import java.util.List;
 import com.wecamp.model.Heart;
 import com.wecamp.model.HeartAndCampAndImg;
 
+
 public interface HeartMapper {
 	
 	int selectHeart(int camp_idx);

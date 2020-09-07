@@ -78,7 +78,4 @@ public class HeartController {
 			ie.printStackTrace();
 		}
 	}
-	
-	// 위의 3개 메서드는 ajax 통신에 적합합니다
-
 }

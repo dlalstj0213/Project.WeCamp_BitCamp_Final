@@ -18,4 +18,19 @@ public class StarUtil {
 		float result = 5.0f - avgStar;
 		return (int)result;
 	}
+	
+	public int getAvgStarEach(int star, int totalStar){
+		float statF = star;
+		float totalStarF = totalStar;
+		return (int)((statF/totalStarF)*100);
+	}
+	
+	public static void main(String[] args) {
+		StarUtil u = new StarUtil();
+		System.out.println(u.getAvgStarEach(10, 50)+"%");
+		System.out.println(u.getAvgStarEach(20, 50)+"%");
+		System.out.println(u.getAvgStarEach(10, 50)+"%");
+		System.out.println(u.getAvgStarEach(5, 50)+"%");
+		System.out.println(u.getAvgStarEach(5, 50)+"%");
+	}
 }

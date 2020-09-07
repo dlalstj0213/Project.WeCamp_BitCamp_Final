@@ -44,7 +44,7 @@
 
         <a href="../search/camp_detail.wcc?camp_idx=${list.camp_idx}" class="card-image-wrap">
             <div class="card-image">
-                <img src="/images/camp-img/thumb/${list.ofname}" class="card__img" style="height:250px;">
+                <img src="/images/camp-img/thumb/${list.fname}" class="card__img" style="height:250px;">
             </div>
         </a>
 

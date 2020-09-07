@@ -9,4 +9,40 @@
 		insert into REVIEW values(review_seq.nextval, #{camp_idx}, #{email}, #{nickname}, #{content}, SYSDATE, #{star})
 	</insert>	
 	
+	<!-- 회원 별 리뷰 검색 -->
+	<select id="selectReviewForMember" resultType="Review" parameterType="String">
+		select * from REVIEW where EMAIL=#{email}
+	</select>
+	
+	<!-- 회원 별 리뷰 삭제 -->
+	<delete id="deleteReviewForMember" parameterType="Review">
+		delete * from REVIEW where EMAIL=#{email} and REVIEW_IDX=#{review_idx}
+	</delete>	
+
+	<!-- 회원 별 리뷰 수정 -->
+	<update id="updateReviewForMember" parameterType="Review">
+		update REVIEW set CONTENT=#{content}, STAR=#{star} where REVIEW_IDX=#{review_idx}
+	</update>	
+	
+	<!-- 캠핑장 리뷰 띄우기-->
+	<select id="selectReview" parameterType="hashmap" resultType="Review">
+		<![CDATA[
+		select * from (
+		select ROWNUM rnum, aa.* from (
+		select * from REVIEW where CAMP_IDX=#{camp_idx} order by REVIEW_IDX desc
+		)aa) 
+		where rnum>#{page.startRow} and rnum<=#{page.endRow}
+		]]>
+	</select>
+	
+	<!--리뷰 개수 구하기-->
+	<select id="selectCountReview" parameterType="int" resultType="int">
+		select count(REVIEW_IDX) from REVIEW where CAMP_IDX=#{camp_idx}
+	</select>
+	
+	<!--리뷰 별점 평균 -->
+	<select id="selectStarAvg" parameterType="int" resultType="Float">
+		select AVG(STAR) from REVIEW where CAMP_IDX=#{camp_idx}
+	</select> 
+	
 </mapper>	

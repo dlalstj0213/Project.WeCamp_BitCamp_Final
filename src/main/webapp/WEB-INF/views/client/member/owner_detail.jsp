@@ -18,9 +18,9 @@
 					<form method="post">
 						<div class="gallery-carousel padding-top-35px padding-bottom-40px">
 					<c:forEach items="${vo.img_list}" var="img">
-							<div data-dot="<img src='/images/camp-img/detail/${img.ofname}' style='height:80px'>"
+							<div data-dot="<img src='/images/camp-img/detail/${img.fname}' style='height:80px'>"
 								class="gallery-item">
-								<img src="/images/camp-img/detail/${img.ofname}" alt="gallery-image" style='height:450px'>
+								<img src="/images/camp-img/detail/${img.fname}" alt="gallery-image" style='height:450px'>
 							</div>
 						</c:forEach>
 						</div>
@@ -95,7 +95,7 @@
 									value="${sort.sort_name}" readonly>
 							</div>
 						</div>
-						<img src="/images/camp-img/sort/${sort.ofname}" alt="gallery-image" style='height:450px; width:707px; margin-bottom:20px'>
+						<img src="/images/camp-img/sort/${sort.fname}" alt="gallery-image" style='height:450px; width:707px; margin-bottom:20px'>
 						<!-- end gallery-carousel -->
 						<div class="input-box">
 							<label class="label-text">구역 이름 </label>

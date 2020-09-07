@@ -1,5 +1,8 @@
 package com.wecamp.mapper;
 
+import java.util.HashMap;
+import java.util.List;
+
 import com.wecamp.model.Review;
 
 //mapper.xml의 아이디와 메소드 이름이 똑같아야 함
@@ -11,4 +14,7 @@ public interface ReviewMapper {
 	void updateReviewForMember(Review review);
 	boolean insert_review(Review review);
 	
+	List<Review> selectReview(HashMap<String, Object> query);
+	int selectCountReview(int camp_idx);
+	float selectStarAvg(int camp_idx);
 }

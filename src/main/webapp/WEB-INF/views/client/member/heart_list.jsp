@@ -12,7 +12,7 @@
     <div class="card-item">
         <a href="../search/camp_detail.wcc?camp_idx=${hlist.camp_idx}" class="card-image-wrap">
             <div class="card-image">
-                <img src="/images/camp-img/thumb/${hlist.ofname}" class="card__img" style="height:250px">
+                <img src="/images/camp-img/thumb/${hlist.fname}" class="card__img" style="height:250px">
             </div>
         </a>
         <div class="card-content-wrap">
@@ -56,7 +56,7 @@
                                 <div class="modal-body" align='center'>
                                     <a href="../search/camp_detail.wcc?camp_idx=${hlist.camp_idx}" class="card-image-wrap">
                                         <div class="card-image">
-                                            <img src="/images/camp-img/thumb/${hlist.ofname}" class="card__img" alt="">
+                                            <img src="/images/camp-img/thumb/${hlist.fname}" class="card__img" alt="">
                                         </div>
                                     </a>
                                     <div class="card-content">

@@ -64,5 +64,4 @@ public class HeartServiceImpl implements HeartService {
 			return 0;
 		}
 	}
-	
 }

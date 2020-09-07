@@ -4,8 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wecamp.mapper.HeartMapper">
 
-
-
 	<select id="select_heart"
 		resultType="com.wecamp.model.HeartAndCampAndImg"
 		parameterType="hashmap">

@@ -11,6 +11,8 @@
 
   </style>
 
+
+
 <!-- ================================
     START HERO-WRAPPER AREA
 ================================= -->
@@ -35,9 +37,9 @@
                     <div class="main-search-input-item">
                         <div class="contact-form-action">
                             <form action="#">
-                                <div class="main-search form-group mb-0">
+                                <div class="main-search form-group mb-0" ng-app="app" ng-controller="appCtrl">
                                     <span class="la la-search form-icon"></span>
-                                    <input id="search" class="form-control" type="text" placeholder="위치">
+                                    <input id="search" class="form-control" type="text" placeholder="위치" ng-model="selected" uib-typeahead="data as data.name for data in myData" autocomplete="off">
                                 </div>
                             </form>
                         </div>
@@ -83,13 +85,13 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         
-        <!-- request 할 데이터 -->
+		<!-- request 할 데이터 -->
         <form id="searched-data" action="search/search.wcc" method="get">
         	<input type="hidden" id="searched-place" name="searchPlace" value="">
         	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
         	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">
-        	<input type="hidden" id="peopleNum" name="peopleNum" value="1">
-        </form>
+        	<input type="hidden" id="peopleNum" name="peopleNum" value="">
+        </form>                           
         
     </div><!-- end container -->
     <div class="hero-svg-content text-center">
@@ -390,6 +392,10 @@
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
+
+
+
+
 <!-- ================================
        START INSTAGRAM AREA
 ================================= -->

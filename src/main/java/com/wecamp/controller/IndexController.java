@@ -30,4 +30,9 @@ public class IndexController {
 		return mv;
 	}
 	
+	@RequestMapping("/404code")
+	private String error() {
+		return "404code";
+	}
+	
 }

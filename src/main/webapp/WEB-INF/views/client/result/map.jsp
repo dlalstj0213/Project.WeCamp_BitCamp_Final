@@ -607,7 +607,7 @@ function showInfo(e){
 <script>
 	function clickCamp(camp_idx, checkIn, checkOut, peopleNum, thumb){
 		localStorage.setItem('thumb', thumb);
-		location.href="../search/camp_detail.wcc?camp_idx="+camp_idx+"&checkIn="+checkIn+"&checkOut="+checkOut+"&peopleNum="+peopleNum;
+		location.href="../camp/camp_detail.wcc?camp_idx="+camp_idx+"&checkIn="+checkIn+"&checkOut="+checkOut+"&peopleNum="+peopleNum;
 	}
 </script>
 <!-- for search JS -->

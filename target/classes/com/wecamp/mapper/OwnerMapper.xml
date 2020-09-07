@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wecamp.mapper.OwnerMapper"><!-- route of mapping to java -->
+	<insert id="insertInquiry" parameterType="hashmap">
+		insert into INQUIRY values(INQUIRY_SEQ.nextval, #{query.email}, 1, #{query.title}, #{query.owner_num}, #{query.content}, SYSDATE, #{query.com_name}, #{query.com_addr}, #{query.com_tel})
+	</insert>
+	
+	<insert id="insertCamp" parameterType="Camp">
+		<selectKey keyProperty="camp_idx" resultType="int" order="BEFORE">
+			select CAMP_SEQ.nextval from dual
+		</selectKey>
+		insert into CAMP values(#{camp_idx}, #{camp_name}, #{address}, #{camp_tel}, #{site_num}, #{full_num}, 
+				#{parking}, #{conv}, #{sec_conv}, #{etc_conv}, #{agency_tel}, #{agency_name}, 0, #{intro}, #{bbq_fee})
+	</insert>
+	
+	<insert id="insertImgs" parameterType="hashmap">
+		<selectKey keyProperty="img_idx" resultType="int" order="BEFORE">
+			select nvl(max(IMG_IDX), 0)+1 from IMG
+		</selectKey>
+		<foreach collection="list" item="img" index="index" open="insert all" close="select * from dual">
+			into IMG values(#{img_idx}+#{index}, #{camp.camp_idx}, #{img.fname}, #{img.ofname}, #{img.fsize}, #{img.division})
+		</foreach>
+	</insert>
+	
+	<insert id="insertSorts" parameterType="hashmap">
+		<selectKey keyProperty="sort_idx" resultType="int" order="BEFORE">
+			select nvl(max(SORT_IDX), 0)+1 from SORT
+		</selectKey>
+		<foreach collection="list" item="sort" index="index" open="insert all" close="select * from dual">
+			into SORT values(#{sort_idx}+#{index}, #{camp.camp_idx}, #{sort.sort_name}, #{sort.site_name}, #{sort.people_num}, 
+			#{sort.site_fee}, #{sort.fname}, #{sort.ofname})
+		</foreach>
+	</insert>
+	
+	<update id="updateOwnerCampIdx" parameterType="hashmap">
+		update OWNER set CAMP_IDX = #{camp.camp_idx} where EMAIL = #{email}
+	</update>
+</mapper>

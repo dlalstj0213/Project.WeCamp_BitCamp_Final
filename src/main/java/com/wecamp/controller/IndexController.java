@@ -15,17 +15,17 @@ import lombok.extern.log4j.Log4j;
 public class IndexController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	private String index(HttpSession session) {
-		session.setAttribute("member", new Member("test@gmail.com",
-																										2, 
-																										"testName", 
-																										"testNick",
-																										null,
-																										null,
-																										0,
-																										"true", 
-																										"te122tt231",
-																										"SILVER", "")
-				);
+//		session.setAttribute("member", new Member("test@gmail.com",
+//																										1, 
+//																										"testName", 
+//																										"testNick",
+//																										null,
+//																										null,
+//																										0,
+//																										"true", 
+//																										"te122tt231",
+//																										"SILVER", "")
+//				);
 		return "index";
 	}
 }

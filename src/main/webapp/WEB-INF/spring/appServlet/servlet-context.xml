@@ -55,25 +55,8 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-
-	<!-- oauth2 Naver Login beans -->
-	<beans:bean id="naverClientID" class="java.lang.String">
-		<beans:constructor-arg value="xePwNGhnHIDELelwGQ3S"/>
-	</beans:bean>
-	<beans:bean id="naverClientSecret" class="java.lang.String">
-		<beans:constructor-arg value="IM8uxljwiC"/>
-	</beans:bean>
-	<beans:bean id="naverRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="https://localhost:8443/auth/naver/callback"/>
-	</beans:bean>
-	
-	<beans:bean id="naverSns" class="com.wecamp.auth.SnsValue">
-		<beans:constructor-arg value="naver" />
-		<beans:constructor-arg ref="naverClientID" />
-		<beans:constructor-arg ref="naverClientSecret" />
-		<beans:constructor-arg ref="naverRedirectUrl" />
-	</beans:bean>
 	
 	<context:component-scan base-package="com.wecamp.controller" />
+	
 	
 </beans:beans>

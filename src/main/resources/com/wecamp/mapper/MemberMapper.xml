@@ -42,6 +42,11 @@
 	<!-- 회원 탈퇴 -->
 	<delete id="delete_member" parameterType="Member">
 		delete from MEMBER where email = #{email} and pwd = #{pwd}
-	</delete> 
+	</delete>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="update_member" parameterType="member">
+		update MEMBER set name = #{name}, nickname = #{nickname} where email = #{email}
+	</update>
 	
 </mapper>

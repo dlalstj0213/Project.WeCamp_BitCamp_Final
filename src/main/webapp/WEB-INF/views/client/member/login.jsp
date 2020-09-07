@@ -12,6 +12,7 @@
 	charset="utf-8"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../vendor/js/common/naveridlogin_js_sdk_2.0.0.js"></script>
 <script>
 	$(function(){
 		$("#find-pwd-btn").click(function(){
@@ -228,20 +229,14 @@ body {
 							<form method="post" action="login_user.wcc">
 								<div class="row">
 									<div class="col text-center">
-										<p class="font-size-16 font-weight-medium">카카오톡 아이디가
+										<p class="font-size-16 font-weight-medium">네이버 / 카카오 아이디가
 											있으신가요?</p>
-										<div class="form-group">
-											<a id="kakao-login-btn"></a> <a onclick="loginWithKakao()"></a>
-											<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
-											<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-											<div id="naver_id_login" style="text-align: center">
-												<a href="${naver_url}"><img width="223"
-													src="${pageContext.request.contextPath}/resources/images/Naver_Login_Button_Green.PNG" /></a>
-											</div>
-											<!-- 네이버 여기까지  -->
+										
+										<div style="text-align:center">
+											<a href="${naver_url}"><img width="223" src="${pageContext.request.contextPath}/resources/images/Naver_Login_Button_White.PNG"></a>
 										</div>
-										<a href="http://developers.kakao.com/logout">로그아웃</a>
 									</div>
+									
 									<div class="col-lg-12">
 										<div class="account-assist mt-4 mb-4 text-center">
 											<p class="account__desc">or</p>
@@ -356,66 +351,15 @@ body {
 			</div>
 			<!-- end col-lg-6 -->
 		</div>
+
 		
 												 
 		<!-- end row -->
 	<!-- end container -->
 </section>
+
 <!-- end form-shared -->
 <!-- ================================
        START FORM AREA
 ================================= -->
 
-<script type='text/javascript'>
-	Kakao.init('02c2b06d1b71afd6fbaca5c4c4c255b4'); //아까 카카오개발자홈페이지에서 발급받은 자바스크립트 키를 입력함
-	//카카오 로그인 버튼을 생성합니다. 
-	Kakao.Auth.createLoginButton({
-		container : '#kakao-login-btn',
-		success : function(authObj) {
-			Kakao.API.request({
-				url : '/v2/user/me',
-				success : function(res) {
-					alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
-					alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
-					console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
-					console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
-					console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
-					// res.properties.nickname으로도 접근 가능 )
-					console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-				}
-			})
-		},
-		fail : function(error) {
-			alert(JSON.stringify(error));
-		}
-	});
-
-	function loginWithKakao() {
-		// 로그인 창을 띄웁니다.
-		Kakao.Auth.loginForm({
-			success : function(authObj) {
-				alert(JSON.stringify(authObj));
-				// 로그인 성공시, API를 호출합니다.
-				Kakao.API.request({
-					url : '/v2/user/me',
-					success : function(res) {
-						console.log(JSON.stringify(res));
-						alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
-						console.log(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
-						console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
-						console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
-						//console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
-						// res.properties.nickname으로도 접근 가능 )
-						console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-					},
-					fail : function(error) {
-						alert(JSON.stringify(error));
-					}
-				});
-			},
-			fail : function(err) {
-				alert(JSON.stringify(err));
-			}
-		});
-	};
-</script>

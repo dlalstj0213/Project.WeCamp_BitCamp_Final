@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//파일 사이즈랑 가격 관련된 것만 long type
 public class CampAndImg {
 	//camp table 컬럼
 	private int camp_idx;

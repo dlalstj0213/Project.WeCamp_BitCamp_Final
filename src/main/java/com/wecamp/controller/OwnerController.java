@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,6 +65,13 @@ public class OwnerController {
 		log.info("#> 캠핑장 데이터 : "+model.getCamp());
 		
 		ModelAndView response = ownerService.addCampService(model, session);
+		return response;
+	}
+	
+	@GetMapping("owner_detail")
+	private ModelAndView owner_detail(HttpSession session) {
+		ModelAndView response = ownerService.get_owner_full_detail(session);
+		response.setViewName("client/member/owner_detail");
 		return response;
 	}
 }

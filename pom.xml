@@ -274,6 +274,7 @@
 			<artifactId>scribejava-core</artifactId>
 			<version>5.6.0</version>
 		</dependency>
+		
 		<!-- naver ? -->
 		<!-- 
 		<dependency>
@@ -281,13 +282,14 @@
 			<artifactId>scribejava-apis</artifactId>
 			<version>5.6.0</version>
 		</dependency> -->
-		<!-- JSON PARSING -->
-		<dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1</version>
-        </dependency>
 		
+		<!-- 제이슨 파싱 -->
+		<dependency>
+		<groupId>com.googlecode.json-simple</groupId>
+		<artifactId>json-simple</artifactId>
+		<version>1.1.1</version>
+		</dependency>
+
 		<!-- 네이버 이메일 SMTP -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

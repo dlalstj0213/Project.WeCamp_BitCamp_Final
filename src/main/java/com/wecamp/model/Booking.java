@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Booking {
-	private long booking_idx;
+	private int booking_idx;
 	private String email;
-	private long camp_idx;
+	private int camp_idx;
 	private int s_no;
 	private long total_fee;
 	private Date bdate;

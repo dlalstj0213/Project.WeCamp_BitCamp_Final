@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Owner {
 	private String email;
-	private long camp_idx;
+	private int camp_idx;
 	private String name;
 	private String owner_num;
 	private String com_name;

@@ -51,9 +51,9 @@
             <ul class="side-menu-ul">
             	<c:if test="${member != null}">
                 <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
-                <li><a href="dashboard.html"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
-                <li><a href="dashboard.html"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
-                <li><a href="dashboard.html"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
+                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
                 </c:if>
                 <li><div class="dropdown-divider"></div></li>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
@@ -62,7 +62,14 @@
                 <li><a onclick="location.href='/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
                 </c:if>
                 <c:if test="${member != null }">
-                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                <c:choose>
+                	<c:when test="${member.accessToken ne null}">
+		                <li><a onclick="location.href='/login/logout_naver?accessToken=${member.accessToken}'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                	</c:when>
+                	<c:otherwise>
+		                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                	</c:otherwise>
+                </c:choose>
                 </c:if>
             </ul>
             <div class="side-user-search contact-form-action">

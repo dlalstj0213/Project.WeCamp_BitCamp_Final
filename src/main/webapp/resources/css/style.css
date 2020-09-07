@@ -4236,7 +4236,6 @@ body {
     .card-image .badge-toggle:hover {
       background-color: #ff6b6b; }
   .card-image:after {
-    position: absolute;
     content: '';
     top: 0;
     left: 0;
@@ -7263,6 +7262,7 @@ body {
 /*====================================================
     single-listing-area
  ====================================================*/
+ /* 
 .gallery-carousel .gallery-item {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -7359,7 +7359,7 @@ body {
   transform: translateY(-50%) scale(1);
   opacity: 1;
   visibility: visible; }
-
+ */
 .feature-listing .list-items {
   column-count: 3; }
   @media only screen and (min-width: 480px) and (max-width: 767px) {

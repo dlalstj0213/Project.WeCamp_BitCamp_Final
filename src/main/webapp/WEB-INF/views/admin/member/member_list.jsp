@@ -10,7 +10,6 @@
       <th scope="col">이름</th>
       <!-- <th scope="col">닉네임</th> -->
       <th scope="col">이메일</th>
-      <th scope="col">생년월일</th>
       <th scope="col">포인트</th>
       <th scope="col">등급</th>
       <th scope="col">권한</th>
@@ -23,7 +22,6 @@
 		  <th scope="row">${member.rnum}</th>
 	      <td>${member.name}</td>
 	      <td>${member.email}</td>
-	      <td>${member.birth}</td>
 	      <td>${member.point}</td>
 	      <td>${member.grade}</td>
 	      <td>${member.a_name}</td>
@@ -34,7 +32,6 @@
 		  <th scope="row">${member.rnum}</th>
 	      <td>${member.name}</td>
 	      <td>${member.email}</td>
-	      <td>${member.birth}</td>
 	      <td>${member.point}</td>
 	      <td>${member.grade}</td>
 	      <td>${member.a_name}</td>

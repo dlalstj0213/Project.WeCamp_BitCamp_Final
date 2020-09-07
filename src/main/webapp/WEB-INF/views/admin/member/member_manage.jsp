@@ -59,7 +59,6 @@
 									    <select class="custom-select" id="category-search">
 										    <option value="name" selected>이름</option>
 										    <option value="email">이메일</option>
-										    <option value="birth">생년월일</option>
 										    <option value="grade">등급</option>
 										    <option value="authority">권한</option>
 										  </select>

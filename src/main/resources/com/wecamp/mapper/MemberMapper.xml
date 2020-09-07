@@ -10,9 +10,9 @@
 
 	<!-- 회원가입 -->
 	<insert id="signUp" parameterType="Member">
-		insert into MEMBER (email, name, nickname, pwd, birth, approval_status, approval_key)
+		insert into MEMBER (email, name, nickname, pwd, approval_status, approval_key)
 		values(#{email}, #{name}, #{nickname}, #{pwd},
-		#{birth}, 'false', #{approval_key})
+		'false', #{approval_key})
 	</insert>
 
 

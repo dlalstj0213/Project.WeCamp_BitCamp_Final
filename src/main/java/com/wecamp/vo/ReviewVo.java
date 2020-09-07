@@ -1,4 +1,4 @@
-package com.wecamp.model;
+package com.wecamp.vo;
 
 import java.sql.Date;
 import java.util.List;

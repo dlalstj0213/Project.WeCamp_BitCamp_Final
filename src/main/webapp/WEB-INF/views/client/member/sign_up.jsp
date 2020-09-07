@@ -357,9 +357,10 @@ body {
 									</div>
 								</div>
 								<!-- end col-lg-12 -->
+								<%-- 
 								<div class="col-lg-12">
 									<div class="input-box">
-
+												
 										<label class="label-text">생년월일</label>
 										<div class="form-group">
 											<span class="la la-user form-icon" style="float: right"></span>
@@ -391,7 +392,7 @@ body {
 									</div>
 								</div>
 								<!-- end col-lg-12 -->
-
+								 --%>
 								<div class="col-lg-12">
 									<div class="form-group">
 										<div class="custom-checkbox d-block mr-0">

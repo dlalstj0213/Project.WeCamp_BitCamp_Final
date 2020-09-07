@@ -476,14 +476,16 @@ $(function(){
                                                             <input class="form-control" type="text" name="text" placeholder="여자 " readonly>
                                                         </div>
                                                     </div> -->
+                                                    <%-- 
 													<div class="input-box">
 														<label class="label-text">생년월일 </label>
 														<div class="form-group">
 
-															<input class="form-control" type="text" name=""
-																value="${member.birth }" readonly>
+															<input class="form-control" type="text" name="birth"
+																value="" readonly>
 														</div>
 													</div>
+													 --%>
 													<div class="input-box">
 														<label class="label-text">이메일 주소 </label>
 														<div class="form-group">

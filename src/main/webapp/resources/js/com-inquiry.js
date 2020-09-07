@@ -7,10 +7,13 @@ function submit(){
 function setInputs(){
 	document.getElementById("email").value = document.getElementById("text1").value;
 	document.getElementById("owner_num").value = document.getElementById("text2").value;
-	document.getElementById("title").value = document.getElementById("text3").value;
-	document.getElementById("content").value = document.getElementById("text4").value;
+	document.getElementById("com_addr").value = document.getElementById("sample5_address").value;
+	document.getElementById("com_name").value = document.getElementById("text4").value;
+	document.getElementById("com_tel").value = document.getElementById("text5").value;
+	document.getElementById("title").value = document.getElementById("text6").value;
+	document.getElementById("content").value = document.getElementById("text7").value;
 	
-	if(document.getElementById("owner_num").value == ""){
+	if(document.getElementById("owner_num").value == "" || document.getElementById("owner_num").value.length != 12){
 		input_empty_msg("owner_num");
 		 return;
 	}
@@ -21,6 +24,18 @@ function setInputs(){
 	if(document.getElementById("content").value == ""){
 		input_empty_msg("content");
 		 return;		
+	}
+	if(document.getElementById("com_addr").value == ""){
+		input_empty_msg("com_addr");
+		return;		
+	}
+	if(document.getElementById("com_name").value == ""){
+		input_empty_msg("com_name");
+		return;		
+	}
+	if(document.getElementById("com_tel").value == "" || document.getElementById("com_tel").value.length != 13){
+		input_empty_msg("com_tel");
+		return;		
 	}
 	submit();
 }
@@ -36,6 +51,15 @@ function input_empty_msg(check){
 	}else if(check == "content"){
 		msg_html += "<div class='alert alert-danger' role='alert'>"
 			+ "내용을 입력해주세요.";		
+	}else if(check == "com_addr"){
+	msg_html += "<div class='alert alert-danger' role='alert'>"
+		+ "회사 주소을 입력해주세요.";		
+	}else if(check == "com_name"){
+	msg_html += "<div class='alert alert-danger' role='alert'>"
+		+ "회사명을 입력해주세요.";		
+	}else if(check == "com_tel"){
+	msg_html += "<div class='alert alert-danger' role='alert'>"
+		+ "회사 연락처를 입력해주세요.";		
 	}
 	msg_html += "</div>";
 	document.getElementById("check-input").innerHTML = msg_html;

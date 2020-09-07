@@ -36,9 +36,10 @@ $( document ).ready(function() {
     Sidemenu.prototype.menuItemClick = function(e) {
        if(!$("#main").hasClass("enlarged")){
         if($(this).parent().hasClass("submenu")) {
-
+        	console.log("check1");
         }
         if(!$(this).hasClass("subdrop")) {
+        	console.log("check2");
           // hide any open menus and remove all other classes
           $("ul",$(this).parents("ul:first")).slideUp(350);
           $("a",$(this).parents("ul:first")).removeClass("subdrop");
@@ -49,7 +50,9 @@ $( document ).ready(function() {
           $(this).addClass("subdrop");
           $(".pull-right i",$(this).parents(".submenu:last")).removeClass("md-add").addClass("md-remove");
           $(".pull-right i",$(this).siblings("ul")).removeClass("md-remove").addClass("md-add");
+          console.log("check3");
         }else if($(this).hasClass("subdrop")) {
+        	console.log("check4");
           $(this).removeClass("subdrop");
           $(this).next("ul").slideUp(350);
           $(".pull-right i",$(this).parent()).removeClass("md-remove").addClass("md-add");
@@ -59,13 +62,16 @@ $( document ).ready(function() {
 
     //init sidemenu
     Sidemenu.prototype.init = function() {
+    	console.log("check5");
       var $this  = this;
 
       var ua = navigator.userAgent,
         event = (ua.match(/iP/i)) ? "touchstart" : "click";
 
+      console.log("check6");
       //bind on click
       this.$openLeftBtn.on(event, function(e) {
+    	  console.log("check7");
         e.stopPropagation();
         $this.openLeftBar();
       });
@@ -81,7 +87,6 @@ $( document ).ready(function() {
     $.Sidemenu = new Sidemenu, $.Sidemenu.Constructor = Sidemenu
 
 }(window.jQuery),
-
 
 //main app module
  function($) {

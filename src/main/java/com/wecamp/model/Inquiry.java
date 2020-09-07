@@ -10,11 +10,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Inquiry {
-	private long inq_idx;
+	private int inq_idx;
 	private String email;
 	private int s_no;
 	private String title;
 	private String owner_num;
 	private String content;
 	private Date wdate;
+	private String com_name;
+	private String com_addr;
+	private String com_tel;
+	private String s_name;
+	private int rnum;
+	private String name;
+	private String nickname;
 }

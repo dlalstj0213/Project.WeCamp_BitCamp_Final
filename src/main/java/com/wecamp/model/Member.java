@@ -20,4 +20,6 @@ public class Member {
 	private String approval_status;
 	private String approval_key;
 	private String grade;
+	//네이버
+	private String accessToken;
 }

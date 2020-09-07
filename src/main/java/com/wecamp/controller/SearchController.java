@@ -62,6 +62,7 @@ public class SearchController {
 	//String checkIn, String checkOut, String peopleNum 고민해야함(Session?)
 	@GetMapping("search.wcc")
 	private ModelAndView search(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
+		log.info("#>search.wcc()");
 		session.setAttribute("cp", 1);
 		SearchResultVo result = searchService.searchCampList(searchPlace, false, session, request);
 		ModelAndView response = new ModelAndView("client/result/map");

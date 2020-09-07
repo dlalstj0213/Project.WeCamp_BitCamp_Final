@@ -221,7 +221,10 @@ $(function(){
                                 <span class="la la-bookmark-o"></span> 찜 목록
                             </a>
                             
-                            <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1" id="nav-bookmark-tab" data-toggle="tab" href="#nav-camping" role="tab" aria-controls="nav-bookmarks" aria-selected="false">
+                            <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1" id="nav-bookmark-tab"
+                             data-toggle="tab" href="#nav-camping" role="tab"
+                              aria-controls="nav-bookmarks" aria-selected="false"
+                              onclick="test_css();">
                                 <span class="la la-gear"></span> 캠핑장 정보 
                             </a>
                         </div>
@@ -960,7 +963,7 @@ $(function(){
                     
                     
                     
-                    
+                    <!-- 캠핑장 정보 패널 -->
                     <div class="tab-pane fade" id="nav-camping" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
                             <div class="col-lg-4">
@@ -1069,7 +1072,8 @@ $(function(){
                             </div><!-- end col-lg-4 -->
                             
                             <!-- /////////////////////////// 유저 오른쪽 정보 ///////////////////////////// -->
-                            <div class="col-lg-8">
+                            <!-- test-section -->
+                            <div id="test-area" class="col-lg-8">
                                 <div class="user-form-action">
                                     <div class="billing-form-item">
                                         <div class="billing-title-wrap">
@@ -1078,13 +1082,13 @@ $(function(){
                                         </div><!-- billing-title-wrap -->
                                         <div class="billing-content">
                                             <div class="contact-form-action">
-                                                <form method="post">
+                                                <form id="test-area2" method="post">
                                                 <div class="gallery-carousel padding-top-35px padding-bottom-40px">
-							                        <div data-dot="<img src='/images/g-img1.jpg'>" class="gallery-item">
-							                            <img src="/images/img17.jpg" alt="gallery-image">
+							                        <div data-dot="<img src='/images/flag10.png'>">
+							                            <img src="/images/flag12.jpg">
 							                        </div><!-- end gallery-item -->
-							                        <div data-dot="<img src='/images/g-img2.jpg'>" class="gallery-item">
-							                            <img src="/images/img18.jpg" alt="gallery-image">
+							                        <div data-dot="<img src='/images/flag11.png'>" class="gallery-item">
+							                            <img src="/images/flag13.jpg" alt="gallery-image">
 							                        </div><!-- end gallery-item -->
 							                        <div data-dot="<img src='/images/g-img3.jpg'>" class="gallery-item">
 							                            <img src="/images/img19.jpg" alt="gallery-image">
@@ -1159,8 +1163,10 @@ $(function(){
                                     </div>
                                 </div><!-- end delete-account-info -->
                             </div><!-- end col-lg-8 -->
-                        </div>
-                    </div>
+                            <!-- END test-section -->
+                            
+                        </div><!-- END row -->
+                    </div><!-- END nav-camping -->
                     
                     
                     
@@ -1173,6 +1179,7 @@ $(function(){
 <!-- ================================
     END DASHBOARD AREA
 ================================= -->
-<script src="../js/my-page.js"></script>
+<script src="../js/my-page.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="../js/test.js?ver=<%=System.currentTimeMillis()%>"></script>
 </body>
 </html>

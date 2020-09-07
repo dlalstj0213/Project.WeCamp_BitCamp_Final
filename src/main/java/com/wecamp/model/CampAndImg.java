@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CampAndImg {
 	//camp table 컬럼
-	private long camp_idx;
+	private int camp_idx;
 	private String camp_name;
 	private String address;
 	private String camp_tel;
@@ -21,10 +21,10 @@ public class CampAndImg {
 	private String etc_conv;
 	private String agency_tel;
 	private String agency_name;
-	private long total_booking; // long 으로 바꿈
+	private int total_booking; // long 으로 바꿈
 	private String intro;
 	//img table 컬럼
-	private long img_idx;
+	private int img_idx;
 	private String fname;
 	private String ofname;
 	private long fsize;

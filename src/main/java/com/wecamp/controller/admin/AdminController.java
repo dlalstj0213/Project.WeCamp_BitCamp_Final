@@ -55,44 +55,5 @@ public class AdminController {
 		return "redirect:login.wcc";
 	}
 	
-	@RequestMapping("sales_chart_monthly.wcc")
-	private String salesChartM() {
-		if(session.getAttribute("admin") == null) {
-			return "redirect:login.wcc";
-		}
-		return "admin/camp/sales_chart_monthly/"+WebTitle.TITLE+"매출 통계";
-	}
-	@RequestMapping("sales_chart_yearly.wcc")
-	private String salesChartY() {
-		if(session.getAttribute("admin") == null) {
-			return "redirect:login.wcc";
-		}
-		return "admin/camp/sales_chart_yearly/"+WebTitle.TITLE+"매출 통계";
-	}
 
-	@RequestMapping("camp_manage.wcc")
-	private String campManage() {
-		if(session.getAttribute("admin") == null) {
-			return "redirect:login.wcc";
-		}
-		return "admin/camp/camp_manage/"+WebTitle.TITLE+"캠핑 관리";
-	}                                                                                                                                                                                                                                                                                                                         
-	
-	@ResponseBody
-	@RequestMapping(value="campData.wcc", produces = "application/text; charset=UTF-8")
-	private String campData() {
-		if(session.getAttribute("admin") == null) {
-			return "redirect:login.wcc";
-		}
-		return adminService.get_campList();
-	}
-	
-	@GetMapping("campDel.wcc")
-	private String campDelete(Long camp_idx) {
-		if(session.getAttribute("admin") == null) {
-			return "redirect:login.wcc";
-		}
-		adminService.del_campList(camp_idx);
-		return "redirect:camp_manage.wcc";
-	}
 }

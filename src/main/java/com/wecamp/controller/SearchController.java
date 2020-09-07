@@ -62,27 +62,35 @@ public class SearchController {
 	//String checkIn, String checkOut, String peopleNum 고민해야함(Session?)
 	@GetMapping("search.wcc")
 	private ModelAndView search(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
-		log.info("#>search.wcc()");
-		session.setAttribute("cp", 1);
-		SearchResultVo result = searchService.searchCampList(searchPlace, false, session, request);
 		ModelAndView response = new ModelAndView("client/result/map");
-		response.addObject("vo", result);
+		session.setAttribute("cp", 1);
+		try {
+			SearchResultVo result = searchService.searchCampList(searchPlace, false, session, request).get();
+			response.addObject("vo", result);
+			response.addObject("checkIn", checkIn);
+			response.addObject("checkOut", checkOut);		
+			response.addObject("peopleNum", peopleNum);		
+			response.addObject("searchPlace", searchPlace);
+		}catch(Exception e) {
+			e.getStackTrace();
+		}
 		return response;
 	}
 	
 	@PostMapping("loadMore.wcc")
-	private ModelAndView loadMore(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
-		
+	private ModelAndView loadMore(String searchPlace, HttpSession session, HttpServletRequest request) {
+		ModelAndView response = null;
 		int cp = Integer.parseInt(session.getAttribute("cp").toString()); 
 		cp = cp + 1;
 		session.setAttribute("cp", cp);
-		SearchResultVo result = searchService.searchCampList(searchPlace, true, session, request);
-		ModelAndView response = new ModelAndView("client/result/mapList");
-		if(result!=null) {
-			response.addObject("vo", result);
-		}else {
-			response = new ModelAndView();
+		try {
+			SearchResultVo result = searchService.searchCampList(searchPlace, true, session, request).get();
+			response = new ModelAndView("client/result/mapList");
+			if(result!=null) response.addObject("vo", result);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
+		
 		return response;
 	}
 }

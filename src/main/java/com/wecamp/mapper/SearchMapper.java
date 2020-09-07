@@ -9,6 +9,6 @@ public interface SearchMapper {
 	List<CampAndImg> selectSearchedListOfCamp(HashMap<String, Object> query);
 	int selectCountCamp();
 	String select();
-	long selectMinFeeOfCamp(long camp_idx);
-	Float selectAverageStar(long camp_idx);
+	long selectMinFeeOfCamp(int camp_idx);
+	Float selectAverageStar(int camp_idx);
 }

@@ -7,7 +7,7 @@ import com.wecamp.model.Heart;
 import com.wecamp.model.HeartAndCampAndImg;
 
 public interface HeartMapper {
-	// 다솜 언니 부분
+	
 	int selectHeart(int camp_idx);
 	Heart selectOwnHeart(HashMap<String, Object> query);
 	void insertHeart(HashMap<String, Object> query);

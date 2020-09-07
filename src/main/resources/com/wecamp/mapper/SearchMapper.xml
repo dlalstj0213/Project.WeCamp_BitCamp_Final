@@ -21,11 +21,11 @@
 		select fname from IMG where CAMP_IDX=1;
 	</select>
 	
-	<select id="selectAverageStar" resultType="Float" parameterType="long">
+	<select id="selectAverageStar" resultType="Float" parameterType="int">
 		select avg(STAR) from REVIEW where CAMP_IDX=#{camp_idx}
 	</select>
 	
-	<select id="selectMinFeeOfCamp" resultType="long" parameterType="long">
+	<select id="selectMinFeeOfCamp" resultType="long" parameterType="int">
 		select min(SITE_FEE) from SORT where CAMP_IDX=#{camp_idx}
 	</select>
 </mapper>

@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="menu-full-width">
                         <div class="logo">
-                            <a href="index.html"><img src="/images/logo.png" alt="logo"></a>
+                            <a href="${pageContext.request.contextPath}/"><img src="/images/logo.png" alt="logo"></a>
                         </div><!-- end logo -->
 						<div class="main-menu-content">
 						</div>
@@ -50,24 +50,24 @@
             </div>
             <ul class="side-menu-ul">
             	<c:if test="${member != null}">
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
                 </c:if>
                 <li><div class="dropdown-divider"></div></li>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
                 <li><a href="#"><span class="la la-gear user-icon"></span> 개인정보 수정</a></li>
                 <c:if test="${member == null }">
-                <li><a onclick="location.href='/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
                 </c:if>
                 <c:if test="${member != null }">
                 <c:choose>
                 	<c:when test="${member.accessToken ne null}">
-		                <li><a onclick="location.href='/login/logout_naver?accessToken=${member.accessToken}'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+		                <li><a onclick="location.href='${pageContext.request.contextPath}/login/logout_naver?accessToken=${member.accessToken}'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
                 	</c:when>
                 	<c:otherwise>
-		                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+		                <li><a onclick="location.href='${pageContext.request.contextPath}/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
                 	</c:otherwise>
                 </c:choose>
                 </c:if>

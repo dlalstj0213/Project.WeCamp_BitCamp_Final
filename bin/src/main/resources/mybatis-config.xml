@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+   	   <typeAlias alias="Admin" type="com.wecamp.model.Admin"/>
+   	   <typeAlias alias="Authority" type="com.wecamp.model.Authority"/>
+   	   <typeAlias alias="Booking" type="com.wecamp.model.Booking"/>
+   	   <typeAlias alias="Camp" type="com.wecamp.model.Camp"/>
+   	   <typeAlias alias="CampAndImg" type="com.wecamp.model.CampAndImg"/>
+   	   <typeAlias alias="Heart" type="com.wecamp.model.Heart"/>  	
+   	   <typeAlias alias="Img" type="com.wecamp.model.Img"/>  	
+   	   <typeAlias alias="Inquiry" type="com.wecamp.model.Inquiry"/>  	
+   	   <typeAlias alias="LMember" type="com.wecamp.model.LMember"/>  	
+   	   <typeAlias alias="Member" type="com.wecamp.model.Member"/>  	
+   	   <typeAlias alias="Owner" type="com.wecamp.model.Owner"/>  	
+   	   <typeAlias alias="Review" type="com.wecamp.model.Review"/>  	
+   	   <typeAlias alias="Sort" type="com.wecamp.model.Sort"/>  	
+   </typeAliases>
+   
+   <mappers>
+   		 <mapper resource="com/wecamp/mapper/CampDetailMapper.xml"/>
+   </mappers>
+</configuration>

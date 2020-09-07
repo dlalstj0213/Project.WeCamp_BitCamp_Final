@@ -1,0 +1,26 @@
+BOOKING : STATE_CHECK (deafault 1)
+			> 결제대기 : 1
+			> 결제완료 : 2
+			> 취소대기 : 3
+			> 취소완료 : 4
+			> 이용완료 : 5
+		: REVIEW_STATE (deafault 'F')
+			> 리뷰작성 완료 : T
+			> 리뷰작성 미완료 : F
+			
+QA : STATE_CHECK (default 'T')	
+	> COMMENT 공개 : T
+	> 비공개 : F
+	
+MEMBER : GRADE (default 'SILVER')
+		> SILVER
+		> GOLD
+		> DIAMOND
+
+MEMBER : AUTHORITY(default '1')
+		> 1 : 일반회원
+		> 2 : 사업자
+
+INQUIRY : STATE (default 'F')
+	> 문의 처리 완료 : T
+	> 문의 처리 비완료 : F

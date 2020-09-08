@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 @RequestMapping("admin")
-public class SalesController {
+public class SalesManageController {
 	@Autowired
 	HttpSession session;
 	

@@ -27,6 +27,7 @@ function selectSite(index){
 	$('#booking-event').append("예약하기");
 	
 	
+	
 	//.input-number-decrement, .input-number-increment
 	$("#peopleNum").bind('keyup mouseup',function(){
 		peopleNum = Number(document.getElementById("peopleNum").value);

@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-
+<c:set var="now" value="<%=new java.util.Date()%>" />
+<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set>
+<c:set var="prevYear" value="${sysYear-1}"/> 
+<c:set var="lastYear" value="${sysYear-2}"/> 
+<c:set var="pastYear" value="${sysYear-3}"/> 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
 
 
@@ -25,8 +31,8 @@
 	.right-chart { grid-area: right-chart; margin-left: 5px; }
 	
 	.left-table { grid-area: left-table;
-				width: 800px;
-       			 margin: 10; 
+				width: 900px;
+       			padding-left: 5vh; 
 	}
 	th, td { white-space: nowrap; }
 
@@ -62,32 +68,29 @@
 									</div>
 										
 									<div class="card-body" style="height:auto !important">
-										<canvas id="barChart"></canvas>
+										<canvas id="myChart"></canvas>
 									</div>							
 									<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 							</div>
 							<!-- end card-->				
 						</div>
   						<div class="left-table">
-  							<table id="example" class="display" style="width:100%">
+  							<table id="camp" class="display" style="width:100%">
 						        <thead>
 						            <tr>
-						                <th>Name</th>
-						                <th>Position</th>
-						                <th>Office</th>
-						                <th>Extn.</th>
-						                <th>Start date</th>
-						                <th>Salary</th>
+										 <th></th>						            
+						                <th>캠핑장 일련번호</th>
+						                <th>캠핑장명</th>
+						                <th>주소</th>
+						               
 						            </tr>
 						        </thead>
 						        <tfoot>
 						            <tr>
-						                <th>Name</th>
-						                <th>Position</th>
-						                <th>Office</th>
-						                <th>Extn.</th>
-						                <th>Start date</th>
-						                <th>Salary</th>
+						            	<th></th>
+						                <th>캠핑장 일련번호</th>
+						                <th>캠핑장명</th>
+						                <th>주소</th>
 						            </tr>
 						        </tfoot>
 						    </table>
@@ -98,6 +101,45 @@
 
             </div>
 			<!-- END container-fluid -->
+			
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style="padding-left: 20px !important;">						
+										<div class="card mb-3">
+											<div class="card-header">
+												<h3><i class="fab fa-free-code-camp"></i> <span id="camp_name">캠핑장 명</span></h3>
+												#순 이익 : (총 매출액 - 영업 수수료) <br/> #매출 수익률 : (순 이익/총 매출) 
+										
+											</div>
+											<div>
+												<input id="camp_idx" type="hidden" value="">
+												<select id="year" onchange="redrawChart(this.value)" style="float:right; margin-right:10px;">
+													<option value="<c:out value="${sysYear}"/>" selected>${sysYear}</option>
+													<option value="<c:out value="${prevYear}"/>">${prevYear}</option>
+													<option value="<c:out value="${lastYear}"/>">${lastYear}</option>
+													<option value="<c:out value="${pastYear}"/>">${pastYear}</option>
+												</select>
+											</div>
+												
+											<div class="card-body">
+												
+												<table id="example1" class="table table-bordered table-responsive-xl table-hover display">
+													<thead>
+														<tr>
+															<th>구분(월)</th>
+															<th>총 매출액(원)</th>
+															<th>거래 수(회)</th>
+															<th>업체 순 이익(원)</th>
+															<th>영업 수수료(원)</th>
+															<th>매출 수익률(%)</th>
+														</tr>
+													</thead>													
+													<tbody id="innerData">
+														
+													</tbody>
+												</table>
+												
+											</div>														
+										</div><!-- end card-->					
+									</div>
 
 		</div>
 		<!-- END content -->
@@ -108,7 +150,6 @@
 
 <!-- BEGIN Java Script for this page -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer></script>
 
@@ -116,14 +157,11 @@
 	
 	<script>
 	// barChart
-	var ctx1 = document.getElementById("barChart").getContext('2d');
-	var barChart = new Chart(ctx1, {
-		type: 'bar',
-		data: {
-			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			datasets: [{
-				label: 'Amount received',
-				data: [12, 19, 3, 5, 10, 5, 13, 17, 11, 8, 11, 9],
+	let myData = {
+			labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+			datasets: [{ 
+				label: '월별 매출액',
+				data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
@@ -154,7 +192,13 @@
 				],
 				borderWidth: 1
 			}]
-		},
+		};
+	
+	let chart = document.getElementById('myChart');
+	let myCtx = chart.getContext('2d');
+	let barChart = new Chart(myCtx, {
+		type: 'bar',
+		data: myData,
 		options: {
 			scales: {
 				yAxes: [{
@@ -167,61 +211,142 @@
 	});
 
 
-	var dataSet = [
-	    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
-	    [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ],
-	    [ "Ashton Cox", "Junior Technical Author", "San Francisco", "1562", "2009/01/12", "$86,000" ],
-	    [ "Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "2012/03/29", "$433,060" ],
-	    [ "Airi Satou", "Accountant", "Tokyo", "5407", "2008/11/28", "$162,700" ],
-	    [ "Brielle Williamson", "Integration Specialist", "New York", "4804", "2012/12/02", "$372,000" ],
-	    [ "Herrod Chandler", "Sales Assistant", "San Francisco", "9608", "2012/08/06", "$137,500" ],
-	    [ "Rhona Davidson", "Integration Specialist", "Tokyo", "6200", "2010/10/14", "$327,900" ],
-	    [ "Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "2009/09/15", "$205,500" ],
-	    [ "Sonya Frost", "Software Engineer", "Edinburgh", "1667", "2008/12/13", "$103,600" ],
-	    [ "Jena Gaines", "Office Manager", "London", "3814", "2008/12/19", "$90,560" ],
-	    [ "Quinn Flynn", "Support Lead", "Edinburgh", "9497", "2013/03/03", "$342,000" ],
-	    [ "Charde Marshall", "Regional Director", "San Francisco", "6741", "2008/10/16", "$470,600" ],
-	    [ "Haley Kennedy", "Senior Marketing Designer", "London", "3597", "2012/12/18", "$313,500" ],
-	    [ "Tatyana Fitzpatrick", "Regional Director", "London", "1965", "2010/03/17", "$385,750" ],
-	    [ "Michael Silva", "Marketing Designer", "London", "1581", "2012/11/27", "$198,500" ],
-	    [ "Paul Byrd", "Chief Financial Officer (CFO)", "New York", "3059", "2010/06/09", "$725,000" ],
-	    [ "Gloria Little", "Systems Administrator", "New York", "1721", "2009/04/10", "$237,500" ],
-	    [ "Bradley Greer", "Software Engineer", "London", "2558", "2012/10/13", "$132,000" ],
-	    [ "Dai Rios", "Personnel Lead", "Edinburgh", "2290", "2012/09/26", "$217,500" ],
-	    [ "Jenette Caldwell", "Development Lead", "New York", "1937", "2011/09/03", "$345,000" ],
-	    [ "Yuri Berry", "Chief Marketing Officer (CMO)", "New York", "6154", "2009/06/25", "$675,000" ],
-	    [ "Caesar Vance", "Pre-Sales Support", "New York", "8330", "2011/12/12", "$106,450" ],
-	    [ "Doris Wilder", "Sales Assistant", "Sydney", "3023", "2010/09/20", "$85,600" ],
-	    [ "Angelica Ramos", "Chief Executive Officer (CEO)", "London", "5797", "2009/10/09", "$1,200,000" ],
-	    [ "Gavin Joyce", "Developer", "Edinburgh", "8822", "2010/12/22", "$92,575" ],
-	    [ "Jennifer Chang", "Regional Director", "Singapore", "9239", "2010/11/14", "$357,650" ],
-	    [ "Brenden Wagner", "Software Engineer", "San Francisco", "1314", "2011/06/07", "$206,850" ],
-	    [ "Fiona Green", "Chief Operating Officer (COO)", "San Francisco", "2947", "2010/03/11", "$850,000" ],
-	    [ "Shou Itou", "Regional Marketing", "Tokyo", "8899", "2011/08/14", "$163,000" ],
-	    [ "Michelle House", "Integration Specialist", "Sydney", "2769", "2011/06/02", "$95,400" ],
-	    [ "Suki Burks", "Developer", "London", "6832", "2009/10/22", "$114,500" ],
-	    [ "Prescott Bartlett", "Technical Author", "London", "3606", "2011/05/07", "$145,000" ],
-	    [ "Gavin Cortez", "Team Leader", "San Francisco", "2860", "2008/10/26", "$235,500" ],
-	    [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240", "2011/03/09", "$324,050" ],
-	    [ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]
-	];
-	
-	
-	
 	//테이블
 	$(document).ready(function() {
-	    $('#example').DataTable( {
-	        data: dataSet,
-	        columns: [
-	            { title: "Name" },
-	            { title: "Position" },
-	            { title: "Office" },
-	            { title: "Extn." },
-	            { title: "Start date" },
-	            { title: "Salary" }
-	        ]
+	    $('#camp').DataTable( {
+	    	pageLength : 10,
+			bPaginate : true,
+			processing : true,
+	        ajax : {
+				"url": "campData.wcc",
+				"type": "POST",
+				"contentType": "application/json; charset=utf-8"
+			},
+			columns: [
+				{ data: "", defaultContent: "<button onclick='drawChart(this)'>차트보기</button>"},
+				{ data: "camp_idx" },
+				{ data: "camp_name" , defaultContent : "<i>없음</i>"},
+				{ data: "address" , defaultContent : "<i>없음</i>"}
+				
+			]
 	    } );
 	} );
+	
+	function redrawChart(val){
+		let camp_idx = document.querySelector("#camp_idx").value;
+		let year = val;
+		
+		const xhttp = new XMLHttpRequest(); // xmlHttpRequest생성
+		
+		xhttp.onreadystatechange = loader; //readystate에 변화가생기면 호출되는 함수
+		xhttp.open('GET', './sales_data_each_m.wcc?camp_idx='+camp_idx+'&year='+year, true);
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8'); //http헤더에 들어가는 것
+		xhttp.send();
+		
+		
+		//콜백함수
+		function loader() {
+			try {
+				if(xhttp.readyState === XMLHttpRequest.DONE) {
+					var status = xhttp.status;
+					if(status === 200) {
+						let result = xhttp.responseText;
+						const jsonObj = JSON.parse(result);
+						let tempStr = '';
+						for(let i=0;i<jsonObj.length;i++){
+							tempStr += '<tr>';
+							tempStr += '<td>'+jsonObj[i].month+'월</td>';
+							tempStr += '<td>'+jsonObj[i].total_sale+'</td>';
+							tempStr += '<td>'+jsonObj[i].count_sale+'</td>';
+							tempStr += '<td>'+jsonObj[i].profit+'</td>';
+							tempStr += '<td>'+jsonObj[i].earning+'</td>';
+							tempStr += '<td>'+jsonObj[i].ros+'</td>';
+							tempStr += '</tr>';
+							let monthStr = jsonObj[i].month.split('-');
+							let monthInt = parseInt(monthStr[1]);
+							myData.datasets[0].data[monthInt-1] = jsonObj[i].total_sale;
+						}
+						barChart.update();
+						document.querySelector("#innerData").innerHTML = tempStr;
+						document.querySelector("#camp_name").innerText = jsonObj[0].camp_name;
+						document.querySelector("#camp_idx").value = jsonObj[0].camp_idx;
+					}else{
+						alert("request에 문제가 발생했습니다.");
+					}
+					
+				}
+				
+		}catch(exception) {
+			alert("데이터가 존재하지 않습니다.");
+		}
+
+		}
+		
+	}
+	
+	function drawChart(e){
+		let camp_idx = e.parentElement.nextElementSibling.innerText;
+		let year = '${sysYear}';
+		
+		const opt = document.querySelectorAll("#year option");
+		for(let i=0;i<opt.length;i++){
+			if(opt[i].value === year){
+				opt[i].selected = 'selected';
+				break;
+			}
+		}
+
+		const xhttp = new XMLHttpRequest(); // xmlHttpRequest생성
+		
+		xhttp.onreadystatechange = loader; //readystate에 변화가생기면 호출되는 함수
+		xhttp.open('GET', './sales_data_each_m.wcc?camp_idx='+camp_idx+'&year='+year, true);
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8'); //http헤더에 들어가는 것
+		xhttp.send();
+		
+		
+		//콜백함수
+		function loader() {
+			try {
+				if(xhttp.readyState === XMLHttpRequest.DONE) {
+					var status = xhttp.status;
+					if(status === 200) {
+						let result = xhttp.responseText;
+						const jsonObj = JSON.parse(result);
+						let tempStr = '';
+						for(let i=0;i<jsonObj.length;i++){
+							tempStr += '<tr>';
+							tempStr += '<td>'+jsonObj[i].month+'월</td>';
+							tempStr += '<td>'+jsonObj[i].total_sale+'</td>';
+							tempStr += '<td>'+jsonObj[i].count_sale+'</td>';
+							tempStr += '<td>'+jsonObj[i].profit+'</td>';
+							tempStr += '<td>'+jsonObj[i].earning+'</td>';
+							tempStr += '<td>'+jsonObj[i].ros+'</td>';
+							tempStr += '</tr>';
+							let monthStr = jsonObj[i].month.split('-');
+							let monthInt = parseInt(monthStr[1]);
+							myData.datasets[0].data[monthInt-1] = jsonObj[i].total_sale;
+						}
+						barChart.update();
+						document.querySelector("#innerData").innerHTML = tempStr;
+						document.querySelector("#camp_name").innerText = jsonObj[0].camp_name;
+						document.querySelector("#camp_idx").value = jsonObj[0].camp_idx;
+					}else{
+						alert("request에 문제가 발생했습니다.");
+					}
+					
+				}
+				
+		}catch(exception) {
+			alert("데이터가 존재하지 않습니다.");
+		}
+
+		}
+			
+		
+		
+	}
+	
+		
 	</script>
 <!-- END Java Script for this page -->
 

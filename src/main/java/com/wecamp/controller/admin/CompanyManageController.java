@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("admin/company")
+@RequestMapping("admin")
 public class CompanyManageController {
 	@Autowired
 	HttpSession session;

@@ -7,7 +7,7 @@
 
 	    	<c:forEach items="${vo.list}" var="list">
 	
-		    	<div class="list-grid-container">
+		    	<div class="list-grid-container" name="${list.camp_idx}">
 				  <div class="list-campPic" onclick="location.href='../camp/camp_detail.wcc?camp_idx=${list.camp_idx}&checkIn=${param.checkIn}&checkOut=${param.checkOut}&peopleNum=${param.peopleNum}'">
 				  	<div class="list-campPic-Wrap">
 				  		<img class="campPic" src="/images/camp-img/thumb/${list.fname}">
@@ -68,7 +68,7 @@
 	</c:forEach>
 
 <script>
-$(".list-grid-container").hover(function(){
+/* $(".list-grid-container").hover(function(){
 	let markerId = "mark-"+ $(this).attr("name");
 	$("#"+markerId).css('background-color','black');
 	$("#"+markerId).css('color','white');
@@ -78,5 +78,6 @@ $(".list-grid-container").hover(function(){
 	$("#"+markerId).css('background-color','white');
 	$("#"+markerId).css('color','black');
 	
-})
+}) */
+
 </script>

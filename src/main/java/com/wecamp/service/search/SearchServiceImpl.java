@@ -44,7 +44,7 @@ class SearchServiceImpl implements SearchService{
 		
 		PageUtil pageUtil = new PageUtil();
 		int currentPage = pageUtil.getCurrentPageSession(cpStr, session);
-		int pageSize = pageUtil.getPageSize("2", session); // 테스팅중~
+		int pageSize = pageUtil.getPageSize("4", session); // 테스팅중~
 		int listCount = searchMapper.selectCountCamp();
 		Pagination page = new Pagination(listCount, currentPage, pageSize);
 		

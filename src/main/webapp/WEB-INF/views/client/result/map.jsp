@@ -244,34 +244,6 @@
 
 
 
-<script>
-
-window.addEventListener('DOMContentLoaded', function(){
-	<c:if test="${empty vo}">
-		document.body.style.display = "none";
-		alert("검색 결과가 존재하지 않습니다.");
-		location.href="../"
-	</c:if>
-})
-
-</script>
-
-<script>
-
-$(".list-grid-container").hover(function(){
-	let markerId = "mark-"+ $(this).attr("name");
-	$("#"+markerId).css('background-color','black');
-	$("#"+markerId).css('color','white');
-	
-}, function(){
-	let markerId = "mark-"+ $(this).attr("name");
-	$("#"+markerId).css('background-color','white');
-	$("#"+markerId).css('color','black');
-	
-})
-
-</script>
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=76f485124ece8a8f6ef804e2e561062d&libraries=services"></script>
 <script>
 	var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
@@ -330,23 +302,6 @@ $(".list-grid-container").hover(function(){
 </script>	
 
 
-<script>
-
-function gotoCamp(e){
-	const buttonId = e.getAttribute('id');
-	const strList = buttonId.split('-');
-	const camp_idx = strList[1];
-	alert("bye");
-  	location.href = "../camp/camp_detail.wcc?camp_idx="+camp_idx 
-}
-function closeInfo(e){
-	//만들고싶어용...
-}
-function showInfo(e){
-	//만들고싶어용...
-}
-
-</script>
 
 
 
@@ -385,7 +340,6 @@ function showInfo(e){
 		      dataType: "HTML",
 		      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 		      success: function(result) {
-		    	  alert(result);
 		          if (result) {
 		        	  $(".list-list-camp").append(result);
 		        		///////////////////
@@ -445,6 +399,25 @@ function showInfo(e){
 		  				        var markerPosition = customOverlay.getPosition(); 
 		  				        map.relayout();
 		  				        map.setCenter(markerPosition);
+		  				        
+		  				        //지도에 마커 이벤트 재부여
+		  				      	let nodeList = document.querySelectorAll('.list-grid-container');
+
+			  		  			for (let i=0;i<nodeList.length;i++){
+			  		  				let node = nodeList.item(i);
+			  		  				
+			  		  				node.addEventListener('mouseover', function(){
+			  		  					let markerId = 'mark-' + this.getAttribute('name');
+			  		  					
+			  		  					document.querySelector('#'+markerId).style.background = 'black';
+			  		  					document.querySelector('#'+markerId).style.color = 'white';
+			  		  				})
+			  		  				node.addEventListener('mouseout', function(){
+			  		  					let markerId = 'mark-' + this.getAttribute('name');
+			  		  					document.querySelector('#'+markerId).style.background = 'white';
+			  		  					document.querySelector('#'+markerId).style.color = 'black';
+			  		  				})
+			  		  			}
 		  				    } 
 		  				})
 		  				
@@ -454,43 +427,20 @@ function showInfo(e){
 		  			location.href='#'; 
 		   ///////////////////////
 		          } else {
-		              alert("데이터가 없습니다.");
+		              alert("검색 결과의 끝입니다");
 		          }
+		          
 		      },
 		      error: function(request, status, error) {
 		          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		      }
 		  });
 
-
+		
 			
 	})
 
 </script>				    
-
-<!--컴마 표시 -->
-<script>
-// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
-	Number.prototype.format = function(){
-	    if(this==0) return 0;
-	    var reg = /(^[+-]?\d+)(\d{3})/;
-	    var n = (this + '');
-	    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
-	    return n;
-	};
-	// 문자열 타입에서 쓸 수 있도록 format() 함수 추가
-	String.prototype.format = function(){
-	    var num = parseFloat(this);
-	    if( isNaN(num) ) return "0";
-	    return num.format();
-	};
-	
-	$(".charge").text(function() {//1000단위 컴마처리
-	    $(this).text(
-	        $(this).text().format()
-	    );
-	});
-</script>
 
 	  <div class="footer">
 	    <div class="footer2">
@@ -600,11 +550,32 @@ function showInfo(e){
 		localStorage.setItem('thumb', thumb);
 		location.href="../camp/camp_detail.wcc?camp_idx="+camp_idx+"&checkIn="+checkIn+"&checkOut="+checkOut+"&peopleNum="+peopleNum;
 	}
+
+	function gotoCamp(e){
+		const buttonId = e.getAttribute('id');
+		const strList = buttonId.split('-');
+		const camp_idx = strList[1];
+	  	location.href = "../camp/camp_detail.wcc?camp_idx="+camp_idx 
+	}
+
+	window.addEventListener('DOMContentLoaded', function(){
+		<c:if test="${empty vo}">
+			document.body.style.display = "none";
+			alert("검색 결과가 존재하지 않습니다.");
+			location.href="../"
+		</c:if>
+	})
+
 </script>
+
 <!-- for search JS -->
 <script src="/js/search.js"></script>
+<!-- for commat format -->
+<script src="/js/comma-format.js"></script>
 <!-- for heart JS -->
 <script src="/js/heart.js"></script>
+<!-- for Marker Hover -->
+<script src="/js/markerHover.js"></script>
 
 <!-- Template JS Files -->
 <script src="/js/jquery.min.js"></script>

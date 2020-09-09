@@ -32,17 +32,10 @@ function emptyHeart(e){
 	
 	const xhttp = new XMLHttpRequest(); // xmlHttpRequest생성
 	
-//	var formData = new FormData(); //post방식으로 보낼 데이터 만들기
-//	formData.append("email", email);
-//	formData.append("camp_idx", camp_idx);
-//	alert(formData);
-	
 	xhttp.onreadystatechange = loader; //readystate에 변화가생기면 호출되는 함수
 	xhttp.open('GET', '../heart/delete.wcc?email='+email+'&camp_idx='+camp_idx, true); //post방식으로 연결
 	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8'); //http헤더에 들어가는 것
 	xhttp.send();
-	
-	//var result = xhttp.responseText;
 	
 	
 	//콜백함수
@@ -88,10 +81,6 @@ function fillHeart(e){
 	
 	
 	const xhttp = new XMLHttpRequest(); // xmlHttpRequest생성
-	
-//	var formData = new FormData(); //post방식으로 보낼 데이터 만들기
-//	formData.append("email", email);
-//	formData.append("camp_idx", camp_idx);
 	
 	xhttp.onreadystatechange = loader2; //readystate에 변화가생기면 호출되는 함수
 	xhttp.open('GET', '../heart/insert.wcc?email='+email+'&camp_idx='+camp_idx, true); //post방식으로 연결

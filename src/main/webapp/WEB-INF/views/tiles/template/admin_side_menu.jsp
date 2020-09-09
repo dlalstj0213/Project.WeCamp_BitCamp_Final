@@ -37,7 +37,25 @@
                     </li>
                     
 					<li class="submenu">
-                        <a href="charts.html"><i class="fa fa-fw fa-area-chart"></i><span> 통계 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 통계 </span> </a>
+                        <ul class="list-unstyled">
+								<li class="active" id="member-submenu">
+                                    <a href="sales_chart_monthly.wcc"><span>캠핑장 월별 매출</span></a>
+                                </li>
+                                <li id="withdrawal-member-submenu">
+                                    <a href="sales_chart_yearly.wcc"><span>캠핑장 연도별 매출</span> </a>
+                                </li>                                
+                                <li id="withdrawal-member-submenu">
+                                    <a href="sales_chart_monthly.wcc"><span>사이트 월별 매출</span> </a>
+                                </li>                                
+                                <li id="withdrawal-member-submenu">
+                                    <a href="sales_chart_yearly.wcc"><span>사이트 연도별 매출</span> </a>
+                                </li>                                
+                            </ul>
+                    </li>
+
+					<li class="submenu">
+                       <a href="camp_manage.wcc"><i class="fa fa-list"></i><span> 캠핑장 관리 </span> </a>
                     </li>
                     
             </ul>

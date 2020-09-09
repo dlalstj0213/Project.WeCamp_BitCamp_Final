@@ -18,5 +18,6 @@
    	   <typeAlias alias="Owner" type="com.wecamp.model.Owner"/>  	
    	   <typeAlias alias="Review" type="com.wecamp.model.Review"/>  	
    	   <typeAlias alias="Sort" type="com.wecamp.model.Sort"/>
+   	   <typeAlias alias="Revenue" type="com.wecamp.model.Revenue"/>
    </typeAliases>
 </configuration>

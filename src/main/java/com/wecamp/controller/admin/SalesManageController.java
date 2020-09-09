@@ -25,26 +25,42 @@ public class SalesManageController {
 	@Autowired
 	SalesService service;
 	
-	@RequestMapping("sales_chart_monthly.wcc")
+	@RequestMapping("sales_camp_monthly.wcc")
 	private String salesChartM() {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:login.wcc";
 		}
 		return "admin/sales/chart_monthly/"+WebTitle.TITLE+"매출 통계";
 	}
-	@RequestMapping("sales_chart_yearly.wcc")
+	@RequestMapping("sales_camp_yearly.wcc")
 	private String salesChartY() {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:login.wcc";
 		}
 		return "admin/sales/chart_yearly/"+WebTitle.TITLE+"매출 통계";
 	}
-	@RequestMapping("sales_data_wecamp_m.wcc")
+	
+	@RequestMapping("sales_wecamp_monthly.wcc")
+	private String salesChartMWC() {
+		if(session.getAttribute("admin") == null) {
+			return "redirect:login.wcc";
+		}
+		return "admin/sales/chart_monthly_wecamp/"+WebTitle.TITLE+"매출 통계";
+	}
+	@RequestMapping("sales_wecamp_yearly.wcc")
+	private String salesChartYWC() {
+		if(session.getAttribute("admin") == null) {
+			return "redirect:login.wcc";
+		}
+		return "admin/sales/chart_yearly_wecamp/"+WebTitle.TITLE+"매출 통계";
+	}
+	@ResponseBody
+	@RequestMapping(value="sales_data_wecamp_m.wcc", method=RequestMethod.GET, produces="application/json")
 	private List<?> salesDataAllM(String year) {
 		return service.selectMonthlyAllService(year);
 	}
-	
-	@RequestMapping("sales_data_wecamp_y.wcc")
+	@ResponseBody
+	@RequestMapping(value="sales_data_wecamp_y.wcc", method=RequestMethod.GET, produces="application/json")
 	private List<?> salesDataAllY() {
 		return service.selectYearlyAllService();
 	}
@@ -55,7 +71,8 @@ public class SalesManageController {
 		return service.selectMonthlyByCampService(camp_idx, year);
 	}
 	
-	@RequestMapping("sales_data_each_y.wcc")
+	@ResponseBody
+	@RequestMapping(value="sales_data_each_y.wcc", method=RequestMethod.GET, produces="application/json")
 	private List<?> salesDataCampY(Integer camp_idx) {
 		return service.selectYearlyByCampService(camp_idx);
 	}

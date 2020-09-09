@@ -47,11 +47,11 @@
 					<div class="row">
 							<div class="col-xl-12">
 									<div class="breadcrumb-holder">
-											<h1 class="main-title float-left">캠핑장 연도별 매출</h1>
+											<h1 class="main-title float-left">사이트 연도별 매출</h1>
 											<ol class="breadcrumb float-right">
 												<li class="breadcrumb-item">Home</li>
 												<li class="breadcrumb-item">매출 통계</li>
-												<li class="breadcrumb-item active">캠핑장 연도별 매출</li>
+												<li class="breadcrumb-item active">사이트 연도별 매출</li>
 											</ol>
 											<div class="clearfix"></div>
 									</div>
@@ -75,25 +75,36 @@
 							<!-- end card-->				
 						</div>
   						<div class="left-table">
-  							<table id="camp" class="display" style="width:100%">
-						        <thead>
-						            <tr>
-										 <th></th>						            
-						                <th>캠핑장 일련번호</th>
-						                <th>캠핑장명</th>
-						                <th>주소</th>
-						               
-						            </tr>
-						        </thead>
-						        <tfoot>
-						            <tr>
-						            	<th></th>
-						                <th>캠핑장 일련번호</th>
-						                <th>캠핑장명</th>
-						                <th>주소</th>
-						            </tr>
-						        </tfoot>
-						    </table>
+  							<div class="m-table">						
+								<div class="card mb-3">
+									<div class="card-header">
+										<h3><i class="fab fa-free-code-camp"></i> <span id="camp_name">위캠프</span></h3>
+										#순 이익 : (총 매출액 - 영업 수수료) <br> #매출 수익률 : (순 이익/총 매출) 
+								
+									</div>
+
+										
+									<div class="card-body">
+										
+										<table id="example1" class="table table-bordered table-responsive-xl table-hover display">
+											<thead>
+												<tr>
+													<th>구분(월)</th>
+													<th>총 매출액(원)</th>
+													<th>거래 수(회)</th>
+													<th>업체 순 이익(원)</th>
+													<th>영업 수수료(원)</th>
+													<th>매출 수익률(%)</th>
+												</tr>
+											</thead>													
+											<tbody id="innerData">
+												
+											</tbody>
+										</table>
+										
+									</div>														
+								</div><!-- end card-->					
+							</div>
   						</div>
 									
 					</div>
@@ -101,36 +112,6 @@
 
             </div>
 			<!-- END container-fluid -->
-			
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style="padding-left: 20px !important;">						
-										<div class="card mb-3">
-											<div class="card-header">
-												<h3><i class="fab fa-free-code-camp"></i> <span id="camp_name">캠핑장 명</span></h3>
-												#순 이익 : (총 매출액 - 영업 수수료) <br/> #매출 수익률 : (순 이익/총 매출) 
-										
-											</div>
-												
-											<div class="card-body">
-												
-												<table id="example1" class="table table-bordered table-responsive-xl table-hover display">
-													<thead>
-														<tr>
-															<th>구분(연도)</th>
-															<th>총 매출액(원)</th>
-															<th>거래 수(회)</th>
-															<th>업체 순 이익(원)</th>
-															<th>영업 수수료(원)</th>
-															<th>매출 수익률(%)</th>
-														</tr>
-													</thead>													
-													<tbody id="innerData">
-														
-													</tbody>
-												</table>
-												
-											</div>														
-										</div><!-- end card-->					
-									</div>
 
 		</div>
 		<!-- END content -->
@@ -182,31 +163,9 @@
 		}
 	});	
 
-
-	//테이블
-	$(document).ready(function() {
-	    $('#camp').DataTable( {
-	    	pageLength : 10,
-			bPaginate : true,
-			processing : true,
-	        ajax : {
-				"url": "campData.wcc",
-				"type": "POST",
-				"contentType": "application/json; charset=utf-8"
-			},
-			columns: [
-				{ data: "", defaultContent: "<button onclick='drawChart(this)'>차트보기</button>"},
-				{ data: "camp_idx" },
-				{ data: "camp_name" , defaultContent : "<i>없음</i>"},
-				{ data: "address" , defaultContent : "<i>없음</i>"}
-				
-			]
-	    } );
-	} );
 	
-	
-	function drawChart(e){
-		let camp_idx = e.parentElement.nextElementSibling.innerText;
+	window.onload = function(){
+		
 		let year = '${sysYear}';
 		
 		//차트 데이터 초기화
@@ -220,7 +179,7 @@
 		const xhttp = new XMLHttpRequest(); // xmlHttpRequest생성
 		
 		xhttp.onreadystatechange = loader; //readystate에 변화가생기면 호출되는 함수
-		xhttp.open('GET', './sales_data_each_y.wcc?camp_idx='+camp_idx+'&year='+year, true);
+		xhttp.open('GET', './sales_data_wecamp_y.wcc', true);
 		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8'); //http헤더에 들어가는 것
 		xhttp.send();
 		
@@ -250,10 +209,10 @@
 									myData.datasets[1].data[j] = jsonObj[i].profit;
 								}
 							}
+							
 						}
 						comboBarLineChart.update();
 						document.querySelector("#innerData").innerHTML = tempStr;
-						document.querySelector("#camp_name").innerText = jsonObj[0].camp_name;
 					}else{
 						alert("request에 문제가 발생했습니다.");
 					}

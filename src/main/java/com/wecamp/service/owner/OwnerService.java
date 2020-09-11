@@ -13,4 +13,6 @@ public interface OwnerService {
 	ModelAndView addCampService(CampAndSortAndImg model, HttpSession session);
 	//마이페이지 내 사업자 정보 디테일
 	ModelAndView get_owner_full_detail(HttpSession session);
+	ModelAndView delete_camp_service(int camp_idx, HttpSession session);
+	ModelAndView update_camp_service(CampAndSortAndImg request);
 }

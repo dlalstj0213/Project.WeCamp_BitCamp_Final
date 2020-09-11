@@ -69,9 +69,33 @@ public class OwnerController {
 	}
 	
 	@GetMapping("owner_detail")
-	private ModelAndView owner_detail(HttpSession session) {
+	private ModelAndView owner_detail() {
 		ModelAndView response = ownerService.get_owner_full_detail(session);
 		response.setViewName("client/member/owner_detail");
+		return response;
+	}
+	
+	@PostMapping("delete_camp.wcc")
+	private ModelAndView delete_camp(int camp_idx) {
+		log.info("#> camp_delete");
+		ModelAndView response = ownerService.delete_camp_service(camp_idx, session);
+		response.setViewName("redirect:../member/my_page.wcc");
+		return response;
+	}
+	
+	@GetMapping("update_camp.wcc")
+	private ModelAndView update_camp() {
+		ModelAndView response = ownerService.get_owner_full_detail(session);
+		response.setViewName("client/member/modify_camp/" + WebTitle.TITLE + "캠핑장 수정");
+		return response;	
+	}
+	
+	@PostMapping("update_camp.wcc")
+	private ModelAndView update_camp(CampAndSortAndImg request) {
+		log.info("#> camp : "+request.getCamp());
+		log.info("#> sort.size : "+request.getSort().size());
+		ModelAndView response = ownerService.update_camp_service(request);
+		response.setViewName("client/member/modify_camp/" + WebTitle.TITLE + "캠핑장 수정");
 		return response;
 	}
 }

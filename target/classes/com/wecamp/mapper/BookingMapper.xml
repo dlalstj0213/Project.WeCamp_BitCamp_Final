@@ -43,7 +43,7 @@
 	
 	<!-- review_state 상태 변경 -->
 	<update id="update_state" parameterType="int">
-		update BOOKING set review_state = 'T' where booking_idx = #{booking_idx}
+		update BOOKING set review_state = 'T' where imp_uid = #{booking_idx}
 	</update>
 
 	<!-- 캠핑장 결제 완료 시 예약 insert -->

@@ -48,7 +48,9 @@
                     <div class="contact-form-action padding-top-29px" style="margin-top: 17px">
                                <div class="form-group">
                                    <span class="la la-calendar-o form-icon"></span>
-                                   <input id="initDate" class="date-range form-control" type="text" name="daterange" value=""/>
+                                   <input id="initDate" class="date-range form-control"
+										style="cursor: pointer; background-color:#ffffff" type="text" name="daterange"
+										value="" readonly/>
                                </div>
                     </div><!-- end main-search-input-item -->
                     </div><!-- end main-search-input-item -->
@@ -64,7 +66,6 @@
 						  <option>8</option>
 						  <option>9</option>
 						  <option>10</option>
-						  <option>more</option>
 						</select>
                         <!-- <select class="select-option-field-2">
                             <option value >Select a Category</option>

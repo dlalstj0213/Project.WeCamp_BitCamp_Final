@@ -10,6 +10,10 @@ var campPrice;
 var bbqPrice;
 var peopleNum;
 
+
+
+
+
 $(document).ready(function(){
 	//avgStar Booking.jsp에 평점 띄우기 위해 localStorage로 넘김
 	avgStar = $('#avgStar').val();

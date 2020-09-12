@@ -248,7 +248,7 @@ Author Email:   contact@tecydevs.com
             	$input.val(val - 1);
             }
         });
-
+        
         /*==== select2 =====*/
         $('.select-option-field').select2({
             placeholder: "캠핑장명 또는 장소 입력",

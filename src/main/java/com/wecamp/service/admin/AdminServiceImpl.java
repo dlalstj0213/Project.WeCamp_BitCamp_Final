@@ -2,12 +2,20 @@ package com.wecamp.service.admin;
 
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.wecamp.mapper.AdminMapper;
 import com.wecamp.model.Admin;
+import com.wecamp.model.Member;
+import com.wecamp.utils.DateUtil;
+import com.wecamp.utils.TimeUtil;
+import com.wecamp.vo.ChartVo;
 import com.wecamp.vo.TotalResultVo;
 
 import lombok.AllArgsConstructor;
@@ -32,34 +40,50 @@ public class AdminServiceImpl implements AdminService{
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public TotalResultVo getTotalValuesService() {
-		Integer totalMember = adminMapper.selectCountMember();
-		if(totalMember == null) {
-			totalMember = 0;
+	public TotalResultVo getTotalValuesService(ServletContext servletContext) {
+		LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+		int totalLoginMember = 0;
+		if(loginUser != null) {
+			totalLoginMember = loginUser.size();
 		}
 		Integer totalCamp = adminMapper.selectCountCamp();
-		if(totalCamp == null) {
-			totalCamp = 0;
-		}
 		Integer totalBooking = adminMapper.selectCountBooking();
-		if(totalBooking == null) {
-			totalBooking = 0;
-		}
 		Integer totalInquiry = adminMapper.selectCountInquiry();
-		if(totalInquiry == null) {
-			totalInquiry = 0;
-		}
-		Integer totalLMember = adminMapper.selectCountLeaveMember();
-		if(totalLMember == null) {
-			totalLMember = 0;
-		}
 		Integer totalCurrentBooking = adminMapper.selectCountCurrentBooking();
-		if(totalCurrentBooking == null) {
-			totalCurrentBooking = 0;
+		Integer totalUncheckedInquiry = adminMapper.selectCountInquiryUnchecked();
+		return new TotalResultVo(totalLoginMember, totalCamp, totalBooking, 
+				totalInquiry, totalCurrentBooking, totalUncheckedInquiry);
+	}
+
+	@Override
+	public ChartVo getTodayAndYesterdaySalesService() {
+		DateUtil dutil = new DateUtil();
+		long todaySales = adminMapper.selectSumTotalFeeOnDate(dutil.getToday());
+		long yesterdaySales = adminMapper.selectSumTotalFeeOnDate(dutil.getYesterday());
+		return new ChartVo(todaySales, yesterdaySales);
+	}
+
+	@Override
+	public TotalResultVo getTotalMemberService() {	
+		Integer totalMember = adminMapper.selectCountMember();
+		Integer totalLeaveMember = adminMapper.selectCountLeaveMember();
+		return new TotalResultVo(totalMember, totalLeaveMember);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public LinkedList<Member> getLoginMembersService(ServletContext servletContext){
+		if(servletContext.getAttribute("loginUser") == null) return null;
+		LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+		TimeUtil timeUtil = new TimeUtil();
+		String nowTime = timeUtil.getDateTime();
+		Iterator<Member> itr = loginUser.iterator();
+		while(itr.hasNext()) {
+			Member user = itr.next();
+			user.setDifferTime(timeUtil.getTimeDiffer(user.getLoginTime(), nowTime));
 		}
-		int totalUncheckedInquiry = adminMapper.selectCountInquiryUnchecked();
-		return new TotalResultVo(totalMember, totalCamp, totalBooking, totalInquiry,
-				totalLMember, totalCurrentBooking, totalUncheckedInquiry);
+		return loginUser;
 	}
 }

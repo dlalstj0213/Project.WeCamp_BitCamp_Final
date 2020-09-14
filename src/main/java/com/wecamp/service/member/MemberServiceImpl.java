@@ -4,10 +4,12 @@ package com.wecamp.service.member;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -25,8 +27,8 @@ import com.wecamp.model.BookingAndCampAndImg;
 import com.wecamp.model.HeartAndCampAndImg;
 import com.wecamp.model.Member;
 import com.wecamp.model.Review;
-import com.wecamp.setting.WebTitle;
 import com.wecamp.utils.PageUtil;
+import com.wecamp.utils.TimeUtil;
 import com.wecamp.vo.Pagination;
 
 import lombok.AllArgsConstructor;
@@ -163,8 +165,9 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+	@SuppressWarnings({"null", "unchecked"})
 	@Override
-	public Member login(Member member, HttpServletResponse response) throws Exception {
+	public Member login(Member member, HttpServletResponse response, ServletContext servletContext) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		// 등록된 아이디가 없다면
@@ -198,6 +201,27 @@ public class MemberServiceImpl implements MemberService {
 			// 로그인 성공 시 회원정보 리턴 
 			} else {
 				member.setPwd(null);
+				
+				LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+				TimeUtil timeUtil = new TimeUtil();
+				if(loginUser == null) {
+					String loginTime = timeUtil.getDateTime();
+					member.setLoginTime(loginTime);
+					loginUser = new LinkedList<Member>();
+					loginUser.add(member);
+					servletContext.setAttribute("loginUser", loginUser);
+				} else {
+					Iterator<Member> itr = loginUser.iterator();
+					while(itr.hasNext()) {
+						Member user = itr.next();
+						boolean isSameUser = member.getEmail().equals(user.getEmail()) ? true : false;
+						if(isSameUser) return member;
+					}
+					String loginTime = timeUtil.getDateTime();
+					member.setLoginTime(loginTime);
+					loginUser.add(member);
+					servletContext.setAttribute("loginUser", loginUser);
+				}
 				return member;
 			}
 		}
@@ -205,7 +229,10 @@ public class MemberServiceImpl implements MemberService {
 	
 	//로그아웃 구현은 Database에 대한 어떠한 작업도 없기 때문에 매퍼 X
 	@Override
-	public void logout(HttpServletResponse response) {
+	public void logout(HttpServletResponse response, HttpSession session, ServletContext servletContext) {
+		
+		auto_logout_service(session, servletContext);
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out;
 		try {
@@ -411,6 +438,28 @@ public class MemberServiceImpl implements MemberService {
 			return 1;
 		}catch(Exception e) {
 			return 0;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void auto_logout_service(HttpSession session, ServletContext servletContext) {
+		if(session.getAttribute("member") != null && servletContext.getAttribute("loginUser") != null) {
+			Member logout_user = (Member)session.getAttribute("member");
+			LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+			Iterator<Member> head = loginUser.iterator();
+			while(head.hasNext()) {
+				Member user = head.next();
+				if(logout_user.getEmail().equals(user.getEmail())) {
+					head.remove();
+					break;
+				}
+			}
+			servletContext.setAttribute("loginUser", loginUser);
+			session.removeAttribute("member");
+			log.info("################LOGOUT###################");
+			log.info("#> "+loginUser.size()+" :: Auto - Logout >>> success");
+			log.info("################LOGOUT###################");
 		}
 	}
 }

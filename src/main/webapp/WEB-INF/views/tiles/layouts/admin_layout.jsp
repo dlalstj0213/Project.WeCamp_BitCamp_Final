@@ -26,7 +26,7 @@
 </head>
   
 <!-- <body class="adminbody"> -->
-<body class="adminbody">
+<body class="adminbody" onbeforeunload="handleBrowserCloseButton(event);">
     <div id="main">
     <header id="header">
         <tiles:insertAttribute name="header" />
@@ -48,126 +48,103 @@
     <!-- END main -->
     
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-<script src="/admin/js/modernizr.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/modernizr.min.js"></script>
 
-<script src="/admin/js/moment.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/popper.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/bootstrap.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/moment.min.js"></script>
+<script src="/admin/js/popper.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
 
-<script src="/admin/js/detect.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/fastclick.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/jquery.blockUI.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/jquery.nicescroll.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/detect.js"></script>
+<script src="/admin/js/fastclick.js"></script>
+<script src="/admin/js/jquery.blockUI.js"></script>
+<script src="/admin/js/jquery.nicescroll.js"></script>
 
 <!-- App js -->
-<script src="/admin/js/pikeadmin.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/pikeadmin.js"></script>
 
-<!-- BEGIN Java Script for this page -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 <!-- 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> -->
 
 	<!-- Counter-Up-->
 	<script src="/admin/plugins/waypoints/lib/jquery.waypoints.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="/admin/plugins/counterup/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>			
-
-	
-	<script>
-	var ctx1 = document.getElementById("lineChart").getContext('2d');
-	var lineChart = new Chart(ctx1, {
-		type: 'bar',
-		data: {
-			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			datasets: [{
-					label: 'Dataset 1',
-					backgroundColor: '#3EB9DC',
-					data: [10, 14, 6, 7, 13, 9, 13, 16, 11, 8, 12, 9] 
-				}, {
-					label: 'Dataset 2',
-					backgroundColor: '#EBEFF3',
-					data: [12, 14, 6, 7, 13, 6, 13, 16, 10, 8, 11, 12]
-				}]
-				
-		},
-		options: {
-						tooltips: {
-							mode: 'index',
-							intersect: false
-						},
-						responsive: true,
-						scales: {
-							xAxes: [{
-								stacked: true,
-							}],
-							yAxes: [{
-								stacked: true
-							}]
-						}
-					}
-	});
-
-
-	var ctx2 = document.getElementById("pieChart").getContext('2d');
-	var pieChart = new Chart(ctx2, {
-		type: 'pie',
-		data: {
-				datasets: [{
-					data: [12, 19, 3, 5, 2, 3],
-					backgroundColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-					"Red",
-					"Orange",
-					"Yellow",
-					"Green",
-					"Blue"
-				]
-			},
-			options: {
-				responsive: true
-			}
-	 
-	});
-
-
-	var ctx3 = document.getElementById("doughnutChart").getContext('2d');
-	var doughnutChart = new Chart(ctx3, {
-		type: 'doughnut',
-		data: {
-				datasets: [{
-					data: [12, 19, 3, 5, 2, 3],
-					backgroundColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-					"Red",
-					"Orange",
-					"Yellow",
-					"Green",
-					"Blue"
-				]
-			},
-			options: {
-				responsive: true
-			}
-	 
-	});
-	</script>
+	<script src="/admin/plugins/counterup/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>		
 <!-- END Java Script for this page -->	
+
+    <script type="text/javascript"> 
+        var closing_window = false; 
+        $(window).on('focus', function () { 
+        	closing_window = false;
+        	//if the user interacts with the window, then the window is not being 
+        	//closed 
+        }); 
+        
+        $(window).on('blur', function () {
+        	closing_window = true;
+        	if (!document.hidden) {
+        		//when the window is being minimized 
+        		closing_window = false; 
+        	}
+        	$(window).on('resize', function (e) {
+        		//when the window is being maximized 
+        		closing_window = false; 
+        	});
+        	$(window).off('resize');
+        	//avoid multiple listening
+        });
+        
+        $('html').on('mouseleave', function () {
+        	closing_window = true; 
+        	//if the user is leaving html, we have more reasons to believe that he's 
+        	//leaving or thinking about closing the window 
+        });
+        
+        $('html').on('mouseenter', function () {
+        	closing_window = false;
+        	//if the user's mouse its on the page, it means you don't need to logout
+        	//them, didn't it? 
+        });
+        
+        $(document).on('keydown', function (e) {
+        	if (e.keyCode == 91 || e.keyCode == 18) {
+        		closing_window = false; 
+        		//shortcuts for ALT+TAB and Window key 
+        	} 
+        	if (e.keyCode == 116 || (e.ctrlKey && e.keyCode == 82)) {
+        		closing_window = false; 
+        		//shortcuts for F5 and CTRL+F5 and CTRL+R 
+        	} 
+        }); 
+        
+        // Prevent logout when clicking in a hiperlink 
+        $(document).on("click", "a", function () {
+        	closing_window = false; 
+        }); 
+        
+        // Prevent logout when clicking in a button (if these buttons rediret to some page) 
+        $(document).on("click", "button", function () {
+        	closing_window = false; 
+        }); 
+        
+        // Prevent logout when submiting 
+        $(document).on("submit", "form", function () {
+        	closing_window = false; 
+        }); 
+        
+        // Prevent logout when submiting 
+        $(document).on("click", "input[type=submit]", function () {
+        	closing_window = false; 
+        }); 
+    	
+		function handleBrowserCloseButton(event) { 
+		   if (closing_window) 
+		    {
+		    	$.ajax({
+		    		url: "/auto_logout",
+		    		type: "POST",
+		    		async: true 
+		    	});
+		    } 
+		} 
+	</script>
 </body>
 </html>

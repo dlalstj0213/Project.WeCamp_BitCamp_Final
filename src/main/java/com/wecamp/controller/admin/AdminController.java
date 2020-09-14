@@ -1,5 +1,8 @@
 package com.wecamp.controller.admin;
 
+import java.util.LinkedList;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wecamp.model.Admin;
+import com.wecamp.model.Member;
 import com.wecamp.service.admin.AdminService;
 import com.wecamp.setting.WebTitle;
+import com.wecamp.vo.ChartVo;
 import com.wecamp.vo.TotalResultVo;
 
 import lombok.extern.log4j.Log4j;
@@ -25,6 +30,8 @@ public class AdminController {
 	private AdminService adminService;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private ServletContext servletContext;
 	
 	@RequestMapping("main.wcc")
 	private String adminMain() {
@@ -37,7 +44,27 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping("main.json")
 	private TotalResultVo getTotalValues() {
-		return adminService.getTotalValuesService();
+		return adminService.getTotalValuesService(servletContext);
+	}
+	
+	@ResponseBody
+	@PostMapping("today_sales")
+	private ChartVo getTodayAndYesterdaySales() {
+		ChartVo response = adminService.getTodayAndYesterdaySalesService();
+		return response;
+	}
+
+	@ResponseBody
+	@PostMapping("total_member")
+	private TotalResultVo getTotalMember() {
+		TotalResultVo response = adminService.getTotalMemberService();
+		return response;
+	}
+	
+	@ResponseBody
+	@PostMapping("login_members")
+	private LinkedList<Member> getLoginMembers() {
+		return adminService.getLoginMembersService(servletContext);
 	}
 	
 	//tiles를 거쳐가지 않는 메소드
@@ -54,6 +81,4 @@ public class AdminController {
 		}
 		return "redirect:login.wcc";
 	}
-	
-
 }

@@ -2,13 +2,13 @@ package com.wecamp.controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +35,8 @@ public class LogInController {
 	private NaverService naverService;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private ServletContext servletContext;
 	
 	// 로그인 폼으로 이동
 	@RequestMapping(value = "login.wcc", method = RequestMethod.GET)
@@ -49,7 +51,7 @@ public class LogInController {
 	@RequestMapping(value = "login_user.wcc", method = RequestMethod.POST)
 	private String login(@ModelAttribute Member member, HttpServletResponse response)
 			throws Exception {
-		member = service.login(member, response);
+		member = service.login(member, response, servletContext);
 		session.setAttribute("member", member);
 		return "redirect:../";
 	}
@@ -71,7 +73,7 @@ public class LogInController {
 	
 	@RequestMapping("logout_naver")
 	private String logoutNaver(String accessToken) throws IOException {
-		naverService.naverLogout(session, accessToken);
+		naverService.naverLogout(session, accessToken, servletContext);
 		return "redirect:login.wcc";
 	}
 	
@@ -79,7 +81,7 @@ public class LogInController {
 	@RequestMapping(value = "/logout.wcc", method = RequestMethod.GET)
 	private String logout(HttpServletResponse response) throws Exception {
 		// 또는 session.invalidate();
-		service.logout(response);
+		service.logout(response, session, servletContext);
 		session.removeAttribute("member");
 		return "redirect:../";
 	}

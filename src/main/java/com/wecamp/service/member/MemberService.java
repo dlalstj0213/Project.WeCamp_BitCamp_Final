@@ -2,6 +2,7 @@ package com.wecamp.service.member;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,9 +26,9 @@ public interface MemberService {
 	//회원 인증
 	public void approval_member(Member member, HttpServletResponse response) throws Exception;
 	//로그인 
-	Member login(Member member, HttpServletResponse response) throws Exception;
+	Member login(Member member, HttpServletResponse response, ServletContext servletContext) throws Exception;
 	//로그아웃
-	void logout(HttpServletResponse response) throws Exception;
+	void logout(HttpServletResponse response, HttpSession session, ServletContext servletContext);
 	//비밀번호 찾기 
 	void find_pwd(HttpServletResponse response, Member member) throws Exception;
 	//회원탈퇴(새로운 탈퇴회원 추가 후 회원 삭제)
@@ -44,4 +45,6 @@ public interface MemberService {
 	ModelAndView show_heart_list(String email, Integer nextPage, HttpSession session);
 	//찜 리스트 삭제
 	int delete_heart_list(String email, int camp_idx);
+	
+	void auto_logout_service(HttpSession session, ServletContext servletContext);
 }

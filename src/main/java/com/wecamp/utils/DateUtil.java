@@ -23,4 +23,9 @@ public class DateUtil {
 		cal.add(Calendar.DATE, 1);
         return df.format(cal.getTime());
 	}
+
+	public String getYesterday(){
+		cal.add(Calendar.DATE, -1);
+		return df.format(cal.getTime());
+	}
 }

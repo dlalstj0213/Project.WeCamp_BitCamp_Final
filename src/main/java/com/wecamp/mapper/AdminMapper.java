@@ -11,4 +11,5 @@ public interface AdminMapper {
 	Integer selectCountCurrentBooking(); 
 	Integer selectCountInquiry();
 	Integer selectCountInquiryUnchecked();
+	Long selectSumTotalFeeOnDate(String date);
 }

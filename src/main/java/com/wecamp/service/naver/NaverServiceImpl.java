@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.LinkedList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -31,8 +34,9 @@ public class NaverServiceImpl implements NaverService{
 		System.out.println("====================================");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void naverLogout(HttpSession session, String accessToken) throws IOException {
+	public void naverLogout(HttpSession session, String accessToken, ServletContext servletContext) throws IOException {
 		SnsValue naverSns = new SnsValue("naver");
 		String apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=delete"
 				+ "&client_id="+naverSns.getClientId()
@@ -41,6 +45,19 @@ public class NaverServiceImpl implements NaverService{
 				+ "&service_provider=NAVER";
 		//String response = requestToServer(apiURL);
 		//log.info("#> response : "+response);
+		if(session.getAttribute("member") != null || servletContext.getAttribute("loginUser") != null) {
+			Member logout_user = (Member)session.getAttribute("member");
+			LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+			Iterator<Member> itr = loginUser.iterator();
+			while(itr.hasNext()) {
+				Member user = itr.next();
+				if(logout_user.getEmail().equals(user.getEmail())) {
+					itr.remove();
+					break;
+				}
+			}
+			servletContext.setAttribute("loginUser", loginUser);
+		}
 		session.removeAttribute("member");
 	}
 	

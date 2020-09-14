@@ -204,9 +204,9 @@ public class MemberServiceImpl implements MemberService {
 				
 				LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
 				TimeUtil timeUtil = new TimeUtil();
+				String loginTime = timeUtil.getDateTime();
+				member.setLoginTime(loginTime);
 				if(loginUser == null) {
-					String loginTime = timeUtil.getDateTime();
-					member.setLoginTime(loginTime);
 					loginUser = new LinkedList<Member>();
 					loginUser.add(member);
 					servletContext.setAttribute("loginUser", loginUser);
@@ -217,8 +217,6 @@ public class MemberServiceImpl implements MemberService {
 						boolean isSameUser = member.getEmail().equals(user.getEmail()) ? true : false;
 						if(isSameUser) return member;
 					}
-					String loginTime = timeUtil.getDateTime();
-					member.setLoginTime(loginTime);
 					loginUser.add(member);
 					servletContext.setAttribute("loginUser", loginUser);
 				}

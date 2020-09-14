@@ -81,4 +81,13 @@ public class AdminController {
 		}
 		return "redirect:login.wcc";
 	}
+	
+	@RequestMapping("logout.wcc")
+	private String logout() {
+		if(session.getAttribute("admin") == null) {
+			return "redirect:login.wcc";
+		}
+		session.removeAttribute("admin");
+		return "redirect:login.wcc";
+	}
 }

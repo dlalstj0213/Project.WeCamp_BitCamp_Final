@@ -24,18 +24,8 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="pro-profile.html" class="dropdown-item notify-item">
-                                    <i class="fa fa-user"></i> <span>Profile</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="#" class="dropdown-item notify-item">
+                                <a href="logout.wcc" class="dropdown-item notify-item">
                                     <i class="fa fa-power-off"></i> <span>Logout</span>
-                                </a>
-								
-								<!-- item-->
-                                <a target="_blank" href="https://www.pikeadmin.com" class="dropdown-item notify-item">
-                                    <i class="fa fa-external-link"></i> <span>Pike Admin</span>
                                 </a>
                             </div>
                         </li>

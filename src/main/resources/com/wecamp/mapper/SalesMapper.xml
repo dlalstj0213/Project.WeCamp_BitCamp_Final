@@ -4,7 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wecamp.mapper.SalesMapper"><!-- route of mapping to java -->
 
-
+	
+	<select id="selectDailyAll" resultType="Revenue" parameterType="String">
+		SELECT 
+			SUM(total_fee) as total_sale, SUM(service_fee) as earning, 
+		    SUM(total_fee) - SUM(service_fee) as profit,
+		    ROUND(((SUM(service_fee) / (SUM(total_fee) - SUM(service_fee)))*1000), 2) as ROS,
+		    COUNT(*) as count_sale, 
+			to_char(bdate, 'YYYY-MM-DD') as day
+		FROM 
+			BOOKING
+		WHERE
+		    to_char(bdate, 'YYYY-MM')=#{month} and S_NO=1
+		GROUP BY 
+			to_char(bdate, 'YYYY-MM-DD')
+		ORDER BY 
+			to_char(bdate, 'YYYY-MM-DD') asc
+	</select>
+	
 	<select id="selectMonthlyAll" resultType="Revenue" parameterType="String">
 		SELECT 
 			SUM(total_fee) as total_sale, SUM(service_fee) as earning, 
@@ -15,9 +32,11 @@
 		FROM 
 			BOOKING
 		WHERE
-		    to_char(bdate, 'YYYY')=#{year} and (S_NO=1 or S_NO=3)
+		    to_char(bdate, 'YYYY')=#{year} and S_NO=1
 		GROUP BY 
 			to_char(bdate, 'YYYY-MM')
+		ORDER BY 
+			to_char(bdate, 'YYYY-MM') asc
 	</select>
 
 	<select id="selectYearlyAll" resultType="Revenue">
@@ -30,9 +49,34 @@
 		FROM 
 			BOOKING
 		WHERE
-		    S_NO=1 or S_NO=3
+		    S_NO=1
 		GROUP BY 
 			to_char(bdate, 'YYYY')
+		ORDER BY 
+			to_char(bdate, 'YYYY') asc	
+	</select>
+	
+	
+	<select id="selectDailyByCamp" resultType="Revenue" parameterType="hashmap">
+		SELECT
+		    c.camp_name,
+		    b.camp_idx,
+			SUM(b.total_fee) as total_sale, SUM(b.service_fee) as earning, 
+		    SUM(b.total_fee) - SUM(b.service_fee) as profit,
+		    ROUND(((SUM(b.service_fee) / (SUM(b.total_fee) - SUM(b.service_fee)))*1000), 2) as ROS,
+		    COUNT(b.imp_uid) as count_sale, 
+			to_char(b.bdate, 'YYYY-MM-DD') as day
+		FROM 
+			BOOKING b
+		left outer join
+		    CAMP c
+		on c.camp_idx = b.camp_idx
+		WHERE
+		    b.CAMP_IDX=#{camp_idx} and to_char(b.bdate, 'YYYY-MM')=#{month} and b.S_NO=1
+		GROUP BY 
+			to_char(b.bdate, 'YYYY-MM-DD'), c.camp_name, b.camp_idx
+		ORDER BY 
+			to_char(b.bdate, 'YYYY-MM-DD') asc
 	</select>
 	
 	<select id="selectMonthlyByCamp" resultType="Revenue" parameterType="hashmap">
@@ -51,9 +95,11 @@
 		ON 
 			c.camp_idx = b.camp_idx
 		WHERE
-		    b.CAMP_IDX=#{camp_idx} and to_char(b.bdate, 'YYYY')=#{year} and (b.S_NO=1 or b.S_NO=3)
+		    b.CAMP_IDX=#{camp_idx} and to_char(b.bdate, 'YYYY')=#{year} and b.S_NO=1
 		GROUP BY 
 			to_char(b.bdate, 'YYYY-MM'), c.camp_name, b.camp_idx
+		ORDER BY 
+			to_char(bdate, 'YYYY-MM') asc
 	</select>
 	
 	<select id="selectYearlyByCamp" resultType="Revenue" parameterType="Integer">
@@ -72,9 +118,11 @@
 		ON 
 			c.camp_idx = b.camp_idx
 		WHERE
-		    b.CAMP_IDX=#{camp_idx} and (b.S_NO=1 or b.S_NO=3)
+		    b.CAMP_IDX=#{camp_idx} and b.S_NO=1
 		GROUP BY 
 			to_char(b.bdate, 'YYYY'), c.camp_name, b.camp_idx
+		ORDER BY 
+			to_char(bdate, 'YYYY') asc				
 	</select>
 
 

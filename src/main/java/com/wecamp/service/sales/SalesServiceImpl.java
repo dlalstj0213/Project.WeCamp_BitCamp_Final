@@ -17,6 +17,12 @@ import lombok.extern.log4j.Log4j;
 public class SalesServiceImpl implements SalesService {
 	
 	private SalesMapper mapper;
+	
+	@Override
+	public List<Revenue> selectDailyAllService(String month) {
+		List<Revenue> list = mapper.selectDailyAll(month);
+		return list;
+	}
 
 	@Override
 	public List<Revenue> selectMonthlyAllService(String year) {
@@ -27,6 +33,15 @@ public class SalesServiceImpl implements SalesService {
 	@Override
 	public List<Revenue> selectYearlyAllService() {
 		List<Revenue> list = mapper.selectYearlyAll();
+		return list;
+	}
+	
+	@Override
+	public List<Revenue> selectDailyByCampService(int camp_idx, String month) {
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		query.put("camp_idx", camp_idx);
+		query.put("month", month);
+		List<Revenue> list = mapper.selectDailyByCamp(query);
 		return list;
 	}
 
@@ -44,5 +59,6 @@ public class SalesServiceImpl implements SalesService {
 		List<Revenue> list = mapper.selectYearlyByCamp(camp_idx);
 		return list;
 	}
+
 
 }

@@ -18,4 +18,5 @@ public class Revenue {
 	private int count_sale;
 	private String year;
 	private String month;
+	private String day;
 }

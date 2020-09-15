@@ -361,6 +361,21 @@ $(function(){
 								<span class="la la-gear"></span> 캠핑장 정보
 							</a>
 							</c:if>
+							
+							<!-- rhie : TEST uri for managing Camp -->
+							<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+								id="nav-bookmark-tab" data-toggle="tab" href="#nav-bookmarks"
+								role="tab" aria-controls="nav-bookmarks" aria-selected="false"
+								onclick="getTest();">
+								<span class="la la-bookmark-o"></span> TEST
+							</a> 
+							<script>
+								function getTest(){
+									location.href = "../test/test.do";
+								}
+							</script>
+							<!-- rhie: END TEST -->
+							
 						</div>
 					</nav>
 					<div class="btn-box">

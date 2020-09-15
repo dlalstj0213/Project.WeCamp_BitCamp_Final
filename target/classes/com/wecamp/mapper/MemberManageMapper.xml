@@ -21,7 +21,7 @@
 		where rnum>#{page.startRow} and rnum<=#{page.endRow}
 		]]>
 	</select>
-
+ 
 	<select id="selectMembersByKeyword" resultType="com.wecamp.model.MemberAndAuthority" parameterType="hashMap">
 		select * from (
 		select ROWNUM rnum, aa.* from (

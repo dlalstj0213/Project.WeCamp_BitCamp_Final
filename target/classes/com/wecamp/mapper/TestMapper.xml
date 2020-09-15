@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wecamp.mapper.TestMapper"><!-- route of mapping to java -->
+	<select id="selectCampIdx" resultType="int" parameterType="String">
+		select CAMP_IDX from OWNER where EMAIL = #{email}
+	</select>
+	
+	<select id="selectCountBookingList" resultType="long" parameterType="hashmap">
+		<![CDATA[
+		select nvl(count(*), 0) from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
+		join CAMP on BOOKING.CAMP_IDX = CAMP.CAMP_IDX
+		join SORT on BOOKING.SORT_IDX = SORT.SORT_IDX
+		where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+		]]>
+	</select>
+	
+	<select id="selectCountUsingStateAsT" resultType="int" parameterType="hashmap">
+		<![CDATA[
+		select nvl(count(*), 0) from BOOKING
+		where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+		and USING_STATE = 'T'
+		]]>
+	</select>
+	<select id="selectCountUsingStateAsF" resultType="int" parameterType="hashmap">
+		<![CDATA[
+		select nvl(count(*), 0) from BOOKING
+		where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+		and USING_STATE = 'F'
+		]]>
+	</select>
+	<select id="selectCountUsingStateAsU" resultType="int" parameterType="hashmap">
+		<![CDATA[
+		select nvl(count(*), 0) from BOOKING
+		where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+		and USING_STATE = 'U'
+		]]>
+	</select>
+	
+	<select id="selectBookingList" resultType="com.wecamp.model.BookingAndCamp" parameterType="hashMap">
+		<![CDATA[
+		select * from (
+		select ROWNUM rnum, aa.* from (
+		select * from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
+		join CAMP on BOOKING.CAMP_IDX = CAMP.CAMP_IDX
+		join SORT on BOOKING.SORT_IDX = SORT.SORT_IDX
+		where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+		)aa) 
+		where rnum>#{page.startRow} and rnum<=#{page.endRow}
+		]]>
+	</select>
+	
+	<update id="updateUsingState" parameterType="hashmap">
+		<choose>
+			<when test="action == 'start'">
+				update BOOKING set USING_STATE = 'U' where IMP_UID = #{imp_uid}
+			</when>
+			<when test="action == 'end'">
+				update BOOKING set USING_STATE = 'T' where IMP_UID = #{imp_uid}
+			</when>
+		</choose>
+	</update>
+</mapper>

@@ -105,6 +105,7 @@
 <!-- end back-to-top -->
 
 <!-- Template JS Files -->
+<script src="/js/browser-close.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="/js/jquery.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="/js/jquery-ui.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="/js/popper.min.js?ver=<%=System.currentTimeMillis()%>"></script>

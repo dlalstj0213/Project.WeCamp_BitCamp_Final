@@ -51,8 +51,8 @@ public class LogInController {
 	@RequestMapping(value = "login_user.wcc", method = RequestMethod.POST)
 	private String login(@ModelAttribute Member member, HttpServletResponse response)
 			throws Exception {
-		member = service.login(member, response, servletContext);
-		session.setAttribute("member", member);
+		service.login(member, response, servletContext);
+		//session.setAttribute("member", member);
 		return "redirect:../";
 	}
 	
@@ -73,16 +73,15 @@ public class LogInController {
 	
 	@RequestMapping("logout_naver")
 	private String logoutNaver(String accessToken) throws IOException {
-		naverService.naverLogout(session, accessToken, servletContext);
+		naverService.naverLogout(session, accessToken);
 		return "redirect:login.wcc";
 	}
 	
 	//로그아웃 기능 구현
 	@RequestMapping(value = "/logout.wcc", method = RequestMethod.GET)
 	private String logout(HttpServletResponse response) throws Exception {
-		// 또는 session.invalidate();
-		service.logout(response, session, servletContext);
-		session.removeAttribute("member");
+		service.logout(response, session);
+		//session.removeAttribute("member");
 		return "redirect:../";
 	}
 	

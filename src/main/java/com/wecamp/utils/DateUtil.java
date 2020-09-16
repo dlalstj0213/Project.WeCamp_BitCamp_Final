@@ -1,6 +1,7 @@
 package com.wecamp.utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -66,9 +67,22 @@ public class DateUtil {
 		return (!localDate.isBefore(startLocalDate)) && (!localDate.isAfter(endLocalDate));
 	}
 	
-	public static void main(String[] args) {
-		DateUtil d = new DateUtil();
-		System.out.println(d.getToday());
+	public java.sql.Date transformDate(String year, String month, String day) {
+		String date = year+"-"+month+"-"+day;
+		return java.sql.Date.valueOf(date);
+	}
+	
+	public java.sql.Date transformDate(String date){
+		date = date.replaceAll("/", "-");
+		df = new SimpleDateFormat("yyyy-mm-dd");
+		Date tempDate = null;
+		try {
+			tempDate = df.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		String transDate = df.format(tempDate);
+		return java.sql.Date.valueOf(transDate);
 	}
 }
 

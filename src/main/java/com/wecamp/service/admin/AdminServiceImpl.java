@@ -4,6 +4,7 @@ package com.wecamp.service.admin;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import com.wecamp.mapper.AdminMapper;
 import com.wecamp.model.Admin;
 import com.wecamp.model.Member;
 import com.wecamp.utils.DateUtil;
+import com.wecamp.utils.SessionListener;
 import com.wecamp.utils.TimeUtil;
 import com.wecamp.vo.ChartVo;
 import com.wecamp.vo.TotalResultVo;
@@ -30,7 +32,6 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public boolean loginAdminService(Admin admin, HttpSession session) {
 		HashMap<String, Object> query = new HashMap<String, Object>();
-		log.info("#> admin : "+admin);
 		query.put("admin", admin);
 		
 		if(adminMapper.selectAdmin(query) > 0) {
@@ -40,10 +41,9 @@ public class AdminServiceImpl implements AdminService{
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public TotalResultVo getTotalValuesService(ServletContext servletContext) {
-		LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+	public TotalResultVo getTotalValuesService() {
+		List<Member> loginUser = SessionListener.getInstance().getUsers();
 		int totalLoginMember = 0;
 		if(loginUser != null) {
 			totalLoginMember = loginUser.size();
@@ -72,18 +72,15 @@ public class AdminServiceImpl implements AdminService{
 		return new TotalResultVo(totalMember, totalLeaveMember);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
-	public LinkedList<Member> getLoginMembersService(ServletContext servletContext){
-		if(servletContext.getAttribute("loginUser") == null) return null;
-		LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
+	public List<Member> getLoginMembersService(){
+		List<Member> loginList = SessionListener.getInstance().getUsers();
+		if(loginList == null) return null;
 		TimeUtil timeUtil = new TimeUtil();
 		String nowTime = timeUtil.getDateTime();
-		Iterator<Member> itr = loginUser.iterator();
-		while(itr.hasNext()) {
-			Member user = itr.next();
+		for(Member user : loginList) {
 			user.setDifferTime(timeUtil.getTimeDiffer(user.getLoginTime(), nowTime));
 		}
-		return loginUser;
+		return loginList;
 	}
 }

@@ -44,10 +44,25 @@
 <section class="form-shared padding-top-40px padding-bottom-100px">
 	<div class="container">
 			<h1>Test 페이지</h1><br/>
+			
+			<div class="input-group">
+			  <div class="input-group-prepend">
+				  <select id="category" class="custom-select" id="inputGroupSelect01">
+				    <option value="name" selected>이름</option>
+				    <option value="tel">전화번호</option>
+				  </select>
+			  </div>
+			   <div class="input-group-prepend">
+			    <label class="input-group-text" for="search">검색</label>
+			  </div>
+			  <input id="search" type="text" onkeyup="searchBookingRecords(false, 1);">
+			</div>
+			
 			<div id="table-part">
 			</div>
 	</div>
 </section>
+
 <script>
 	window.onload = function(){
 		getTest(false, false, 1);
@@ -56,7 +71,7 @@
 	function getTest(isAsync, isMore, currentPage){
 		console.log("call - getTest");
 		let sendData = {
-				isMore: true,
+				isMore: isMore,
 				currentPage: currentPage
 		};
 		$.ajax({
@@ -77,7 +92,7 @@
 	}
 	
 	
-	function startUsing(imp_uid, currentPage){
+	function startUsing(imp_uid, currentPage, isSearch){
 		console.log("이용 시작 > "+imp_uid);
 		console.log("현재 페이지 > "+currentPage);
 		$.ajax({
@@ -89,12 +104,16 @@
 			success: function(responseData){
 				console.log("responseData"+responseData.success);
 				console.log("success");
-				getTest(true, true, currentPage);
+				if(isSearch){
+					getTest(true, true, currentPage);
+				} else {
+					searchBookingRecords(currentPage);
+				}
 			}
 		});
 	}
 	
-	function endUsing(imp_uid, currentPage){
+	function endUsing(imp_uid, currentPage, isSearch){
 		console.log("이용 완료 > "+imp_uid);
 		console.log("현재 페이지 > "+currentPage);
 		$.ajax({
@@ -106,7 +125,34 @@
 			success: function(responseData){
 				console.log("responseData"+responseData.success);
 				console.log("success");
-				getTest(true, true, currentPage);
+				if(isSearch){
+					getTest(true, true, currentPage);
+				} else {
+					searchBookingRecords(currentPage);
+				}
+			}
+		});
+	}
+	
+	function  searchBookingRecords(isMore, currentPage){
+		let sendData = {
+				category: document.getElementById('category').value,
+				keyword: document.getElementById('search').value,
+				isMore: isMore,
+				currentPage: currentPage
+		};
+		$.ajax({
+			url: "search_booking_list",
+			type: "get",
+			data: sendData,
+			contentType: "application/json",
+			dataType: "HTML",
+			success: function(responseData){
+				/* if(responseData == "") {
+					location.href = "../login/login.wcc";
+				} */
+				document.getElementById('table-part').innerHTML = responseData;
+				console.log("call - getTesst : success");
 			}
 		});
 	}

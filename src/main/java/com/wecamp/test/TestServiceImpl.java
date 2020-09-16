@@ -1,7 +1,6 @@
 package com.wecamp.test;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -28,9 +27,8 @@ public class TestServiceImpl implements TestService{
 	@Autowired
 	HttpSession session;
 	
-	@Transactional
 	@Override
-	public ModelAndView getBookingRecordsService(String cpStr, boolean isMore) {
+	public ModelAndView getBookingRecordsService(String cpStr, boolean isMore, String search, String keyword, String category) {
 		ModelAndView response = new ModelAndView();
 		
 		Member user = (Member)session.getAttribute("member");
@@ -50,11 +48,15 @@ public class TestServiceImpl implements TestService{
 			String today = dateUtil.getToday();
 			query.put("camp_idx", camp_idx);
 			query.put("today", today);
+			query.put("search", search);
+			query.put("category", category);
+			query.put("keyword", keyword);
 			long listCount = mapper.selectCountBookingList(query);
 			Pagination paging = new Pagination(listCount, currentPage, pageSize);
 			if(listCount == 0) return response;
 			query.put("page", paging);
 			List<BookingAndCamp> list = mapper.selectBookingList(query);
+			
 			response.addObject("list", list);
 			response.addObject("page", paging);
 			response.addObject("using", mapper.selectCountUsingStateAsU(query));

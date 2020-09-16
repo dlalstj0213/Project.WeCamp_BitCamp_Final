@@ -51,12 +51,12 @@
 						</c:when>
 						<c:when test="${ list.using_state=='U' }">
 							<td id="btn${ list.using_state }">
-								<button onclick="endUsing('${list.imp_uid}', '${ page.currentPage }', false);">이용 완료</button>
+								<button onclick="endUsing('${list.imp_uid}', '${ page.currentPage }', true);">이용 완료</button>
 							</td>
 						</c:when>
 						<c:otherwise>
 							<td id="btn${ list.using_state }">
-								<button onclick="startUsing('${list.imp_uid}', '${ page.currentPage }', false);">이용 시작</button>
+								<button onclick="startUsing('${list.imp_uid}', '${ page.currentPage }', true);">이용 시작</button>
 							</td>
 						</c:otherwise>
 					</c:choose>
@@ -66,7 +66,7 @@
 			
 			<c:if test="${ empty list }">
 				<tr>
-					<th style="text-align:center" colspan='10'>오늘 예약된 정보가 없습니다</th>
+					<th style="text-align:center" colspan='10'>찾으시는 예약 정보가 없습니다</th>
 				</tr>
 			</c:if>
 		</tbody>
@@ -85,7 +85,7 @@
 		 		</c:when>
 		 		<c:otherwise>
 					<li class="page-item">
-				      <a class="page-link" onclick="getTest(true, true, '${page.startPage-1}');">Previous</a>
+				      <a class="page-link" onclick="searchBookingRecords(true, ${page.startPage-1});">Previous</a>
 				    </li>
 		 		</c:otherwise>
 		 	</c:choose>
@@ -95,11 +95,11 @@
 		  		<c:choose>
 		  			<c:when test="${page.currentPage eq status.index}">
 					    <li class="page-item active">
-					      <a class="page-link" onclick="getTest(true, true, ${status.index});">${status.index}<span class="sr-only">(current)</span></a>
+					      <a class="page-link" onclick="searchBookingRecords(true, ${status.index});">${status.index}<span class="sr-only">(current)</span></a>
 					    </li>
 		  			</c:when>
 		  			<c:otherwise>
-					    <li class="page-item"><a class="page-link" onclick="getTest(true, true, ${status.index});">${status.index}</a></li>
+					    <li class="page-item"><a class="page-link" onclick="searchBookingRecords(true, ${status.index});">${status.index}</a></li>
 		  			</c:otherwise>
 		  		</c:choose>
 		  	</c:forEach>
@@ -112,7 +112,7 @@
 		 		</c:when>
 		 		<c:otherwise>
 		 		    <li class="page-item">
-				      <a class="page-link" onclick="getTest(true, true, '${page.endPage+1}');">Next</a>
+				      <a class="page-link" onclick="searchBookingRecords(true, ${page.endPage+1});">Next</a>
 				    </li>
 		 		</c:otherwise>
 		 	</c:choose>

@@ -1,6 +1,6 @@
 package com.wecamp.controller.admin;
 
-import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -44,7 +44,7 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping("main.json")
 	private TotalResultVo getTotalValues() {
-		return adminService.getTotalValuesService(servletContext);
+		return adminService.getTotalValuesService();
 	}
 	
 	@ResponseBody
@@ -63,8 +63,8 @@ public class AdminController {
 	
 	@ResponseBody
 	@PostMapping("login_members")
-	private LinkedList<Member> getLoginMembers() {
-		return adminService.getLoginMembersService(servletContext);
+	private List<Member> getLoginMembers() {
+		return adminService.getLoginMembersService();
 	}
 	
 	//tiles를 거쳐가지 않는 메소드

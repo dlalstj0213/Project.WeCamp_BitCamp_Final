@@ -21,6 +21,7 @@ public class Member {
 	
 	private String loginTime;
 	private long[] differTime;
+	private int loginCount = 0;
 	
 	public Member(String email, int a_no, String name, String nickname, String pwd, long point, String approval_status,
 			String approval_key, String grade, String accessToken) {

@@ -47,12 +47,23 @@ public class TestController {
 	}
 	
 	@RequestMapping("booking_list")
-	private ModelAndView ajaxTest(boolean isMore, String currentPage) {
+	private ModelAndView booking_list(boolean isMore, String currentPage) {
 		if(session.getAttribute("member") == null) return null;
 		log.info("#> call - ajaxTest()");
 		log.info("#> data : "+isMore+" / "+currentPage);
-		ModelAndView response = service.getBookingRecordsService(currentPage, isMore);
+		ModelAndView response = service.getBookingRecordsService(currentPage, isMore, null, null, null);
 		response.setViewName("client/member/test_list");
+		return response;
+	}
+
+	@RequestMapping("search_booking_list")
+	private ModelAndView booking_search_list(boolean isMore, String currentPage, String keyword, String category) {
+		if(session.getAttribute("member") == null) return null;
+		log.info("#> call - ajaxTest()");
+		log.info("#> data : "+isMore+" / "+currentPage);
+		log.info("#> data : "+keyword+" / "+category);
+		ModelAndView response = service.getBookingRecordsService(currentPage, isMore, "search", keyword, category);
+		response.setViewName("client/member/test_search_list");
 		return response;
 	}
 	

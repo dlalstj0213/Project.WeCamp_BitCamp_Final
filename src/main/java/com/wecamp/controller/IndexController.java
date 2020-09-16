@@ -58,6 +58,6 @@ public class IndexController {
 	
 	@RequestMapping("auto_logout")
 	private void autoLogout() {
-			memberService.auto_logout_service(session, servletContext);
+			memberService.auto_logout_service(session);
 	}
 }

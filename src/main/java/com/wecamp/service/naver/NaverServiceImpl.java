@@ -21,6 +21,7 @@ import com.wecamp.auth.SnsLogin;
 import com.wecamp.auth.SnsValue;
 import com.wecamp.mapper.MemberMapper;
 import com.wecamp.model.Member;
+import com.wecamp.utils.SessionListener;
 import com.wecamp.utils.TimeUtil;
 
 import lombok.extern.log4j.Log4j;
@@ -30,10 +31,7 @@ import lombok.extern.log4j.Log4j;
 public class NaverServiceImpl implements NaverService{
 	@Autowired
 	MemberMapper memberMapper;
-	@Autowired
-	ServletContext servletContext;
 
-	@SuppressWarnings("unchecked")
 	@Transactional
 	@Override
 	public void naverLogin(String snsService, String code, HttpSession session, Model model) throws Exception {
@@ -52,28 +50,12 @@ public class NaverServiceImpl implements NaverService{
 			if(memberMapper.insertMember(profile)) profile.setPwd(null);
 		}
 		session.setAttribute("member", profile);
-		
-		TimeUtil timeUtil = new TimeUtil();
-		LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
-		profile.setLoginTime(timeUtil.getDateTime());
-		if(loginUser == null) {
-			loginUser = new LinkedList<Member>();
-			loginUser.add(profile);
-		} else {
-			Iterator<Member> itr = loginUser.iterator();
-			while(itr.hasNext()) {
-				Member user = itr.next();
-				if(user.getEmail().equals(profile.getEmail())) return;
-			}
-			loginUser.add(profile);
-		}
-		servletContext.setAttribute("loginUser", loginUser);
+		SessionListener.getInstance().setSession(session, profile);
 		System.out.println("====================================");
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public void naverLogout(HttpSession session, String accessToken, ServletContext servletContext) throws IOException {
+	public void naverLogout(HttpSession session, String accessToken) throws IOException {
 		SnsValue naverSns = new SnsValue("naver");
 		String apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=delete"
 				+ "&client_id="+naverSns.getClientId()
@@ -82,20 +64,7 @@ public class NaverServiceImpl implements NaverService{
 				+ "&service_provider=NAVER";
 		//String response = requestToServer(apiURL);
 		//log.info("#> response : "+response);
-		if(session.getAttribute("member") != null || servletContext.getAttribute("loginUser") != null) {
-			Member logout_user = (Member)session.getAttribute("member");
-			LinkedList<Member> loginUser = (LinkedList<Member>)servletContext.getAttribute("loginUser");
-			Iterator<Member> itr = loginUser.iterator();
-			while(itr.hasNext()) {
-				Member user = itr.next();
-				if(logout_user.getEmail().equals(user.getEmail())) {
-					itr.remove();
-					break;
-				}
-			}
-			servletContext.setAttribute("loginUser", loginUser);
-		}
-		session.removeAttribute("member");
+		SessionListener.getInstance().removeSession(session);
 	}
 	
 	

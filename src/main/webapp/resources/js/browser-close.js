@@ -42,15 +42,15 @@
         	} else if (e.keyCode == 116 || (e.ctrlKey && e.keyCode == 82)) {
         		closing_window = false; 
         		//shortcuts for F5 and CTRL+F5 and CTRL+R 
+        	} else if (e.key.toUpperCase() == "F4" && (prevKey == "ALT" || prevKey == "CONTROL")) {
+        		closing_window = true; 
         	} else if(e.keyCode == 115){ //창 닫기(Alt+F4) 방지
         		console.log("key");
 				closing_window = true; 
 			} else if(e.keyCode == 505){ //윈도우 창이 닫힐 경우
 				closing_window = true; 
 				//alert(document.body.onBeforeUnload);
-			} else if (e.key.toUpperCase() == "F4" && (prevKey == "ALT" || prevKey == "CONTROL")) {
-				closing_window = true; 
-		    }
+			}
 			prevKey = e.key.toUpperCase();
         }); 
         

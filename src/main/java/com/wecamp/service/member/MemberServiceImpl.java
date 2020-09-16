@@ -4,7 +4,6 @@ package com.wecamp.service.member;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -28,8 +27,8 @@ import com.wecamp.model.BookingAndCampAndImg;
 import com.wecamp.model.HeartAndCampAndImg;
 import com.wecamp.model.Member;
 import com.wecamp.model.Review;
+import com.wecamp.session.LoginSession;
 import com.wecamp.utils.PageUtil;
-import com.wecamp.utils.SessionListener;
 import com.wecamp.vo.Pagination;
 
 import lombok.AllArgsConstructor;
@@ -202,10 +201,9 @@ public class MemberServiceImpl implements MemberService {
 				return;
 				// 로그인 성공 시 회원정보 리턴 
 			} else {
+				session.setMaxInactiveInterval(60);
 				member.setPwd(null);
-				
 				session.setAttribute("member", member);
-				SessionListener.getInstance().setSession(session, member);
 			}
 		}
 	}
@@ -426,10 +424,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void auto_logout_service(HttpSession session) {
-			SessionListener.getInstance().removeSession(session);
 			log.info("################LOGOUT###################");
-			List<Member> list = SessionListener.getInstance().getUsers();
-			log.info("###>> list.size : "+list.size()+" / list : "+ Arrays.toString(list.toArray()));
+			session.removeAttribute("member");
 			log.info("################LOGOUT###################");
 	}
 }

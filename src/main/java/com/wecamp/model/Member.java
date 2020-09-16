@@ -1,13 +1,25 @@
 package com.wecamp.model;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+import com.wecamp.session.LoginSession;
+import com.wecamp.utils.TimeUtil;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+public class Member  implements HttpSessionBindingListener{
 	private String email;
 	private int a_no;
 	private String name;
@@ -35,5 +47,48 @@ public class Member {
 		this.approval_key = approval_key;
 		this.grade = grade;
 		this.accessToken = accessToken;
+	}
+	
+	@Override
+	public void valueBound(HttpSessionBindingEvent event) {
+		log.info("########ValueBound(세션연결됨)########");
+		Member member = this;
+		TimeUtil timeUtil = new TimeUtil();
+		String loginTime = timeUtil.getDateTime();
+		member.setLoginTime(loginTime);
+		member.setLoginCount(member.getLoginCount()+1);
+		if(LoginSession.getInstance().getLoginUsers().size() == 0) {
+			LoginSession.getInstance().getLoginUsers().add(member);
+		} else {
+			Iterator<Member> itr = LoginSession.getInstance().getLoginUsers().iterator();
+			boolean isSameUser = false;
+			while(itr.hasNext()) {
+				Member other = itr.next();
+				if(other.getEmail().equals(member.getEmail())) {
+					isSameUser = true;
+					break;
+				}
+			}
+			if(!isSameUser) LoginSession.getInstance().getLoginUsers().add(member);
+		}
+	}
+
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		log.info("########ValueBound(세션끊어짐)########");
+		Iterator<Member> itr = LoginSession.getInstance().getLoginUsers().iterator();
+		while(itr.hasNext()) {
+			Member other = itr.next();
+			if(other.getEmail().equals(this.email)) {
+				if(other.getLoginCount() <= 1) {
+					log.info("로그인 목록 삭제");
+					itr.remove();
+					break;
+				}
+				other.setLoginCount(other.getLoginCount()-1);
+			}
+		}
+		int s = LoginSession.getInstance().getLoginUsers().size();
+		log.info("##>> loginUsers size : "+s);
 	}
 }

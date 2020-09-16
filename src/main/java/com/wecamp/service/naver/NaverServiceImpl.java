@@ -21,7 +21,6 @@ import com.wecamp.auth.SnsLogin;
 import com.wecamp.auth.SnsValue;
 import com.wecamp.mapper.MemberMapper;
 import com.wecamp.model.Member;
-import com.wecamp.utils.SessionListener;
 import com.wecamp.utils.TimeUtil;
 
 import lombok.extern.log4j.Log4j;
@@ -50,7 +49,6 @@ public class NaverServiceImpl implements NaverService{
 			if(memberMapper.insertMember(profile)) profile.setPwd(null);
 		}
 		session.setAttribute("member", profile);
-		SessionListener.getInstance().setSession(session, profile);
 		System.out.println("====================================");
 	}
 
@@ -64,7 +62,7 @@ public class NaverServiceImpl implements NaverService{
 				+ "&service_provider=NAVER";
 		//String response = requestToServer(apiURL);
 		//log.info("#> response : "+response);
-		SessionListener.getInstance().removeSession(session);
+		session.removeAttribute("member");
 	}
 	
 	

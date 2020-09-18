@@ -8,5 +8,5 @@ import javax.servlet.http.HttpSession;
 import com.wecamp.vo.SearchResultVo;
 
 public interface SearchService {
-	Optional<SearchResultVo> searchCampList(String searchPlace, boolean isMore, HttpSession session, HttpServletRequest request);
+	Optional<SearchResultVo> searchCampList(String searchPlace, boolean isMore, String checkIn, String checkOut, HttpSession session, HttpServletRequest request);
 }

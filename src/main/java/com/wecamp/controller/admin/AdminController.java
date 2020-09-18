@@ -30,8 +30,6 @@ public class AdminController {
 	private AdminService adminService;
 	@Autowired
 	private HttpSession session;
-	@Autowired
-	private ServletContext servletContext;
 	
 	@RequestMapping("main.wcc")
 	private String adminMain() {

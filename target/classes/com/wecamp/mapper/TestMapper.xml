@@ -9,7 +9,7 @@
 	
 	<select id="selectCountBookingList" resultType="long" parameterType="hashmap">
 		<choose>
-			<when test="@com.wecamp.utils.MybatisCheck@notEmpty(search)">
+			<when test="@com.wecamp.utils.MyBatisCheck@notEmpty(search)">
 				<choose>
 					<when test='category.equals("name")'>
 						<![CDATA[
@@ -68,7 +68,7 @@
 	
 	<select id="selectBookingList" resultType="com.wecamp.model.BookingAndCamp" parameterType="hashMap">
 		<choose>
-			<when test="@com.wecamp.utils.MybatisCheck@notEmpty(search)">
+			<when test="@com.wecamp.utils.MyBatisCheck@notEmpty(search)">
 				<choose>
 					<when test='category.equals("name")'>
 						<![CDATA[

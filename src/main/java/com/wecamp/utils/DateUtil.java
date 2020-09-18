@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -83,6 +85,34 @@ public class DateUtil {
 		}
 		String transDate = df.format(tempDate);
 		return java.sql.Date.valueOf(transDate);
+	}
+	
+	public ArrayList<String> getAllDatesInRange(String startDate, String endDate){
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		Date start = null; 
+		Date end = null;
+		try {
+			start = df.parse(startDate);
+			end = df.parse(endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Calendar startCal = Calendar.getInstance();
+		Calendar endCal = Calendar.getInstance();
+		startCal.setTime(start);
+		endCal.setTime(end);
+		ArrayList<String> result = new ArrayList<String>();
+		while(startCal.compareTo(endCal) != 1) {
+			result.add(df.format(startCal.getTime()));
+			startCal.add(Calendar.DATE, 1);
+		}
+		return result;
+	}
+	
+	public static void main(String[] args) {
+		DateUtil u = new DateUtil();
+		ArrayList<String> test = u.getAllDatesInRange("2020/09/10", "2020/09/10");
+		System.out.println(Arrays.toString(test.toArray()));
 	}
 }
 

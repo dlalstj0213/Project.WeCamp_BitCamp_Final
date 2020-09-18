@@ -3,29 +3,55 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wecamp.mapper.SearchMapper"><!-- route of mapping to java -->
+	<!-- rhie -->
 	<select id="selectSearchedListOfCamp" resultType="CampAndImg" parameterType="hashmap">
-	    <![CDATA[
-		select * from (
-		select ROWNUM rnum, aa.* from (
 		select * from CAMP join IMG on CAMP.CAMP_IDX = IMG.CAMP_IDX where CAMP.ADDRESS like '%'||#{search}||'%' and IMG.DIVISION='thumb' order by TOTAL_BOOKING desc
-		)aa) 
-		where rnum>#{page.startRow} and rnum<=#{page.endRow}
-		]]>
 	</select>
 	
-	<select id="selectCountCamp" resultType="int">
-		select count(*) from CAMP
-	</select>
-	
-	<select id="select" resultType="String">
-		select fname from IMG where CAMP_IDX=1;
-	</select>
-	
+	<!-- rhie -->
 	<select id="selectAverageStar" resultType="Float" parameterType="int">
 		select avg(STAR) from REVIEW where CAMP_IDX=#{camp_idx}
 	</select>
 	
+	<!-- rhie -->
 	<select id="selectMinFeeOfCamp" resultType="long" parameterType="int">
 		select min(SITE_FEE) from SORT where CAMP_IDX=#{camp_idx}
+	</select>
+	
+	<!-- rhie -->
+	<select id="selectCheckBookingAvailable" resultType="int" parameterType="hashmap">
+		<![CDATA[
+		select nvl(count(*),0) from BOOKING where CAMP_IDX = #{camp_idx}
+		and CHECK_IN <= #{date} and CHECK_OUT >= #{date} and USING_STATE not in 'T'
+		]]>
+	</select>
+	
+	<!-- rhie -->
+	<select id="selectCountSearchFinalList" resultType="long" parameterType="hashmap">
+		select count(*) from CAMP join IMG on CAMP.CAMP_IDX = IMG.CAMP_IDX where CAMP.ADDRESS like '%'||#{search}||'%' and IMG.DIVISION='thumb'
+		<if test='@com.wecamp.utils.MyBatisCheck@notEmpty(exceptList)'>
+			and CAMP.CAMP_IDX not in 
+		<foreach item="except" collection="exceptList" open="(" separator="," close=")">
+			#{except.camp_idx}
+		</foreach>
+		</if>
+	</select>
+	
+	<!-- rhie -->
+	<select id="selectSearchFinalList" resultType="CampAndImg" parameterType="hashmap">
+		select * from (
+		select ROWNUM rnum, aa.* from (
+		select * from CAMP join IMG on CAMP.CAMP_IDX = IMG.CAMP_IDX where CAMP.ADDRESS like '%'||#{search}||'%' and IMG.DIVISION='thumb'
+		<if test='@com.wecamp.utils.MyBatisCheck@notEmpty(exceptList)'>
+			and CAMP.CAMP_IDX not in 
+		<foreach item="except" collection="exceptList" open="(" separator="," close=")">
+			#{except.camp_idx}
+		</foreach>
+		</if>
+		<![CDATA[
+		order by TOTAL_BOOKING desc
+		)aa) 
+		where rnum>#{page.startRow} and rnum<=#{page.endRow}
+		]]>
 	</select>
 </mapper>

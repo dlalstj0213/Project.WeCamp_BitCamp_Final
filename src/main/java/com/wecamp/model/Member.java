@@ -1,9 +1,7 @@
 package com.wecamp.model;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 

@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
 
-public class MybatisCheck {
+public class MyBatisCheck {
 	/**
 	  * Object type 변수가 비어있는지 체크<br/>
 	  * 비어있다면 true 반환

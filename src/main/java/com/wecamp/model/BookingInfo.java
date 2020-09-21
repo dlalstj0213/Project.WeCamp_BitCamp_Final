@@ -6,16 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Booking {
-	//private String udate;
+public class BookingInfo {
+	private String rnum;
 	private String imp_uid;
 	private String email;
-	private int camp_idx;
-	private int sort_idx;
-	private int s_no;
 	private long total_fee;
 	private Date bdate;
 	private Date check_in;
@@ -27,4 +25,15 @@ public class Booking {
 	private String name;
 	private long service_fee;
 	private String using_state;
+	
+	private int camp_idx;
+	private String camp_name;
+	private int site_num;
+	
+	private int s_no;
+	private String s_name;
+	
+	private int sort_idx;
+	private String sort_name;
+	private String site_name;
 }

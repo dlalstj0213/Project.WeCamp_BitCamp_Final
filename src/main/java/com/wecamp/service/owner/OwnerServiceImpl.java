@@ -1,18 +1,24 @@
 package com.wecamp.service.owner;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wecamp.mapper.BookingManageMapper;
 import com.wecamp.mapper.OwnerMapper;
+import com.wecamp.model.BookingInfo;
 import com.wecamp.model.CampAndSortAndImg;
 import com.wecamp.model.Img;
 import com.wecamp.model.Inquiry;
@@ -21,8 +27,11 @@ import com.wecamp.model.Owner;
 import com.wecamp.model.Sort;
 import com.wecamp.setting.Path;
 import com.wecamp.setting.WebTitle;
+import com.wecamp.utils.DateUtil;
 import com.wecamp.utils.FileUtil;
+import com.wecamp.utils.PageUtil;
 import com.wecamp.vo.OwnerDetailVo;
+import com.wecamp.vo.Pagination;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -32,6 +41,9 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 class OwnerServiceImpl implements OwnerService{
 	private OwnerMapper ownerMapper;
+	private BookingManageMapper manageMapper;
+	@Autowired
+	private HttpSession session;
 
 	@Override
 	public ModelAndView submitInquiryService(Inquiry inquiry) {
@@ -194,4 +206,67 @@ class OwnerServiceImpl implements OwnerService{
 		return response;
 	}
 	
+	@Override
+	public ModelAndView get_booking_info_service(String cpStr, boolean isMore, boolean isSearch, String keyword, String category) {
+		ModelAndView response = new ModelAndView();
+		
+		PageUtil pageUtil = new PageUtil();
+		if(!isMore) {
+			session.removeAttribute("cp");
+			cpStr = null;
+		}
+		int currentPage = pageUtil.getCurrentPageSession(cpStr, session);
+		int pageSize = pageUtil.getPageSize("3", session);
+		
+		Member user = (Member)session.getAttribute("member");
+		Integer camp_idx = manageMapper.select_owner_camp_idx(user.getEmail());
+		if(camp_idx != null) {
+			HashMap<String, Object> query = new HashMap<String, Object>();
+			DateUtil dateUtil = new DateUtil();
+			String today = dateUtil.getToday();
+			query.put("camp_idx", camp_idx);
+			query.put("today", today);
+			if(isSearch) {
+				query.put("search", isSearch);
+			} else {
+				query.put("search", null);
+			}
+			query.put("category", category);
+			query.put("keyword", keyword);
+			long listCount = manageMapper.select_count_booking_list(query);
+			Pagination page = new Pagination(listCount, currentPage, pageSize);
+			if(listCount == 0) return response;
+			query.put("page", page);
+			List<BookingInfo> list = manageMapper.select_booking_list(query);
+			response.addObject("list", list);
+			response.addObject("page", page);
+			
+			query.put("using_state", 'U');
+			response.addObject("using", manageMapper.select_count_using_state(query));
+			
+			query.put("using_state", 'F');
+			response.addObject("notUsing", manageMapper.select_count_using_state(query));
+			
+			query.put("using_state", 'T');
+			response.addObject("endUsing", manageMapper.select_count_using_state(query));
+		}
+		return response;
+	}
+	
+	@Override
+	public boolean change_using_state_service(String data) throws IOException {
+		ObjectMapper jsonObj = new ObjectMapper();
+		JsonNode rootNode = jsonObj.readTree(data);
+		String imp_uid = rootNode.get("imp_uid").asText();
+		String action = rootNode.get("action").asText();
+
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		query.put("imp_uid", imp_uid);
+		if(action.equals("start")) {
+			query.put("using_state", 'U');
+		} else if(action.equals("end")) {
+			query.put("using_state", 'T');
+		}
+		return manageMapper.update_using_state(query);
+	}
 }

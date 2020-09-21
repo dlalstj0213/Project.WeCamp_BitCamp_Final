@@ -1,13 +1,17 @@
 package com.wecamp.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -97,5 +101,25 @@ public class OwnerController {
 		ModelAndView response = ownerService.update_camp_service(request);
 		response.setViewName("client/member/modify_camp/" + WebTitle.TITLE + "캠핑장 수정");
 		return response;
+	}
+	
+	@PostMapping("camp_manage")
+	private ModelAndView get_booking_info(String currentPage, boolean isMore, boolean isSearch, String category, String keyword) {
+		ModelAndView response = ownerService.get_booking_info_service(currentPage, isMore, isSearch, keyword, category);
+		response.setViewName("client/member/camp_manage");
+		log.info("#>category : "+category);
+		log.info("#>keyword : "+keyword);
+		log.info("#>currentPage : "+currentPage);
+		log.info("#>isSearch : "+isSearch);
+		log.info("#>isMore : "+isMore);
+		return response;
+	}
+	
+	@ResponseBody
+	@PostMapping("change_using_state")
+	private boolean change_using_state(@RequestBody String data) throws IOException {
+		log.info("call - chang_using_state() : success");
+		log.info("#> imp_uid : "+data);
+		return ownerService.change_using_state_service(data);
 	}
 }

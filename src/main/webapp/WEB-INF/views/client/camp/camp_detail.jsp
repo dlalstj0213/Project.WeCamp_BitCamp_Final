@@ -701,12 +701,12 @@
 							class="booking-content d-flex align-items-center justify-content-between text-center">
 							<div class="input-number-group">
 								<p>People</p>
-								<div class="input-group-button">
+								<div class="input-group-button check-available">
 									<span class="input-number-decrement">-</span>
 								</div>
 								<input id="peopleNum" class="input-number peopleNum"
 									type="number" value="${peopleNum}" min="0" max="0" readonly="readonly" >
-								<div class="input-group-button">
+								<div class="input-group-button check-available">
 									<span class="input-number-increment">+</span>
 								</div>
 							</div>

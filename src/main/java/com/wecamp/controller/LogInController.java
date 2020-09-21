@@ -2,13 +2,13 @@ package com.wecamp.controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +35,8 @@ public class LogInController {
 	private NaverService naverService;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private ServletContext servletContext;
 	
 	// 로그인 폼으로 이동
 	@RequestMapping(value = "login.wcc", method = RequestMethod.GET)
@@ -49,8 +51,8 @@ public class LogInController {
 	@RequestMapping(value = "login_user.wcc", method = RequestMethod.POST)
 	private String login(@ModelAttribute Member member, HttpServletResponse response)
 			throws Exception {
-		member = service.login(member, response);
-		session.setAttribute("member", member);
+		service.login(member, response, servletContext);
+		//session.setAttribute("member", member);
 		return "redirect:../";
 	}
 	
@@ -78,9 +80,8 @@ public class LogInController {
 	//로그아웃 기능 구현
 	@RequestMapping(value = "/logout.wcc", method = RequestMethod.GET)
 	private String logout(HttpServletResponse response) throws Exception {
-		// 또는 session.invalidate();
-		service.logout(response);
-		session.removeAttribute("member");
+		service.logout(response, session);
+		//session.removeAttribute("member");
 		return "redirect:../";
 	}
 	

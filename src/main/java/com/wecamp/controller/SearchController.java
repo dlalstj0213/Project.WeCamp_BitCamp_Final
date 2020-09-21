@@ -23,9 +23,10 @@ public class SearchController {
 	@GetMapping("search.wcc")
 	private ModelAndView search(String searchPlace, String checkIn, String checkOut, String peopleNum, HttpSession session, HttpServletRequest request) {
 		ModelAndView response = new ModelAndView("client/result/map");
+		
 		session.setAttribute("cp", 1);
 		try {
-			SearchResultVo result = searchService.searchCampList(searchPlace, false, session, request).get();
+			SearchResultVo result = searchService.searchCampList(searchPlace, false, checkIn, checkOut, session, request).get();
 			response.addObject("vo", result);
 			response.addObject("checkIn", checkIn);
 			response.addObject("checkOut", checkOut);		
@@ -38,13 +39,13 @@ public class SearchController {
 	}
 	
 	@PostMapping("loadMore.wcc")
-	private ModelAndView loadMore(String searchPlace, HttpSession session, HttpServletRequest request) {
+	private ModelAndView loadMore(String searchPlace, HttpSession session, HttpServletRequest request, String checkIn, String checkOut) {
 		ModelAndView response = null;
 		int cp = Integer.parseInt(session.getAttribute("cp").toString()); 
 		cp = cp + 1;
 		session.setAttribute("cp", cp);
 		try {
-			SearchResultVo result = searchService.searchCampList(searchPlace, true, session, request).get();
+			SearchResultVo result = searchService.searchCampList(searchPlace, true, checkIn, checkOut, session, request).get();
 			response = new ModelAndView("client/result/mapList");
 			if(result!=null) response.addObject("vo", result);
 		}catch(Exception e) {

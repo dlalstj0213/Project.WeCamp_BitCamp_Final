@@ -67,7 +67,7 @@
 		                <li><a onclick="location.href='${pageContext.request.contextPath}/login/logout_naver?accessToken=${member.accessToken}'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
                 	</c:when>
                 	<c:otherwise>
-		                <li><a onclick="location.href='${pageContext.request.contextPath}/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+		                <li><a id="logout" onclick="location.href='${pageContext.request.contextPath}/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
                 	</c:otherwise>
                 </c:choose>
                 </c:if>

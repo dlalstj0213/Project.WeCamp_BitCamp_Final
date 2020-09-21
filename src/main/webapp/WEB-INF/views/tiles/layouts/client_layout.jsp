@@ -55,10 +55,9 @@
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 	</script>
-	
 </head>
   
-<body>
+<body onbeforeunload="handleBrowserCloseButton(event);">
     <header id="header">
         <tiles:insertAttribute name="header" />
     </header>

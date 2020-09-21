@@ -73,17 +73,16 @@
                     </div><!-- end main-search-input-item -->
                     <div class="main-search-input-item">
 						<select class="custom-select" style="height: 50px;"  id="optionNo" name="optionNo" onchange='selectPeopleNum();'>
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						  <option>6</option>
-						  <option>7</option>
-						  <option>8</option>
-						  <option>9</option>
-						  <option>10</option>
-						  <option>more</option>
+						<c:forEach begin='1' end='10' step='1' varStatus='status'>
+							<c:choose>
+								<c:when test='${ status.index eq peopleNum }'>
+								  <option value="${ status.index }" selected>${ status.index } 명</option>
+								</c:when>
+								<c:otherwise>
+								  <option value="${ status.index }" >${ status.index } 명</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 						</select>
                         
                     </div><!-- end main-search-input-item -->
@@ -92,10 +91,10 @@
                     </div><!-- end main-search-input-btn -->
                      <!-- request 할 데이터 -->
         <form id="searched-data" action="../search/search.wcc" method="get">
-        	<input type="hidden" id="searched-place" name="searchPlace" value="">
-        	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
-        	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">
-        	<input type="hidden" id="peopleNum" name="peopleNum" value="">
+        	<input type="hidden" id="searched-place" name="searchPlace" value="${searchPlace}">
+        	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="${checkIn}">
+        	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="${checkOut}">
+        	<input type="hidden" id="peopleNum" name="peopleNum" value="${peopleNum}">
         </form>
                 </div><!-- end main-search-input -->
 		
@@ -315,24 +314,28 @@
 	        qs[i] = qs[i].split('=');
 	        result[qs[i][0]] = decodeURIComponent(qs[i][1]);
 	    }
-	    
+	    result.searchPlace = result.searchPlace.replace(/\+/gi, ' ');
+        console.log(result.searchPlace);
 	    return result;
 	}
 
-
+	<%--
 	$(document).ready(function () {
+		console.log("check");
 		$("select[name=optionNo]").find("option").each(function(index){
-			if( $(this).html() == '${peopleNum}' ){
+				console.log( '${peopleNum}' );
+				console.log("value1 : "+$(this).html);
+			if( $(this).html == '${peopleNum} 명'){
 				/* alert(${param.peopleNum}); */
+				console.log("value2 : "+$(this).value);
 				$(this).prop("selected", "selected");
 			}
 		});
-		
-		});
-
+	});
+	--%>
 
 	$("#loadMore").click(function(){
-		
+		//console.log(get_query());
 		$.ajax({
 		      url:"./loadMore.wcc",
 		      type:"POST",
@@ -340,6 +343,7 @@
 		      dataType: "HTML",
 		      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 		      success: function(result) {
+		    	  //alert(result);
 		          if (result) {
 		        	  $(".list-list-camp").append(result);
 		        		///////////////////
@@ -424,12 +428,14 @@
 		  			}	 
 		  			
 		  			
-		  			location.href='#'; 
-		   ///////////////////////
+		  			//location.href='#'; 
 		          } else {
-		              alert("검색 결과의 끝입니다");
+		        	  let loadMore = document.getElementById('loadMore');
+		        	  loadMore.innerHTML = "<span class='la la-refresh'></span> No More";
+		        	  loadMore.disabled = 'disabled';
+		              //alert("데이터가 없습니다.");
 		          }
-		          
+		          $('#loadMore').focus();
 		      },
 		      error: function(request, status, error) {
 		          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

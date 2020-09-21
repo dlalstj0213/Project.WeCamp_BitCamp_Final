@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wecamp.model.CampAndEtc;
 import com.wecamp.service.index.BestCampService;
+import com.wecamp.service.member.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -20,10 +21,14 @@ import lombok.extern.log4j.Log4j;
 public class IndexController {
 	
 	@Autowired
-	BestCampService service;
+	private BestCampService service;
+	@Autowired
+	private HttpSession session;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	private ModelAndView index(HttpSession session) {
+	private ModelAndView index() {
 //		session.setAttribute("member", new Member("test@gmail.com",
 //		1, 
 //		"testName", 
@@ -44,5 +49,10 @@ public class IndexController {
 	@RequestMapping("/404code")
 	private String error() {
 		return "404code";
+	}
+	
+	@RequestMapping("auto_logout")
+	private void autoLogout() {
+			memberService.auto_logout_service(session);
 	}
 }

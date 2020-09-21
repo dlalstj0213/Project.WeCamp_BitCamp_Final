@@ -45,8 +45,11 @@
 	</delete>
 	
 	<!-- 회원 정보 수정 -->
-	<update id="update_member" parameterType="member">
+	<update id="update_member" parameterType="Member">
 		update MEMBER set name = #{name}, nickname = #{nickname} where email = #{email}
 	</update>
 	
+	<insert id="insertMember" parameterType="Member">
+		insert into MEMBER values(#{email}, 1, #{name}, #{nickname}, #{pwd}, 0, #{approval_status}, #{approval_key}, 'SILVER')
+	</insert>
 </mapper>

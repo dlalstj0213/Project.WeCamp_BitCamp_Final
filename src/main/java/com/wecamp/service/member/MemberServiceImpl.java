@@ -7,11 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.mail.HtmlEmail;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,6 @@ import com.wecamp.model.BookingAndCampAndImg;
 import com.wecamp.model.HeartAndCampAndImg;
 import com.wecamp.model.Member;
 import com.wecamp.model.Review;
-import com.wecamp.setting.WebTitle;
 import com.wecamp.utils.PageUtil;
 import com.wecamp.vo.Pagination;
 
@@ -41,7 +41,9 @@ public class MemberServiceImpl implements MemberService {
 	private BookingMapper bookingMapper;
 	private ReviewMapper reviewMapper;
 	private HeartMapper heartMapper;
-	
+	@Autowired
+	HttpSession session;
+
 	// 이메일 중복검사 AJAX 
 	@Override
 	public void emailCheck(String email, HttpServletResponse response) throws Exception {
@@ -50,13 +52,13 @@ public class MemberServiceImpl implements MemberService {
 		log.info("#> 1emailcheck : "+memberMapper.emailCheck(email));
 		out.close();
 	}
-	
+
 	@Override
 	public int signUp(Member member, HttpServletResponse response) throws Exception {
-		
+
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		if (memberMapper.emailCheck(member.getEmail()) == 1) {
 			out.println("<script>");
 			out.println("alert('동일한 아이디가 있습니다.');");
@@ -73,19 +75,19 @@ public class MemberServiceImpl implements MemberService {
 			return 1;
 		}
 	}
-	
+
 	@Override
 	public String create_key() throws Exception {
 		String key = "";
 		Random rd = new Random();
-		
+
 		//8자리 숫자의 랜덤한 숫자 생성 
 		for (int i = 0; i < 8; i++) {
 			key += rd.nextInt(10);
 		}
 		return key;
 	}
-	
+
 	@Override
 	public void send_mail(Member member, String div) throws Exception {
 		//Mail Server 설정
@@ -93,14 +95,14 @@ public class MemberServiceImpl implements MemberService {
 		String hostSMTP = "smtp.naver.com";
 		String hostSMTPid = "simple_photo@naver.com";
 		String hostSMTPpwd = "whwldk123";
-		
+
 		// 보내는 사람의 EMail, 제목, 내용
 		String fromEmail = "simple_photo@naver.com";
 		String fromName = "WeCamp :: 최고의 캠핑장";
 		String subject = "";
 		String msg = "";
-		
-		
+
+
 		//회원가입 메일 내용
 		if(div.equals("join")) {
 			subject = "WeCamp Hompage 회원가입 인증 메일입니다!";
@@ -130,7 +132,7 @@ public class MemberServiceImpl implements MemberService {
 			email.setSSL(true);
 			email.setHostName(hostSMTP);
 			email.setSmtpPort(587);
-			
+
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
 			email.addTo(mail, charSet);
@@ -142,12 +144,12 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("메일 발송 실패: " + e);
 		}
 	}
-	
+
 	@Override
 	public void approval_member(Member member, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		if(memberMapper.approval_member(member) == 0) { // -> 이메일 인증에 실패했을 경우
 			out.println("<script>");
 			out.println("alert('잘못된 접근입니다.');");
@@ -162,9 +164,9 @@ public class MemberServiceImpl implements MemberService {
 			out.close();
 		}
 	}
-	
+
 	@Override
-	public Member login(Member member, HttpServletResponse response) throws Exception {
+	public void login(Member member, HttpServletResponse response, ServletContext servletContext) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		// 등록된 아이디가 없다면
@@ -174,11 +176,11 @@ public class MemberServiceImpl implements MemberService {
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
-			return null;
+			return;
 		} else {
 			String pwd = member.getPwd();
 			member = memberMapper.login(member.getEmail());
-			
+
 			// 비밀번호가 맞지 않을 경우
 			if(!member.getPwd().equals(pwd)) {
 				out.println("<script>");
@@ -186,26 +188,30 @@ public class MemberServiceImpl implements MemberService {
 				out.println("history.go(-1);");
 				out.println("</script>");
 				out.close();
-				return null;
-			// 이메일 인증을 하지 않은 경우 
+				return;
+				// 이메일 인증을 하지 않은 경우 
 			} else if(!member.getApproval_status().equals("true")) {
 				out.println("<script>");
 				out.println("alert('이메일 인증 후 로그인을 진행해 주세요.')");
 				out.println("history.go(-1);");
 				out.println("</script>");
 				out.close();
-				return null;
-			// 로그인 성공 시 회원정보 리턴 
+				return;
+				// 로그인 성공 시 회원정보 리턴 
 			} else {
+				//session.setMaxInactiveInterval(60); //세션 테스트 타이머셋
 				member.setPwd(null);
-				return member;
+				session.setAttribute("member", member);
 			}
 		}
 	}
-	
+
 	//로그아웃 구현은 Database에 대한 어떠한 작업도 없기 때문에 매퍼 X
 	@Override
-	public void logout(HttpServletResponse response) {
+	public void logout(HttpServletResponse response, HttpSession session) {
+
+		auto_logout_service(session);
+
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out;
 		try {
@@ -219,7 +225,7 @@ public class MemberServiceImpl implements MemberService {
 			//String errorPage = "404_wecamp_error";
 		}
 	}
-	
+
 	@Override
 	public void find_pwd(HttpServletResponse response, Member member) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
@@ -231,11 +237,11 @@ public class MemberServiceImpl implements MemberService {
 		} else if(!member.getEmail().equals(memberMapper.login(member.getEmail()).getEmail())) {
 			out.println("잘못된 이메일입니다. ");
 			out.close();
-		// 가입에 사용한 이메일이 아니라면 
-		/*}else if(!member.getEmail().equals(memberMapper.login(member.getEmail()).getEmail())) {
+			// 가입에 사용한 이메일이 아니라면 
+			/*}else if(!member.getEmail().equals(memberMapper.login(member.getEmail()).getEmail())) {
 			out.println("잘못된 이메일입니다. ");
 			out.close();*/
-		// 임시 비밀번호 부여 
+			// 임시 비밀번호 부여 
 		}else {
 			String pwd = "";
 			for (int i = 0; i < 12; i++) {
@@ -246,12 +252,12 @@ public class MemberServiceImpl implements MemberService {
 			memberMapper.update_pwd(member);
 			// 비밀번호 변경 이메일 전송
 			send_mail(member, "find_pwd");
-			
+
 			out.println("이메일로 임시 비밀번호를 전송하였습니다. ");
 			out.close();
 		}
 	}
-	
+
 	//회원탈퇴 
 	@Transactional
 	@Override
@@ -261,7 +267,7 @@ public class MemberServiceImpl implements MemberService {
 		Member leavingMember = (Member)session.getAttribute("member");
 		response.setContentType("text/html;charset=utf-8");
 		//member = memberMapper.login(member.getEmail());
-		
+
 		log.info("#>member비밀번호(2) : "+member.getPwd());
 		try {
 			PrintWriter out = response.getWriter();
@@ -283,7 +289,7 @@ public class MemberServiceImpl implements MemberService {
 			return false;
 		}
 	}
-	
+
 	//비밀번호 수정
 	@Override
 	public Member update_pwd(Member member, String old_pwd, HttpServletResponse response) {
@@ -305,7 +311,7 @@ public class MemberServiceImpl implements MemberService {
 			return null;
 		}
 	}
-	
+
 	//회원정보 수정
 	@Override
 	public Member update_member(Member member) throws Exception {
@@ -313,27 +319,27 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.update_member(member);
 		return memberMapper.login(member.getEmail());
 	}
-	
+
 	//예약 내역 확인 리스트
 	@Override
 	public ModelAndView show_booking_info(String email, Integer nextPage, HttpSession session) {
 		//Member member = (Member)session.getAttribute("member");
-		
+
 		HashMap<String, Object> query = new HashMap<String, Object>();
 		query.put("email", email);
-		
+
 		//세션에 설정된 현재페이지를 가지고 오는 소스 코드
 		//String psStr = (String)session.getAttribute("ps");
 		int currentPage = 1;
-		
+
 		if(session.getAttribute("cp") == null) {
 			session.setAttribute("cp", 1);
 		}
 		if(nextPage != null) {
 			currentPage = nextPage;
 		}
-		
-		
+
+
 		//F3 누르면 거기로 감
 		PageUtil pageUtil = new PageUtil();
 		currentPage = pageUtil.getCurrentPageSession(String.valueOf(currentPage), session);
@@ -341,9 +347,9 @@ public class MemberServiceImpl implements MemberService {
 		long listCount = bookingMapper.select_booking_count(query);
 		Pagination page = new Pagination(listCount, currentPage, pageSize);
 		query.put("page", page);
-		
+
 		List<BookingAndCampAndImg> list = bookingMapper.select_booking(query);
-		
+
 		ModelAndView response = new ModelAndView("/client/member/booking_list");
 		response.addObject("page", page);
 		response.addObject("list", list);
@@ -351,66 +357,73 @@ public class MemberServiceImpl implements MemberService {
 		log.info("#> cp: " + session.getAttribute("cp"));
 		log.info("#> cp: " + currentPage);
 		log.info("#> nextPage: " + nextPage);
-		
+
 		return response;
 	}
-	
+
 	@Transactional
 	@Override
 	public boolean add_reivew_service(Review review, int booking_idx, HttpSession session) {
 		Member member = (Member)session.getAttribute("member");
 		review.setEmail(member.getEmail());
 		review.setNickname(member.getNickname());
-		
+
 		if(reviewMapper.insert_review(review)) {
 			return bookingMapper.update_state(booking_idx);
 		}
 		return false;
 	}
-	
+
 	//찜 목록 리스트 확인
 	@Override
 	public ModelAndView show_heart_list(String email, Integer nextPage, HttpSession session) {
 		HashMap<String, Object> query = new HashMap<String, Object>();
 		query.put("email", email);
-		
+
 		int currentPage = 1;
-		
+
 		if(session.getAttribute("cp") == null) {
 			session.setAttribute("cp", 1);
 		}
 		if(nextPage != null) {
 			currentPage = nextPage;
 		}
-		
+
 		PageUtil pageUtil = new PageUtil();
 		currentPage = pageUtil.getCurrentPageSession(String.valueOf(currentPage), session);
 		int pageSize = pageUtil.getPageSize("6", session);
 		long listCount = heartMapper.select_heart_count(query);
 		Pagination page = new Pagination(listCount, currentPage, pageSize);
 		query.put("page", page);
-		
+
 		List<HeartAndCampAndImg> hlist = heartMapper.select_heart(query);
-		
+
 		ModelAndView response = new ModelAndView("/client/member/heart_list");
 		response.addObject("page", page);
 		response.addObject("hlist", hlist);
-		
+
 		return response;
 	}
-	
+
 	//찜 삭제
 	@Override
 	public int delete_heart_list(String email, int camp_idx) {
 		HashMap<String, Object> query = new HashMap<String, Object>();
 		query.put("email", email);
 		query.put("camp_idx", camp_idx);
-		
+
 		try {
 			heartMapper.deleteHeart(query);
 			return 1;
 		}catch(Exception e) {
 			return 0;
 		}
+	}
+
+	@Override
+	public void auto_logout_service(HttpSession session) {
+			log.info("################LOGOUT###################");
+			session.removeAttribute("member");
+			log.info("################LOGOUT###################");
 	}
 }

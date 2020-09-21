@@ -2,6 +2,17 @@
  * 
  */
 function uploadCamp(){
+	//var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+	let reg = /(.*?)\.(jpg|png)$/;
+	for(let i=0; i<document.getElementsByClassName('file').length; i++){
+		let file = document.getElementsByClassName('file')[i].value;
+		if(!file.match(reg)){
+			document.getElementsByClassName('file')[i].focus();
+			alert("지정된 확장자의 파일만 업로드 가능합니다. (.png .jpg)");
+			return false;
+		}
+	}
+	
 	let length = document.getElementsByClassName('check').length;
 	for(let k=0; k<length; k++){
 		if(document.getElementsByClassName('check')[k].value == ""){
@@ -135,7 +146,7 @@ function more_input_html(index){
 			+ "<div class='billing-content'>"
 			// 1 
 			+ "<label class='label-text'>캠핑 사이트 이름 <i	class='la la-question tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
+			+ "data-placement='top' title='해당 구역 이름'></i></label>"
 			+ "<div class='form-group'>"
 			+ "<span class='la la-pencil form-icon'></span>"
 			+ "<input id='site-name"+index+"' name='sort["+index+"].site_name' class='message-control form-control check' style='height: 50px'"
@@ -143,8 +154,7 @@ function more_input_html(index){
 			+ "</div>"
 			
 			//custom-checkbox 
-			+ "<label class='label-text'>종류 <i	class='la la-question tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
+			+ "<label class='label-text'>종류 </label>"
 			+ "<div class='billing-form-item'>"
 			+ "<div class='billing-content'>";
 		let sort_name = ["오토캠핑", "글램핑", "카라반", "노지캠핑", "기타"];
@@ -160,16 +170,14 @@ function more_input_html(index){
 			+ "</div>"
 			
 			// 2 
-			+ "<label class='label-text'>해당 사이트 수용 인원 <i	class='la la-question tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
+			+ "<label class='label-text'>해당 사이트 수용 인원 </label>"
 			+ "<div class='form-group'>"
 			+ "<span class='la la-pencil form-icon'></span>"
 			+ "<input id='people-num"+index+"' name='sort["+index+"].people_num' class='message-control form-control check' style='height: 50px'"
 			+ "placeholder='해당 사이트 내 수용 가능한 인원을 입력해주세요.'>"
 			+ "</div>"
 			// 3 
-			+ "<label class='label-text'>해당 사이트 이용 가격 <i	class='la la-question tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
+			+ "<label class='label-text'>해당 사이트 이용 가격 </label>"
 			+ "<div class='form-group'>"
 			+ "<span class='la la-won form-icon'></span>"
 			+ "<input id='site-fee"+index+"' class='form-control camp-price check' type='text'"
@@ -177,9 +185,9 @@ function more_input_html(index){
 			+ "</div>"
 			// 4
 			+ "<label class='label-text'>해당 사이트 사진 <i	class='la la-file-image-o tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
+			+ "data-placement='top' title='캠핑장 관련 상세 사진들을 선택해주세요(.png .jpg)'></i></label>"
 			+ "<div class='form-group'>"
-			+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img'>"
+			+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img' accept='.png, .jpg'>"
 			+ "</div>"
 			+ "</div>"
 			//end billing-content 
@@ -206,6 +214,9 @@ function more_input_html(index){
 			num = num.replace(rgx2, '$1' + ',' + '$2');
 		this.value = num;
 	});
+	
+    /*====  Tooltip =====*/
+    $('[data-toggle="tooltip"]').tooltip();
 }
 
 function chooseOnlyOneSort(check, index){

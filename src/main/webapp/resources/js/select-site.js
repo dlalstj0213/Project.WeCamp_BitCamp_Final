@@ -11,6 +11,10 @@ var bbqPrice;
 var peopleNum;
 var sort_idx;
 
+
+
+
+
 $(document).ready(function(){
 	//avgStar Booking.jsp에 평점 띄우기 위해 localStorage로 넘김
 	avgStar = $('#avgStar').val();
@@ -33,6 +37,7 @@ function selectSite(index){
 	}else{
 		document.getElementById('booking-event').style.pointerEvents = 'none';
 	}
+
 
 	// == $('#booking-event').text("예약하기");
 	imgs = document.getElementById('img'+index).getAttribute('src');

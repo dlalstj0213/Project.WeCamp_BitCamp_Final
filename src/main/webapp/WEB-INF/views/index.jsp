@@ -48,35 +48,25 @@
                     <div class="contact-form-action padding-top-29px" style="margin-top: 17px">
                                <div class="form-group">
                                    <span class="la la-calendar-o form-icon"></span>
-                                   <input id="initDate" class="date-range form-control" type="text" name="daterange" value=""/>
+                                   <input id="initDate" class="date-range form-control"
+										style="cursor: pointer; background-color:#ffffff" type="text" name="daterange"
+										value="" readonly/>
                                </div>
                     </div><!-- end main-search-input-item -->
                     </div><!-- end main-search-input-item -->
                     <div class="main-search-input-item">
 						<select class="custom-select" style="height: 50px;"  id="optionNo" name="optionNo" onchange='selectPeopleNum();'>
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						  <option>6</option>
-						  <option>7</option>
-						  <option>8</option>
-						  <option>9</option>
-						  <option>10</option>
-						  <option>more</option>
+						  <option value="1" selected>1 명</option>
+						  <option value="2">2 명</option>
+						  <option value="3">3 명</option>
+						  <option value="4">4 명</option>
+						  <option value="5">5 명</option>
+						  <option value="6">6 명</option>
+						  <option value="7">7 명</option>
+						  <option value="8">8 명</option>
+						  <option value="9">9 명</option>
+						  <option value="10">10 명</option>
 						</select>
-                        <!-- <select class="select-option-field-2">
-                            <option value >Select a Category</option>
-                            <option value="1">Shops</option>
-                            <option value="2">Hotels</option>
-                            <option value="3">Foods & Restaurants</option>
-                            <option value="4">Fitness</option>
-                            <option value="5">Travel</option>
-                            <option value="6">Salons</option>
-                            <option value="7">Event</option>
-                            <option value="8">Business</option>
-                        </select> -->
                     </div><!-- end main-search-input-item -->
                     <div class="main-search-input-btn">
                         <button class="button theme-btn" type="button" onclick="submitSearch()">Search</button>
@@ -90,7 +80,7 @@
         	<input type="hidden" id="searched-place" name="searchPlace" value="">
         	<input type="hidden" id="check-in" class="check-in" name="checkIn" value="">
         	<input type="hidden" id="check-out" class="check-out" name="checkOut" value="">
-        	<input type="hidden" id="peopleNum" name="peopleNum" value="">
+        	<input type="hidden" id="peopleNum" name="peopleNum" value="1">
         </form>                          
         
     </div><!-- end container -->
@@ -401,3 +391,62 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/insta.js"></script>
 <script src="/js/search.js"></script>
+
+<script>
+window.onload = function(){
+    var now = new Date();
+    var nowYear = now.getFullYear();
+    var nowMonth = now.getMonth() + 1;
+    var nowDate = now.getDate();
+    var dayOfTheWeek = now.getDay();
+    if (nowMonth < 10) {
+        nowMonth = "0" + nowMonth;
+    }
+    if (nowDate < 10) {
+        nowDate = "0" + nowDate;
+    }
+    currentDate = nowYear + "/" + nowMonth + "/" + nowDate;
+    nextDate = nowYear + "/" + nowMonth + "/" + (Number(nowDate)+1);
+    $('#check-in').val(currentDate);
+    $('#check-out').val(nextDate);
+    let date = currentDate+" - "+nextDate;
+	 document.getElementById('initDate').value = date;
+	 
+     $('input[name="daterange"]').daterangepicker({
+     	autoApply: true,
+     	minDate: new Date(),
+     	opens: 'center',
+     	//applyLabel: '확인',
+     	//cancelLabel: '취소',
+     	 locale :{
+              format: 'YYYY/MM/DD',
+              'monthNames': [
+             	 '1월',
+             	 '2월',
+             	 '3월',
+             	 '4월',
+             	 '5월',
+             	 '6월',
+             	 '7월',
+             	 '8월',
+             	 '9월',
+             	 '10월',
+             	 '11월',
+             	 '12월'
+              ],
+              'daysOfWeek': [
+             	 '일',
+             	 '월',
+             	 '화',
+             	 '수',
+             	 '목',
+             	 '금',
+             	 '토'
+              ]
+          },
+     }, function(start, end, label){
+     	$('.check-in').val(start.format('YYYY/MM/DD'))
+     	$('.check-out').val(end.format('YYYY/MM/DD'))
+     });
+}
+</script>

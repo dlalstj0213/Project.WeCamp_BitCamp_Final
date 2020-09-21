@@ -26,7 +26,7 @@
 </head>
   
 <!-- <body class="adminbody"> -->
-<body class="adminbody">
+<body class="adminbody" onbeforeunload="handleBrowserCloseButton(event);">
     <div id="main">
     <header id="header">
         <tiles:insertAttribute name="header" />
@@ -48,126 +48,27 @@
     <!-- END main -->
     
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-<script src="/admin/js/modernizr.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/modernizr.min.js"></script>
 
-<script src="/admin/js/moment.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/popper.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/bootstrap.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/moment.min.js"></script>
+<script src="/admin/js/popper.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
 
-<script src="/admin/js/detect.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/fastclick.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/jquery.blockUI.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="/admin/js/jquery.nicescroll.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/detect.js"></script>
+<script src="/admin/js/fastclick.js"></script>
+<script src="/admin/js/jquery.blockUI.js"></script>
+<script src="/admin/js/jquery.nicescroll.js"></script>
 
 <!-- App js -->
-<script src="/admin/js/pikeadmin.js?ver=<%=System.currentTimeMillis()%>"></script>
+<script src="/admin/js/pikeadmin.js"></script>
 
-<!-- BEGIN Java Script for this page -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 <!-- 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> -->
 
 	<!-- Counter-Up-->
 	<script src="/admin/plugins/waypoints/lib/jquery.waypoints.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="/admin/plugins/counterup/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>			
-
-	
-	<script>
-	var ctx1 = document.getElementById("lineChart").getContext('2d');
-	var lineChart = new Chart(ctx1, {
-		type: 'bar',
-		data: {
-			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			datasets: [{
-					label: 'Dataset 1',
-					backgroundColor: '#3EB9DC',
-					data: [10, 14, 6, 7, 13, 9, 13, 16, 11, 8, 12, 9] 
-				}, {
-					label: 'Dataset 2',
-					backgroundColor: '#EBEFF3',
-					data: [12, 14, 6, 7, 13, 6, 13, 16, 10, 8, 11, 12]
-				}]
-				
-		},
-		options: {
-						tooltips: {
-							mode: 'index',
-							intersect: false
-						},
-						responsive: true,
-						scales: {
-							xAxes: [{
-								stacked: true,
-							}],
-							yAxes: [{
-								stacked: true
-							}]
-						}
-					}
-	});
-
-
-	var ctx2 = document.getElementById("pieChart").getContext('2d');
-	var pieChart = new Chart(ctx2, {
-		type: 'pie',
-		data: {
-				datasets: [{
-					data: [12, 19, 3, 5, 2, 3],
-					backgroundColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-					"Red",
-					"Orange",
-					"Yellow",
-					"Green",
-					"Blue"
-				]
-			},
-			options: {
-				responsive: true
-			}
-	 
-	});
-
-
-	var ctx3 = document.getElementById("doughnutChart").getContext('2d');
-	var doughnutChart = new Chart(ctx3, {
-		type: 'doughnut',
-		data: {
-				datasets: [{
-					data: [12, 19, 3, 5, 2, 3],
-					backgroundColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-					"Red",
-					"Orange",
-					"Yellow",
-					"Green",
-					"Blue"
-				]
-			},
-			options: {
-				responsive: true
-			}
-	 
-	});
-	</script>
+	<script src="/admin/plugins/counterup/jquery.counterup.min.js?ver=<%=System.currentTimeMillis()%>"></script>		
 <!-- END Java Script for this page -->	
+<script src="/js/browser-close.js?ver=<%=System.currentTimeMillis()%>"></script>
 </body>
 </html>

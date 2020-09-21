@@ -10,4 +10,5 @@ public interface MemberMapper {
 	public int update_pwd(Member member);
 	public int delete_member(Member member);
 	public boolean update_member(Member member);
+	public boolean insertMember(Member member);
 }

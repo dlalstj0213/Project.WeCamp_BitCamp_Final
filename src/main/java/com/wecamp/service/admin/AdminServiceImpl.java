@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.wecamp.mapper.AdminMapper;
 import com.wecamp.model.Admin;
 import com.wecamp.model.Member;
-import com.wecamp.session.LoginSession;
+import com.wecamp.storage.LoginStorage;
 import com.wecamp.utils.DateUtil;
 import com.wecamp.utils.TimeUtil;
 import com.wecamp.vo.ChartVo;
@@ -41,8 +41,8 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public TotalResultVo getTotalValuesService() {
 		int totalLoginMember = 0;
-		if(LoginSession.getInstance().getLoginUsers() != null) {
-			totalLoginMember = LoginSession.getInstance().getLoginUsers().size();
+		if(LoginStorage.getInstance().getLoginUsers() != null) {
+			totalLoginMember = LoginStorage.getInstance().getLoginUsers().size();
 		}
 		Integer totalCamp = adminMapper.selectCountCamp();
 		Integer totalBooking = adminMapper.selectCountBooking();
@@ -70,7 +70,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public List<Member> getLoginMembersService(){
-		List<Member> loginList = LoginSession.getInstance().getLoginUsers();
+		List<Member> loginList = LoginStorage.getInstance().getLoginUsers();
 		if(loginList == null) return null;
 		TimeUtil timeUtil = new TimeUtil();
 		String nowTime = timeUtil.getDateTime();

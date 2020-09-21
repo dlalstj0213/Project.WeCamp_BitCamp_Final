@@ -5,7 +5,7 @@ import java.util.Iterator;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
-import com.wecamp.session.LoginSession;
+import com.wecamp.storage.LoginStorage;
 import com.wecamp.utils.TimeUtil;
 
 import lombok.AllArgsConstructor;
@@ -55,10 +55,10 @@ public class Member  implements HttpSessionBindingListener{
 		String loginTime = timeUtil.getDateTime();
 		member.setLoginTime(loginTime);
 		member.setLoginCount(member.getLoginCount()+1);
-		if(LoginSession.getInstance().getLoginUsers().size() == 0) {
-			LoginSession.getInstance().getLoginUsers().add(member);
+		if(LoginStorage.getInstance().getLoginUsers().size() == 0) {
+			LoginStorage.getInstance().getLoginUsers().add(member);
 		} else {
-			Iterator<Member> itr = LoginSession.getInstance().getLoginUsers().iterator();
+			Iterator<Member> itr = LoginStorage.getInstance().getLoginUsers().iterator();
 			boolean isSameUser = false;
 			while(itr.hasNext()) {
 				Member other = itr.next();
@@ -67,14 +67,14 @@ public class Member  implements HttpSessionBindingListener{
 					break;
 				}
 			}
-			if(!isSameUser) LoginSession.getInstance().getLoginUsers().add(member);
+			if(!isSameUser) LoginStorage.getInstance().getLoginUsers().add(member);
 		}
 	}
 
 	@Override
 	public void valueUnbound(HttpSessionBindingEvent event) {
 		log.info("########ValueBound(세션끊어짐)########");
-		Iterator<Member> itr = LoginSession.getInstance().getLoginUsers().iterator();
+		Iterator<Member> itr = LoginStorage.getInstance().getLoginUsers().iterator();
 		while(itr.hasNext()) {
 			Member other = itr.next();
 			if(other.getEmail().equals(this.email)) {
@@ -86,7 +86,7 @@ public class Member  implements HttpSessionBindingListener{
 				other.setLoginCount(other.getLoginCount()-1);
 			}
 		}
-		int s = LoginSession.getInstance().getLoginUsers().size();
+		int s = LoginStorage.getInstance().getLoginUsers().size();
 		log.info("##>> loginUsers size : "+s);
 	}
 }

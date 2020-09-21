@@ -9,11 +9,12 @@ var category;
 var campPrice;
 var bbqPrice;
 var peopleNum;
+var sort_idx;
 
 $(document).ready(function(){
 	//avgStar Booking.jsp에 평점 띄우기 위해 localStorage로 넘김
 	avgStar = $('#avgStar').val();
-	console.log(" : "+avgStar+"type of : "+typeof avgStar);
+	//console.log(" avgStar : "+avgStar+", type of : "+typeof avgStar);
 	if(avgStar===""){
 		avgStar="0.0";
 	}
@@ -26,19 +27,12 @@ function selectSite(index){
 	$('#booking-event').empty();
 	$('#booking-event').append("예약하기");
 	
-	
-	//.input-number-decrement, .input-number-increment
-	$("#peopleNum").bind('keyup mouseup',function(){
-		peopleNum = Number(document.getElementById("peopleNum").value);
-		//alert(peopleNum);
-		if(peopleNum>=1){
-			alert("1>>" +peopleNum);
-			//예약 버튼 활성화
-			document.getElementById('booking-event').style.pointerEvents = 'auto'; 
-		}else{
-			document.getElementById('booking-event').style.pointerEvents = 'none';
-		}
-	});
+	peopleNum = Number(document.getElementById("peopleNum").value);
+	if(peopleNum>=1){
+		document.getElementById('booking-event').style.pointerEvents = 'auto'; 
+	}else{
+		document.getElementById('booking-event').style.pointerEvents = 'none';
+	}
 
 	// == $('#booking-event').text("예약하기");
 	imgs = document.getElementById('img'+index).getAttribute('src');
@@ -48,7 +42,7 @@ function selectSite(index){
 	category = document.getElementById('category'+index).value;
 	campPrice = document.getElementById('price'+index).innerHTML;
 	bbqPrice = document.getElementById('bbqPrice').value;
-	
+	sort_idx = document.getElementById('sort_idx'+index).value;
 	
 	var imgs_html = "";
 	imgs_html += "<img id='imgTest' src="+imgs+" alt='blog image'>";
@@ -84,9 +78,7 @@ function selectSite(index){
 		// peopleNum class 의 속성인 max 를 maxPeople 값으로 변경
 		document.getElementById("peopleNum").setAttribute("max", maxPeople);
 		//peopleNum class 의 value 값이 maxPeople보다 큰 경우 maxPoeple값으로 설정(ex 예약시 선택한 인원수가 6인데 선택한 캠핑장의 수용 가능 인원수가 4라면 6->4로 설정됨)
-		peopleNum = Number(document.getElementById("peopleNum").value);
 		if(peopleNum>Number(maxPeople)){
-			alert("2>>"+peopleNum);
 			document.getElementById("peopleNum").value = Number(maxPeople);
 		}
 		$("#selectedBody").html(selectedBody_html);

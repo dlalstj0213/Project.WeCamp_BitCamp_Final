@@ -1,5 +1,6 @@
 package com.wecamp.service.booking;
 
+import java.sql.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import com.wecamp.mapper.BookingMapper;
 import com.wecamp.mapper.MemberMapper;
 import com.wecamp.model.Booking;
 import com.wecamp.model.Member;
+import com.wecamp.utils.DateUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -24,7 +26,17 @@ public class BookingServiceImpl implements BookingService {
 	
 	@Transactional
 	@Override
-	public void insertBookingAndUpdatePoint(Booking booking, long remaining_point, HttpSession session) {
+	public void insertBookingAndUpdatePoint(Booking booking, String udate, long remaining_point, HttpSession session) {
+		DateUtil util = new DateUtil();
+		String[] result = util.splitDates(udate, "-");
+		String checkInStr = result[0];
+		String checkOutStr = result[1];
+		Date check_in = util.transformDate(checkInStr);
+		Date check_out = util.transformDate(checkOutStr);
+		
+		booking.setCheck_in(check_in);
+		booking.setCheck_out(check_out);
+		
 		mapper.insertBooking(booking);
 		
 		String email = booking.getEmail();

@@ -30,10 +30,9 @@ public class BookingController {
 	}
 	
 	@PostMapping("payment.wcc")
-	private ModelAndView getPayImformation(Booking booking, long my_point, long remaining_point) {
-		//String imp_uid, String email, String total_fee, String bdate, String tel, String memo, String p_num, String name
-//		log.info("imp_uid : "+imp_uid+", amount : "+ (long)amount+", buyer_email : "+buyer_email+", buyer_name : "+buyer_name+", buyer_tel : "+buyer_tel+", check_date : "+check_date);
-		service.insertBookingAndUpdatePoint(booking, remaining_point, session);
+	private ModelAndView getPayImformation(Booking booking, String udate, long my_point, long remaining_point) {
+		
+		service.insertBookingAndUpdatePoint(booking, udate, remaining_point, session);
 		
 		ModelAndView mv = new ModelAndView("client/booking/booking_confirm/"+WebTitle.TITLE+"결제완료");
 		mv.addObject("booking",booking);

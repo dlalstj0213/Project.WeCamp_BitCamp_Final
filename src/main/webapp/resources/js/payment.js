@@ -1,7 +1,6 @@
 /**
  * 
  */
-let check_date = "";
 let buyer_tel = "";
 let people_num = "";
 let buyer_name = "";
@@ -11,24 +10,27 @@ let buyer_email="";
 let camp_total="";
 let camp_total_type_num="";
 let memo = "";
+let udate="";
 
 $(document).ready(function(){
 	camp_idx = sessionItem.campIdx;
-	check_date = sessionItem.checkDate;
 	buyer_tel = document.getElementById("buyer_tel").value;
 	people_num = sessionItem.peopleNum;
 	buyer_name = document.getElementById("buyer_name").value;
 	merchant_uid = buyer_name+'_'+new Date().getTime();
 	camp_name = sessionItem.campName;
 	buyer_email = document.getElementById("buyer_email").value;
+	sort_idx = sessionItem.sort_idx
+	udate = sessionItem.checkDate
 	
 	//$("#merchant_uid").val(merchant_uid);	
 	$("#camp_idx").val(camp_idx);
-	$("#check_date").val(check_date);
 	$("#buyer_tel").val(buyer_tel);
 	$("#my_points").val(my_point_type_num);
-	alert("my_point_type_num : "+my_point_type_num);
 	$("#people_num").val(parseInt(people_num));
+	$("#sort_idx").val(sort_idx);
+	
+	$("#udate").val(udate);
 
 })
 function setName(){
@@ -66,10 +68,13 @@ function requestPay(){
 		if (rsp.success) {
 			$("#remaining_point").val(after_payment_my_point);
 			$("#imp_uid").val(rsp.imp_uid);
+//			$("#check_in").val(checkIn);
+//			$("#check_out").val(checkOut);
+			$("#service_fee").val(service_fee_type_num);
 			var buyer_information = document.buyerInformation;
 			//alert("예에~ : "+buyer_information.buyer_email.value);
 			buyer_information.submit();
-			alert("imp_uid : "+rsp.imp_uid+", buyer_email : "+buyer_email+", buyer_name : "+buyer_name+", buyer_tel : "+buyer_tel+", amount : "+camp_total_type_num+", after_payment_my_point : "+after_payment_my_point);
+			//alert("imp_uid : "+rsp.imp_uid+", buyer_email : "+buyer_email+", buyer_name : "+buyer_name+", buyer_tel : "+buyer_tel+", amount : "+camp_total_type_num+", after_payment_my_point : "+after_payment_my_point);
 			var msg = '결제가 완료되었습니다.';
 			msg += '고유ID : ' + rsp.imp_uid;
 			msg += '상점 거래ID : ' + rsp.merchant_uid;

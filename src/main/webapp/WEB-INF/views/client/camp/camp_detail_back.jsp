@@ -74,171 +74,6 @@
 	font-size: 18px;
 	font-weight: bold;
 }
-
-.owl-carousel {
-  display: none;
-  width: 100%;
-  -webkit-tap-highlight-color: transparent;
-  /* position relative and z-index fix webkit rendering fonts issue */
-  position: relative;
-  z-index: 1; }
-  .owl-carousel .owl-stage {
-    position: relative;
-    -ms-touch-action: pan-Y;
-    -moz-backface-visibility: hidden;
-    /* fix firefox animation glitch */ }
-  .owl-carousel .owl-stage:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0; }
-  .owl-carousel .owl-stage-outer {
-    position: relative;
-    overflow: hidden;
-    /* fix for flashing background */
-    -webkit-transform: translate3d(0px, 0px, 0px); }
-  .owl-carousel .owl-wrapper,
-  .owl-carousel .owl-item {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0); }
-  .owl-carousel .owl-item {
-    position: relative;
-    min-height: 1px;
-    float: left;
-    -webkit-backface-visibility: hidden;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none; }
-  .owl-carousel .owl-item img {
-    display: block;
-    width: 100%; }
-  .owl-carousel .owl-nav.disabled,
-  .owl-carousel .owl-dots.disabled {
-    display: none; }
-  .owl-carousel .owl-nav .owl-prev,
-  .owl-carousel .owl-nav .owl-next,
-  .owl-carousel .owl-dot {
-    cursor: pointer;
-    cursor: hand;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-  .owl-carousel.owl-loaded {
-    display: block; }
-  .owl-carousel.owl-loading {
-    opacity: 0;
-    display: block; }
-  .owl-carousel.owl-hidden {
-    opacity: 0; }
-  .owl-carousel.owl-refresh .owl-item {
-    visibility: hidden; }
-  .owl-carousel.owl-drag .owl-item {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-  .owl-carousel.owl-grab {
-    cursor: move;
-    cursor: grab; }
-  .owl-carousel.owl-rtl {
-    direction: rtl; }
-  .owl-carousel.owl-rtl .owl-item {
-    float: right; }
-
-/* No Js */
-.no-js .owl-carousel {
-  display: block; }
-
-/*
- *  Owl Carousel - Animate Plugin
- */
-.owl-carousel .animated {
-  animation-duration: 1000ms;
-  animation-fill-mode: both; }
-
-.owl-carousel .owl-animated-in {
-  z-index: 0; }
-
-.owl-carousel .owl-animated-out {
-  z-index: 1; }
-
-.owl-carousel .fadeOut {
-  animation-name: fadeOut; }
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-
-/*
- * 	Owl Carousel - Auto Height Plugin
- */
-.owl-height {
-  transition: height 500ms ease-in-out; }
-
-/*
- * 	Owl Carousel - Lazy Load Plugin
- */
-.owl-carousel .owl-item .owl-lazy {
-  opacity: 0;
-  transition: opacity 400ms ease; }
-
-.owl-carousel .owl-item img.owl-lazy {
-  transform-style: preserve-3d; }
-
-/*
- * 	Owl Carousel - Video Plugin
- */
-.owl-carousel .owl-video-wrapper {
-  position: relative;
-  height: 100%;
-  background: #000; }
-
-.owl-carousel .owl-video-play-icon {
-  position: absolute;
-  height: 80px;
-  width: 80px;
-  left: 50%;
-  top: 50%;
-  margin-left: -40px;
-  margin-top: -40px;
-  background: url("owl.video.play.png") no-repeat;
-  cursor: pointer;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  transition: transform 100ms ease; }
-
-.owl-carousel .owl-video-play-icon:hover {
-  -ms-transform: scale(1.3, 1.3);
-      transform: scale(1.3, 1.3); }
-
-.owl-carousel .owl-video-playing .owl-video-tn,
-.owl-carousel .owl-video-playing .owl-video-play-icon {
-  display: none; }
-
-.owl-carousel .owl-video-tn {
-  opacity: 0;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: opacity 400ms ease; }
-
-.owl-carousel .owl-video-frame {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  width: 100%; }
-
-.owl-carousel,.owl-carousel .owl-item{-webkit-tap-highlight-color:transparent;position:relative}.owl-carousel{display:none;width:100%;z-index:1}.owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y;-moz-backface-visibility:hidden}.owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}.owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0,0,0)}.owl-carousel .owl-item,.owl-carousel .owl-wrapper{-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0)}.owl-carousel .owl-item{min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-touch-callout:none}.owl-carousel .owl-item img{display:block;width:100%}.owl-carousel .owl-dots.disabled,.owl-carousel .owl-nav.disabled{display:none}.no-js .owl-carousel,.owl-carousel.owl-loaded{display:block}.owl-carousel .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev{cursor:pointer;cursor:hand;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-loading{opacity:0;display:block}.owl-carousel.owl-hidden{opacity:0}.owl-carousel.owl-refresh .owl-item{visibility:hidden}.owl-carousel.owl-drag .owl-item{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-grab{cursor:move;cursor:grab}.owl-carousel.owl-rtl{direction:rtl}.owl-carousel.owl-rtl .owl-item{float:right}.owl-carousel .animated{animation-duration:1s;animation-fill-mode:both}.owl-carousel .owl-animated-in{z-index:0}.owl-carousel .owl-animated-out{z-index:1}.owl-carousel .fadeOut{animation-name:fadeOut}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.owl-height{transition:height .5s ease-in-out}.owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}.owl-carousel .owl-item img.owl-lazy{transform-style:preserve-3d}.owl-carousel .owl-video-wrapper{position:relative;height:100%;background:#000}.owl-carousel .owl-video-play-icon{position:absolute;height:80px;width:80px;left:50%;top:50%;margin-left:-40px;margin-top:-40px;background:url(owl.video.play.png) no-repeat;cursor:pointer;z-index:1;-webkit-backface-visibility:hidden;transition:transform .1s ease}.owl-carousel .owl-video-play-icon:hover{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}.owl-carousel .owl-video-playing .owl-video-play-icon,.owl-carousel .owl-video-playing .owl-video-tn{display:none}.owl-carousel .owl-video-tn{opacity:0;height:100%;background-position:center center;background-repeat:no-repeat;background-size:contain;transition:opacity .4s ease}.owl-carousel .owl-video-frame{position:relative;z-index:1;height:100%;width:100%}
 </style>
 
 <!-- ================================
@@ -257,7 +92,6 @@
 						<input type="hidden" id="campIdx" value="${camp.camp_idx}">
 						<input type="hidden" id="nextPage" value="${page.nextPage}">
 						<input type="hidden" id="pageCount" value="${page.pageCount}">
-						<input type="text" id="test3" value="">
 						
 						<h2 class="breadcrumb__title">${camp.camp_name}</h2>
 						<p class="breadcrumb__desc">
@@ -324,8 +158,11 @@
 					<div class="title-shape"></div>
 					<div class="gallery-carousel padding-top-35px padding-bottom-40px">
 						<c:forEach items="${ImgDetailList}" var="campDetailImg">
-							<div data-dot="<img src='/images/camp-img/detail/${campDetailImg.fname}'>"class="gallery-item">
-								<img src="/images/camp-img/detail/${campDetailImg.fname}" alt="gallery-image">
+							<div
+								data-dot="<img src='/images/camp-img/detail/${campDetailImg.fname}'>"
+								class="gallery-item">
+								<img src="/images/camp-img/detail/${campDetailImg.fname}"
+									alt="gallery-image">
 							</div>
 							<!-- end gallery-item -->
 						</c:forEach>
@@ -348,7 +185,8 @@
 						<div class="title-shape"></div>
 
 						<!-- 카테고리 -->
-						<c:forEach var="sortList" items="${sortNameList}" varStatus="status">
+						<c:forEach var="sortList" items="${sortNameList}"
+							varStatus="status">
 							<!-- 카라반, 글램핑 -->
 							<%-- <c:forEach begin="0" end="${sortNameSize}" step="1" varStatus="sortNameList"> --%>
 							<%-- <c:forEach items="${sortNameList}" var="sortList"> --%>
@@ -382,7 +220,6 @@
 															인원 제한 수 : <strong id="maxPeople${j}">
 																${sort.people_num}</strong> <br /> 가격 : <strong id="price${j}"
 																class="price">${sort.site_fee}</strong>
-																<input id="sort_idx${j}" type="hidden" value="${sort.sort_idx}">
 														</p>
 														<p class="card-text">
 															<small class="text-muted">3분 전에 업데이트 됨</small>
@@ -444,13 +281,13 @@
 						<div class="title-shape margin-bottom-35px"></div>
 						<div id="map">
 
-<!-- ================================
+							<!-- ================================
     START KakaoMap AREA
 ================================= -->
 							<div id="map" style="width: 100%; height: 350px;"></div>
 							<script type="text/javascript"
 								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f0aec9df013aa05ae74510780014c2b&libraries=services"></script>
-<!-- ================================
+							<!-- ================================
    	END KakaoMap AREA
 ================================= -->
 
@@ -459,13 +296,11 @@
 					<!-- end 캠핑장 위치 -->
 					<br />
 					<!-- <div class="listing-description padding-bottom-35px"> -->
-<!-- ================================
-    START Weather AREA
-================================= -->
 					<h2 id="weather" class="widget-title">날씨</h2>
 					<div class="title-shape margin-bottom-35px"></div>
 					<!-- weather widget start -->
 					<table id="weatherTable">
+						<!--8/17부분-->
 						<tr align="center">
 							<th colspan="4" class="divisionBorderbar"><div id="date0"
 									class="date" style="margin-bottom: 10px"></div></th>
@@ -473,32 +308,123 @@
 									style="margin-bottom: 10px"></div></th>
 						</tr>
 						<tr>
-						<c:forEach begin="0" end="7" step="1" varStatus="i">
-						<c:choose>
-							<c:when test="${i.index eq 3}">
-								<td class="divisionBorderbar">
-							</c:when>
-							<c:otherwise>
-								<td class="borderbar">
-							</c:otherwise>
-						</c:choose>
-								<div id="hour${i.index}">시</div>
-								<div id="cicon${i.index}" class="cicon"></div>
+							<td class="borderbar">
+								<div id="hour0">시</div>
+								<div id="cicon0" class="cicon"></div>
 								<div>
 									기온
-									<div id="ctemp${i.index}" class="max chightemp">℃</div>
+									<div id="ctemp0" class="max chightemp">℃</div>
 								</div>
 								<div>
 									강수 확률
-									<div id="pop${i.index}" class="min pop">%</div>
+									<div id="pop0" class="min pop">%</div>
 								</div>
 							</td>
-						</c:forEach>
+							<td class="borderbar">
+								<div id="hour1">시</div>
+								<div id="cicon1" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp1" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop1" class="min pop">%</div>
+								</div>
+							</td>
+							<td class="borderbar">
+								<div id="hour2">시</div>
+								<div id="cicon2" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp2" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop2" class="min pop">%</div>
+								</div>
+							</td>
+							<td class="divisionBorderbar">
+								<div id="hour3">시</div>
+								<div id="cicon3" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp3" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop3" class="min pop">%</div>
+								</div>
+							</td>
+							<!-- 8/18부분
+                   <tr align ="center">
+						<td colspan = "4"><div id="date4" class="date" ></div></td>
+				   </tr> -->
+							<td class="borderbar">
+								<div id="hour4">시</div>
+								<div id="cicon4" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp4" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop4" class="min pop">%</div>
+								</div>
+							</td>
+							<td class="borderbar">
+								<div id="hour5">시</div>
+								<div id="cicon5" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp5" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop5" class="min pop">%</div>
+								</div>
+							</td>
+							<td class="borderbar">
+								<div id="hour6">시</div>
+								<div id="cicon6" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp6" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop6" class="min pop">%</div>
+								</div>
+							</td>
+							<td class="borderbar">
+								<div id="hour7">시</div>
+								<div id="cicon7" class="cicon"></div>
+								<div>
+									기온
+									<div id="ctemp7" class="max temp">
+										℃<strong></strong>
+									</div>
+								</div>
+								<div>
+									강수 확률
+									<div id="pop7" class="min pop">%</div>
+								</div>
+							</td>
 						</tr>
 					</table>
-<!-- ================================
-   	END Weather AREA
-================================= -->
+					<!-- weather widget end -->
 					<!--   </div> -->
 					<div class="contact-listing padding-top-40px padding-bottom-40px">
 						<h2 class="widget-title">캠핑장 정보</h2>
@@ -741,7 +667,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="section-heading">
-					<h2 class="widget-title">주변 관광지</h2>
+					<h2 class="widget-title">자주 찾는 캠핑장( 또는 주변 관광지 )</h2>
 					<div class="title-shape"></div>
 				</div>
 				<!-- end section-heading -->
@@ -751,10 +677,59 @@
 		<!-- end row -->
 		<div class="row padding-top-40px">
 			<div class="col-lg-12">
-				<div class="card-carousel card-static owl-loaded owl-carousel">
-					<!--forEach 시작할 부분 -->
-					<div class="tour"></div>
-					<!--forEach 끝날 부분 -->
+				<div class="card-carousel card-static">
+					<div class="card-item">
+						<a href="listing-details.html" class="card-image-wrap">
+							</div>
+							<div class="card-image">
+								<img src="/images/img28.jpg" class="card__img" alt=""> <span
+									class="badge">now open</span> <span class="badge-toggle"
+									data-toggle="tooltip" data-placement="bottom" title="22 Likes">
+									<i class="la la-heart-o"></i>
+								</span>
+						</a>
+						<div class="card-content-wrap">
+							<div class="card-content">
+								<a href="listing-details.html">
+									<h5 class="card-meta">
+										<span class="la la-cutlery"></span> Restaurant
+									</h5>
+									<h4 class="card-title">
+										Favorite Place Food Bank <i class="fa fa-check-circle"
+											data-toggle="tooltip" data-placement="top" title="Claimed"></i>
+									</h4>
+									<p class="card-sub">Bishop Avenue, New York</p>
+								</a> <a href="#" class="author-img"> <img
+									src="/images/small-team1.jpg" alt="author-img">
+								</a>
+								<ul class="info-list padding-top-20px">
+									<li><span class="la la-phone"></span> (416) 551-0589</li>
+									<li><span class="la la-link"></span> <a href="#">
+											www.mysitelink.com</a></li>
+									<li><span class="la la-calendar-check-o"></span> Posted 1
+										month ago</li>
+								</ul>
+							</div>
+							<div class="rating-row">
+								<div class="rating-rating">
+									<span class="la la-star"></span> <span class="la la-star"></span>
+									<span class="la la-star"></span> <span
+										class="la la-star-half-full"></span> <span
+										class="la la-star last-star"></span> <span
+										class="rating-count">4.5</span>
+								</div>
+								<div class="listing-info">
+									<ul>
+										<li><span class="la la-eye info__count"></span> 247</li>
+										<li><span class="la la-heart-o info__save"
+											data-toggle="tooltip" data-placement="top" title="Bookmark"></span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- end card-content-wrap -->
+					</div>
+					<!-- end card-item -->
 				</div>
 				<!-- end card-carousel -->
 			</div>
@@ -768,16 +743,6 @@
 <c:forEach begin="0" end="${chart.size()}" varStatus="i" step="1">
 	<input type=hidden id="item${i.index}"value='${chart[i.index].item}' >
 </c:forEach>
-
-<!-- <form id="location" name="location" method="post" action="./tourist">
-<input id="x" name="x" type="text" value=""> 
-<input id="y" name="y" type="text" value="">
-</form> -->
-
-<%-- <c:forEach items="${tourMap}" var="tourist" begin="0" end="${tourMap.size()}" varStatus="i" step="1">
-	<input type="text" value="값1 : ${tourist+i}">
-	<input type="text" value="값2 : ${tourist}">
-</c:forEach> --%>
 <!-- ================================
     END CARD AREA
 ================================= -->
@@ -793,10 +758,9 @@ let number =[];
 let chart = [];
 
 <c:forEach items="${chart}" var="chart">
-item.push("${chart.item}");
-number.push("${chart.number}");
+item.push("${chart.item}")
+number.push("${chart.number}")
 </c:forEach> 
-
 	chart.push(item);
 	chart.push(number);
 	
@@ -835,9 +799,8 @@ $(document).ready(function(){
     	chart3.draw(view, option);
     }
 })
-</script>
 
-<script src="/js/custom-tourist.js"></script>
+</script>
 <script src="/js/kakao-map.js"></script>
 <script src="/js/select-site.js"></script>
 <script src="/js/camp-detail.js"></script>

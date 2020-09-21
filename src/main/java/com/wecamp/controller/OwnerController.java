@@ -1,13 +1,17 @@
 package com.wecamp.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,9 +73,53 @@ public class OwnerController {
 	}
 	
 	@GetMapping("owner_detail")
-	private ModelAndView owner_detail(HttpSession session) {
+	private ModelAndView owner_detail() {
 		ModelAndView response = ownerService.get_owner_full_detail(session);
 		response.setViewName("client/member/owner_detail");
 		return response;
+	}
+	
+	@PostMapping("delete_camp.wcc")
+	private ModelAndView delete_camp(int camp_idx) {
+		log.info("#> camp_delete");
+		ModelAndView response = ownerService.delete_camp_service(camp_idx, session);
+		response.setViewName("redirect:../member/my_page.wcc");
+		return response;
+	}
+	
+	@GetMapping("update_camp.wcc")
+	private ModelAndView update_camp() {
+		ModelAndView response = ownerService.get_owner_full_detail(session);
+		response.setViewName("client/member/modify_camp/" + WebTitle.TITLE + "캠핑장 수정");
+		return response;	
+	}
+	
+	@PostMapping("update_camp.wcc")
+	private ModelAndView update_camp(CampAndSortAndImg request) {
+		log.info("#> camp : "+request.getCamp());
+		log.info("#> sort.size : "+request.getSort().size());
+		ModelAndView response = ownerService.update_camp_service(request);
+		response.setViewName("client/member/modify_camp/" + WebTitle.TITLE + "캠핑장 수정");
+		return response;
+	}
+	
+	@PostMapping("camp_manage")
+	private ModelAndView get_booking_info(String currentPage, boolean isMore, boolean isSearch, String category, String keyword) {
+		ModelAndView response = ownerService.get_booking_info_service(currentPage, isMore, isSearch, keyword, category);
+		response.setViewName("client/member/camp_manage");
+		log.info("#>category : "+category);
+		log.info("#>keyword : "+keyword);
+		log.info("#>currentPage : "+currentPage);
+		log.info("#>isSearch : "+isSearch);
+		log.info("#>isMore : "+isMore);
+		return response;
+	}
+	
+	@ResponseBody
+	@PostMapping("change_using_state")
+	private boolean change_using_state(@RequestBody String data) throws IOException {
+		log.info("call - chang_using_state() : success");
+		log.info("#> imp_uid : "+data);
+		return ownerService.change_using_state_service(data);
 	}
 }

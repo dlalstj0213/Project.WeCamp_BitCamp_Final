@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>	
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <style>
 .star-rating {
@@ -153,104 +153,133 @@ body {
 	margin: 100px auto;
 }
 
-
 /* test styling*/
 .gallery-carousel .gallery-item {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  position: relative;
-  margin-bottom: 30px; }
-  .gallery-carousel .gallery-item img {
-    width: 100%;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px; }
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.gallery-carousel .gallery-item img {
+	width: 100%;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
 
 .gallery-carousel .owl-nav div {
-  position: absolute;
-  top: 41%;
-  left: 10px;
-  -webkit-transform: translateY(-50%) scale(0.4);
-  -moz-transform: translateY(-50%) scale(0.4);
-  -ms-transform: translateY(-50%) scale(0.4);
-  -o-transform: translateY(-50%) scale(0.4);
-  transform: translateY(-50%) scale(0.4);
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  background-color: rgba(255, 107, 107, 0.7);
-  color: #fff;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  opacity: 0;
-  visibility: hidden; }
-  .gallery-carousel .owl-nav div:hover {
-    background-color: #ff6b6b; }
-  .gallery-carousel .owl-nav div.owl-next {
-    left: auto;
-    right: 10px; }
-  @media (max-width: 320px) {
-    .gallery-carousel .owl-nav div {
-      top: 18%;
-      -webkit-transform: translateY(0) scale(0.4);
-      -moz-transform: translateY(0) scale(0.4);
-      -ms-transform: translateY(0) scale(0.4);
-      -o-transform: translateY(0) scale(0.4);
-      transform: translateY(0) scale(0.4);
-      width: 40px;
-      height: 40px;
-      line-height: 40px; } }
+	position: absolute;
+	top: 41%;
+	left: 10px;
+	-webkit-transform: translateY(-50%) scale(0.4);
+	-moz-transform: translateY(-50%) scale(0.4);
+	-ms-transform: translateY(-50%) scale(0.4);
+	-o-transform: translateY(-50%) scale(0.4);
+	transform: translateY(-50%) scale(0.4);
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background-color: rgba(255, 107, 107, 0.7);
+	color: #fff;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	opacity: 0;
+	visibility: hidden;
+}
 
-@media (max-width: 425px) {
-  .gallery-carousel .owl-dots {
-    text-align: center; } }
+.gallery-carousel .owl-nav div:hover {
+	background-color: #ff6b6b;
+}
+
+.gallery-carousel .owl-nav div.owl-next {
+	left: auto;
+	right: 10px;
+}
+
+@media ( max-width : 320px) {
+	.gallery-carousel .owl-nav div {
+		top: 18%;
+		-webkit-transform: translateY(0) scale(0.4);
+		-moz-transform: translateY(0) scale(0.4);
+		-ms-transform: translateY(0) scale(0.4);
+		-o-transform: translateY(0) scale(0.4);
+		transform: translateY(0) scale(0.4);
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+	}
+}
+
+@media ( max-width : 425px) {
+	.gallery-carousel .owl-dots {
+		text-align: center;
+	}
+}
 
 .gallery-carousel .owl-dots .owl-dot {
-  display: inline-block;
-  margin-left: 5px;
-  margin-right: 5px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  opacity: 0.4;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s; }
-  @media (max-width: 1199px) {
-    .gallery-carousel .owl-dots .owl-dot {
-      margin-bottom: 10px; } }
-  .gallery-carousel .owl-dots .owl-dot.active, .gallery-carousel .owl-dots .owl-dot:hover {
-    opacity: 1; }
-  .gallery-carousel .owl-dots .owl-dot img {
-    width: 118px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px; }
-    @media (max-width: 1199px) {
-      .gallery-carousel .owl-dots .owl-dot img {
-        width: 110px; } }
-    @media only screen and (min-width: 768px) and (max-width: 991px) {
-      .gallery-carousel .owl-dots .owl-dot img {
-        width: 105px; } }
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	opacity: 0.4;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+@media ( max-width : 1199px) {
+	.gallery-carousel .owl-dots .owl-dot {
+		margin-bottom: 10px;
+	}
+}
+
+.gallery-carousel .owl-dots .owl-dot.active, .gallery-carousel .owl-dots .owl-dot:hover
+	{
+	opacity: 1;
+}
+
+.gallery-carousel .owl-dots .owl-dot img {
+	width: 118px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+@media ( max-width : 1199px) {
+	.gallery-carousel .owl-dots .owl-dot img {
+		width: 110px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.gallery-carousel .owl-dots .owl-dot img {
+		width: 105px;
+	}
+}
 
 .gallery-carousel:hover .owl-nav div {
-  -webkit-transform: translateY(-50%) scale(1);
-  -moz-transform: translateY(-50%) scale(1);
-  -ms-transform: translateY(-50%) scale(1);
-  -o-transform: translateY(-50%) scale(1);
-  transform: translateY(-50%) scale(1);
-  opacity: 1;
-  visibility: visible; }
+	-webkit-transform: translateY(-50%) scale(1);
+	-moz-transform: translateY(-50%) scale(1);
+	-ms-transform: translateY(-50%) scale(1);
+	-o-transform: translateY(-50%) scale(1);
+	transform: translateY(-50%) scale(1);
+	opacity: 1;
+	visibility: visible;
+}
+
 </style>
 
 <script>
@@ -338,28 +367,32 @@ $(function(){
 								id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
 								role="tab" aria-controls="nav-profile" aria-selected="true">
 								<span class="la la-user"></span> 프로필
-							</a> 
-							<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+							</a> <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
 								id="nav-listing-tab" data-toggle="tab" href="#nav-listing"
 								role="tab" aria-controls="nav-listing" aria-selected="false"
-								onclick="call_booking_info();">
-								<span class="la la-list-alt"></span> 예약내역
-							</a>
-							<input id="next-page" type="hidden" value=""> 
-							<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+								onclick="call_booking_info();"> <span class="la la-list-alt"></span>
+								예약내역
+							</a> <input id="next-page" type="hidden" value=""> <a
+								class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
 								id="nav-bookmark-tab" data-toggle="tab" href="#nav-bookmarks"
 								role="tab" aria-controls="nav-bookmarks" aria-selected="false"
-								onclick="call_heart_list();">
-								<span class="la la-bookmark-o"></span> 찜 목록
-							</a> 
-							<c:if test="${member.a_no ne 1}">
-							<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
-								id="nav-bookmark-tab" data-toggle="tab" href="#nav-camping"
-								role="tab" aria-controls="nav-bookmarks" aria-selected="false"
-								onclick="owner_info();">
-								<!-- onclick="owner_info(); -->
-								<span class="la la-gear"></span> 캠핑장 정보
+								onclick="call_heart_list();"> <span class="la la-bookmark-o"></span>
+								찜 목록
 							</a>
+							<c:if test="${member.a_no ne 1}">
+								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+									id="nav-bookmark-tab" data-toggle="tab" href="#nav-camping"
+									role="tab" aria-controls="nav-bookmarks" aria-selected="false"
+									onclick="owner_info();"> <!-- onclick="owner_info(); --> <span
+									class="la la-gear"></span> 캠핑장 정보
+								</a>
+								<!-- rnum | name (email) | SITE_NAME / SORT_NAME | TEL | MEMO | P_NUM | S_NO | USING_STATE_NAME -->
+								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+									id="nav-bookmark-tab" data-toggle="tab" href="#nav-camping-set"
+									role="tab" aria-controls="nav-bookmarks" aria-selected="false"
+									onclick="start_camp_manage(true, true, false, 1);"> <!-- onclick="owner_info(); --> <span
+									class="la la-gear"></span> 캠핑장 관리
+								</a>
 							</c:if>
 						</div>
 					</nav>
@@ -375,22 +408,23 @@ $(function(){
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade" id="nav-listing" role="tabpanel"
 						aria-labelledby="nav-listing-tab">
-						<div id="booking-box" class="row">
-						</div>
-						
+						<div id="booking-box" class="row"></div>
+
 						<!-- Load More Start -->
 						<div class="section-block"></div>
 						<div class="button-shared padding-top-40px text-center">
-						    <button type="button" id="load-btn" class="theme-btn border-0" onclick="paging()">
-						        <span class="la la-refresh"></span> Load More
-						    </button>
-						</div><!-- end button-shared -->
+							<button type="button" id="load-btn" class="theme-btn border-0"
+								onclick="paging()">
+								<span class="la la-refresh"></span> Load More
+							</button>
+						</div>
+						<!-- end button-shared -->
 						<!-- Load More End -->
-						
+
 						<!-- end row -->
 					</div>
 
-						
+
 					<div class="tab-pane fade show active" id="nav-profile"
 						role="tabpanel" aria-labelledby="nav-profile-tab">
 						<div class="row">
@@ -441,7 +475,7 @@ $(function(){
 												class="la la-cc-diners-club"></span> 포인트 : ${member.point }
 											</li>
 										</ul>
-										
+
 									</div>
 									<!-- end user-details -->
 								</div>
@@ -476,7 +510,7 @@ $(function(){
                                                             <input class="form-control" type="text" name="text" placeholder="여자 " readonly>
                                                         </div>
                                                     </div> -->
-                                                    <%-- 
+													<%-- 
 													<div class="input-box">
 														<label class="label-text">생년월일 </label>
 														<div class="form-group">
@@ -532,11 +566,12 @@ $(function(){
 																	<div class="form-group">
 																		<div class="input-group">
 																			<span class="input-group-addon"></span> <input
-																				type="email" id="member-email" class="form-control" name="email"
-																				readonly value="${member.email}">
+																				type="email" id="member-email" class="form-control"
+																				name="email" readonly value="${member.email}">
 
 																		</div>
-																			<input type="hidden" value="${member.email}" id="member-email-2">
+																		<input type="hidden" value="${member.email}"
+																			id="member-email-2">
 																		<div class="input-group">
 																			<span class="input-group-addon"></span> <input
 																				type="password" class="form-control" name="old-pwd"
@@ -635,32 +670,52 @@ $(function(){
 							<!-- end col-lg-8 -->
 						</div>
 					</div>
-					
+
 					<!-- Heart -->
 					<div class="tab-pane fade" id="nav-bookmarks" role="tabpanel"
 						aria-labelledby="nav-bookmark-tab">
-						<div id="heart-box" class="row">
-						</div>
+						<div id="heart-box" class="row"></div>
 						<!-- Load More Start -->
 						<div class="section-block"></div>
 						<div class="button-shared padding-top-40px text-center">
-						    <button type="button" id="load-btn-heart" class="theme-btn border-0" onclick="heart_paging()">
-						        <span class="la la-refresh"></span> Load More
-						    </button>
-						</div><!-- end button-shared -->
+							<button type="button" id="load-btn-heart"
+								class="theme-btn border-0" onclick="heart_paging()">
+								<span class="la la-refresh"></span> Load More
+							</button>
+						</div>
+						<!-- end button-shared -->
 						<!-- Load More End -->
 						<!-- end row -->
 					</div>
 
+					<!-- camp_manage.jsp -->
+						<div class="tab-pane fade" id="nav-camping-set" role="tabpanel"
+							aria-labelledby="nav-bookmark-tab">
+							<div class="col-md-12">
+								<div class="input-group pull-right col-md-9">
+								  <div class="input-group-prepend">
+									  <select id="category" class="custom-select" id="inputGroupSelect01">
+									    <option value="name" selected>이름</option>
+									    <option value="tel">전화번호</option>
+									  </select>
+								  </div>
+								   <div class="input-group-prepend">
+								    <label class="input-group-text" for="search">검색</label>
+								  </div>
+								  <input id="keyword" type="text" onkeyup="start_camp_manage(true, false, true, 1);">
+								</div>
+							</div>
+							<br/>
+							<div id="camp-manage-box">
+							</div>
+						</div>
 
-
-
-					<div class="tab-pane fade" id="nav-camping" role="tabpanel"
-						aria-labelledby="nav-profile-tab">
-						<div class="row">
-							<div class="col-lg-4">
-								<div class="user-profile-action">
-									<!-- 프로필 사진 부분 주석   
+						<div class="tab-pane fade" id="nav-camping" role="tabpanel"
+							aria-labelledby="nav-profile-tab">
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="user-profile-action">
+										<!-- 프로필 사진 부분 주석   
                                     
                                     <div class="user-pro-img mb-4">
                                         <img src="images/team2.jpg" alt="user-image">
@@ -684,119 +739,118 @@ $(function(){
                                         </div>
                                     </div> -->
 
-									<!-- /////////////////////////// 유저 왼쪽 정보 ///////////////////////////// -->
+										<!-- /////////////////////////// 유저 왼쪽 정보 ///////////////////////////// -->
 
-									<div class="user-details">
-										<h2 class="user__name widget-title pb-2">${member.name}</h2>
-										<div class="section-heading">
-											<p class="sec__desc font-size-15 line-height-24">사업자 전용
-												관리페이지입니다.</p>
+										<div class="user-details">
+											<h2 class="user__name widget-title pb-2">${member.name}</h2>
+											<div class="section-heading">
+												<p class="sec__desc font-size-15 line-height-24">사업자 전용
+													관리페이지입니다.</p>
 
 
-										</div>
-										<ul class="list-items mt-3">
-											<!-- <li><span class="la la-github-alt"></span> 닉네임 : 조이 정 </li>
+											</div>
+											<ul class="list-items mt-3">
+												<!-- <li><span class="la la-github-alt"></span> 닉네임 : 조이 정 </li>
                                             <li class="text-lowercase"><span class="la la-diamond"></span> 등급 : silver </li>
                                             <li class="text-lowercase"><span class="la la-cc-diners-club"></span> 포인트 : 2000P </li> -->
-										</ul>
-										<div class="user-edit-form mt-4">
-											<div class="dropdown">
-												<button
-													class="theme-btn edit-form-btn shadow-none w-100 dropdown-toggle after-none"
-													type="button" id="editForm" data-toggle="dropdown"
-													aria-haspopup="true" aria-expanded="false">
-													<i class="la la-pencil-square-o"></i> Edit
-												</button>
-												<div class="dropdown-menu" aria-labelledby="editForm">
-													<div class="contact-form-action">
-														<div class="input-box">
-															<label class="label-text">Name</label>
-															<div class="form-group">
-																<span class="la la-user form-icon"></span> <input
-																	class="form-control" type="text" name="name"
-																	placeholder="Enter your name">
+											</ul>
+											<div class="user-edit-form mt-4">
+												<div class="dropdown">
+													<button
+														class="theme-btn edit-form-btn shadow-none w-100 dropdown-toggle after-none"
+														type="button" id="editForm" data-toggle="dropdown"
+														aria-haspopup="true" aria-expanded="false">
+														<i class="la la-pencil-square-o"></i> Edit
+													</button>
+													<div class="dropdown-menu" aria-labelledby="editForm">
+														<div class="contact-form-action">
+															<div class="input-box">
+																<label class="label-text">Name</label>
+																<div class="form-group">
+																	<span class="la la-user form-icon"></span> <input
+																		class="form-control" type="text" name="name"
+																		placeholder="Enter your name">
+																</div>
 															</div>
-														</div>
-														<!-- end input-box -->
-														<div class="input-box">
-															<label class="label-text">Bio Data</label>
-															<div class="form-group">
-																<span class="la la-pencil form-icon"></span>
-																<textarea class="message-control form-control"
-																	name="message" placeholder="Add a bio"></textarea>
+															<!-- end input-box -->
+															<div class="input-box">
+																<label class="label-text">Bio Data</label>
+																<div class="form-group">
+																	<span class="la la-pencil form-icon"></span>
+																	<textarea class="message-control form-control"
+																		name="message" placeholder="Add a bio"></textarea>
+																</div>
 															</div>
-														</div>
-														<!-- end input-box -->
-														<div class="input-box">
-															<div class="form-group">
-																<span class="la la-map-marker form-icon"></span> <input
-																	class="form-control" type="text" name="location"
-																	placeholder="Location">
+															<!-- end input-box -->
+															<div class="input-box">
+																<div class="form-group">
+																	<span class="la la-map-marker form-icon"></span> <input
+																		class="form-control" type="text" name="location"
+																		placeholder="Location">
+																</div>
 															</div>
-														</div>
-														<!-- end input-box -->
-														<div class="input-box">
-															<div class="form-group">
-																<span class="la la-phone form-icon"></span> <input
-																	class="form-control" type="text" name="number"
-																	placeholder="Number">
+															<!-- end input-box -->
+															<div class="input-box">
+																<div class="form-group">
+																	<span class="la la-phone form-icon"></span> <input
+																		class="form-control" type="text" name="number"
+																		placeholder="Number">
+																</div>
 															</div>
-														</div>
-														<!-- end input-box -->
-														<div class="input-box">
-															<div class="form-group">
-																<span class="la la-envelope-o form-icon"></span> <input
-																	class="form-control" type="email" name="email"
-																	placeholder="Email Address">
+															<!-- end input-box -->
+															<div class="input-box">
+																<div class="form-group">
+																	<span class="la la-envelope-o form-icon"></span> <input
+																		class="form-control" type="email" name="email"
+																		placeholder="Email Address">
+																</div>
 															</div>
-														</div>
-														<!-- end input-box -->
-														<div class="input-box">
-															<div class="form-group">
-																<span class="la la-youtube-play form-icon"></span> <input
-																	class="form-control" type="text" name="youtube"
-																	placeholder="Youtube URL">
+															<!-- end input-box -->
+															<div class="input-box">
+																<div class="form-group">
+																	<span class="la la-youtube-play form-icon"></span> <input
+																		class="form-control" type="text" name="youtube"
+																		placeholder="Youtube URL">
+																</div>
 															</div>
-														</div>
-														<!-- end input-box -->
-														<div class="input-box">
-															<div class="form-group">
-																<span class="la la-globe form-icon"></span> <input
-																	class="form-control" type="text" name="website"
-																	placeholder="Website">
+															<!-- end input-box -->
+															<div class="input-box">
+																<div class="form-group">
+																	<span class="la la-globe form-icon"></span> <input
+																		class="form-control" type="text" name="website"
+																		placeholder="Website">
+																</div>
 															</div>
+															<!-- end input-box -->
+															<div class="btn-box">
+																<button type="button"
+																	class="theme-btn border-0 button-success">save
+																	changes</button>
+																<button type="button" class="theme-btn border-0">Cancel</button>
+															</div>
+															<!-- end btn-box -->
 														</div>
-														<!-- end input-box -->
-														<div class="btn-box">
-															<button type="button"
-																class="theme-btn border-0 button-success">save
-																changes</button>
-															<button type="button" class="theme-btn border-0">Cancel</button>
-														</div>
-														<!-- end btn-box -->
+														<!-- end contact-form-action -->
 													</div>
-													<!-- end contact-form-action -->
 												</div>
 											</div>
 										</div>
+										<!-- end user-details -->
 									</div>
-									<!-- end user-details -->
+									<!-- end user-profile-action -->
 								</div>
-								<!-- end user-profile-action -->
-							</div>
-							<!-- end col-lg-4 -->
+								<!-- end col-lg-4 -->
 
-							<!-- /////////////////////////// 유저 오른쪽 정보 ///////////////////////////// -->
-							<div class="col-lg-8" id="owner-info">
+								<!-- /////////////////////////// 유저 오른쪽 정보 ///////////////////////////// -->
+								<div class="col-lg-8" id="owner-info"></div>
+							</div>
 						</div>
 					</div>
+					<!-- end col-lg-12 -->
 				</div>
+				<!-- end row -->
 			</div>
-			<!-- end col-lg-12 -->
-		</div>
-		<!-- end row -->
-	</div>
-	<!-- end container -->
+			<!-- end container -->
 </section>
 
 <!-- end dashboard-area -->
@@ -807,6 +861,7 @@ $(function(){
 <script src="../js/booking-info.js"></script>
 <script src="../js/review.js"></script>
 <script src="../js/heart-list.js"></script>
+<script src="../js/camp-manage.js"></script>
 <script>
     $(document).ready(function() {
         $("#modal_show").click(function() {
@@ -817,4 +872,8 @@ $(function(){
             $("#exampleModal").modal("hide");
         });
     });
+    
+    $('#myModal').on('shown.bs.modal', function () {
+    	  $('#myInput').focus()
+    	})
 </script>

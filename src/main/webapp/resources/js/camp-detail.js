@@ -53,9 +53,10 @@ function setSessionAndSubmit(){
 			campPrice : campPrice,
 			bbqPrice : bbqPrice,
 			//totalPrice : Number(campPrice),
-			checkDate : document.getElementById('checkDate').value
+			checkDate : document.getElementById('checkDate').value,
+			sort_idx : sort_idx
 	};
-	console.log("bookingInfo.camp_idx : "+bookingInfo.campIdx);
+	console.log("bookingInfo.sort_idx : "+bookingInfo.sort_idx);
 	sessionStorage.setItem("bookingInfo", JSON.stringify(bookingInfo)); //세션저장
 	
 	var sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));

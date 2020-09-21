@@ -234,6 +234,7 @@ Author Email:   contact@tecydevs.com
             	$input.val(val);
             } else {
             	$input.val(val + 1);
+            	check_available();
             }
         });
         
@@ -246,8 +247,19 @@ Author Email:   contact@tecydevs.com
             	$input.val(val);
             } else {
             	$input.val(val - 1);
+            	check_available();
             }
         });
+        
+        function check_available(){
+            let check = document.getElementById('peopleNum').value;
+            console.log("check available : "+check);
+            if(check>=1){
+            	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
+            }else{
+            	document.getElementById('booking-event').style.pointerEvents = 'none';
+            }
+         }
 
         /*==== select2 =====*/
         $('.select-option-field').select2({

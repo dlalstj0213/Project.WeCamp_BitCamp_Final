@@ -434,22 +434,23 @@
 ================================= -->
 
 <form name="buyerInformation" method="post" action="./payment.wcc">
-<input id="camp_idx" name="camp_idx" type="text" value="0">
-<input id="imp_uid" name="imp_uid" type="text" value="0">
-<input id="buyer_email" name="email" type="text" value="${member.email}">
-<input id="amount" name="total_fee" type="text" value="0">
-<input id="check_date" name="udate" type="text" value="0">
-<input id="buyer_tel" name="tel" type="text" value="0">
-<input id="memo" name="memo" type="text" value="요청사항이 없습니다.">
-<input id="people_num" name="p_num" type="text" value="0">
-<input id="buyer_name" name="name" type="text" value="${member.name}">
-
-<input id="my_points" name="my_point" type="text" value="1">
+<input id="imp_uid" name="imp_uid" type="hidden" value="0">
+<input id="camp_idx" name="camp_idx" type="hidden" value="0">
+<input id="sort_idx" name="sort_idx" type="hidden" value="0">
+<input id="buyer_email" name="email" type="hidden" value="${member.email}">
+<input id="amount" name="total_fee" type="hidden" value="0">
+<input id="udate" name="udate" type="hidden" value="0">
+<input id="buyer_tel" name="tel" type="hidden" value="0">
+<input id="memo" name="memo" type="hidden" value="요청사항이 없습니다.">
+<input id="people_num" name="p_num" type="hidden" value="0">
+<input id="buyer_name" name="name" type="hidden" value="${member.name}">
+<input id="service_fee" name="service_fee" type="hidden" value="0">
+<input id="my_points" name="my_point" type="hidden" value="1">
 <!--포인트 사용 후 남은 포인트 값-->
-<input id="remaining_point" name="remaining_point" type="text" value="1">
+<input id="remaining_point" name="remaining_point" type="hidden" value="1">
 </form>
 <!-- iamport.payment.js -->
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="/js/comma-format.js"></script>
 <script src="/js/custom-booking.js"></script>
 <script src="/js/payment.js"></script>

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 import com.wecamp.model.Booking;
 
 public interface BookingService {
-	void insertBookingAndUpdatePoint(Booking booking, long remaining_point, HttpSession session);
+	void insertBookingAndUpdatePoint(Booking booking, String udate, long remaining_point, HttpSession session);
 }

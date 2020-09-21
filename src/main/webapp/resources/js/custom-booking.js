@@ -2,6 +2,7 @@ const sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));
 var use_point_type_num = 0;
 var my_point_type_num = 0;
 var after_payment_my_point = 0;
+var service_fee_type_num = 0;
 
 $(document).ready(function(){
 	
@@ -16,9 +17,10 @@ $(document).ready(function(){
 	
 	thumb = localStorage.getItem("thumb");
 	avgStar = localStorage.getItem("avgStar");
-	console.log("sessionItem : "+sessionItem);
-	console.log("thumb : "+thumb);
-	console.log("avgStar : "+avgStar);
+	//console.log("sessionItem : "+sessionItem);
+	//console.log("sessionItem.sort_idx : "+sessionItem.sort_idx);
+	//console.log("thumb : "+thumb);
+	//console.log("avgStar : "+avgStar);
 	$("#camp_thumb").attr("src", "/images/camp-img/thumb/"+thumb);
 	$("#avgStar").text(avgStar);
 	$("#campName").append(sessionItem.campName);
@@ -52,7 +54,7 @@ $(document).ready(function(){
 
     var bbq_fee_type_num = stringNumberToInt($('.bbq_fee').eq(0).text());
     
-    var service_fee_type_num = Math.ceil((camp_fee_type_num*0.01)/1000)*1000;//나온 값 천단위로 올림
+    service_fee_type_num = Math.ceil((camp_fee_type_num*0.01)/1000)*1000;//나온 값 천단위로 올림
     var service_fee = service_fee_type_num.format();
     $(".service_fee").append(service_fee);
     

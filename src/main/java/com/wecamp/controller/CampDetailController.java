@@ -1,14 +1,32 @@
 package com.wecamp.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.wecamp.service.campDetail.CampDetailService;
 import com.wecamp.utils.DateUtil;
+import com.wecamp.vo.TouristVo;
+
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -47,6 +65,23 @@ public class CampDetailController {
 		ModelAndView mv = new ModelAndView("client/camp/review_page");
 		mv = cdService.selectReviewS(Integer.parseInt(camp_idx), true, session, mv, nextPage);
 		return mv;
+	}
+	
+//	@ResponseBody
+//	@RequestMapping("tourist")
+//	private Map<String, List<TouristVo>>  getTourist(double x, double y) {
+//		//TouristVo touristVo cdService.getTourists(x, y);
+//		return cdService.getTourists(x, y);
+//		//return touristVo;
+//	}
+	
+	//@ResponseBody
+	@RequestMapping("tourist")
+	private ModelAndView  getTourist(double x, double y) {
+		//TouristVo touristVo cdService.getTourists(x, y);
+		ModelAndView mv= cdService.getTourists(x, y);
+		return mv;
+		//return touristVo;
 	}
 }
 

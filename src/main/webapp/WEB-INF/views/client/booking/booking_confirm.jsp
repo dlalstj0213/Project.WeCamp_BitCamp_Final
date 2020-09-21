@@ -22,6 +22,7 @@
 					        p_num : ${p_num} <br/>
 					        buyer_name : ${name} <br/> --%>
 					        
+					        
 					       <%--  imp_uid : ${booking.imp_uid} <br/>
 					        email : ${booking.email} <br/>
 					        total_fee : ${booking.total_fee} <br/>
@@ -32,10 +33,14 @@
 					        buyer_name : ${booking.name} <br/>
 					        camp_idx : ${booking.camp_idx} <br/>
 					        my_point : ${my_point} <br/>
-					        remaining_point : ${remaining_point} <br/> --%>
+					        remaining_point : ${remaining_point} <br/> 
+					        sort_idx : ${booking.sort_idx} <br/> 
+					        check_in : ${booking.check_in}
+					        check_out : ${booking.check_out}
+					        --%>
                     </div>
                     <div class="btn-box padding-top-30px">
-                        <a href="./mypage.com" class="theme-btn">예약 내역</a>
+                        <a href="../member/mypage.wcc" class="theme-btn">예약 내역</a>
                     </div>
                 </div>
             </div><!-- end col-lg-12 -->

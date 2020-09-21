@@ -1,18 +1,30 @@
 package com.wecamp.service.campDetail;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.google.gson.JsonArray;
 import com.wecamp.mapper.CampDetailMapper;
@@ -27,6 +39,7 @@ import com.wecamp.utils.StarUtil;
 import com.wecamp.vo.ChartVo;
 import com.wecamp.vo.Pagination;
 import com.wecamp.vo.ReviewVo;
+import com.wecamp.vo.TouristVo;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -274,4 +287,101 @@ public class CampDetailServiceImpl implements CampDetailService {
 		return list;
 	}
 
+	@Override
+	public ModelAndView getTourists(double x, double y){
+		ModelAndView mv = new ModelAndView("client/camp/tourist_page");
+		int imgLength=0;
+    	int telLength=0;
+    	int j=0;
+
+		
+		HashMap<String, List<TouristVo>> tourMap = new HashMap<String, List<TouristVo>>();
+		
+		ArrayList<TouristVo> list = new ArrayList<TouristVo>();
+		
+		String uri = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=3j%2BhlmvnPUKLVUJXQdnYESMvwbC3dBLT6MM3Ws2Yx0zA0C0%2FKjD2TY49oVvmHuotxnzUipHNsXUmCkEnUFR22Q%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=Wecamp&arrange=E&contentTypeId=12&mapX="+x+"&mapY="+y+"&radius=100000&listYN=Y";
+		
+//		  mv.addObject("x", x);
+//		  mv.addObject("y", y);
+		  log.info(">>>x : "+x+", y : "+y);
+		 
+		try{
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document xml = documentBuilder.parse(uri);
+            log.info(">>>>xml : "+xml);
+
+            Element root = xml.getDocumentElement();
+            NodeList nodeList = root.getElementsByTagName("item");
+
+            if(nodeList.getLength() != 0) {
+	            for(int i=0; i<nodeList.getLength(); i++){
+	                Node nodeItem = nodeList.item(i);
+	                try {
+	                	 String img = getTagValue("firstimage",(Element)nodeItem);
+	                	 String tel = getTagValue("tel",(Element)nodeItem);
+	                	 telLength = tel.length();
+	                	 imgLength = img.length();
+	                	 
+	                    if(imgLength>0 && img!=null&&telLength>0&&tel!=null) {
+	                    	log.info(">>>이미지 크기 : "+imgLength);
+	                    	String title = getTagValue("title",(Element)nodeItem);
+	 	                    String addr = getTagValue("addr1",(Element)nodeItem);
+	 	                    log.info(">>>img : "+img);
+	 	                    log.info(">>>title : "+title);
+	 	                    log.info(">>>addr : "+addr);
+	 	                    log.info(">>>tel : "+tel);
+//		 	                   list.add(img);
+//		 	                   list.add(title);
+//		 	                   list.add(addr);
+//		 	                   list.add(tel);
+//	 	                    tourMap.put("img"+j, img);
+//	 	                    tourMap.put("title"+j, title);
+//	 	                    tourMap.put("addr"+j, addr);
+//	 	                    tourMap.put("tel"+j, tel);
+	 	                   j++;
+	 	                    list.add(new TouristVo(img, title, addr, tel));
+	                    }
+	                    //여기서 값을 대입하시면 됩니다. 
+	                    //저의 경우는 데이터용 클래스를 따로 반들어서 getter setter 로 사용하였습니다. 
+	                } catch (Exception e) {
+	                }
+	            }
+	            tourMap.put("tourist", list);
+	            
+	            log.info(">>>tourMap.size : "+tourMap.size());
+	            log.info(">>>list.size : "+list.size());
+	            
+	            tourMap.forEach((key, value) -> {
+	            		log.info("key: "+ key+", value : "+value);
+	            	}); //람다 섹싴
+//	            for(Object test : list) {
+//	            	test.toString();
+//	            	log.info(">>>test : "+test);
+//	            }
+	            for(int k=0; k<list.size();k++) {
+	            	log.info(">>>list("+k+") : "+list.get(k).toString()); //잠시만 이렇게 안하고 컬렉션 안에 클래스 자체 출력하려고 하면 참조형이기 때문에 주소값으로 나와 그래서 만약에 너가 확인하고 싶다. 저렇게 getget하기 귀찮다 하면 알려드림 해결방법.ㄴ[ 알랴주세여
+	            }
+	            log.info(">>>j : "+j);
+            }
+        } catch (ParserConfigurationException e){
+        } catch (SAXException e){
+        } catch (IOException e){
+        } catch (Exception e){
+        }
+		mv.addObject("tourMap", list); //모델에 해쉬맵 넣으니깐 헤깔린다 리스트 넣자자
+		return mv;
+		//return mv;
+	}
+
+	private String getTagValue(String sTag, Element element) {
+	    try{
+	        String result = element.getElementsByTagName(sTag).item(0).getTextContent();
+	        return result;
+	    } catch(NullPointerException e){
+	        return "";
+	    } catch(Exception e){
+	        return "";
+	    }
+	}
 }

@@ -691,11 +691,12 @@
 								<div class="form-group">
 									<span class="la la-calendar-o form-icon"></span> <input
 										id="checkDate" class="date-range form-control"
-										style="cursor: pointer" type="text" name="daterange"
+										style="cursor: pointer" type="text"
 										value="${checkIn} - ${checkOut}" readonly />
+										<input type="hidden" id="checkIn" value="${checkIn}">
+										<input type="hidden" id="checkOut" value="${checkOut}">
 								</div>
 							</form>
-
 						</div>
 						<div
 							class="booking-content d-flex align-items-center justify-content-between text-center">
@@ -843,3 +844,44 @@ $(document).ready(function(){
 <script src="/js/camp-detail.js"></script>
 <script src="/js/custom-weather.js"></script>
 
+<script>
+$(document).ready(function(){
+	let check_in = $('#checkIn').val();
+	let check_out = $('#checkOut').val();
+        $('#checkDate').daterangepicker({
+        	autoApply: true,
+        	minDate: check_in,
+        	maxDate: check_out,
+        	opens: 'center',
+        	 locale :{
+                 format: 'YYYY/MM/DD',
+                 'monthNames': [
+                	 '1월',
+                	 '2월',
+                	 '3월',
+                	 '4월',
+                	 '5월',
+                	 '6월',
+                	 '7월',
+                	 '8월',
+                	 '9월',
+                	 '10월',
+                	 '11월',
+                	 '12월'
+                 ],
+                 'daysOfWeek': [
+                	 '일',
+                	 '월',
+                	 '화',
+                	 '수',
+                	 '목',
+                	 '금',
+                	 '토'
+                 ]
+             },
+        }, function(start, end, label){
+        	$('.check-in').val(start.format('YYYY/MM/DD'))
+        	$('.check-out').val(end.format('YYYY/MM/DD'))
+        });
+})
+</script>

@@ -33,15 +33,13 @@
                         </p>
                     </div>
                 </div><!-- end hero-heading -->
-                <div class="main-search-input">
+                <div class="main-search-input" onkeyup="enterkey();">
                     <div class="main-search-input-item">
                         <div class="contact-form-action">
-                            <form action="#">
                                 <div class="main-search form-group mb-0" ng-app="app" ng-controller="appCtrl">
                                     <span class="la la-search form-icon"></span>
-                                    <input id="search" class="form-control" type="text" placeholder="위치" ng-model="selected" uib-typeahead="data as data.name for data in myData" autocomplete="off">
+                                    <input id="search" class="form-control" type="text" placeholder="위치">
                                 </div>
-                            </form>
                         </div>
                     </div><!-- end main-search-input-item -->
                     <div class="main-search-input-item">

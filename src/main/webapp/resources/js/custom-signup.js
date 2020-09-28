@@ -235,7 +235,7 @@ $(function(){
 $(function(){
 	$('#textfile2').hide();
 	$('#aid2').click(function(){
-		$('#textfile2').load('/common/text2.txt', function(p1, p2, p3){
+		$('#textfile2').load('/common/text.txt', function(p1, p2, p3){
 		if(p2 == "success"){
 			$('#textfile2').toggle(500);
 		}

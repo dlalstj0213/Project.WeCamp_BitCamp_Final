@@ -16,4 +16,5 @@ public interface BookingMapper{
 	boolean updatePoint(HashMap<String, Object> query);
 	//void updatePoint(@Param("point")String point,@Param("email")String email);
 	String selectMemberGrade(String email);
+	boolean updateS_no(String imp_uid);
 }

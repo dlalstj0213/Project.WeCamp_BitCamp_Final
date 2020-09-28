@@ -37,20 +37,24 @@ public class BookingServiceImpl implements BookingService {
 		booking.setCheck_in(check_in);
 		booking.setCheck_out(check_out);
 		
-		mapper.insertBooking(booking);
 		
 		String email = booking.getEmail();
 		
 		HashMap<String, Object> query = new HashMap<String, Object>();
-		long point = PointsAfterPayment(email,booking.getTotal_fee(), remaining_point);
-		log.info("#point >>>> " +point);
-		log.info("#email 1 >>>> " +email);
+		//long point = PointsAfterPayment(email,booking.getTotal_fee(), remaining_point);
+		long save_point = getSavePoint(email,booking.getTotal_fee());
+		booking.setSave_point(save_point);
+		long point = save_point+remaining_point;
+		log.info("#save_point >>>> " +save_point);
+		log.info("#Point >>>> " +point);
 		
+		mapper.insertBooking(booking);
 		if(point != -1L) {
 			query.put("point", point);
-			log.info("#email 2 >>>> " +email);
 			query.put("email", email);
-			if(mapper.updatePoint(query)) {
+			boolean flag = mapper.updatePoint(query);
+			log.info(">>>>>flag : "+flag);
+			if(flag){
 				Member member  = (Member)session.getAttribute("member");
 				member.setPoint(point);
 				session.setAttribute("member", member);
@@ -58,18 +62,31 @@ public class BookingServiceImpl implements BookingService {
 		}
 	}
 	
-	private long PointsAfterPayment(String email, long total_fee, long remaining_point) {
+	private long getSavePoint(String email, long total_fee) {
 
 		String grade = mapper.selectMemberGrade(email);
 		switch (grade) {
-			case "SILVER" : return Math.round(total_fee*0.005) + remaining_point;
+			case "SILVER" : return Math.round(total_fee*0.005);
 							
-			case "GOLD" : return Math.round(total_fee*0.007) + remaining_point;
+			case "GOLD" : return Math.round(total_fee*0.007);
 			
-			case "DIAMOND" : return Math.round(total_fee*0.01 + remaining_point);
+			case "DIAMOND" : return Math.round(total_fee*0.01);
 			
 			default: return -1L;
 		}
 	}
+//	private long PointsAfterPayment(String email, long total_fee, long remaining_point) {
+//		
+//		String grade = mapper.selectMemberGrade(email);
+//		switch (grade) {
+//		case "SILVER" : return Math.round(total_fee*0.005) + remaining_point;
+//		
+//		case "GOLD" : return Math.round(total_fee*0.007) + remaining_point;
+//		
+//		case "DIAMOND" : return Math.round(total_fee*0.01 + remaining_point);
+//		
+//		default: return -1L;
+//		}
+//	}
 
 }

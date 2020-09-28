@@ -26,4 +26,7 @@ public class Booking {
 	private String name;
 	private long service_fee;
 	private String using_state;
+	private long pay_fee;
+	private long use_point;
+	private long save_point;
 }

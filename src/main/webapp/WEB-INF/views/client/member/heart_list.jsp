@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="rating-row">
-                <div class="edit-info-box" style="padding-left: 258px;">
+                <div class="edit-info-box">
                     
 
                     <!-- /////////////////////////// 찜 목록 삭제 버튼 열기 ///////////////////////////// -->

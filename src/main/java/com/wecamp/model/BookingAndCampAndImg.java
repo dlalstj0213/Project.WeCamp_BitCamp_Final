@@ -15,11 +15,17 @@ public class BookingAndCampAndImg {
 	private int s_no;
 	private long total_fee;
 	private Date bdate;
-	private String udate;
+	private Date check_in;
+	private Date check_out;
 	private String tel;
 	private String memo;
 	private int p_num;
 	private String review_state;
+	private long pay_fee;
+	private long use_point;
+	private long save_point;
+	private String using_state;
+	
 	
 	private int camp_idx;
 	private String camp_name;

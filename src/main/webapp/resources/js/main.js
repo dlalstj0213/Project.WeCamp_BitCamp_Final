@@ -253,10 +253,11 @@ Author Email:   contact@tecydevs.com
         
         function check_available(){
             let check = document.getElementById('peopleNum').value;
-            console.log("check available : "+check);
+            //console.log("check available : "+check);
             if(check>=1){
             	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
             }else{
+            	alert("인원 수를 1명 이상으로 설정해주세요.")
             	document.getElementById('booking-event').style.pointerEvents = 'none';
             }
          }

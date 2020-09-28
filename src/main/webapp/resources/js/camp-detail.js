@@ -18,7 +18,6 @@ $("#loadMore").click(function(){
       data: {
     	  camp_idx : campIdx,
     	  nextPage : nextPage
-    	 // cp : ${cp}
       },
       dataType: "HTML",
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',

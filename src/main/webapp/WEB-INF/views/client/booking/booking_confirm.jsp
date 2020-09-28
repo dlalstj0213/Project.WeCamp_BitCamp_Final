@@ -37,6 +37,10 @@
 					        sort_idx : ${booking.sort_idx} <br/> 
 					        check_in : ${booking.check_in}
 					        check_out : ${booking.check_out}
+					        
+					        pay_fee : ${booking.pay_fee}
+					        use_point : ${booking.use_point}
+					        save_point : ${booking.save_point}
 					        --%>
                     </div>
                     <div class="btn-box padding-top-30px">

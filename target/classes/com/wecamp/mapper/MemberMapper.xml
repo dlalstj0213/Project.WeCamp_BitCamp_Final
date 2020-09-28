@@ -52,4 +52,5 @@
 	<insert id="insertMember" parameterType="Member">
 		insert into MEMBER values(#{email}, 1, #{name}, #{nickname}, #{pwd}, 0, #{approval_status}, #{approval_key}, 'SILVER')
 	</insert>
+	
 </mapper>

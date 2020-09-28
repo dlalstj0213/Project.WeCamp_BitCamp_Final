@@ -294,16 +294,12 @@ public class CampDetailServiceImpl implements CampDetailService {
     	int telLength=0;
     	int j=0;
 
-		
 		HashMap<String, List<TouristVo>> tourMap = new HashMap<String, List<TouristVo>>();
 		
 		ArrayList<TouristVo> list = new ArrayList<TouristVo>();
 		
 		String uri = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=3j%2BhlmvnPUKLVUJXQdnYESMvwbC3dBLT6MM3Ws2Yx0zA0C0%2FKjD2TY49oVvmHuotxnzUipHNsXUmCkEnUFR22Q%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=Wecamp&arrange=E&contentTypeId=12&mapX="+x+"&mapY="+y+"&radius=100000&listYN=Y";
-		
-//		  mv.addObject("x", x);
-//		  mv.addObject("y", y);
-		  log.info(">>>x : "+x+", y : "+y);
+		//log.info(">>>x : "+x+", y : "+y);
 		 
 		try{
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -324,26 +320,15 @@ public class CampDetailServiceImpl implements CampDetailService {
 	                	 imgLength = img.length();
 	                	 
 	                    if(imgLength>0 && img!=null&&telLength>0&&tel!=null) {
-	                    	log.info(">>>이미지 크기 : "+imgLength);
 	                    	String title = getTagValue("title",(Element)nodeItem);
 	 	                    String addr = getTagValue("addr1",(Element)nodeItem);
 	 	                    log.info(">>>img : "+img);
 	 	                    log.info(">>>title : "+title);
 	 	                    log.info(">>>addr : "+addr);
 	 	                    log.info(">>>tel : "+tel);
-//		 	                   list.add(img);
-//		 	                   list.add(title);
-//		 	                   list.add(addr);
-//		 	                   list.add(tel);
-//	 	                    tourMap.put("img"+j, img);
-//	 	                    tourMap.put("title"+j, title);
-//	 	                    tourMap.put("addr"+j, addr);
-//	 	                    tourMap.put("tel"+j, tel);
-	 	                   j++;
+	 	                    j++;
 	 	                    list.add(new TouristVo(img, title, addr, tel));
 	                    }
-	                    //여기서 값을 대입하시면 됩니다. 
-	                    //저의 경우는 데이터용 클래스를 따로 반들어서 getter setter 로 사용하였습니다. 
 	                } catch (Exception e) {
 	                }
 	            }
@@ -355,10 +340,6 @@ public class CampDetailServiceImpl implements CampDetailService {
 	            tourMap.forEach((key, value) -> {
 	            		log.info("key: "+ key+", value : "+value);
 	            	}); //람다 섹싴
-//	            for(Object test : list) {
-//	            	test.toString();
-//	            	log.info(">>>test : "+test);
-//	            }
 	            for(int k=0; k<list.size();k++) {
 	            	log.info(">>>list("+k+") : "+list.get(k).toString()); //잠시만 이렇게 안하고 컬렉션 안에 클래스 자체 출력하려고 하면 참조형이기 때문에 주소값으로 나와 그래서 만약에 너가 확인하고 싶다. 저렇게 getget하기 귀찮다 하면 알려드림 해결방법.ㄴ[ 알랴주세여
 	            }

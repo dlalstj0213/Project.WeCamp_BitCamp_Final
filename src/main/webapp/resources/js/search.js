@@ -17,3 +17,8 @@ function submitSearch(){
 	document.getElementById('searched-data').submit();
 }
 
+function enterkey() {
+    if (window.event.keyCode == 13) {
+    	submitSearch();
+    }
+}

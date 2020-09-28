@@ -50,15 +50,13 @@
     	<div class="logo"> <a href="../"><img src="/images/logo.png" alt="logo"></a></div>
 		<div class="searchbar">
 			
-                <div class="main-search-input" style="display:ruby-base !important; background-color:transparent !important;">
+                <div class="main-search-input" style="display:ruby-base !important; background-color:transparent !important;"  onkeyup="enterkey();">
                     <div class="main-search-input-item">
                         <div class="contact-form-action">
-                            <form action="#">
                                 <div class="main-search form-group mb-0">
                                     <span class="la la-search form-icon"></span>
                                     <input id="search" class="form-control" type="text" placeholder="위치" value="${searchPlace}">
                                 </div>
-                            </form>
                         </div>
                     </div><!-- end main-search-input-item -->
                     <div class="main-search-input-item">

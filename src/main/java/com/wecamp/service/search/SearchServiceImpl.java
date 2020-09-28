@@ -1,5 +1,6 @@
 package com.wecamp.service.search;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +45,7 @@ class SearchServiceImpl implements SearchService{
 		
 		PageUtil pageUtil = new PageUtil();
 		int currentPage = pageUtil.getCurrentPageSession(cpStr, session);
-		int pageSize = pageUtil.getPageSize("2", session); // 테스팅중~
+		int pageSize = pageUtil.getPageSize("4", session); // 뜨는 캠핑장 갯수 : 4
 		
 		HashMap<String, Object> query = new HashMap<String, Object>();
 		query.put("search", searchPlace.trim());
@@ -54,10 +55,10 @@ class SearchServiceImpl implements SearchService{
 		List<Integer> exceptList = new ArrayList<Integer>();
 		DateUtil dateUtil = new DateUtil();
 		for(CampAndImg camp : list) {
-			ArrayList<String> dateRange = dateUtil.getAllDatesInRange(checkIn, checkOut);
+			ArrayList<Date> dateRange = dateUtil.getAllDatesInRange(checkIn, checkOut);
 			query.put("camp_idx", camp.getCamp_idx());
 			int totalSite = camp.getSite_num();
-			for(String date : dateRange) {
+			for(Date date : dateRange) {
 				query.put("date", date);
 				int bookingCount = searchMapper.selectCheckBookingAvailable(query);
 				if(bookingCount >= totalSite) {

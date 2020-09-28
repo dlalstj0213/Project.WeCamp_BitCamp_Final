@@ -356,22 +356,22 @@
         	<div class="col-lg-12" style="padding-top:80px;">
                 <div class="client-logo text-center">
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/1.jpg" alt="brand image">
+                        <img style="height:150px !important" src="/images/index-logo/1.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/2.jpg" alt="brand image">
+                        <img style="height:150px !important" src="/images/index-logo/2.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/3.jpg" alt="brand image">
+                        <img style="height:150px !important" src="/images/index-logo/3.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/4.jpg" alt="brand image">
+                        <img style="height:150px !important" src="/images/index-logo/4.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/5.jpg" alt="brand image">
+                        <img style="height:150px !important" src="/images/index-logo/5.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                     <div class="client-logo-item">
-                        <img src="/images/index-logo/6.jpg" alt="brand image">
+                        <img style="height:150px !important" src="/images/index-logo/6.jpg" alt="brand image">
                     </div><!-- end client-logo-item -->
                 </div><!-- end client-logo -->
             </div><!-- end col-lg-12 -->

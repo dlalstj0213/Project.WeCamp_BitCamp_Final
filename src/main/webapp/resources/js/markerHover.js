@@ -20,12 +20,18 @@ for (let i=0;i<nodeList.length;i++){
 	let node = nodeList.item(i);
 	node.addEventListener('mouseover', function(){
 		let markerId = 'mark-' + this.getAttribute('name');
-		document.querySelector('#'+markerId).style.background = 'black';
-		document.querySelector('#'+markerId).style.color = 'white';
+		const mark = document.querySelector('#'+markerId);
+		if(mark){
+			mark.style.background = 'black';
+			mark.style.color = 'white';
+		}
 	})
 	node.addEventListener('mouseout', function(){
 		let markerId = 'mark-' + this.getAttribute('name');
-		document.querySelector('#'+markerId).style.background = 'white';
-		document.querySelector('#'+markerId).style.color = 'black';
+		const mark = document.querySelector('#'+markerId);
+		if(mark){
+			mark.style.background = 'white';
+			mark.style.color = 'black';
+		}
 	})
 }

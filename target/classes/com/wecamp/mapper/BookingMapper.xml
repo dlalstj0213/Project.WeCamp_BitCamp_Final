@@ -21,7 +21,7 @@
 		where
 		B.EMAIL=#{email} and
 		i.division='thumb' order by
-		B.udate desc
+		B.check_out desc
 		
 		)aa) 
 		where rnum>#{page.startRow} and rnum<=#{page.endRow}
@@ -38,7 +38,7 @@
 		where
 		B.EMAIL=#{email} and
 		i.division='thumb' order by
-		B.udate desc
+		B.check_out desc
 	</select>
 	
 	<!-- review_state 상태 변경 -->

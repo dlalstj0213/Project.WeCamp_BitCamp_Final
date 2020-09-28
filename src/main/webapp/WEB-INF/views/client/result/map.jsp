@@ -278,7 +278,7 @@
 	
 		        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
-		        let content = '<div class="myOverlay" id="mark-'+MyData[i].link+'" onclick="gotoCamp(this)" onmouseover="showInfo(this)" onmouseleave="closeInfo(this)"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+		        let content = '<div class="myOverlay" id="mark-'+MyData[i].link+'" onclick="gotoCamp(this)"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
 		        
 		        
 		        let customOverlay = new kakao.maps.CustomOverlay({
@@ -383,7 +383,7 @@
 		  				        let coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
 		  				        // 결과값으로 받은 위치를 마커로 표시합니다
-		  				         let content = '<div class="myOverlay" id="mark-'+MyData[i].link+'" onclick="gotoCamp(this)" onmouseover="showInfo(this)" onmouseleave="closeInfo(this)"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
+		  				         let content = '<div class="myOverlay" id="mark-'+MyData[i].link+'" onclick="gotoCamp(this)"><span class="_1nq36y92">₩'+MyData[i].charge+'</span></div>';
 							        
 							        let customOverlay = new kakao.maps.CustomOverlay({
 							        	map: map,
@@ -412,14 +412,19 @@
 			  		  				
 			  		  				node.addEventListener('mouseover', function(){
 			  		  					let markerId = 'mark-' + this.getAttribute('name');
-			  		  					
-			  		  					document.querySelector('#'+markerId).style.background = 'black';
-			  		  					document.querySelector('#'+markerId).style.color = 'white';
+			  		  					const mark = document.querySelector('#'+markerId);
+			  		  					if(mark){
+				  		  					mark.style.background = 'black';
+				  		  					mark.style.color = 'white';
+			  		  					}
 			  		  				})
 			  		  				node.addEventListener('mouseout', function(){
 			  		  					let markerId = 'mark-' + this.getAttribute('name');
-			  		  					document.querySelector('#'+markerId).style.background = 'white';
-			  		  					document.querySelector('#'+markerId).style.color = 'black';
+			  		  					const mark = document.querySelector('#'+markerId);
+			  		  					if(mark){
+				  		  					mark.style.background = 'white';
+				  		  					mark.style.color = 'black';
+			  		  					}
 			  		  				})
 			  		  			}
 		  				    } 

@@ -9,6 +9,9 @@ public class LoginStorage {
 	private static LinkedList<Member> LOGIN_USERS = new LinkedList<Member>();
 	//싱글톤
 	
+	private LoginStorage() {
+	}
+	
 	public static synchronized LoginStorage getInstance() {
 		if(LOGIN_SESSION == null) LOGIN_SESSION = new LoginStorage();
 		return LOGIN_SESSION;

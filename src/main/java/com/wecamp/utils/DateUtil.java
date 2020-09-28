@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -86,8 +87,10 @@ public class DateUtil {
 		return java.sql.Date.valueOf(transDate);
 	}
 	
-	public ArrayList<String> getAllDatesInRange(String startDate, String endDate){
-		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+	public ArrayList<java.sql.Date> getAllDatesInRange(String startDate, String endDate){
+		startDate = startDate.replaceAll("/", "-");
+		endDate = endDate.replaceAll("/", "-");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date start = null; 
 		Date end = null;
 		try {
@@ -100,13 +103,12 @@ public class DateUtil {
 		Calendar endCal = Calendar.getInstance();
 		startCal.setTime(start);
 		endCal.setTime(end);
-		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<java.sql.Date> result = new ArrayList<java.sql.Date>();
 		while(startCal.compareTo(endCal) != 1) {
-			result.add(df.format(startCal.getTime()));
+			result.add(java.sql.Date.valueOf(df.format(startCal.getTime())));
 			startCal.add(Calendar.DATE, 1);
 		}
 		return result;
 	}
-	
 }
 

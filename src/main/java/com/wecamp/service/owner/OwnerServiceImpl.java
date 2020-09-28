@@ -2,6 +2,7 @@ package com.wecamp.service.owner;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -223,7 +224,8 @@ class OwnerServiceImpl implements OwnerService{
 		if(camp_idx != null) {
 			HashMap<String, Object> query = new HashMap<String, Object>();
 			DateUtil dateUtil = new DateUtil();
-			String today = dateUtil.getToday();
+			String transDate = dateUtil.getToday().replaceAll("/", "-");
+			Date today = Date.valueOf(transDate);
 			query.put("camp_idx", camp_idx);
 			query.put("today", today);
 			if(isSearch) {

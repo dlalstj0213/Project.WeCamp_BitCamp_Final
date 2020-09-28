@@ -82,7 +82,7 @@
                 <div class="copy-right margin-top-50px padding-top-60px">
                     <p class="copy__desc">
                         &copy; Copyright WeCamp 2020. Made with
-                        <span class="la la-heart-o"></span> by <a href="https://www.instagram.com/wecamp_kr/">SB, HW, DS, MS </a>
+                        <span class="la la-heart-o"></span> by <a href="https://github.com/Binveloper">SB</a>, <a href="https://github.com/OnceDeveloper">HW</a>, <a href="https://github.com/cateto">DS</a>, <a href="https://github.com/dlalstj0213">MS </a>
                     </p>
                     <ul class="list-items">
                         <li><a href="#">Terms & Conditions</a></li>

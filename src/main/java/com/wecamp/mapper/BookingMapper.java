@@ -9,7 +9,7 @@ import com.wecamp.model.BookingAndCampAndImg;
 public interface BookingMapper{
 	List<BookingAndCampAndImg> select_booking(HashMap<String, Object> query);
 	long select_booking_count(HashMap<String, Object> query);
-	boolean update_state(int booking_idx);
+	boolean update_state(String imp_uid);
 	
 	
 	void insertBooking(Booking booking);

@@ -14,27 +14,27 @@
 }
 </style>
 <script>
-		var prev = 0;
-        $('.star_grade a').click(function(){
-            $('a').removeClass('on');
-        	$(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
-            $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-            //alert($('.on').length);
-            let e = this.nextSibling.nextSibling.value;
-            if(prev == 0){
-            	prev = Number(e);
-            	document.getElementById('star-' + e).value = $('.on').length;
-            }else{
-            	document.getElementById('star-' + prev).value = 0;
-            	prev = 0;
-            	document.getElementById('star-' + e).value = $('.on').length;
-            }
-            //document.getElementById('star-' + e).value = $('.on').length;
-            alert(document.getElementById('star-' + e).value);
-            //alert($(this).parent().children("input").value());
-            //alert(document.getElement(this));
-            return false;
-        });
+	var prev = 0;
+	$('.star_grade a').click(function(){
+	    $('a').removeClass('on');
+		$(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
+	    $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
+	    //alert($('.on').length);
+	    let e = this.nextSibling.nextSibling.value;
+	    if(prev == 0){
+	    	prev = String(e);
+	    	document.getElementById('star-' + e).value = $('.on').length;
+	    }else{
+	    	document.getElementById('star-' + prev).value = 0;
+	    	prev = 0;
+	    	document.getElementById('star-' + e).value = $('.on').length;
+	    }
+	    //document.getElementById('star-' + e).value = $('.on').length;
+	    //alert(document.getElementById('star-' + e).value);
+	    //alert($(this).parent().children("input").value());
+	    //alert(document.getElement(this));
+	    return false;
+	});
 </script>
 <c:if test="${page.currentPage == 1}">
 	<input type="hidden" id="page-count" value="${page.pageCount}">
@@ -43,7 +43,7 @@
 	<div class="col-lg-4 column-td-6">
 		<div class="card-item">
 
-			<a href="../search/camp_detail.wcc?camp_idx=${list.camp_idx}"
+			<a href="../camp/camp_detail.wcc?camp_idx=${list.camp_idx}"
 				class="card-image-wrap">
 				<div class="card-image">
 					<!-- <img src="/images/camp-img/thumb/고성잔디캠핑장-thumb_209.jpg" class="card__img"
@@ -55,7 +55,7 @@
 
 			<div class="card-content-wrap">
 				<div class="card-content">
-					<a href="../search/camp_detail.wcc?camp_idx=${list.camp_idx}">
+					<a href="../camp/camp_detail.wcc?camp_idx=${list.camp_idx}">
 						<h4 class="card-title mt-0">${list.camp_name}</h4>
 						<p class="card-sub">${list.address}</p>
 					</a>
@@ -78,7 +78,7 @@
 								<span class="la la-check-square-o"></span> 리뷰 완료
 							</button>
 						</c:if>
-
+						
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModal${list.imp_uid}"
 							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -102,7 +102,7 @@
 													<input type="hidden" id="star-${list.imp_uid}" value="0"
 														name="star"> <input type="hidden"
 														value="${list.camp_idx}" name="camp_idx"> <input
-														type="hidden" value="${list.imp_uid}" name="booking_idx">
+														type="hidden" value="${list.imp_uid}" name="imp_uid">
 
 
 													<div class="mb-3">
@@ -138,7 +138,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-primary"
-											onclick="submit_review(${list.imp_uid});">작성 완료</button>
+											onclick="submit_review('${list.imp_uid}');">작성 완료</button>
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">닫기</button>
 									</div>
@@ -156,3 +156,12 @@
 	</div>
 	<!-- end -->
 </c:forEach>
+
+<c:choose>
+	<c:when test="${empty list}">
+<input type="hidden" id="check_result" value="false">
+	</c:when>
+	<c:otherwise>
+<input type="hidden" id="check_result" value="true">
+	</c:otherwise>
+</c:choose>

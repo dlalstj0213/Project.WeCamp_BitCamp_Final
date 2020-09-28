@@ -279,7 +279,6 @@ body {
 	opacity: 1;
 	visibility: visible;
 }
-
 </style>
 
 <script>
@@ -362,24 +361,54 @@ $(function(){
 					class="dashboard-nav d-flex justify-content-between align-items-center mb-4">
 					<nav>
 						<div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
-
-							<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1 active"
-								id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-								role="tab" aria-controls="nav-profile" aria-selected="true">
-								<span class="la la-user"></span> 프로필
-							</a> <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
-								id="nav-listing-tab" data-toggle="tab" href="#nav-listing"
-								role="tab" aria-controls="nav-listing" aria-selected="false"
-								onclick="call_booking_info();"> <span class="la la-list-alt"></span>
-								예약내역
-							</a> <input id="next-page" type="hidden" value=""> <a
-								class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
-								id="nav-bookmark-tab" data-toggle="tab" href="#nav-bookmarks"
-								role="tab" aria-controls="nav-bookmarks" aria-selected="false"
-								onclick="call_heart_list();"> <span class="la la-bookmark-o"></span>
-								찜 목록
-							</a>
-							<c:if test="${member.a_no ne 1}">
+							<c:choose>
+								<c:when test="${ selected eq 'info' || empty selected}">
+								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1 active"
+									id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+									role="tab" aria-controls="nav-profile" aria-selected="true">
+									<span class="la la-user"></span> 프로필</a> 
+								</c:when>
+								<c:otherwise>
+								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+									id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+									role="tab" aria-controls="nav-profile" aria-selected="false">
+									<span class="la la-user"></span> 프로필</a> 
+								</c:otherwise>
+							</c:choose>
+								<input id="next-page" type="hidden" value="">
+							<c:choose>
+								<c:when test="${ selected eq 'booking' }">
+								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1 active"
+									id="nav-listing-tab" data-toggle="tab" href="#nav-listing"
+									role="tab" aria-controls="nav-listing" aria-selected="true"
+									onclick="call_booking_info();"> <span class="la la-list-alt"></span>
+									예약내역</a> 
+								</c:when>
+								<c:otherwise>
+								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+									id="nav-listing-tab" data-toggle="tab" href="#nav-listing"
+									role="tab" aria-controls="nav-listing" aria-selected="false"
+									onclick="call_booking_info();"> <span class="la la-list-alt"></span>
+									예약내역</a> 
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${ selected eq 'heart' }">
+								 <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1 active"
+									id="nav-bookmark-tab" data-toggle="tab" href="#nav-bookmarks"
+									role="tab" aria-controls="nav-bookmarks" aria-selected="true"
+									onclick="call_heart_list();"> <span class="la la-bookmark-o"></span>
+									찜 목록</a>
+								</c:when>
+								<c:otherwise>
+								 <a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
+									id="nav-bookmark-tab" data-toggle="tab" href="#nav-bookmarks"
+									role="tab" aria-controls="nav-bookmarks" aria-selected="false"
+									onclick="call_heart_list();"> <span class="la la-bookmark-o"></span>
+									찜 목록</a>
+								</c:otherwise>
+							</c:choose>
+							<c:if test="${member.a_no ne 1 && check eq true}">
 								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
 									id="nav-bookmark-tab" data-toggle="tab" href="#nav-camping"
 									role="tab" aria-controls="nav-bookmarks" aria-selected="false"
@@ -390,11 +419,11 @@ $(function(){
 								<a class="nav-item nav-link theme-btn pt-0 pb-0 mr-1"
 									id="nav-bookmark-tab" data-toggle="tab" href="#nav-camping-set"
 									role="tab" aria-controls="nav-bookmarks" aria-selected="false"
-									onclick="start_camp_manage(true, true, false, 1);"> <!-- onclick="owner_info(); --> <span
-									class="la la-gear"></span> 캠핑장 관리
+									onclick="start_camp_manage(true, true, false, 1);"> <!-- onclick="owner_info(); -->
+									<span class="la la-calendar-check-o"></span> 캠핑장 관리
 								</a>
 							</c:if>
-							
+
 						</div>
 					</nav>
 					<div class="btn-box">
@@ -407,10 +436,17 @@ $(function(){
 			<!-- end col-lg-12 -->
 			<div class="col-lg-12">
 				<div class="tab-content" id="nav-tabContent">
+				<c:choose>
+					<c:when test="${ selected eq 'booking' }">
+					<div class="tab-pane fade show active" id="nav-listing" role="tabpanel"
+						aria-labelledby="nav-listing-tab">
+					</c:when>
+					<c:otherwise>
 					<div class="tab-pane fade" id="nav-listing" role="tabpanel"
 						aria-labelledby="nav-listing-tab">
+					</c:otherwise>
+				</c:choose>
 						<div id="booking-box" class="row"></div>
-
 						<!-- Load More Start -->
 						<div class="section-block"></div>
 						<div class="button-shared padding-top-40px text-center">
@@ -425,9 +461,16 @@ $(function(){
 						<!-- end row -->
 					</div>
 
-
+				<c:choose>
+					<c:when test="${ selected eq 'info' || empty selected}">
 					<div class="tab-pane fade show active" id="nav-profile"
 						role="tabpanel" aria-labelledby="nav-profile-tab">
+					</c:when>
+					<c:otherwise>
+					<div class="tab-pane fade" id="nav-profile"
+						role="tabpanel" aria-labelledby="nav-profile-tab">
+					</c:otherwise>
+				</c:choose>
 						<div class="row">
 							<div class="col-lg-4">
 								<div class="user-profile-action">
@@ -462,8 +505,7 @@ $(function(){
 									<div class="user-details">
 										<h2 class="user__name widget-title pb-2">${member.name}</h2>
 										<div class="section-heading">
-											<p class="sec__desc font-size-15 line-height-24">보조 설명 보조
-												설명 보조 설명 보조 설명 보조 설명 보조 설명</p>
+											<p class="sec__desc font-size-15 line-height-24">WeCamp와 즐거운 Camping Life를 즐겨 보세요!</p>
 
 
 										</div>
@@ -673,8 +715,16 @@ $(function(){
 					</div>
 
 					<!-- Heart -->
-					<div class="tab-pane fade" id="nav-bookmarks" role="tabpanel"
-						aria-labelledby="nav-bookmark-tab">
+					<c:choose>
+						<c:when test="${ selected eq 'heart' }">
+						<div class="tab-pane fade show active" id="nav-bookmarks" role="tabpanel"
+							aria-labelledby="nav-bookmark-tab">
+						</c:when>
+						<c:otherwise>
+						<div class="tab-pane fade" id="nav-bookmarks" role="tabpanel"
+							aria-labelledby="nav-bookmark-tab">
+						</c:otherwise>
+					</c:choose>
 						<div id="heart-box" class="row"></div>
 						<!-- Load More Start -->
 						<div class="section-block"></div>
@@ -690,33 +740,31 @@ $(function(){
 					</div>
 
 					<!-- camp_manage.jsp -->
-						<div class="tab-pane fade" id="nav-camping-set" role="tabpanel"
-							aria-labelledby="nav-bookmark-tab">
-							<div class="col-md-12">
-								<div class="input-group pull-right col-md-9">
-								  <div class="input-group-prepend">
-									  <select id="category" class="custom-select" id="inputGroupSelect01">
-									    <option value="name" selected>이름</option>
-									    <option value="tel">전화번호</option>
-									  </select>
-								  </div>
-								   <div class="input-group-prepend">
-								    <label class="input-group-text" for="search">검색</label>
-								  </div>
-								  <input id="keyword" type="text" onkeyup="start_camp_manage(true, false, true, 1);">
+					<div class="tab-pane fade" id="nav-camping-set" role="tabpanel"
+						aria-labelledby="nav-bookmark-tab">
+						<div style="float:right; margin-bottom:20px;">
+							<div class="input-group-prepend">
+								<select id="category" class="custom-select"
+									id="inputGroupSelect01">
+									<option value="name" selected>이름</option>
+									<option value="tel">전화번호</option>
+								</select>
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="search">검색</label>
 								</div>
-							</div>
-							<br/>
-							<div id="camp-manage-box">
+								<input id="keyword" type="text"
+									onkeyup="start_camp_manage(true, false, true, 1);">
 							</div>
 						</div>
+						<div id="camp-manage-box"></div>
+					</div>
 
-						<div class="tab-pane fade" id="nav-camping" role="tabpanel"
-							aria-labelledby="nav-profile-tab">
-							<div class="row">
-								<div class="col-lg-4">
-									<div class="user-profile-action">
-										<!-- 프로필 사진 부분 주석   
+					<div class="tab-pane fade" id="nav-camping" role="tabpanel"
+						aria-labelledby="nav-profile-tab">
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="user-profile-action">
+									<!-- 프로필 사진 부분 주석   
                                     
                                     <div class="user-pro-img mb-4">
                                         <img src="images/team2.jpg" alt="user-image">
@@ -740,118 +788,44 @@ $(function(){
                                         </div>
                                     </div> -->
 
-										<!-- /////////////////////////// 유저 왼쪽 정보 ///////////////////////////// -->
+									<!-- /////////////////////////// 유저 왼쪽 정보 ///////////////////////////// -->
 
-										<div class="user-details">
-											<h2 class="user__name widget-title pb-2">${member.name}</h2>
-											<div class="section-heading">
-												<p class="sec__desc font-size-15 line-height-24">사업자 전용
-													관리페이지입니다.</p>
+									<div class="user-details">
+										<h2 class="user__name widget-title pb-2">${member.name}</h2>
+										<div class="section-heading">
+											<p class="sec__desc font-size-15 line-height-24">사업자 전용
+												관리페이지입니다.</p>
 
 
-											</div>
-											<ul class="list-items mt-3">
-												<!-- <li><span class="la la-github-alt"></span> 닉네임 : 조이 정 </li>
+										</div>
+										<ul class="list-items mt-3">
+											<!-- <li><span class="la la-github-alt"></span> 닉네임 : 조이 정 </li>
                                             <li class="text-lowercase"><span class="la la-diamond"></span> 등급 : silver </li>
                                             <li class="text-lowercase"><span class="la la-cc-diners-club"></span> 포인트 : 2000P </li> -->
-											</ul>
-											<div class="user-edit-form mt-4">
-												<div class="dropdown">
-													<button
-														class="theme-btn edit-form-btn shadow-none w-100 dropdown-toggle after-none"
-														type="button" id="editForm" data-toggle="dropdown"
-														aria-haspopup="true" aria-expanded="false">
-														<i class="la la-pencil-square-o"></i> Edit
-													</button>
-													<div class="dropdown-menu" aria-labelledby="editForm">
-														<div class="contact-form-action">
-															<div class="input-box">
-																<label class="label-text">Name</label>
-																<div class="form-group">
-																	<span class="la la-user form-icon"></span> <input
-																		class="form-control" type="text" name="name"
-																		placeholder="Enter your name">
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="input-box">
-																<label class="label-text">Bio Data</label>
-																<div class="form-group">
-																	<span class="la la-pencil form-icon"></span>
-																	<textarea class="message-control form-control"
-																		name="message" placeholder="Add a bio"></textarea>
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="input-box">
-																<div class="form-group">
-																	<span class="la la-map-marker form-icon"></span> <input
-																		class="form-control" type="text" name="location"
-																		placeholder="Location">
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="input-box">
-																<div class="form-group">
-																	<span class="la la-phone form-icon"></span> <input
-																		class="form-control" type="text" name="number"
-																		placeholder="Number">
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="input-box">
-																<div class="form-group">
-																	<span class="la la-envelope-o form-icon"></span> <input
-																		class="form-control" type="email" name="email"
-																		placeholder="Email Address">
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="input-box">
-																<div class="form-group">
-																	<span class="la la-youtube-play form-icon"></span> <input
-																		class="form-control" type="text" name="youtube"
-																		placeholder="Youtube URL">
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="input-box">
-																<div class="form-group">
-																	<span class="la la-globe form-icon"></span> <input
-																		class="form-control" type="text" name="website"
-																		placeholder="Website">
-																</div>
-															</div>
-															<!-- end input-box -->
-															<div class="btn-box">
-																<button type="button"
-																	class="theme-btn border-0 button-success">save
-																	changes</button>
-																<button type="button" class="theme-btn border-0">Cancel</button>
-															</div>
-															<!-- end btn-box -->
-														</div>
-														<!-- end contact-form-action -->
-													</div>
-												</div>
-											</div>
+										</ul>
+										<div class="user-edit-form mt-4">
+											
 										</div>
-										<!-- end user-details -->
 									</div>
-									<!-- end user-profile-action -->
+									<!-- end user-details -->
 								</div>
-								<!-- end col-lg-4 -->
-
-								<!-- /////////////////////////// 유저 오른쪽 정보 ///////////////////////////// -->
-								<div class="col-lg-8" id="owner-info"></div>
+								<!-- end user-profile-action -->
 							</div>
+							<!-- end col-lg-4 -->
+
+							<!-- /////////////////////////// 유저 오른쪽 정보 ///////////////////////////// -->
+							<div class="col-lg-8" id="owner-info"></div>
 						</div>
 					</div>
-					<!-- end col-lg-12 -->
 				</div>
-				<!-- end row -->
+				<!-- end col-lg-12 -->
 			</div>
-			<!-- end container -->
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+
+<!-- Tab hidden name (selected) -->
+<input id="selectedTab" type="hidden" value="${ selected }">
 </section>
 
 <!-- end dashboard-area -->
@@ -872,6 +846,13 @@ $(function(){
         $("#close_modal").click(function() {
             $("#exampleModal").modal("hide");
         });
+        
+        	let selected = document.getElementById('selectedTab').value;
+        	if(selected == 'booking'){
+        		call_booking_info();
+        	}else if(selected == 'heart'){
+        		call_heart_list();
+        	}
     });
     
     $('#myModal').on('shown.bs.modal', function () {

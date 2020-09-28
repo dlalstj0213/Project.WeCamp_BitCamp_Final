@@ -12,28 +12,28 @@ import java.util.Date;
 
 public class DateUtil {
 	Calendar cal;
-	DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-	
+	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
 	public DateUtil() {
 		cal = Calendar.getInstance();
 		cal.setTime(new Date());
 	}
-	
+
 	public String getToday() {
 		String todayStr = df.format(cal.getTime());
 		return todayStr;
 	}
-	
+
 	public String getTommorrow(){
 		cal.add(Calendar.DATE, 1);
-        return df.format(cal.getTime());
+		return df.format(cal.getTime());
 	}
 
 	public String getYesterday(){
 		cal.add(Calendar.DATE, -1);
 		return df.format(cal.getTime());
 	}
-	
+
 	/**
 	 * "~"로 구분된 나눌 날짜를 매개변수로 넣고 호출하면 String[] 배열 형태로 값을 반환한다.
 	 * @param udate 나눌 날짜 with String type 
@@ -48,7 +48,7 @@ public class DateUtil {
 		result[1] = result[1].trim();
 		return result;
 	}
-	
+
 	public boolean  isWithinRange(String date, String startDate, String endDate) {
 		LocalDate localDate = null;
 		LocalDate startLocalDate = null;
@@ -68,12 +68,12 @@ public class DateUtil {
 		endLocalDate = endLocalDate.plusDays(1); //endDate는 포함하지 않으므로 +1을 해야함
 		return (!localDate.isBefore(startLocalDate)) && (!localDate.isAfter(endLocalDate));
 	}
-	
+
 	public java.sql.Date transformDate(String year, String month, String day) {
 		String date = year+"-"+month+"-"+day;
 		return java.sql.Date.valueOf(date);
 	}
-	
+
 	public java.sql.Date transformDate(String date){
 		date = date.replaceAll("/", "-");
 		df = new SimpleDateFormat("yyyy-mm-dd");
@@ -110,5 +110,32 @@ public class DateUtil {
 		}
 		return result;
 	}
+
+	public String dateCalculation(String date, int amount) {
+		//date = date.replaceAll("-", "/");
+		df = new SimpleDateFormat("yyyy-MM-dd");
+		Date tempDate = null;
+		try {
+			tempDate = df.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		cal.setTime(tempDate);
+		cal.add(Calendar.DATE, amount);
+		
+		/*
+		 1. Date type(util)
+		 	cal.getTime();
+		 2. String type
+		 	df.format(cal.getTime());
+		 */
+		return df.format(cal.getTime());
+	}
+
+//	public static void main(String args[]) {
+//		DateUtil util = new DateUtil();
+//		String date = util.dateCalculation("2020-09-25",-3);
+//		System.out.println(">>>>>> : "+date );
+//	}
 }
 

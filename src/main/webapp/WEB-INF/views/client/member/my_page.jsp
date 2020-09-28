@@ -322,12 +322,7 @@ $(function(){
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-content">
-						<h2 class="breadcrumb__title">dashboard</h2>
-						<ul class="breadcrumb__list">
-							<li class="active__list-item"><a href="index.html">home</a></li>
-							<li class="active__list-item">pages</li>
-							<li>dashboard</li>
-						</ul>
+						<h2 class="breadcrumb__title">마이 페이지</h2>
 					</div>
 					<!-- end breadcrumb-content -->
 				</div>

@@ -23,6 +23,9 @@ public class BookingAndCampAndImg {
 	private String review_state;
 	private String name;
 	private long servic_fee;
+	private long pay_fee;
+	private long use_point;
+	private long save_point;
 	private String using_state;
 	
 	private int camp_idx;

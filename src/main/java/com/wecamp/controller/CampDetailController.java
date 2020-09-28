@@ -67,16 +67,8 @@ public class CampDetailController {
 		return mv;
 	}
 	
-//	@ResponseBody
-//	@RequestMapping("tourist")
-//	private Map<String, List<TouristVo>>  getTourist(double x, double y) {
-//		//TouristVo touristVo cdService.getTourists(x, y);
-//		return cdService.getTourists(x, y);
-//		//return touristVo;
-//	}
-	
 	//@ResponseBody
-	@RequestMapping("tourist")
+	@PostMapping("tourist")
 	private ModelAndView  getTourist(double x, double y) {
 		//TouristVo touristVo cdService.getTourists(x, y);
 		ModelAndView mv= cdService.getTourists(x, y);

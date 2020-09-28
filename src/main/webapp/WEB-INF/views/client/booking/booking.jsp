@@ -16,6 +16,24 @@
  width: 0;
  height: 0;
 }
+.margin-left-option{
+	margin-left:20px;
+}
+.tt:hover {background-color: tomato}
+
+
+
+.tt:active {
+
+  background-color: #3e8e41;
+
+  box-shadow: 0 5px #666;
+
+  transform: translateY(4px);
+
+}
+
+
 </style>
 
 <!-- ================================
@@ -27,12 +45,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-content">
-                        <h2 class="breadcrumb__title">booking</h2>
-                        <ul class="breadcrumb__list">
-                            <li class="active__list-item"><a href="/">home</a></li>
-                            <li class="active__list-item">pages</li>
-                            <li>booking</li>
-                        </ul>
+                        <h2 class="breadcrumb__title">예약 확인</h2>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -134,9 +147,9 @@
                                                                                  바베큐 이용료 (원)<span class="bbq_fee"></span></li>
                                 <li class="d-flex align-items-center justify-content-between"
                                     style="font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:3px; margin-left:40px;margin-right:20px;">
-                                                                                포인트(P)<input id="point" class="form-control point" type="text" style="width:170px; text-align:right;"  placeholder="0" value=""></li>
+                                                                                포인트(P)<input id="point"  class="form-control point" type="text" style="width:170px; text-align:right;"  placeholder="0" value=""></li>
                                 <li style="cursor:pointer; text-align:right; font-size:15px;color:#333f57;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:40px;margin-right:20px;">
-                                                                                 보유 : <span id="my_point">${member.point}</span>P&nbsp;&nbsp;<a id="bt_use_point"type="button" style="text-decoration:underline; color:#ff6b6b"> 전액 사용</a></li>
+                                                                                 보유 : <span id="my_point">${member.point}</span>P&nbsp;&nbsp;<a id="bt_use_point"type="button" style="text-decoration:underline; color:#ff6b6b""> 전액 사용</a></li>
 								<!-- <li style="cursor:pointer; font-size:15px;color:#ff6b6b;font-weight:600;margin-top:7px; margin-bottom:10px; margin-left:600px;margin-right:20px;">
 									 &nbsp;<u>전액 사용</u>
 								</li> -->
@@ -149,28 +162,6 @@
                                 <span class="color-text camp_total"style="font-size:20px;color:#333f57;font-weight:600;"></span></li>
                             </ul>		 
    					 
- 			<!-- <div class="billing-content">
-                 <div class="contact-form-action">
-   					 
-   					 <div class="col-lg-6">
-                          <div class="input-box">
-                              <label class="label-text">이용료와 수수료</label>
-                              <div class="form-group">
-                                  	45,000원
-                              </div>
-                          </div>
-                     </div>end col-lg-6
-                     <div class="col-lg-6">
-                          <div class="input-box">
-                              <label class="label-text">포인트</label>
-                              <div class="form-group">
-                                  	0P
-                              </div>
-                          </div>
-                     </div>end col-lg-6
-                 </div>
-           </div>     -->
-                    
                     
                     <div class="payment-option">
                         <div class="billing-title-wrap pt-0">
@@ -178,18 +169,6 @@
                             <div class="title-shape margin-top-10px"></div>
                         </div><!-- billing-title-wrap -->
                         <div class="payment-method-wrap p-4">
-                        
-                        <!-- <div class="payment-tab">
-                                <div class="payment-trigger">
-                                    <label class="payment-radio">
-                                        <input type="radio" name="radio">
-                                        <span class="checkmark"></span>
-                                         <img src="/images/kakaopay.png"/>
-                                       <span>&nbsp; 카카오 페이</span>
-                                    </label>
-                                </div>end payment-trigger
-                        </div>end payment-tab -->
-                        
                         <div class="payment-tab">
                                 <div class="payment-trigger">
                                     <label class="payment-radio">
@@ -200,108 +179,14 @@
                                     </label>
                                 </div><!-- end payment-trigger -->
                         </div><!-- end payment-tab -->
-                        
-                        
-                            <!-- start 무통장입금..등등 
-                            <div class="payment-tab">
-                                <div class="payment-trigger">
-                                    <label class="payment-radio">
-                                        <input type="radio" name="radio">
-                                        <span class="checkmark"></span>
-                                       <span>무통장 입금</span>
-                                        <div class="payment-content payment-active mt-2">
-                                            <div class="section-heading">
-                                                <p class="sec__desc font-size-15 line-height-24">
-                                                    	우리은행 1002-000-000-00 </br>
-                                                    	예금주 : 홍길동 </br>
-                                                    	2020-08-04까지 입금
-                                                </p>
-                                            </div>
-                                        </div>end payment-content
-                                    </label>
-                                </div>end payment-trigger
-                            </div>end payment-tab
-                            <div class="payment-tab">
-                                <div class="payment-trigger">
-                                    <label class="payment-radio">
-                                        <input type="radio" name="radio">
-                                        <span class="checkmark"></span>
-                                        <span>신용카드 / 체크카드</span>
-                                        <span class="card-icon float-right"><img src="/images/payment-img.png" alt=""></span>
-                                        <div class="payment-content payment-active mt-3">
-                                            <div class="contact-form-action">
-                                                <form>
-                                                     <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="input-box">
-                                                                <label class="label-text">카드 번호</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-pencil form-icon"></span>
-                                                                    <input class="form-control" name="text" placeholder="1234  5678  9876  5432" required="" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="input-box">
-                                                                <label class="label-text">만료 월</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-pencil form-icon"></span>
-                                                                    <input class="form-control" placeholder="MM" required="" name="text" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="input-box">
-                                                                <label class="label-text">만료 연도</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-pencil form-icon"></span>
-                                                                    <input class="form-control" placeholder="YY" required="" name="text" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="input-box">
-                                                                <label class="label-text">CVV</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-lock form-icon"></span>
-                                                                    <input class="form-control" placeholder="CVV" required="" name="text" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>end payment-content
-                                    </label>
-                                </div>end payment-trigger
-                            </div>end payment-tab
-                            <div class="payment-tab">
-                                <div class="payment-trigger">
-                                    <label class="payment-radio paypal-option">
-                                        <input type="radio" name="radio">
-                                        <span class="checkmark"></span>
-                                        <span>Paypal</span>
-                                        <span class="card-icon float-right"><img src="/images/paypal.png" alt=""></span>
-                                        <div class="payment-content payment-active mt-2">
-                                            <div class="section-heading">
-                                                <p class="sec__desc font-size-15 line-height-24">
-                                                    You will be redirected to PayPal to complete payment.
-                                                </p>
-                                            </div>
-                                        </div>end payment-content
-                                    </label>
-                                </div>end payment-trigger
-                            </div> 
-                            <!-- end payment-tab ///////end 무통장입금..등등-->
-                       
+                      </div>
+                       </div> 
                         <!--start 이용약관-->
-                        <div class="billing-title-wrap">
+                        <div class="billing-title-wrap pt-0">
                         <h3 class="widget-title pb-0">이용 약관</h3>
                         <div class="title-shape margin-top-10px"></div>
-                   		</div><!-- billing-title-wrap -->
-
+						</div>
+                        <div class="margin-left-option">
                            <!--  <div class="section-block-2 mt-4"></div> 얇은 실선-->
                            <div class="btn-box mt-4">
                                 <div class="custom-checkbox">
@@ -312,51 +197,51 @@
                                     <input type="checkbox" id="chb2" class="chb" name="chb" id="chb2">
                                     <label for="chb2" style="margin-bottom:5px" class="d-flex align-items-center justify-content-between">[필수] 이용규칙 동의
                                     
-                                    <a id="bt_use" role="button" class="color-text" data-toggle="collapse" data-target="#rules1">보기</a></label>
+                                    <a id="bt_use" role="button" class="color-text" data-toggle="collapse" style="margin-right:20px">보기</a></label>
 				                        <div id="rules1" class="collapse">
-				                      	  <div id="rules_area1"class="card card-body" style="overflow:scroll; width:720px; height:200px;">
+				                      	  <div id="rules_area1"class="card card-body" style="overflow:scroll; width:725px; height:200px;">
 										    이용규칙
 										  </div>
 										</div>
                                     
                                     <input type="checkbox" id="chb3" class="chb" name="chb" id="chb3">
                                     <label for="chb3" style="margin-bottom:5px" class="d-flex align-items-center justify-content-between">[필수] 취소 및 환불 규칙 동의
-                                     <a id="bt_refund" role="button" class="color-text" data-toggle="collapse" data-target="#rules2">보기</a></label>
+                                     <a id="bt_refund" role="button" class="color-text" data-toggle="collapse"  style="margin-right:20px">보기</a></label>
 				                        <div id="rules2" class="collapse">
-				                      	  <div id="rules_area2"class="card card-body" style="overflow:scroll; width:720px; height:200px;">
+				                      	  <div id="rules_area2"class="card card-body" style="overflow:scroll; width:725px; height:200px;">
 										    취소 및 환불 규칙
 										  </div>
 										</div>
                                     
                                     <input type="checkbox" id="chb4" class="chb" name="chb" id="chb4">
                                     <label for="chb4" style="margin-bottom:5px" class="d-flex align-items-center justify-content-between">[필수] 개인정보 수집 및 이용 동의 
-                                    <a id="bt_privacy" role="button" class="color-text" data-toggle="collapse" data-target="#rules3">보기</a></label>
+                                    <a id="bt_privacy" role="button" class="color-text" data-toggle="collapse"  style="margin-right:20px">보기</a></label>
 				                        <div id="rules3" class="collapse">
-				                      	  <div id="rules_area3"class="card card-body" style="overflow:scroll; width:720px; height:200px;">
+				                      	  <div id="rules_area3"class="card card-body" style="overflow:scroll; width:725px; height:200px;">
 										    개인정보 수집 및 이용 규칙
 										  </div>
 										</div>
                                     
                                     <input type="checkbox" id="chb5" class="chb" name="chb" id="chb5">
                                     <label for="chb5" style="margin-bottom:5px" class="d-flex align-items-center justify-content-between">[필수] 개인정보 제3자 제공 동의
-                                    <a id="bt_privacy3" role="button" class="color-text" data-toggle="collapse" data-target="#rules4">보기</a></label>
+                                    <a id="bt_privacy3" role="button" class="color-text" data-toggle="collapse"  style="margin-right:20px">보기</a></label>
 				                        <div id="rules4" class="collapse">
-				                      	  <div id="rules_area4"class="card card-body" style="overflow:scroll; width:720px; height:200px;">
+				                      	  <div id="rules_area4"class="card card-body" style="overflow:scroll; width:725px; height:200px;">
 										    개인정보 제3자 제공 규칙
 										  </div>
 										</div>
                                     <!-- <input class="chb" type="checkbox" id="chb5">
                                     <label for="chb1">[필수] 개인정보 제3자 제공 동의 <a href="#" class="color-text">보기</a></label> -->
-                                </div>
-                                <button disabled="" id="bt_pay"type="submit" class="btn btn-primary btn-block" onclick="requestPay()"
-                                		style="background-color:#ff6b6b; border-color:#ff6b6b" type="submit" ><span id="camp_total" class="camp_total"></span>원 결제하기
+                                </div><!--end btn-box mt-4-->
+                            </div> <!--end checkbox-->
+                            </div><!-- end margin-left-option-->
+                                <button disabled="" id="bt_pay"type="submit" class="tt theme-btn border-0" onclick="requestPay()"
+                                		style="background-color:#bfbbbb; border-color:#bfbbbb; margin-left:20px; margin-bottom:10px; padding:3px 300px;cursor:pointer" type="submit" ><span id="camp_total" class="camp_total"></span>원 결제하기
                                 </button>
-                                <!--버튼 원래 클래스 - theme-btn border-0 mt-5-->
-                            </div> <!--end checkbox -->
-                        </div>
-                    </div> 
+                                <!--버튼 원래 클래스 - theme-btn border-0 mt-5--><!--btns btn-primary btn-block-->
                 </div><!-- end billing-form-item -->
             </div><!-- end col-lg-8 -->
+
 
             <div class="col-lg-4">
                 <div class="card-item">
@@ -397,28 +282,6 @@
                             <ul class="booking-list total-list mt-4">
                                 <li class="d-flex align-items-center justify-content-between">총 액(원)<span class="color-text camp_total"></span></li>
                             </ul>
-                            <!-- <div class="coupon-widget mt-4">
-                                <div class="contact-form-action">
-                                    <form method="post">
-                                         <div class="row">
-                                            <div class="col-lg-8 pr-0">
-                                               <div class="input-box">
-                                                   <div class="form-group mb-0">
-                                                       <span class="la la-file-code-o form-icon"></span>
-                                                       <input class="form-control" type="text" name="name" placeholder="Enter Coupon code">
-                                                   </div>
-                                               </div>
-                                            </div>end col-lg-8
-                                            <div class="col-lg-4">
-                                              <div class="btn-box">
-                                                  <button class="theme-btn border-0" type="submit">apply</button>
-                                              </div>
-                                            </div>end col-lg-8
-                                        </div>end row 
-                                    </form>
-                                </div>end contact-form-action
-                            </div> end coupon-widget mt-4 end
-                            -->
                         </div><!-- end booking-summary -->
                     </div><!-- end billing-content -->
                 </div><!-- end billing-form-item -->
@@ -426,6 +289,15 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end booking-area-->
+
+            
+                                
+<!-- <button id="bt_refund"type="submit" class="tt theme-btn border-0" onclick="cancelPay()"
+		style="background-color:#ff6b6b; border-color:#ff6b6b; margin-left:20px; margin-bottom:10px; padding:3px 40px;cursor:pointer" type="submit" >
+		<span id="camp_refund" class="refund"></span>환불
+</button> -->
+
+
 <!-- ================================
     END BOOKING AREA
 ================================= -->
@@ -445,9 +317,12 @@
 <input id="people_num" name="p_num" type="hidden" value="0">
 <input id="buyer_name" name="name" type="hidden" value="${member.name}">
 <input id="service_fee" name="service_fee" type="hidden" value="0">
-<input id="my_points" name="my_point" type="hidden" value="1">
+<input id="my_points" name="my_point" type="hidden" value="0">
+
+<input id="pay_fee" name="pay_fee" type="hidden" value="0">
+<input id="use_points" name="use_point" type="hidden" value="0">
 <!--포인트 사용 후 남은 포인트 값-->
-<input id="remaining_point" name="remaining_point" type="hidden" value="1">
+<input id="remaining_point" name="remaining_point" type="hidden" value="0">
 </form>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>

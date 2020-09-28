@@ -205,11 +205,7 @@ body {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-content">
-						<h2 class="breadcrumb__title">sign up</h2>
-						<ul class="breadcrumb__list">
-							<li class="active__list-item"><a href="index.html">home</a></li>
-							<li>sign up</li>
-						</ul>
+						<h2 class="breadcrumb__title">회원 가입</h2>
 					</div>
 					<!-- end breadcrumb-content -->
 				</div>

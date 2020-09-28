@@ -46,7 +46,7 @@ function emptyHeart(e){
 				if(status === 200) {
 					let result = xhttp.responseText;
 					if (result*1!==0) {
-					    
+					    alert("해당 캠핑장에 찜하기가 취소되었습니다.");
 						e.previousElementSibling.style.display = "inline";
 						e.style.display = "none";
 					   
@@ -96,7 +96,7 @@ function fillHeart(e){
 				if(status === 200) {
 					let result = xhttp.responseText;
 					 if (result*1!==0) {
-						 
+						 alert("성공적으로 처리되었습니다.");
 						 e.nextElementSibling.style.display = "inline";
 			        	 e.style.display = "none";
 			          } else {

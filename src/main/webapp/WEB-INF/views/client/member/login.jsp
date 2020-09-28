@@ -181,11 +181,7 @@ body {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-content">
-						<h2 class="breadcrumb__title">login</h2>
-						<ul class="breadcrumb__list">
-							<li class="active__list-item"><a href="index.html">home</a></li>
-							<li>login</li>
-						</ul>
+						<h2 class="breadcrumb__title">로그인</h2>
 					</div>
 					<!-- end breadcrumb-content -->
 				</div>

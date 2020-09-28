@@ -454,7 +454,7 @@ body {
   -moz-border-radius: 4px;
   border-radius: 4px; }
   .theme-btn:hover {
-    background-color: #ea5555;
+    background-color: #ff4949;
     color: #fff; }
 
 .download-btn {
@@ -2017,7 +2017,8 @@ body {
   position: relative;
   z-index: 1;
   color: #fff;
-  background-image: url("../images/bread-bg.jpg");
+  /* background-image: url("https://images.unsplash.com/photo-1468245856972-a0333f3f8293?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"); */
+  background-image: url("/images/background/photo-1455763916899-e8b50eca9967.jpeg");
   background-size: cover;
   background-position: center;
   overflow: hidden; }
@@ -2032,7 +2033,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(51, 63, 87, 0.8);
+    /* background-color: rgba(51, 63, 87, 0.8); */
     z-index: -1; }
   .breadcrumb-area .bread-svg {
     position: absolute;
@@ -2227,7 +2228,7 @@ body {
     listing-detail-breadcrumb
  ====================================================*/
 .listing-detail-breadcrumb {
-  background-image: url("../images/bread-bg2.jpg");
+  background-image: url("/images/background/photo-1455763916899-e8b50eca9967.jpeg");
   overflow: inherit;
   z-index: 2; }
   .listing-detail-breadcrumb .breadcrumb-content {

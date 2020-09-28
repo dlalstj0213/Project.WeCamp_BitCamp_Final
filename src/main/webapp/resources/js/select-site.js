@@ -11,10 +11,6 @@ var bbqPrice;
 var peopleNum;
 var sort_idx;
 
-
-
-
-
 $(document).ready(function(){
 	//avgStar Booking.jsp에 평점 띄우기 위해 localStorage로 넘김
 	avgStar = $('#avgStar').val();
@@ -35,9 +31,11 @@ function selectSite(index){
 	if(peopleNum>=1){
 		document.getElementById('booking-event').style.pointerEvents = 'auto'; 
 	}else{
+		alert("인원 수를 1명 이상으로 설정해주세요.")
 		document.getElementById('booking-event').style.pointerEvents = 'none';
 	}
-
+	
+	
 
 	// == $('#booking-event').text("예약하기");
 	imgs = document.getElementById('img'+index).getAttribute('src');
@@ -46,7 +44,8 @@ function selectSite(index){
 	maxPeople = document.getElementById('maxPeople'+index).innerHTML;
 	category = document.getElementById('category'+index).value;
 	campPrice = document.getElementById('price'+index).innerHTML;
-	bbqPrice = document.getElementById('bbqPrice').value;
+	//bbqPrice = document.getElementById('bbqPrice').value;
+	bbqPrice = bbq_fee.format();
 	sort_idx = document.getElementById('sort_idx'+index).value;
 	
 	var imgs_html = "";
@@ -69,15 +68,10 @@ function selectSite(index){
     	+ "<br/><em>"+campZone+"</em></h4>"
     	+ "<p class='recent__meta'><span class='color-text font-weight-bold'>"+campPrice+"</span>"
     	+	"<br>최대인원 - "+maxPeople+"</p>";
-	/*var checkBox_html = "";	
-	checkBox_html += "<div class='custom-checkbox'>"
-		+ "<input type='checkbox' id='chb'>"
-		+ "<label for='chb'>바베큐 : "+bbqPrice+"원<span>+</span></label>"
-		+ "</div>";*/
 	var checkBox_html = "";
 	checkBox_html += "<div class='custom-checkbox'>"
 		+ "<input type='checkbox' id='chb' class='check-bbq' value='"+bbqPrice+"'>"
-		+ "<label for='chb' style=''>바베큐 : "+bbqPrice+"<span>+</span></label>"
+		+ "<label for='chb' style='color:#eb7a97;text-decoration: underline; text-underline-position:under;text-decoration-color:red;'>바베큐 : "+bbqPrice+"<span>+</span></label>"
 		+ "</div>";
 		
 		// peopleNum class 의 속성인 max 를 maxPeople 값으로 변경

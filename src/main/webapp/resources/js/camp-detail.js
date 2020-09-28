@@ -18,7 +18,6 @@ $("#loadMore").click(function(){
       data: {
     	  camp_idx : campIdx,
     	  nextPage : nextPage
-    	 // cp : ${cp}
       },
       dataType: "HTML",
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',
@@ -33,13 +32,22 @@ $("#loadMore").click(function(){
 });
 
 function setSessionAndSubmit(){
+	
+	const email = document.getElementById("initMember").value;
+
+	if(email===""){
+		alert("로그인이 필요합니다.");
+		location.href="../login/login.wcc";
+		return false;
+	}
+	
 //	var test = document.getElementsByClassName("check-bbq")[0];
 	var checkbbq = document.getElementsByClassName("check-bbq");
 	var isBbqChecked = $(checkbbq).is(":checked");
 	var bbqPrice = 0;
 		
 	if(isBbqChecked){
-		bbqPrice = document.getElementById("bbqPrice").value;
+		bbqPrice = bbq_fee.format();
 	} else {
 		bbqPrice = 0;
 	}
@@ -56,14 +64,13 @@ function setSessionAndSubmit(){
 			checkDate : document.getElementById('checkDate').value,
 			sort_idx : sort_idx
 	};
-	console.log("bookingInfo.sort_idx : "+bookingInfo.sort_idx);
+	console.log("bookingInfo.sort_idx : "+bookingInfo.bbqPrice);
 	sessionStorage.setItem("bookingInfo", JSON.stringify(bookingInfo)); //세션저장
 	
 	var sessionItem = JSON.parse(sessionStorage.getItem("bookingInfo"));
 	
 	
 	location.href = "../booking/booking.wcc";
-	//location.href = "../booking/booking.wcc?camp_idx="+camp_idx;
 }
 
 
@@ -73,37 +80,16 @@ window.onload = function setCalender(){
 	var currentDate = now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear();
 	document.getElementsByClassName("calender-customize").value = currentDate;
 	
-	// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
-	Number.prototype.format = function(){
-	    if(this==0) return 0;
+	
 
-	    var reg = /(^[+-]?\d+)(\d{3})/;
-	    var n = (this + '');
 
-	    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
-
-	    return n;
-	};
-
-	// 문자열 타입에서 쓸 수 있도록 format() 함수 추가
-	String.prototype.format = function(){
-	    var num = parseFloat(this);
-	    if( isNaN(num) ) return "0";
-
-	    return num.format();
-	};
 	
 	$(".price").text(function() {//1000단위 컴마처리
 	    $(this).text(
 	        $(this).text().format()
 	    );
 	});
-	
-	$("#bbqPrice").text(function() {//1000단위 컴마처리
-	    $(this).val(
-	        $(this).val().format()
-	    );
-	});
+
 	
 	//$('input[name="daterange"]').val(getCurrentDate()+" - "+getCurrentDate());
 	//예약버튼 비활성화

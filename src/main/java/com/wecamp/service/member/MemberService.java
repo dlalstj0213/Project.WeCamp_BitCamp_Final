@@ -37,11 +37,13 @@ public interface MemberService {
 	//예약 내역
 	ModelAndView show_booking_info(String email, Integer nextPage, HttpSession session);
 	//리뷰 작성
-	boolean add_reivew_service(Review review, int booking_idx, HttpSession session);
+	boolean add_reivew_service(Review review, String imp_uid, HttpSession session);
 	//찜 리스트
 	ModelAndView show_heart_list(String email, Integer nextPage, HttpSession session);
 	//찜 리스트 삭제
 	int delete_heart_list(String email, int camp_idx);
 	
 	void auto_logout_service(HttpSession session);
+	
+	ModelAndView check_owner_service();
 }

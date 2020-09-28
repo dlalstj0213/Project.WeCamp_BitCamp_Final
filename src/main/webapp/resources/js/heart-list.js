@@ -3,7 +3,12 @@ function call_heart_list(){
 
     load_btn_heart.disabled = false;
     load_btn_heart.innerHTML = "<span class='la la-refresh'></span> Load More";
-
+	
+	if($('#heart-box').prop('class') == ""){
+		$('#heart-box').html('');
+		$('#heart-box').addClass('row');
+		$('#heart-box').removeAttr('style');
+	}
     $.ajax({
         url : "/member/heart_list.json",
         type : "GET",
@@ -14,6 +19,15 @@ function call_heart_list(){
         success : function(responseData){
             document.getElementById('next-page').value = 2;
             $('#heart-box').html(responseData);
+            if($('#heart_check_result').val() == "false") {
+            	let msg = "<br/><br/><br/><h2>찜 내역이 없습니다.</h2><br/><br/><br/><br/><br/>";
+            	$('#heart-box').html(msg);
+            	$('#heart-box').removeClass('row');
+            	$('#load-btn-heart').hide();
+            	$('#heart-box').attr('style', 'text-align:center');
+            }else{
+            	$('#load-btn-heart').show();
+            }
         }
     });
 }

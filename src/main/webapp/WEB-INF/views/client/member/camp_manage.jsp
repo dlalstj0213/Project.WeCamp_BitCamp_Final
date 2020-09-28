@@ -85,7 +85,7 @@
 						<div class="modal-body">
 							<article>
 								<div class="container" role="main">
-									<h4 align="center"><c:out escapeXml="true" value="${list.memo}" default="no memo"></c:out></h4>
+									<pre><c:out escapeXml="true" value="${list.memo}" default="no memo"></c:out></pre>
 								</div>
 							</article>
 						</div>
@@ -113,16 +113,20 @@
 		</thead>
 		<tbody>
 		<tr style="text-align:center">
-			<td>${list[0].site_num}</td>
+			<td>${campSize}</td>
 			<td>${using}</td>
 			<td>${notUsing}</td>
 			<td>${endUsing}</td>
 		</tr>
 		</tbody>
 	</table>
+	<c:choose>
+	<c:when test="${empty list}">
+	</c:when>
+	<c:otherwise>
 	<div style="text-align:center">
 		<nav aria-label="...">
-		  <ul class="pagination justify-content-center">
+		  <ul class="pagination justify-content-center" id="pagination">
 		 	<c:choose>
 		 		<c:when test="${page.startPage eq 1}">
 					<li class="page-item disabled">
@@ -165,3 +169,5 @@
 		  </ul>
 		</nav>
 	</div>
+	</c:otherwise>
+	</c:choose>

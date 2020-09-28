@@ -20,7 +20,7 @@
 	<select id="login" parameterType="String" resultType="Member">
 		select * from MEMBER where email = #{email}
 	</select>
-
+	
 	<!-- 이메일 체크 -->
 	<select id="emailCheck" parameterType="String" resultType="int">
 		<![CDATA[
@@ -52,4 +52,5 @@
 	<insert id="insertMember" parameterType="Member">
 		insert into MEMBER values(#{email}, 1, #{name}, #{nickname}, #{pwd}, 0, #{approval_status}, #{approval_key}, 'SILVER')
 	</insert>
+	
 </mapper>

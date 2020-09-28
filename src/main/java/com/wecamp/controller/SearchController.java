@@ -32,9 +32,11 @@ public class SearchController {
 			response.addObject("checkOut", checkOut);		
 			response.addObject("peopleNum", peopleNum);		
 			response.addObject("searchPlace", searchPlace);
+			log.info("#> error:" + result.getList().size());
 		}catch(Exception e) {
 			e.getStackTrace();
 		}
+		
 		return response;
 	}
 	
@@ -45,9 +47,9 @@ public class SearchController {
 		cp = cp + 1;
 		session.setAttribute("cp", cp);
 		try {
-			SearchResultVo result = searchService.searchCampList(searchPlace, true, checkIn, checkOut, session, request).get();
-			response = new ModelAndView("client/result/mapList");
-			if(result!=null) response.addObject("vo", result);
+//			SearchResultVo result = searchService.searchCampList(searchPlace, true, checkIn, checkOut, session, request).get();
+//			response = new ModelAndView("client/result/mapList");
+//			if(result!=null) response.addObject("vo", result);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

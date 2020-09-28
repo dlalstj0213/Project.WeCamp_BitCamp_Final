@@ -6,8 +6,8 @@
 
 <mapper namespace="com.wecamp.mapper.BookingManageMapper">
 	<!-- 사업자의 캠핑장 일련번호 쿼리생 -->
-	<select id="select_owner_camp_idx" resultType="int" parameterType="String">
-		select CAMP_IDX from OWNER where EMAIL = #{email}
+	<select id="select_owner_camp" resultType="Camp" parameterType="String">
+		select * from OWNER join CAMP on OWNER.CAMP_IDX = CAMP.CAMP_IDX where EMAIL = #{email}
 	</select>
 	<!--오늘 날짜에 예약된 예약데이터의 총 개수 요청하는 쿼리 -->
 	<select id="select_count_booking_list" resultType="long" parameterType="hashmap">
@@ -17,14 +17,14 @@
 					<when test='category.equals("name")'>
 						<![CDATA[
 						select nvl(count(*), 0) from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
-						where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+						where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today} and BOOKING.S_NO = 1
 						and NAME like '%'||#{keyword}||'%'
 						]]>
 					</when>
 					<when test='category.equals("tel")'>
 						<![CDATA[
 						select nvl(count(*), 0) from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
-						where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+						where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today} and BOOKING.S_NO = 1
 						and TEL like '%'||#{keyword}||'%'					
 						]]>
 					</when>
@@ -33,7 +33,7 @@
 			<otherwise>
 				<![CDATA[
 				select nvl(count(*), 0) from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
-				where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+				where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today} and BOOKING.S_NO = 1
 				]]>
 			</otherwise>
 		</choose>
@@ -51,7 +51,7 @@
 						select * from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
 						join CAMP on BOOKING.CAMP_IDX = CAMP.CAMP_IDX
 						join SORT on BOOKING.SORT_IDX = SORT.SORT_IDX
-						where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+						where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today} and BOOKING.S_NO = 1
 						and BOOKING.NAME like '%'||#{keyword}||'%'
 						)aa) 
 						where rnum>#{page.startRow} and rnum<=#{page.endRow}
@@ -64,7 +64,7 @@
 						select * from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
 						join CAMP on BOOKING.CAMP_IDX = CAMP.CAMP_IDX
 						join SORT on BOOKING.SORT_IDX = SORT.SORT_IDX
-						where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+						where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today} and BOOKING.S_NO = 1
 						and BOOKING.TEL like '%'||#{keyword}||'%'
 						)aa) 
 						where rnum>#{page.startRow} and rnum<=#{page.endRow}				
@@ -79,7 +79,7 @@
 				select * from BOOKING join B_STATE on BOOKING.S_NO = B_STATE.S_NO
 				join CAMP on BOOKING.CAMP_IDX = CAMP.CAMP_IDX
 				join SORT on BOOKING.SORT_IDX = SORT.SORT_IDX
-				where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
+				where BOOKING.CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today} and BOOKING.S_NO = 1
 				)aa) 
 				where rnum>#{page.startRow} and rnum<=#{page.endRow}
 				]]>
@@ -92,7 +92,7 @@
 		<![CDATA[
 		select nvl(count(*), 0) from BOOKING
 		where CAMP_IDX = #{camp_idx} and CHECK_IN <= #{today} and CHECK_OUT >= #{today}
-		and USING_STATE = #{using_state}
+		and USING_STATE = #{using_state} and S_NO = 1
 		]]>
 	</select>
 	

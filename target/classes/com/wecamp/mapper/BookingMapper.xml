@@ -20,8 +20,7 @@
 		IMG I on B.camp_idx=I.camp_idx
 		where
 		B.EMAIL=#{email} and
-		i.division='thumb' order by
-		B.udate desc
+		i.division='thumb'
 		
 		)aa) 
 		where rnum>#{page.startRow} and rnum<=#{page.endRow}
@@ -37,13 +36,12 @@
 		IMG I on B.camp_idx=I.camp_idx
 		where
 		B.EMAIL=#{email} and
-		i.division='thumb' order by
-		B.udate desc
+		i.division='thumb'
 	</select>
 	
 	<!-- review_state 상태 변경 -->
-	<update id="update_state" parameterType="int">
-		update BOOKING set review_state = 'T' where imp_uid = #{booking_idx}
+	<update id="update_state" parameterType="String">
+		update BOOKING set review_state = 'T' where imp_uid = #{imp_uid}
 	</update>
 
 	<!-- 캠핑장 결제 완료 시 예약 insert -->

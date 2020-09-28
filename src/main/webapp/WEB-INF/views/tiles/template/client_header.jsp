@@ -48,17 +48,21 @@
                 <!-- <span id="date" class="su__meta">가입 날짜 : 2020-08-03</span> -->
 
             </div>
+            <c:if test="${member == null }">
+            	<div>
+            	<img src="/images/logo2.png" style="padding-left:15px">
+            	</div>
+            	</c:if>
             <ul class="side-menu-ul">
             	<c:if test="${member != null}">
-                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
-                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
-                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
-                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc?selected=info'"><span class="la la-user user-icon"></span> 회원정보</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc?selected=booking'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc?selected=heart'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/owner/com_inquiry.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
                 </c:if>
-                <li><div class="dropdown-divider"></div></li>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
-                <li><a href="#"><span class="la la-gear user-icon"></span> 개인정보 수정</a></li>
                 <c:if test="${member == null }">
+                <li><a onclick="location.href='${pageContext.request.contextPath}/sign_up/sign_up_page.wcc'"><span class="la la-user user-icon"></span> 회원가입 </a></li>
                 <li><a onclick="location.href='${pageContext.request.contextPath}/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
                 </c:if>
                 <c:if test="${member != null }">

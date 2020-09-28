@@ -10,14 +10,14 @@
 <c:forEach items="${hlist}" var="hlist" varStatus="index">
 <div class="col-lg-4 column-td-6">
     <div class="card-item">
-        <a href="../search/camp_detail.wcc?camp_idx=${hlist.camp_idx}" class="card-image-wrap">
+        <a href="../camp/camp_detail.wcc?camp_idx=${hlist.camp_idx}" class="card-image-wrap">
             <div class="card-image">
                 <img src="/images/camp-img/thumb/${hlist.fname}" class="card__img" style="height:250px">
             </div>
         </a>
         <div class="card-content-wrap">
             <div class="card-content">
-                <a href="../search/camp_detail.wcc?camp_idx=${hlist.camp_idx}">
+                <a href="../camp/camp_detail.wcc?camp_idx=${hlist.camp_idx}">
                     <h4 class="card-title mt-0">${hlist.camp_name}</h4>
                     <p class="card-sub">
                         <span class="la la-map-marker"></span>${hlist.address}
@@ -54,7 +54,7 @@
 								<input type="hidden" name="email" value="${member.email}">
 								
                                 <div class="modal-body" align='center'>
-                                    <a href="../search/camp_detail.wcc?camp_idx=${hlist.camp_idx}" class="card-image-wrap">
+                                    <a href="../camp/camp_detail.wcc?camp_idx=${hlist.camp_idx}" class="card-image-wrap">
                                         <div class="card-image">
                                             <img src="/images/camp-img/thumb/${hlist.fname}" class="card__img" alt="">
                                         </div>
@@ -88,3 +88,12 @@
     <!-- end card-item -->
 </div>
 </c:forEach>
+
+<c:choose>
+	<c:when test="${empty hlist}">
+<input type="hidden" id="heart_check_result" value="false">
+	</c:when>
+	<c:otherwise>
+<input type="hidden" id="heart_check_result" value="true">
+	</c:otherwise>
+</c:choose>

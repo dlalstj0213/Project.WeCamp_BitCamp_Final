@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wecamp.mapper.BookingManageMapper;
 import com.wecamp.mapper.OwnerMapper;
 import com.wecamp.model.BookingInfo;
+import com.wecamp.model.Camp;
 import com.wecamp.model.CampAndSortAndImg;
 import com.wecamp.model.Img;
 import com.wecamp.model.Inquiry;
@@ -219,12 +220,12 @@ class OwnerServiceImpl implements OwnerService{
 		int pageSize = pageUtil.getPageSize("3", session);
 		
 		Member user = (Member)session.getAttribute("member");
-		Integer camp_idx = manageMapper.select_owner_camp_idx(user.getEmail());
-		if(camp_idx != null) {
+		Camp camp = manageMapper.select_owner_camp(user.getEmail());
+		if(camp != null) {
 			HashMap<String, Object> query = new HashMap<String, Object>();
 			DateUtil dateUtil = new DateUtil();
 			String today = dateUtil.getToday();
-			query.put("camp_idx", camp_idx);
+			query.put("camp_idx", camp.getCamp_idx());
 			query.put("today", today);
 			if(isSearch) {
 				query.put("search", isSearch);
@@ -235,7 +236,15 @@ class OwnerServiceImpl implements OwnerService{
 			query.put("keyword", keyword);
 			long listCount = manageMapper.select_count_booking_list(query);
 			Pagination page = new Pagination(listCount, currentPage, pageSize);
-			if(listCount == 0) return response;
+			
+			response.addObject("campSize", camp.getSite_num());
+			
+			if(listCount == 0) {
+				response.addObject("using", 0);
+				response.addObject("notUsing", 0);
+				response.addObject("endUsing", 0);
+				return response;
+			}
 			query.put("page", page);
 			List<BookingInfo> list = manageMapper.select_booking_list(query);
 			response.addObject("list", list);

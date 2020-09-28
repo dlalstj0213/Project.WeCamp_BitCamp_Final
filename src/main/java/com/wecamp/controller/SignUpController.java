@@ -48,7 +48,7 @@ public class SignUpController {
 		member.setGrade(grade);
 		rttr.addFlashAttribute("result", service.signUp(member, response));
 		//log.info(">>>>>>result" + rttr.addFlashAttribute("result", service.signUp(member, response)));
-		return "client/member/login/" + WebTitle.TITLE + "로그인";
+		return "redirect:../login/login.wcc";
 	}
 
 	// produces는 ajax가 데이터 넘겨받을 때 깨짐 방지

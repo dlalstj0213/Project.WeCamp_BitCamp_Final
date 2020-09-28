@@ -31,11 +31,14 @@ public class MemberController {
 	private HttpSession session;
 	
 	@RequestMapping(value = "mypage.wcc", method = RequestMethod.GET)
-	private String myPage() {
+	private ModelAndView myPage(String selected) {
 		if(session.getAttribute("member") == null) {
-			return "redirect:../login/login.wcc";
+			return new ModelAndView("redirect:../login/login.wcc"); 
 		}
-		return "client/member/my_page/" + WebTitle.TITLE + "마이페이지";
+		ModelAndView response = memberService.check_owner_service();
+		response.setViewName("client/member/my_page/" + WebTitle.TITLE + "마이페이지");
+		response.addObject("selected", selected);
+		return response;
 	}
 
 	// 회원 탈퇴
@@ -88,9 +91,9 @@ public class MemberController {
 	
 	//리뷰 작성
 	@RequestMapping(value = "/add_review.wcc", method = RequestMethod.POST)
-	private String add_review(Review review, int booking_idx) {
+	private String add_review(Review review, String imp_uid) {
 		log.info("#> review: " + review);
-		memberService.add_reivew_service(review, booking_idx, session);
+		memberService.add_reivew_service(review, imp_uid, session);
 		return "redirect:mypage.wcc";
 	}
 	

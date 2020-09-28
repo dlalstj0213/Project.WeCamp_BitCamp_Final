@@ -3,6 +3,7 @@ package com.wecamp.service.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -21,11 +22,15 @@ import com.wecamp.mapper.BookingMapper;
 import com.wecamp.mapper.HeartMapper;
 import com.wecamp.mapper.LMemberMapper;
 import com.wecamp.mapper.MemberMapper;
+import com.wecamp.mapper.OwnerMapper;
 import com.wecamp.mapper.ReviewMapper;
 import com.wecamp.model.BookingAndCampAndImg;
 import com.wecamp.model.HeartAndCampAndImg;
+import com.wecamp.model.LMember;
 import com.wecamp.model.Member;
+import com.wecamp.model.Owner;
 import com.wecamp.model.Review;
+import com.wecamp.utils.DateUtil;
 import com.wecamp.utils.PageUtil;
 import com.wecamp.vo.Pagination;
 
@@ -41,6 +46,7 @@ public class MemberServiceImpl implements MemberService {
 	private BookingMapper bookingMapper;
 	private ReviewMapper reviewMapper;
 	private HeartMapper heartMapper;
+	private OwnerMapper ownerMapper;
 	@Autowired
 	HttpSession session;
 
@@ -67,6 +73,8 @@ public class MemberServiceImpl implements MemberService {
 			out.close();
 			return 0;
 		} else {
+			LMember leave_member = lMemberMapper.select_leave_member(member.getEmail());
+			if(leave_member != null) lMemberMapper.delete_leave_member(member.getEmail());
 			// 인증키 SET
 			member.setApproval_key(create_key());
 			memberMapper.signUp(member);
@@ -75,7 +83,7 @@ public class MemberServiceImpl implements MemberService {
 			return 1;
 		}
 	}
-
+	
 	@Override
 	public String create_key() throws Exception {
 		String key = "";
@@ -87,14 +95,14 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return key;
 	}
-
+	
 	@Override
 	public void send_mail(Member member, String div) throws Exception {
 		//Mail Server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
 		String hostSMTPid = "simple_photo@naver.com";
-		String hostSMTPpwd = "whwldk123";
+		String hostSMTPpwd = "whwldk1@";
 
 		// 보내는 사람의 EMail, 제목, 내용
 		String fromEmail = "simple_photo@naver.com";
@@ -159,17 +167,29 @@ public class MemberServiceImpl implements MemberService {
 		} else { // 이메일 인증에 성공했을 경우
 			out.println("<script>");
 			out.println("alert('인증이 완료되었습니다. 로그인 후 이용하세요.');");
-			out.println("location.href='../index.jsp';");
+			out.println("location.href='../';");
 			out.println("</script>");
 			out.close();
 		}
 	}
-
+               
 	@Override
 	public void login(Member member, HttpServletResponse response, ServletContext servletContext) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		// 등록된 아이디가 없다면
+		LMember leave_member = lMemberMapper.select_leave_member(member.getEmail());
+		
+		if(leave_member != null) {
+			Date date = leave_member.getLdate();
+			out.println("<script>");
+			out.println("alert('"+date+"에 탈퇴한 회원입니다. 회원가입을 다시 진행해 주세요.');");
+			out.println("window.location.href = '../sign_up/sign_up_page.wcc'");
+			out.println("</script>");
+			out.close();
+			return;
+		}
+		
 		if(memberMapper.emailCheck(member.getEmail()) == 0) {
 			out.println("<script>");
 			out.println("alert('등록된 이메일이 없습니다.');");
@@ -237,11 +257,6 @@ public class MemberServiceImpl implements MemberService {
 		} else if(!member.getEmail().equals(memberMapper.login(member.getEmail()).getEmail())) {
 			out.println("잘못된 이메일입니다. ");
 			out.close();
-			// 가입에 사용한 이메일이 아니라면 
-			/*}else if(!member.getEmail().equals(memberMapper.login(member.getEmail()).getEmail())) {
-			out.println("잘못된 이메일입니다. ");
-			out.close();*/
-			// 임시 비밀번호 부여 
 		}else {
 			String pwd = "";
 			for (int i = 0; i < 12; i++) {
@@ -252,8 +267,11 @@ public class MemberServiceImpl implements MemberService {
 			memberMapper.update_pwd(member);
 			// 비밀번호 변경 이메일 전송
 			send_mail(member, "find_pwd");
-
-			out.println("이메일로 임시 비밀번호를 전송하였습니다. ");
+			
+			out.println("<script>");
+			out.println("alert('이메일로 임시 비밀번호를 전송하였습니다.')");
+			out.println("history.go(-1);");
+			out.println("</script>");
 			out.close();
 		}
 	}
@@ -363,13 +381,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public boolean add_reivew_service(Review review, int booking_idx, HttpSession session) {
+	public boolean add_reivew_service(Review review, String imp_uid, HttpSession session) {
 		Member member = (Member)session.getAttribute("member");
 		review.setEmail(member.getEmail());
 		review.setNickname(member.getNickname());
 
 		if(reviewMapper.insert_review(review)) {
-			return bookingMapper.update_state(booking_idx);
+			return bookingMapper.update_state(imp_uid);
 		}
 		return false;
 	}
@@ -422,8 +440,22 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void auto_logout_service(HttpSession session) {
-			log.info("################LOGOUT###################");
-			session.removeAttribute("member");
-			log.info("################LOGOUT###################");
+		log.info("################LOGOUT###################");
+		session.removeAttribute("member");
+		log.info("################LOGOUT###################");
+	}
+
+
+	@Override
+	public ModelAndView check_owner_service() {
+		ModelAndView response = new ModelAndView();
+		Member member = (Member)session.getAttribute("member");
+		if(member.getA_no() == 2) {
+			Owner owner = ownerMapper.select_owner(member.getEmail());
+			if(owner.getCamp_idx() == 0) {
+				return response.addObject("check", false);
+			}
+		}
+		return response.addObject("check", true);
 	}
 }

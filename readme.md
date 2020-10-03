@@ -1,25 +1,22 @@
-# Contents
+# Contents  
 
-<details>
-<summary>
-<a href="#about-project">About Project</a>
-</summary>
-<div>
-  <li><a href="#1-프로젝트-구성원">프로젝트 구성원</a></li>
-  <li><a href="#2-프로젝트-열기">프로젝트 열기</a></li>
-  <li><a href="#3-주제-선정-이유">주제선정 이유</a></li>
-  <li><a href="#4-시스템-설계">시스템 설계</a></li>
-</div>
-</details>
+[ABOUT PROJECT](#about-project)
+  - [프로젝트 구성원](#1-프로젝트-구성원)
+  - [프로젝트 열기](#2-프로젝트-열기)
+  - [주제 선정 이유](#3-주제-선정-이유)
+  - [시스템 설계](#4-시스템-설계)
 
-- [Diary](#diary)
-- [Results](#results)
+
+[Results](#results)
   - [결과물](#1-결과물)
-  - [문제점 및 개선방안](#2-문제점--개선방안)
+  - [문제점 / 개선방안](#2-문제점--개선방안)
 
+
+[Diary](#diary)
+  - [계획 / 일정](#계획--일정)
 
 # ABOUT PROJECT
-### [ WeCamp ] 캠핑장 검색, 예약 및 관리 서비스 제공 웹 개발 프로젝트 <br><span style="font-size:15px">*( 2020.07.27 ~ 2020.09.18 )*</span>
+#### [ WeCamp ] 캠핑장 검색, 예약 및 관리 서비스 제공 웹 개발 프로젝트 <br><span style="font-size:15px">*( 2020.07.27 ~ 2020.09.18 )*</span>
 
 ## 1. 프로젝트 구성원
 

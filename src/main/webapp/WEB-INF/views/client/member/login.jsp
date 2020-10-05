@@ -225,7 +225,7 @@ body {
 							<form method="post" action="login_user.wcc">
 								<div class="row">
 									<div class="col text-center">
-										<p class="font-size-16 font-weight-medium">네이버 / 카카오 아이디가
+										<p class="font-size-16 font-weight-medium">네이버 아이디가
 											있으신가요?</p>
 										
 										<div style="text-align:center">

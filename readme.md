@@ -53,13 +53,13 @@
 ## 4. 시스템 설계
 - ***MVC Design Pattern***
 
-![MVC](md_imgs/MVC.png)
+![MVC](md_imgs/MVC.png)<br>
 &nbsp;시스템 설계는 기본적으로 Spring Framework를 통해 **MVC**를 기반으로 설계했다. 확실히 이번에 Spring MVC를 사용하면서 전보다 유지보수하기가 굉장히 편안함을 느꼈다.😌<br><br>
 &nbsp;**Model**은 Model과 VO로 나누었다. 그 이유는 DTO( *Data Transfer Object* )와 VO( *Value Object* )의 속성을 확실히 나누어 관리하기 위해서 나누었다. **Controller**는 그 기능을 확실히 하기 위해서 데이터만 왔다갔다 할 수 있도록 코드를 간단하게 정의하려 노력했다. 그래서 대부분의 로직, 비지니스 로직을 **Service**에서 관리했다. **DAO**( *Data Access Object* )는 **MyBatis**를 사용하면서 더 깔끔하게 쿼리문들을 관리, 작성 할 수 있었다. 그리고 클라이언트에게 시각적이고 직접적으로 근접해있는 **View**로 구성하였다. View의 전체적인 Layout을 관리하기 위해서 **Apache Tiles**를 사용하였다. 사실 타일즈를 사용하기로 마음먹은 계기가 있었는데 페이지 마다 Title을 설정하기 위함과 관리자 페이지도 구현하게 되면서 다른 Layout을 확실히 구별하여 관리하여야 했고 제일 큰 문제는 유지보수 하기가 굉장히 어려움을 느껴 타일즈를 사용했다. 
 
 - ***Search*** 
 
-![search-flow](md_imgs/system_flow.gif)
+![search-flow](md_imgs/system_flow.gif)<br>
 
 - ***View Wireframe***
 
@@ -69,12 +69,12 @@
 ## 1. 결과물
 - ***Main Page***  
   
-![MainPage](md_imgs/main_page.gif)
+![MainPage](md_imgs/main_page.gif)<br>
 &nbsp;메인 페이지에서 **검색기능**이 이 페이지에서 주 **서비스**이기 때문에 제일 상단에 배치하여 사용자가 가장 먼저 발견할 수 있도록 했다. 그 밑으로 현재 데이터 중 가장 많이 예약된 캠핑장 데이터를 배치하고 인스타 연동을 통해 최근 게시물을 볼 수 있게 하였다.
 
 - ***Administrator Page***
 
-![AdminPage](md_imgs/admin_login.gif)
+![AdminPage](md_imgs/admin_login.gif)<br>
 &nbsp;관리자 페이지는 해당 url을 직접 입력해야 접근할 수 있게 했다. 문제는 해당 url을 다른 외부 사용자가 직접 입력해서 접속하는 경우가 발생할 수 있는데 이러한 경우를 막기위해서 관리자로 로그인 되어있지 않아 관리자 Session이 설정되어 있지 않다면 Controller에서 어떠한 관리자 url 경로로 접속하여도 **무조건** 관리자 로그인 페이지로 접속하게끔 설계하였다.<br><br>
 관리자 메인 페이지에는 간단한 정보들을 볼 수 있게 하였다. 또한 매 3초마다 **비동기 통신**으로 정보들이 **업데이트** 되기 때문에 굳이 페이지를 Reload 할 필요가 없다.
 
@@ -92,27 +92,27 @@
 - ***Log-in / Log-out***
     - **기본 로그인**
   
-    ![Login](md_imgs/login.gif)
+    ![Login](md_imgs/login.gif)<br>
     &nbsp;기본적으로 로그인은 가입된 **이메일**로 로그인 할 수 있게 하였다. 로그인 후에 바로 재로그인 할 수 없으며, 로그아웃 후 재로그인 할 수 있다.
 
     - **네이버 로그인**
   
-    ![NaverLogin](md_imgs/naver_login.gif)
+    ![NaverLogin](md_imgs/naver_login.gif)<br>
     &nbsp;네이버 오픈 API를 사용해 **네이버 아이디 로그인** 기능을 구현했다. 네이버 아이디로 로그인시, 프로필 정보를 조회해서 해당 아이디와 이메일 등 기본 정보를 DB에 저장하고 만약 똑같은 정보가 존재할시 같은 정보를 DB에 저장하지 않는다. 로그아웃은 기존 로그아웃과 동일하다.
 
     - **비밀번호 찾기**
   
-    ![FindPassword](md_imgs/find_password.png)
+    ![FindPassword](md_imgs/find_password.png)<br>
     &nbsp;로그인 페이지 하단에 존재하는 비밀번호 찾기를 클릭하면 위에 보이는 이미지와 같이 모달이 생성되는데 가입했던 이메일을 입력한다면 해당 이메일에 임시 비밀번호를 설정 후 메일을 발송한다.
-    ![PasswordMail](./password_mail.png)
+    ![PasswordMail](./password_mail.png)<br>
     메일로 받은 임시 비밀번호로 로그인이 가능하고 후에 개인정보 수정 기능을 통해 비밀번호 재설정이 가능하다.
 
 - ***Sign-up***
 
-![SignUp](md_imgs/sign_up.gif)
+![SignUp](md_imgs/sign_up.gif)<br>
 &nbsp;회원가입은 대부분 **Javascript**과 **AJAX**를 활용한 비동기 통신으로 이메일을 중복 체크하고 비밀번호 적합성 확인 및 비밀번호 일치 확인 기능을 구현했다.
 
-![CertifyingSignUp](md_imgs/certifying_sign_up.png)
+![CertifyingSignUp](md_imgs/certifying_sign_up.png)<br>
 &nbsp;회원가입이 성공하면 위와 같이 회원가입한 이메일로 **인증 메일**이 발송된다. 최종적으로 발송된 메일을 통해서 인증을 완료해야 **정상적인 로그인**이 가능하다.
 
 

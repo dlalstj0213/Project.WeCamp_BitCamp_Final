@@ -28,7 +28,8 @@ function selectSite(index){
 	$('#booking-event').append("예약하기");
 	
 	peopleNum = Number(document.getElementById("peopleNum").value);
-	if(peopleNum>=1){
+	console.log(check_booking_available);
+	if(peopleNum>=1 && check_booking_available){
 		document.getElementById('booking-event').style.pointerEvents = 'auto'; 
 	}else{
 		alert("인원 수를 1명 이상으로 설정해주세요.")

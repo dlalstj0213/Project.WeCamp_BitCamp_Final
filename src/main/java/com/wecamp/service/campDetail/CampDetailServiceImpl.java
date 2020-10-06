@@ -5,11 +5,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,8 +15,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -26,7 +22,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.google.gson.JsonArray;
 import com.wecamp.mapper.CampDetailMapper;
 import com.wecamp.mapper.ReviewMapper;
 import com.wecamp.model.Camp;
@@ -34,6 +29,7 @@ import com.wecamp.model.Img;
 import com.wecamp.model.Review;
 import com.wecamp.model.Sort;
 import com.wecamp.setting.WebTitle;
+import com.wecamp.utils.DateUtil;
 import com.wecamp.utils.PageUtil;
 import com.wecamp.utils.StarUtil;
 import com.wecamp.vo.ChartVo;
@@ -364,5 +360,35 @@ public class CampDetailServiceImpl implements CampDetailService {
 	    } catch(Exception e){
 	        return "";
 	    }
+	}
+
+	@Override
+	public HashMap<String, Object> checkDatesService(HashMap<String, Object> request) {
+		DateUtil dateUtil = new DateUtil();
+		HashMap<String, Object> query = new HashMap<String, Object>();
+		HashMap<String, Object> response = new HashMap<String, Object>();
+		boolean checkAvailable = true; 
+		List<String> notAvailableDates = new ArrayList<String>();
+		
+		String startDate = request.get("checkIn").toString();
+		String endDate = request.get("checkOut").toString();
+		int camp_idx = Integer.parseInt(request.get("camp_idx").toString());
+		ArrayList<java.sql.Date> dateRange = dateUtil.getAllDatesInRange(startDate, endDate);
+		query.put("camp_idx", camp_idx);
+		Camp camp = mapper.selectCampInfo(camp_idx);
+		int totalSites = camp.getSite_num();
+		for(java.sql.Date date : dateRange) {
+			query.put("date", date);
+			int totalBooking = mapper.selectTotalBooking(query);
+			if(totalSites <= totalBooking) {
+				checkAvailable = false;
+				notAvailableDates.add(date.toString());
+			}
+		}
+		if(notAvailableDates.size() > 0) {
+			response.put("dateList", notAvailableDates);
+		}
+		response.put("check", checkAvailable);
+		return response;
 	}
 }

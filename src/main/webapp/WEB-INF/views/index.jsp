@@ -397,14 +397,40 @@ window.onload = function(){
     var nowMonth = now.getMonth() + 1;
     var nowDate = now.getDate();
     var dayOfTheWeek = now.getDay();
+
     if (nowMonth < 10) {
         nowMonth = "0" + nowMonth;
     }
+    
     if (nowDate < 10) {
         nowDate = "0" + nowDate;
     }
+    
     currentDate = nowYear + "/" + nowMonth + "/" + nowDate;
-    nextDate = nowYear + "/" + nowMonth + "/" + (Number(nowDate)+1);
+    
+    let last_date = new Date(nowYear, nowMonth, 0);
+    let tomorrow = (now.getDate()+1);
+    let nextMonth = nowMonth;
+    let nextYear = nowYear;
+    if(tomorrow > last_date){
+    	nextMonth = now.getMonth() + 2;
+    }
+    if(nextMonth > 12){
+    	nextMonth = "01";
+    	nextYear = now.getFullYear()+1;
+    }
+    
+    if (nextMonth < 10) {
+    	nextMonth = "0" + nextMonth;
+    }
+    
+    if (tomorrow < 10) {
+    	tomorrow = "0" + tomorrow;
+    }
+    
+    nextDate = nextYear + "/" + nextMonth + "/" + tomorrow;
+    
+    
     $('#check-in').val(currentDate);
     $('#check-out').val(nextDate);
     let date = currentDate+" - "+nextDate;

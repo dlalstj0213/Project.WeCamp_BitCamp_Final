@@ -13,4 +13,5 @@ public interface CampDetailMapper{
 	List<Sort> selectSort(HashMap<String, Object> query);
 	List<Img> selectDetailImg(int camp_idx);
 	List<String> selectSortName(int camp_idx);
+	int selectTotalBooking(HashMap<String, Object> query);
 }

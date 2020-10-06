@@ -673,6 +673,38 @@ $(document).ready(function(){
 
 
 <script>
+/***changed by rhie***/
+ function check_dates(isAsync){
+	let isAvailable = false;
+	let sendData = {
+		checkIn: document.getElementById('checkIn').value,
+		checkOut: document.getElementById('checkOut').value,
+		camp_idx : document.getElementById('campIdx').value
+	};
+	$.ajax({
+		url: "check_dates.json",
+		type: "POST",
+		async: isAsync,
+		data : JSON.stringify(sendData),
+		contentType: "application/json",
+		dataType: "JSON",
+		success: function(responseData){
+			if(responseData.dateList != null){
+				let msg = "";
+				for(let index in responseData.dateList){
+					msg += responseData.dateList[index]+" ";
+				}
+				alert("현재 "+msg+"날짜는 예약이 불가능합니다.");
+			}
+			console.log("result : "+responseData.check);
+			isAvailable = responseData.check;
+		}
+	});
+	return isAvailable;
+}
+
+var check_booking_available = check_dates(false);
+
 var bbq_fee = ${camp.bbq_fee};
 $(document).ready(function(){
 	let check_in = $('#checkIn').val();
@@ -680,7 +712,6 @@ $(document).ready(function(){
         $('#checkDate').daterangepicker({
         	autoApply: true,
         	minDate: check_in,
-        	maxDate: check_out,
         	opens: 'center',
         	 locale :{
                  format: 'YYYY/MM/DD',
@@ -709,8 +740,9 @@ $(document).ready(function(){
                  ]
              },
         }, function(start, end, label){
-        	$('.check-in').val(start.format('YYYY/MM/DD'))
-        	$('.check-out').val(end.format('YYYY/MM/DD'))
+        	$('#checkIn').val(start.format('YYYY/MM/DD'));
+        	$('#checkOut').val(end.format('YYYY/MM/DD'));
+        	check_booking_available = check_dates(true);
         });
 })
 </script>

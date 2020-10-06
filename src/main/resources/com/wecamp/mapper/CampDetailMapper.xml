@@ -24,5 +24,11 @@
 	<select id="selectDetailImg" parameterType="int" resultType="Img">
 		select * from IMG where CAMP_IDX=#{camp_idx} and DIVISION='detail' 
 	</select>
-	
+	<!-- 캠핑장 예약 날짜 가능 여부 확인 -->
+	<select id="selectTotalBooking" parameterType="hashmap" resultType="int">
+		<![CDATA[
+		select nvl(count(*),0) from BOOKING where CAMP_IDX = #{camp_idx}
+		and CHECK_IN <= #{date} and CHECK_OUT >= #{date} and USING_STATE not in 'T'
+		]]>
+	</select>
 </mapper>	

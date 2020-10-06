@@ -18,4 +18,5 @@ public interface CampDetailService{
 	ModelAndView campDetail(int camp_idx);
 	//Map<String, List<TouristVo>> getTourists(double x, double y);
 	ModelAndView getTourists(double x, double y);
+	HashMap<String, Object> checkDatesService(HashMap<String, Object> request);
 }

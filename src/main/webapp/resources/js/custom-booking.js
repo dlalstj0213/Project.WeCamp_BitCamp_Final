@@ -7,13 +7,6 @@ var campPrice;
 var bbq_fee_type_num=0;
 var camp_total_type_num=0;
 
-function validate(ev){
-	alert("dd");
-	ev.target.checkValidity();
-	return false;
-}
-$("#noForm").bind("submit", validate);
-
 $(document).ready(function(){
 	
 	var my_point = $("#my_point").text();

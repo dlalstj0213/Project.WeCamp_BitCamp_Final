@@ -289,13 +289,6 @@
     </div><!-- end container -->
 </section><!-- end booking-area-->
 
-            
-                                
-<!-- <button id="bt_refund"type="submit" class="tt theme-btn border-0" onclick="cancelPay()"
-		style="background-color:#ff6b6b; border-color:#ff6b6b; margin-left:20px; margin-bottom:10px; padding:3px 40px;cursor:pointer" type="submit" >
-		<span id="camp_refund" class="refund"></span>환불
-</button> -->
-
 
 <!-- ================================
     END BOOKING AREA
@@ -325,7 +318,6 @@
 </form>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="/js/comma-format.js"></script>
 <script src="/js/custom-booking.js"></script>
 <script src="/js/payment.js"></script>

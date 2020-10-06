@@ -119,7 +119,7 @@ public class MemberServiceImpl implements MemberService {
 			msg += member.getEmail() + "님 회원가입을 환영합니다.</h3>";
 			msg += "<div style='font-size: 130%'>";
 			msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			msg += "<form method='post' action='https://localhost:8443/sign_up/approval_member.wcc'>";
+			msg += "<form method='post' action='https://3.35.93.88:8443/sign_up/approval_member.wcc'>";
 			msg += "<input type='hidden' name='email' value='" + member.getEmail() + "'>";
 			msg += "<input type='hidden' name='approval_key' value='" + member.getApproval_key() + "'>";
 			msg += "<input type='submit' value='인증'></form><br/></div>";
@@ -143,7 +143,7 @@ public class MemberServiceImpl implements MemberService {
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
-			email.addTo(mail, charSet);
+			email.addTo(mail, member.getName(), charSet);
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);

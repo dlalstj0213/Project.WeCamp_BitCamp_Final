@@ -35,7 +35,7 @@ public class CampDetailController {
 			
 			checkIn=du.getToday();
 			checkOut=du.getTommorrow();
-			peopleNum="0";
+			peopleNum="1";
 			
 			mv.setViewName("redirect:camp_detail.wcc?camp_idx="+Integer.parseInt(camp_idx)+"&checkIn="+checkIn+"&checkOut="+checkOut+"&peopleNum="+peopleNum);
 			return mv;

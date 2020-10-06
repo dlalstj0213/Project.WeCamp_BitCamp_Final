@@ -54,6 +54,21 @@ function setPoint(){
 }
 
 function requestPay(){
+	
+	//$("#noForm").validate();
+	
+//	if($("#reserver_name").val()===null||$("#reserver_name").val()==""){
+//		alert("성함을 입력해 주세요!");
+//		return false;
+//	}
+//	if($("#phone_num").val()===null||$("#phone_num").val()==""){
+//		alert("휴대폰 번호를 입력해 주세요!");
+//		return false;
+//	}
+	
+//	var no_value = document.noValueForm;
+//	no_value.submit();
+	
 	camp_total = document.getElementById("camp_total").innerText
 	camp_total_type_num = stringNumberToInt(camp_total)
 	//$("#amount").val(sessionItem.campPrice);

@@ -76,7 +76,6 @@
                     <div class="billing-content">
                         <div class="contact-form-action">
                             <!-- <form method="post"> -->
-                                <!-- <div class="row"> -->
                                  <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text">날짜</label>
@@ -92,13 +91,13 @@
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
-                                    
+                            	<form id="noForm" name="noValueForm">
                                  <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text">예약자 성함</label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input id="reserver_name"  onkeyup="setName();" class="form-control" type="text" name="text" placeholder="예약자 성함을 입력하세요." value="${member.name}">
+                                                <input id="reserver_name"  onkeyup="setName();" class="form-control" type="text" name="noValue" placeholder="예약자 성함을 입력하세요." value="${member.name}" required/>
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
@@ -107,7 +106,7 @@
                                             <label class="label-text">예약자 번호</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input id="phone_num" class="form-control" type="text" name="text" placeholder="휴대폰 번호를 입력하세요." value="">
+                                                <input id="phone_num" class="form-control" type="text" name="noValue" placeholder="휴대폰 번호를 입력하세요." required/>
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
@@ -116,12 +115,12 @@
                                             <label class="label-text">메모</label>
                                             <div class="form-group">
                                              <span class="la la-pencil form-icon"></span>
-                                                <textarea class="form-control" id="buyer_memo" onkeyup="setMemo();" rows="5" placeholder="요청사항을 입력해주세요."></textarea>
+                                                <textarea class="form-control" id="buyer_memo" name="noValue" onkeyup="setMemo();" rows="5" placeholder="요청사항을 입력해주세요." required></textarea>
                                                 <!-- <input id="buyer_memo" class="form-control" type="text" name="text" placeholder="요청사항을 입력해주세요." value="" style="height:30px"> -->
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
-                               <!--  </div>end row -->
+                             </form>
                            <!-- </form> -->
                         </div><!-- end contact-form-action -->
                     </div><!-- end billing-content -->
@@ -235,7 +234,7 @@
                                 </div><!--end btn-box mt-4-->
                             </div> <!--end checkbox-->
                             </div><!-- end margin-left-option-->
-                                <button disabled="" id="bt_pay"type="submit" class="tt theme-btn border-0" onclick="requestPay()"
+                                <button disabled="" id="bt_pay" class="tt theme-btn border-0" onclick="requestPay()" type="submit"
                                 		style="background-color:#bfbbbb; border-color:#bfbbbb; margin-left:20px; margin-bottom:10px; padding:3px 300px;cursor:pointer" type="submit" ><span id="camp_total" class="camp_total"></span>원 결제하기
                                 </button>
                                 <!--버튼 원래 클래스 - theme-btn border-0 mt-5--><!--btns btn-primary btn-block-->
@@ -326,6 +325,7 @@
 </form>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="/js/comma-format.js"></script>
 <script src="/js/custom-booking.js"></script>
 <script src="/js/payment.js"></script>

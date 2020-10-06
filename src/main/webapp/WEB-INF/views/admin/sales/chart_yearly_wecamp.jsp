@@ -64,7 +64,7 @@
 						<div class="right-chart">
 							<div class="card mb-3">
 									<div class="card-header">
-										<i class="fa fa-table"></i> Bar Chart
+										<i class="fa fa-table"></i> 사이트 연도별 매출
 									</div>
 										
 									<div class="card-body" style="height:auto !important">
@@ -134,14 +134,14 @@
 			labels: ["${pastYear}", "${lastYear}", "${prevYear}", "${sysYear}"],
 			datasets: [{
 					type: 'bar',
-					label: 'Dataset 2',
+					label: '총 매출액',
 					backgroundColor: '#FF6B8A',
 					data: [0, 0, 0, 0],
 					borderColor: 'white',
 					borderWidth: 0
 				}, {
 					type: 'bar',
-					label: 'Dataset 3',
+					label: '업체 순 이익',
 					backgroundColor: '#059BFF',
 					data: [0, 0, 0, 0]
 				}], 

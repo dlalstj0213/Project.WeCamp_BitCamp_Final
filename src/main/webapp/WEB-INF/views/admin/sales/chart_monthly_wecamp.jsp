@@ -64,7 +64,7 @@
 						<div class="right-chart">
 							<div class="card mb-3">
 									<div class="card-header">
-										<i class="fa fa-table"></i> Bar Chart
+										<i class="fa fa-table"></i> 사이트 월별 매출
 									</div>
 										
 									<div class="card-body" style="height:auto !important">

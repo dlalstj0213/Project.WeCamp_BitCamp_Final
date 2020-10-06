@@ -65,7 +65,7 @@
 						<div class="right-chart">
 							<div class="card mb-3">
 									<div class="card-header">
-										<i class="fa fa-table"></i> Line Chart
+										<i class="fa fa-table"></i> 캠핑장 일자별 매출
 									</div>
 										
 									<div class="card-body" style="height:auto !important">

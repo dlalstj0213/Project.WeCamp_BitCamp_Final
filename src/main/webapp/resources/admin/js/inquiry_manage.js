@@ -140,7 +140,6 @@ function getInquiryList(cp){
 }
 
 function updateInquiry(inq_idx, currentPage, isSearched){
-	alert("call - updateInquiry");
 	$.ajax({
 		url: "update_inquiry.json",
 		method: "POST",
@@ -151,8 +150,6 @@ function updateInquiry(inq_idx, currentPage, isSearched){
 		dataType: "TEXT",
 		success: function(responseData){
 			if(responseData == "true"){
-				alert("success - updateInquiry");
-				
 				$('#msg-alert').html(success_update_msg());
 				$('#inquiry-detail').html("");
 				setTimeout(function(){

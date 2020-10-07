@@ -97,7 +97,7 @@
                                             <label class="label-text">예약자 성함</label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input id="reserver_name"  onkeyup="setName();" class="form-control" type="text" name="noValue" placeholder="예약자 성함을 입력하세요." value="${member.name}" required/>
+                                                <input id="reserver_name"  onkeyup="setName();" class="form-control" type="text" name="noValue" placeholder="예약자 성함을 입력하세요." maxlength="5" value="${member.name}" required/>
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->
@@ -106,7 +106,7 @@
                                             <label class="label-text">예약자 번호</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input id="phone_num" class="form-control" type="text" name="noValue" placeholder="휴대폰 번호를 입력하세요." required/>
+                                                <input id="phone_num" class="form-control" type="text" name="noValue" placeholder="휴대폰 번호를 입력하세요." maxlength="13" required/>
                                             </div>
                                         </div>
                                  </div><!-- end col-lg-6 -->

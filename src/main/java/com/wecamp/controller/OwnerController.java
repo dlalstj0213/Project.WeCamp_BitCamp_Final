@@ -89,6 +89,7 @@ public class OwnerController {
 	
 	@GetMapping("update_camp.wcc")
 	private ModelAndView update_camp() {
+		if(session.getAttribute("member") == null) return new ModelAndView("redirect:../");
 		ModelAndView response = ownerService.get_owner_full_detail(session);
 		response.setViewName("client/member/modify_camp/" + WebTitle.TITLE + "캠핑장 수정");
 		return response;	

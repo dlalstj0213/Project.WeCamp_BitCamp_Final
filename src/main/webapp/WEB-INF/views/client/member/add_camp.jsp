@@ -10,12 +10,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-content">
-						<h2 class="breadcrumb__title">add listing</h2>
-						<ul class="breadcrumb__list">
-							<li class="active__list-item"><a href="index.html">home</a></li>
-							<li class="active__list-item">listings</li>
-							<li>add listing</li>
-						</ul>
+						<h2 class="breadcrumb__title">캠핑장 등록</h2>
 					</div>
 					<!-- end breadcrumb-content -->
 				</div>

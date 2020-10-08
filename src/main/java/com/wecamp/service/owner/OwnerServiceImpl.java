@@ -1,9 +1,12 @@
 package com.wecamp.service.owner;
 
+import static org.hamcrest.CoreMatchers.containsString;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -127,21 +130,30 @@ class OwnerServiceImpl implements OwnerService{
 		if(total_heart == null) {
 			total_heart = 0;
 		}
+		Camp camp = ownerMapper.select_camp(owner.getCamp_idx());
+		
+		String[] conv_list = null;
+		if(camp.getConv() != null) conv_list = camp.getConv().split(",");
+		String[] sec_conv_list = null;
+		if(camp.getSec_conv() != null) sec_conv_list = camp.getSec_conv().split(",");
+		String[] etc_conv_list = null;
+		if(camp.getEtc_conv() != null) etc_conv_list = camp.getEtc_conv().split(",");
+		
 		OwnerDetailVo result = new OwnerDetailVo(
-				ownerMapper.select_camp(owner.getCamp_idx()),
+				camp,
 				owner,
 				ownerMapper.select_img(owner.getCamp_idx()),
 				ownerMapper.select_sort(owner.getCamp_idx()),
 				total_heart,
-				ownerMapper.select_img_thumb(owner.getCamp_idx())
+				ownerMapper.select_img_thumb(owner.getCamp_idx()),
+				conv_list,
+				sec_conv_list,
+				etc_conv_list
 				);
 		ModelAndView response =  new ModelAndView();
 		return response.addObject("vo", result);
 	}
 	
-	//문제 1. 예약내역이 사라지는 마술~ -> 사업자가 돈받고 튈수있어 <<-???
-	// 	  2. 예약내역 남겨놔 -> 캠핑장 정보를 못가져
-	//선택 -> 시연 안 함 (오라클 문제)
 	@Transactional
 	@Override
 	public ModelAndView delete_camp_service(int camp_idx, HttpSession session) {

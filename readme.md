@@ -145,7 +145,8 @@
  ![FindPassword](md_imgs/find_password.png)
  <br>
  &nbsp;로그인 페이지 하단에 존재하는 비밀번호 찾기를 클릭하면 위에 보이는 이미지와 같이 모달이 생성되는데 가입했던 이메일을 입력한다면 해당 이메일에 임시 비밀번호를 설정 후 메일을 발송한다.
- ![PasswordMail](./password_mail.png)
+ <br>
+ ![PasswordMail](md_imgs/password_mail.png)
  <br>
  메일로 받은 임시 비밀번호로 로그인이 가능하고 후에 개인정보 수정 기능을 통해 비밀번호 재설정이 가능하다.
 
@@ -179,7 +180,7 @@
 4. 시설 이용
 5. 위치 ( KakaoMap OpenAPI )
 6. 날씨 ( OpenWeather OpenAPI )
-   <br>
+
    ![weather](md_imgs/weather.png)
    <br>
    &nbsp;Open Weather에서 제공해주는 시간 별 예보가 3시간 단위로 그 시간에 해당하는 최고/최저 기온을 알려주어 하루 동안의 최고/최저 기온을 구하는 데에 어려움이 있었다. 원래는 일일 예보를 구현하고 싶었으나 유료인 관계로 시간 별 예보로 대체해 기온과 강수 확률을 뽑아내 문제를 해결하였다.
@@ -187,7 +188,6 @@
 8. 리뷰 리스트
 9.  리뷰 평점
 10. 주변 관광지( 공공데이터포털 )
-   <br>
    ![tourist](md_imgs/tourist.png)
    <br>
    &nbsp;해당 캠핑장의 x, y 좌표를 이용하여 주변 관광지를 구현했다. 해당 관광지를 클릭할 때 상세 정보를 제공해주고 싶었으나 공공데이터포털 API에서 제공해주지 않는 기능이라 NAVER 검색창으로 넘겨주는 것으로 문제를 해결하였다.

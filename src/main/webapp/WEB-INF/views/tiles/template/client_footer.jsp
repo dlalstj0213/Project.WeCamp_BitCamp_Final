@@ -45,12 +45,11 @@
                 <div class="footer-item">
                     <h4 class="footer__title">Quick Links</h4>
                     <ul class="list-items">
-                        <li><a href="about.html">사이트 활용법</a></li>
-                        <li><a href="sign-up.html">회원가입</a></li>
-                        <li><a href="login.html">로그인</a></li>
-                        <li><a href="add-listing.html"></a></li>
-                        <li><a href="contact.html">신뢰와 안전</a></li>
-                        <li><a href="pricing.html">뉴스룸</a></li>
+                        <li><a href="/howto">사이트 활용법</a></li>
+                        <li><a href="/sign_up/sign_up_page.wcc">회원가입</a></li>
+                        <li><a href="/login/login.wcc">로그인</a></li>
+                        <li><a href="/trust">신뢰와 안전</a></li>
+                        <li><a href="/newsroom">뉴스룸</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->

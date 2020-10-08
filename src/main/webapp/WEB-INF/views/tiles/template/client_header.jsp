@@ -62,8 +62,8 @@
                 </c:if>
                 <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
                 <c:if test="${member == null }">
-                <li><a onclick="location.href='${pageContext.request.contextPath}/sign_up/sign_up_page.wcc'"><span class="la la-user user-icon"></span> 회원가입 </a></li>
-                <li><a onclick="location.href='${pageContext.request.contextPath}/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
+                <li><a style="cursor:pointer" onclick="location.href='${pageContext.request.contextPath}/sign_up/sign_up_page.wcc'"><span class="la la-user user-icon"></span> 회원가입 </a></li>
+                <li><a style="cursor:pointer" onclick="location.href='${pageContext.request.contextPath}/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
                 </c:if>
                 <c:if test="${member != null }">
                 <c:choose>

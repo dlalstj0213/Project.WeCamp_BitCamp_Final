@@ -118,20 +118,32 @@
                 <!-- <span id="date" class="su__meta">가입 날짜 : 2020-08-03</span> -->
 
             </div>
+            <c:if test="${member == null }">
+            	<div>
+            	<img src="/images/logo2.png" style="padding-left:15px">
+            	</div>
+            	</c:if>
             <ul class="side-menu-ul">
-            <c:if test="${not empty member}">
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-user user-icon"></span> 회원정보</a></li>
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
-                <li><a onclick="location.href='/member/mypage.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
-            </c:if>
-                <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
-                <li><a href="#"><span class="la la-gear user-icon"></span> 개인정보 수정</a></li>
-                <c:if test="${empty member}">
-                <li><a onclick="location.href='/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
+            	<c:if test="${member != null}">
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc?selected=info'"><span class="la la-user user-icon"></span> 회원정보</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc?selected=booking'"><span class="la la-list-alt user-icon"></span> 예약내역</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/member/mypage.wcc?selected=heart'"><span class="la la-bookmark-o user-icon"></span> 찜 목록</a></li>
+                <li><a onclick="location.href='${pageContext.request.contextPath}/owner/com_inquiry.wcc'"><span class="la la-plus-circle user-icon"></span> 업체등록</a></li>
                 </c:if>
-                <c:if test="${not empty member}">
-                <li><a onclick="location.href='/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                <li><a href="#"><span class="la la-question user-icon"></span> 사이트 활용법</a></li>
+                <c:if test="${member == null }">
+                <li><a style="cursor:pointer" onclick="location.href='${pageContext.request.contextPath}/sign_up/sign_up_page.wcc'"><span class="la la-user user-icon"></span> 회원가입 </a></li>
+                <li><a style="cursor:pointer" onclick="location.href='${pageContext.request.contextPath}/login/login.wcc'"><span class="la la-power-off user-icon"></span> 로그인 </a></li>
+                </c:if>
+                <c:if test="${member != null }">
+                <c:choose>
+                	<c:when test="${member.accessToken ne null}">
+		                <li><a onclick="location.href='${pageContext.request.contextPath}/login/logout_naver?accessToken=${member.accessToken}'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                	</c:when>
+                	<c:otherwise>
+		                <li><a id="logout" onclick="location.href='${pageContext.request.contextPath}/login/logout.wcc'"><span class="la la-power-off user-icon"></span> 로그아웃</a></li>
+                	</c:otherwise>
+                </c:choose>
                 </c:if>
             </ul>
             <div class="side-user-search contact-form-action">
@@ -143,7 +155,7 @@
                 </form>
             </div><!-- end sidebar-widget -->
         </div><!-- end side-menu-wrap -->
-    </div><!-- end side-user-panel -->	
+    </div><!-- end side-user-panel -->
 
 	  <div class="body">
 	    <div class="list">
@@ -433,9 +445,9 @@
 		  			
 		  			//location.href='#'; 
 		          } else {
-		        	  let loadMore = document.getElementById('loadMore');
-		        	  loadMore.innerHTML = "<span class='la la-refresh'></span> No More";
-		        	  loadMore.disabled = 'disabled';
+			        	  let loadMore = document.getElementById('loadMore');
+			        	  loadMore.innerHTML = "<span class='la la-refresh'></span> No More";
+			        	  loadMore.disabled = 'disabled';
 		              //alert("데이터가 없습니다.");
 		          }
 		          $('#loadMore').focus();
@@ -454,93 +466,92 @@
 	  <div class="footer">
 	    <div class="footer2">
 			<div class="box-icon"></div>
-    <div class="box-icon"></div>
-    <div class="box-icon"></div>
-    <div class="box-icon"></div>
-    <div class="box-icon"></div>
-    <div class="box-icon"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 column-td-6">
-                <div class="footer-item">
-                    <div class="logo">
-                        <a href="index.html" class="foot-logo"><img src="/images/logo.png" alt="logo"></a>
-                        <p class="footer__desc">
-                            WeCamp -- We provides camping reservation. and We also offer camping information and community
-                        </p>
-                        <ul class="social-profile">
-                            <li>
-                                <a href="https://www.instagram.com/wecamp_kr/">
-                                    <i class="fa fa-facebook" style="padding:10px !important"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/wecamp_kr/">
-                                    <i class="fa fa-twitter" style="padding:10px !important"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/wecamp_kr/">
-                                    <i class="fa fa-instagram" style="padding:10px !important"></i>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div><!-- end logo -->
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="footer-item">
-                    <h4 class="footer__title">Quick Links</h4>
-                    <ul class="list-items">
-                        <li><a href="about.html">사이트 활용법</a></li>
-                        <li><a href="sign-up.html">회원가입</a></li>
-                        <li><a href="login.html">로그인</a></li>
-                        <li><a href="add-listing.html"></a></li>
-                        <li><a href="contact.html">신뢰와 안전</a></li>
-                        <li><a href="pricing.html">뉴스룸</a></li>
-                    </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="footer-item">
-                    <h4 class="footer__title">Categories</h4>
-                    <ul class="list-items">
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">친구 초대하기</a></li>
-                        <li><a href="#">캠핑장 호스팅</a></li>
-                        <li><a href="#">채용 정보</a></li>
-                        <li><a href="#">업체 문의</a></li>
-                    </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 column-td-6">
-                <div class="footer-item">
-                    <h4 class="footer__title">Contact with Us</h4>
-                    <ul class="info-list contact-links">
-                        <li><span class="la la-home"></span> 서울 마포구 백범로 23 3층</li>
-                        <li><span class="la la-headphones"></span> <a href="#">+ 81 02 707 1480</a></li>
-                        <li><span class="la la-envelope-o"></span> <a href="#">dirto@gmail.com</a></li>
-                    </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="copy-right margin-top-50px padding-top-60px">
-                    <p class="copy__desc">
-                        &copy; Copyright WeCamp 2020. Made with
-                        <span class="la la-heart-o"></span> by <a href="https://www.instagram.com/wecamp_kr/">SB, HW, DS, MS </a>
-                    </p>
-                    <ul class="list-items">
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Help Center</a></li>
-                    </ul>
-                </div><!-- end copy-right -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
+		    <div class="box-icon"></div>
+		    <div class="box-icon"></div>
+		    <div class="box-icon"></div>
+		    <div class="box-icon"></div>
+		    <div class="box-icon"></div>
+		     <div class="container">
+		        <div class="row">
+		            <div class="col-lg-3 column-td-6">
+		                <div class="footer-item">
+		                    <div class="logo">
+		                        <a href="index.html" class="foot-logo"><img src="/images/logo.png" alt="logo"></a>
+		                        <p class="footer__desc">
+		                            WeCamp -- We provides camping reservation. and We also offer camping information and community
+		                        </p>
+		                        <ul class="social-profile">
+		                            <li>
+		                                <a href="https://www.instagram.com/wecamp_kr/">
+		                                    <i class="fa fa-facebook"></i>
+		                                </a>
+		                            </li>
+		                            <li>
+		                                <a href="https://www.instagram.com/wecamp_kr/">
+		                                    <i class="fa fa-twitter"></i>
+		                                </a>
+		                            </li>
+		                            <li>
+		                                <a href="https://www.instagram.com/wecamp_kr/">
+		                                    <i class="fa fa-instagram"></i>
+		                                </a>
+		                            </li>
+		
+		                        </ul>
+		                    </div><!-- end logo -->
+		                </div><!-- end footer-item -->
+		            </div><!-- end col-lg-3 -->
+		            <div class="col-lg-3 column-td-6">
+		                <div class="footer-item">
+		                    <h4 class="footer__title">Quick Links</h4>
+		                    <ul class="list-items">
+		                        <li><a href="/howto">사이트 활용법</a></li>
+		                        <li><a href="/sign_up/sign_up_page.wcc">회원가입</a></li>
+		                        <li><a href="/login/login.wcc">로그인</a></li>
+		                        <li><a href="/trust">신뢰와 안전</a></li>
+		                        <li><a href="/newsroom">뉴스룸</a></li>
+		                    </ul>
+		                </div><!-- end footer-item -->
+		            </div><!-- end col-lg-3 -->
+		            <div class="col-lg-3 column-td-6">
+		                <div class="footer-item">
+		                    <h4 class="footer__title">Categories</h4>
+		                    <ul class="list-items">
+		                        <li><a href="#">커뮤니티</a></li>
+		                        <li><a href="#">친구 초대하기</a></li>
+		                        <li><a href="/owner/add_camp.wcc">캠핑장 호스팅</a></li>
+		                        <li><a href="#">채용 정보</a></li>
+		                        <li><a href="/owner/com_inquiry.wcc">업체 문의</a></li>
+		                    </ul>
+		                </div><!-- end footer-item -->
+		            </div><!-- end col-lg-3 -->
+		            <div class="col-lg-3 column-td-6">
+		                <div class="footer-item">
+		                    <h4 class="footer__title">Contact with Us</h4>
+		                    <ul class="info-list contact-links">
+		                        <li><span class="la la-home"></span> 서울 마포구 백범로 23 3층</li>
+		                        <li><span class="la la-headphones"></span> <a href="#">+ 81 02 707 1480</a></li>
+		                        <li><span class="la la-envelope-o"></span> <a href="#">dirto@gmail.com</a></li>
+		                    </ul>
+		                </div><!-- end footer-item -->
+		            </div><!-- end col-lg-3 -->
+		        </div><!-- end row -->
+		        <div class="row">
+		            <div class="col-lg-12">
+		                <div class="copy-right margin-top-50px padding-top-60px">
+		                    <p class="copy__desc">
+		                        &copy; Copyright WeCamp 2020. Made with
+		                        <span class="la la-heart-o"></span> by <a href="https://github.com/Binveloper">SB</a>, <a href="https://github.com/OnceDeveloper">HW</a>, <a href="https://github.com/cateto">DS</a>, <a href="https://github.com/dlalstj0213">MS </a>
+		                    </p>
+		                    <ul class="list-items">
+		                        <li><a href="#">Terms & Conditions</a></li>
+		                        <li><a href="#">Privacy Policy</a></li>
+		                        <li><a href="#">Help Center</a></li>
+		                    </ul>
+		                </div><!-- end copy-right -->
+		            </div><!-- end col-lg-12 -->
+		        </div><!-- end row -->
+		    </div><!-- end container -->
     </div>
     </div>
 </section><!-- end footer-area -->

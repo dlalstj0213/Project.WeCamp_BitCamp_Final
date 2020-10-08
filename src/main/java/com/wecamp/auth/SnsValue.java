@@ -19,7 +19,7 @@ public class SnsValue implements SnsUrl{
 		this.service = service;
 		this.clientId = "YtUqxw72XK5MQyMaFC_R";
 		this.clientSecret = "T_F6lhg_Eh";
-		this.redirectUrl = "https://localhost:8443/login/naver/callback";
+		this.redirectUrl = "https://3.35.93.88:8443/login/naver/callback";
 		if(service.equals("naver")) this.isNaver = true;
 		if(isNaver) {
 			this.api20Instance = NaverApi20.instance();

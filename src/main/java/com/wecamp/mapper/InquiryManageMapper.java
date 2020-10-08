@@ -14,4 +14,5 @@ public interface InquiryManageMapper {
 	boolean deleteInquiry(int inq_idx);
 	List<Inquiry> selectInquiryByKeyword(HashMap<String, Object> query);
 	Integer selectCountInquiryByKeyword(HashMap<String, Object> query);
+	boolean updateInquiredMember(String email);
 }

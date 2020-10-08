@@ -26,6 +26,10 @@
 		update INQUIRY set S_NO = 2 where INQ_IDX = #{inq_idx}
 	</update>
 	
+	<update id="updateInquiredMember" parameterType="String">
+		update MEMBER set A_NO = 2 where EMAIL = #{email}
+	</update>
+	
 	<insert id="insertOwner" parameterType="Inquiry">
 		insert into OWNER values(#{email}, null, #{name}, #{owner_num}, #{com_name}, #{com_addr}, #{com_tel})
 	</insert>

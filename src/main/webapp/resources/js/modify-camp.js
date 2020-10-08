@@ -3,6 +3,7 @@
  */ 
 function uploadCamp(){
 	let length = document.getElementsByClassName('check').length;
+	console.log(length);
 	for(let k=0; k<length; k++){
 		if(document.getElementsByClassName('check')[k].value == ""){
 			$('.check')[k].focus();

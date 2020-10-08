@@ -27,7 +27,7 @@ function dataForm(dateNtime){
 
 
 function showDetail(responseData, currnetPage, isSearched){
-	console.log(responseData.content);
+	console.log(responseData.email);
 	let detail_html = "";
 	detail_html += "<div class='card mb-3'>"
 		+ "<div class='card-header'>"
@@ -90,7 +90,9 @@ function showDetail(responseData, currnetPage, isSearched){
     	+ "</div>"
 	    + "<div id='button_center'>";
 	    if(isSearched == true){
-	    	detail_html += "<button type='button' class='btn btn-outline-success' onclick='updateInquiry(\""+responseData.inq_idx+"\", \""+currnetPage+"\", "+isSearched+");'>승인</button>&nbsp;&nbsp;";
+	    	if(responseData.s_no == 1){
+	    		detail_html += "<button type='button' class='btn btn-outline-success' onclick='updateInquiry(\""+responseData.inq_idx+"\", \""+responseData.email+"\", \""+currnetPage+"\", "+isSearched+");'>승인</button>&nbsp;&nbsp;";
+	    	}
 	    	detail_html += "<button type='button' class='btn btn-outline-warning' onclick='deleteInquiry(\""+responseData.inq_idx+"\", \""+currnetPage+"\", "+isSearched+");'>삭제</button>";
 	    }else{
 	    	detail_html += "<button type='button' class='btn btn-outline-success' onclick='updateInquiry(\""+responseData.inq_idx+"\", \""+currnetPage+"\", \""+isSearched+"\");'>승인</button>&nbsp;&nbsp;";
@@ -104,12 +106,13 @@ function showDetail(responseData, currnetPage, isSearched){
 }
 
 function row_click(row, currnetPage, isSearched){
+	isSearched = true;
 	$('#inquiry-detail').hide();
 	$('#inquiry-detail').show(1000);
 	let class_id = $(row).prop('id');
 	
 	$.ajax({
-		url: "inquiry_datail.json",
+		url: "inquiry_detail.json",
 		method: "GET",
 		data: {
 			"inq_idx": class_id
@@ -139,13 +142,14 @@ function getInquiryList(cp){
 	});
 }
 
-function updateInquiry(inq_idx, currentPage, isSearched){
+function updateInquiry(inq_idx, email, currentPage, isSearched){
 	$.ajax({
 		url: "update_inquiry.json",
 		method: "POST",
 		//contentType: "application/json",
 		data: {
 			"inq_idx": inq_idx,
+			"email" : email
 		},
 		dataType: "TEXT",
 		success: function(responseData){

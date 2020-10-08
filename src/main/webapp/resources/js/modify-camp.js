@@ -114,12 +114,11 @@ function test(){
 	//document.getElementById('submit-form').submit();
 }
 
-
 function remove_inputs(){
     let num = Number(document.getElementById('current-site-size').value);
-    //console.log("remove num: "+num);
+//    console.log("remove num: "+num);
 	if(num > 1){
-        let e = document.getElementById('site'+(num-1));
+        let e = document.getElementById('site'+num);
         //alert(e);
 		document.getElementById('site-size-box').removeChild(e);
 		num -= 1;

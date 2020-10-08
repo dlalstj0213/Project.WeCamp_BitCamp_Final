@@ -21,4 +21,7 @@ public class OwnerDetailVo {
 	private List<Sort> sort_list;
 	private int total_heart;
 	private Img thumb_img;
+	private String[] conv_list;
+	private String[] sec_conv_list;
+	private String[] etc_conv_list;
 }

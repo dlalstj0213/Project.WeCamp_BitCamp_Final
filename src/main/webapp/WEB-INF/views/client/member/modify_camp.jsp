@@ -158,6 +158,21 @@
 														<label for="chb4">편의점</label>
 													</div>
 													<!-- end custom-checkbox -->
+													<div class="custom-checkbox">
+														<input type="checkbox" id="chb5" name="conv" value="취사시설"> 
+														<label for="chb5">취사시설</label>
+													</div>
+													<!-- end custom-checkbox -->
+													<div class="custom-checkbox">
+														<input type="checkbox" id="chb6" name="conv" value="전기시설"> 
+														<label for="chb6">전기시설</label>
+													</div>
+													<!-- end custom-checkbox -->
+													<div class="custom-checkbox">
+														<input type="checkbox" id="chb7" name="conv" value="하수도시설"> 
+														<label for="chb7">하수도시설</label>
+													</div>
+													<!-- end custom-checkbox -->
 												</div>
 												<!-- end billing-content -->
 											</div>
@@ -174,23 +189,28 @@
 
 												<div class="billing-content">
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb12" name="sec-conv" value="화장실"> <label
-															for="chb12">화장실</label>
+														<input type="checkbox" id="chb12" name="sec-conv" value="대피공간"> <label
+															for="chb12">대피공간</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb22" name="sec-conv" value="샤워실"> <label
-															for="chb22">샤워실</label>
+														<input type="checkbox" id="chb13" name="sec-conv" value="소화기"> <label
+															for="chb13">소화기</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb32" name="sec-conv" value="백화점"> <label
-															for="chb32">백화점</label>
+														<input type="checkbox" id="chb14" name="sec-conv" value="긴급방송시설"> <label
+															for="chb14">긴급방송시설</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb42" name="sec-conv" value="편의점"> <label
-															for="chb42">편의점</label>
+														<input type="checkbox" id="chb15" name="sec-conv" value="안전게시물"> <label
+															for="chb15">안전게시물</label>
+													</div>
+													<!-- end custom-checkbox -->
+													<div class="custom-checkbox">
+														<input type="checkbox" id="chb16" name="sec-conv" value="CCTV"> <label
+															for="chb16">CCTV</label>
 													</div>
 													<!-- end custom-checkbox -->
 												</div>
@@ -208,23 +228,33 @@
 											<div class="billing-form-item">
 												<div class="billing-content">
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb13" name="etc-conv" value="화장실"> <label
-															for="chb13">화장실</label>
+														<input type="checkbox" id="chb21" name="etc-conv" value="수영장"> <label
+															for="chb21">수영장</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb23" name="etc-conv" value="샤워실"> <label
-															for="chb23">샤워실</label>
+														<input type="checkbox" id="chb22" name="etc-conv" value="운동장"> <label
+															for="chb22">운동장</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb33" name="etc-conv" value="백화점"> <label
-															for="chb33">백화점</label>
+														<input type="checkbox" id="chb23" name="etc-conv" value="관리시설"> <label
+															for="chb23">관리시설</label>
 													</div>
 													<!-- end custom-checkbox -->
 													<div class="custom-checkbox">
-														<input type="checkbox" id="chb43" name="etc-conv" value="편의점"> <label
-															for="chb43">편의점</label>
+														<input type="checkbox" id="chb24" name="etc-conv" value="놀이터"> <label
+															for="chb24">놀이터</label>
+													</div>
+													<!-- end custom-checkbox -->
+													<div class="custom-checkbox">
+														<input type="checkbox" id="chb25" name="etc-conv" value="와이파이"> <label
+															for="chb25">와이파이</label>
+													</div>
+													<!-- end custom-checkbox -->
+													<div class="custom-checkbox">
+														<input type="checkbox" id="chb26" name="etc-conv" value="가로등"> <label
+															for="chb26">가로등</label>
 													</div>
 													<!-- end custom-checkbox -->
 												</div>
@@ -288,26 +318,25 @@
 										
 										<div id="site0" class="billing-form-item">
 										<div class="billing-content" style="padding-bottom: 0%;">
-											<label class="label-text">캠핑장 소개 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+											<label class="label-text">캠핑장 소개 </label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
 													<textarea id="intro" name="camp.intro" class="message-control form-control check" style="height: 100px;"
-														placeholder="캠핑 사이트 이름을 입력해주세요.">${vo.camp.intro}</textarea>
+														placeholder="캠피장을 소개해주세요">${vo.camp.intro}</textarea>
 												</div>
 											</div>
 											<div class="billing-content">
 												<label class="label-text">캠핑장 대표 사진(썸네일) <i	class="la la-question tip ml-1" data-toggle="tooltip"
-														data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+														data-placement="top" title="썸네일 사진으로 들어갈 캠핑장 대표 사진을 한 장 선택해주세요(.png .jpg)"></i></label>
 												<div class="form-group mb-0">
-													<input id="img-thumb" class="check" type="file" name="imgThumb">
+													<input id="img-thumb" class="check" type="file" name="imgThumb" accept=".png, .jpg">
 												</div>
 											</div>
 											<div class="billing-content">
 												<label class="label-text">캠핑장 상세 사진 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-														data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+														data-placement="top" title="캠핑장 관련 상세 사진들을 선택해주세요(.png .jpg)"></i></label>
 												<div class="form-group mb-0">
-													<input id="img-detail" class="check" type="file" name="imgDetail" multiple="multiple">
+													<input id="img-detail" class="check" type="file" name="imgDetail" multiple="multiple" accept=".png, .jpg">
 												</div>
 											</div>
 										</div>
@@ -322,73 +351,70 @@
 									
 									<c:forEach items="${vo.sort_list}" var="sort" varStatus="index">
 									<!-- 전체적인 추가 사이트 -->
-										<div id="site${index.index}" class="billing-form-item">
+										<div id="site${index.index+1}" class="billing-form-item">
 											<div class="billing-content">
 											
 											<!-- 1 -->
 											<label class="label-text">캠핑 사이트 이름 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												data-placement="top" title="해당 구역 이름"></i></label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<input id="site-name${index.index}" name="sort[${index.index}].site_name" class="message-control form-control check" style="height: 50px"
+													<input id="site-name${index.index+1}" name="sort[${index.index+1}].site_name" class="message-control form-control check" style="height: 50px"
 														placeholder="캠핑 사이트 이름을 입력해주세요." value="${sort.site_name}">
 												</div>
 												
 											<!-- custom-checkbox -->
-											<label class="label-text">종류 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+											<label class="label-text">종류 </label>
 											<div class="billing-form-item">
 												<div class="billing-content">
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-0-${index.index}" class="choice-sort" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-0-${index.index}">오토캠핑</label>
+														<input type="checkbox" id="chk-sort-0-${index.index+1}" class="choice-sort" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-0-${index.index+1}">오토캠핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-1-${index.index}" class="choice-sort" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-1-${index.index}">글램핑</label>
+														<input type="checkbox" id="chk-sort-1-${index.index+1}" class="choice-sort" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-1-${index.index+1}">글램핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-2-${index.index}" class="choice-sort" value="카라반" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-2-${index.index}">카라반</label>
+														<input type="checkbox" id="chk-sort-2-${index.index+1}" class="choice-sort" value="카라반" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-2-${index.index+1}">카라반</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-3-${index.index}" class="choice-sort" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-3-${index.index}">노지캠핑</label>
+														<input type="checkbox" id="chk-sort-3-${index.index+1}" class="choice-sort" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-3-${index.index+1}">노지캠핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-4-${index.index}" class="choice-sort" value="기타" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-4-${index.index}">기타</label>
+														<input type="checkbox" id="chk-sort-4-${index.index+1}" class="choice-sort" value="기타" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-4-${index.index+1}">기타</label>
 													</div>
-													<div id='etc-input-area-${index.index}' class='form-group' style='margin-bottom: 0px;'>
+													<div id='etc-input-area-${index.index+1}' class='form-group' style='margin-bottom: 0px;'>
 													</div>
 												</div>
 											</div>
 											
-											<input id="checked-data-${index.index}" type="hidden" class="check" name="sort[${index.index}].sort_name"  value="">
+											<input id="checked-data-${index.index+1}" type="hidden" class="check" name="sort[${index.index+1}].sort_name"  value="">
 											
 											<!-- 2 -->
-											<label class="label-text">해당 사이트 수용 인원 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+											<label class="label-text">해당 사이트 수용 인원 </label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<input id="people-num${index.index}" name="sort[${index.index}].people_num" class="message-control form-control check" style="height: 50px"
+													<input id="people-num${index.index+1}" name="sort[${index.index+1}].people_num" class="message-control form-control check" style="height: 50px"
 														placeholder="해당 사이트 내 수용 가능한 인원을 입력해주세요." value="${sort.people_num}">
 												</div>
 												
 											<!-- 3 -->
-											<label class="label-text">해당 사이트 이용 가격 <i	class="la la-question tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+											<label class="label-text">해당 사이트 이용 가격 </label>
 												<div class="form-group">
 													<span class="la la-won form-icon"></span> <input
-														id="site-fee${index.index}" class="form-control camp-price check" type="text"
-														name="sort[${index.index}].site_fee" placeholder="캠핑장 가격을 정확히 입력해 주세요" value="${sort.site_fee}">
+														id="site-fee${index.index+1}" class="form-control camp-price check" type="text"
+														name="sort[${index.index+1}].site_fee" placeholder="캠핑장 가격을 정확히 입력해 주세요" value="${sort.site_fee}">
 												</div>
 												
 											<!-- 4 -->
 											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
-												data-placement="top" title="최대 30글자까지 입력가능합니다."></i></label>
+												data-placement="top" title="해당 사이트에 관련된 대표 사진 한 장을 선택해주세요(.png .jpg)"></i></label>
 												<div class="form-group">
-													<input id="site-img${index.index}" class="check" type="file" name="sort[${index.index}].site_img">
+													<input id="site-img${index.index+1}" class="check" type="file" name="sort[${index.index+1}].site_img" accept=".png, .jpg">
 												</div>
 											
 											</div>
@@ -500,6 +526,18 @@
 		<!-- end row -->
 	</div>
 	<!-- end container -->
+<%-- <c:forEach begin='0' end='${ vo.conv_list.size() }' step='1' varStatus='i'>
+	<input type='text' class='' name='' value='1${ vo.conv_list[i] }1'>
+</c:forEach> --%>
+<c:forEach items='${ vo.conv_list }' var='conv'>
+	<input type='hidden' class='prev-conv' name='prev-conv' value='${ conv }'>
+</c:forEach>
+<c:forEach items='${ vo.sec_conv_list }' var='sec_conv'>
+	<input type='hidden' class='prev-sec-conv' name='prev-sec-conv' value='${ sec_conv }'>
+</c:forEach>
+<c:forEach items='${ vo.etc_conv_list }' var='etc_conv'>
+	<input type='hidden' class='prev-etc-conv' name='prev-etc-conv' value='${ etc_conv }'>
+</c:forEach>
 </section>
 <!-- end add-listing-area -->
 <!-- ================================
@@ -526,6 +564,35 @@ function bt_addr_click(){
 			location.href = "../member/mypage.wcc";
 		} else if(<%=request.getAttribute("result")%> == false) {
 			location.href = "update_camp.wcc";
+		}
+		
+		const pre_conv_el = document.getElementsByClassName('prev-conv');
+		const pre_sec_conv_el = document.getElementsByClassName('prev-sec-conv');
+		const pre_etc_conv_el = document.getElementsByClassName('prev-etc-conv');
+		
+		if(pre_conv_el.length !== 0){
+			const check_conv_el = document.getElementsByName('conv');
+			for(let i=0; i<pre_conv_el.length; i++){
+				for(let j=0; j<check_conv_el.length; j++){
+					if(pre_conv_el[i].value == check_conv_el[j].value) check_conv_el[j].checked = true;
+				}
+			}
+		}
+		if(pre_sec_conv_el.length !== 0){
+			const check_sec_conv_el = document.getElementsByName('sec-conv');
+			for(let i=0; i<pre_sec_conv_el.length; i++){
+				for(let j=0; j<check_sec_conv_el.length; j++){
+					if(pre_sec_conv_el[i].value == check_sec_conv_el[j].value) check_sec_conv_el[j].checked = true;
+				}
+			}
+		}
+		if(pre_etc_conv_el.length !== 0){
+			const check_etc_conv_el = document.getElementsByName('etc-conv');
+			for(let i=0; i<pre_etc_conv_el.length; i++){
+				for(let j=0; j<check_etc_conv_el.length; j++){
+					if(pre_etc_conv_el[i].value == check_etc_conv_el[j].value) check_etc_conv_el[j].checked = true;
+				}
+			}
 		}
 	}
 	

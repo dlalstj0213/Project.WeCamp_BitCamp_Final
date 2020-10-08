@@ -270,7 +270,7 @@ public class MemberServiceImpl implements MemberService {
 			
 			out.println("<script>");
 			out.println("alert('이메일로 임시 비밀번호를 전송하였습니다.')");
-			out.println("history.go(-1);");
+			out.println("window.location.href = 'login.wcc';");
 			out.println("</script>");
 			out.close();
 		}

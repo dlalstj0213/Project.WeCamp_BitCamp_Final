@@ -274,7 +274,7 @@ body {
 										<div class="form-group">
 											<span class="la la-user form-icon"></span> <input
 												class="form-control" type="text" id="name" name="name"
-												placeholder="이름을 입력해 주세요" required>
+												placeholder="이름을 입력해 주세요" required maxlength="6">
 										</div>
 									</div>
 								</div>
@@ -285,7 +285,7 @@ body {
 										<div class="form-group">
 											<span class="la la-user form-icon"></span> <input
 												class="form-control" type="text" id="nickname"
-												name="nickname" placeholder="닉네임을 입력해 주세요" required>
+												name="nickname" placeholder="닉네임을 입력해 주세요" required maxlength="6">
 										</div>
 									</div>
 								</div>

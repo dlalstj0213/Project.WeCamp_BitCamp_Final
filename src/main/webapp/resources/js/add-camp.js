@@ -2,6 +2,9 @@
  * 
  */
 function uploadCamp(){
+	let length = document.getElementsByClassName('check').length;
+	console.log(length);
+	
 	//var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
 	let reg = /(.*?)\.(jpg|png)$/;
 	for(let i=0; i<document.getElementsByClassName('file').length; i++){
@@ -13,7 +16,7 @@ function uploadCamp(){
 		}
 	}
 	
-	let length = document.getElementsByClassName('check').length;
+	
 	for(let k=0; k<length; k++){
 		if(document.getElementsByClassName('check')[k].value == ""){
 			$('.check')[k].focus();

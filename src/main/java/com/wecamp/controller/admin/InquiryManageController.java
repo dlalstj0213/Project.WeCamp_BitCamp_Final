@@ -44,15 +44,15 @@ public class InquiryManageController {
 	}
 	
 	@ResponseBody
-	@GetMapping("inquiry_datail")
+	@GetMapping("inquiry_detail")
 	private Inquiry getInquiryDetail(int inq_idx){
 		return inquiryService.getInquiryDetailService(inq_idx);
 	}
 	
 	@ResponseBody
 	@PostMapping("update_inquiry")
-	private boolean updateInquiry(int inq_idx) {
-		return inquiryService.updateInquiryService(inq_idx);
+	private boolean updateInquiry(int inq_idx, String email) {
+		return inquiryService.updateInquiryService(inq_idx, email);
 	}
 	
 	@ResponseBody

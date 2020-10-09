@@ -10,7 +10,7 @@ public interface InquiryManageService {
 
 	ModelAndView getInquiryListService(String cpStr, HttpSession session);
 	Inquiry getInquiryDetailService(int inq_idx);
-	boolean updateInquiryService(int inq_idx);
+	boolean updateInquiryService(int inq_idx, String email);
 	boolean deleteInquiryService(int inq_idx);
 	ModelAndView searchInquiryService(String keyword, String category, String cpStr, HttpSession session);
 }

@@ -197,7 +197,7 @@
         <div class="row mt-5">
             <div class="col-lg-4 column-td-6">
                 <div class="card-item blog-card">
-                    <a href="blog-single.html" class="card-image-wrap" id="instaLink0">
+                    <a href="blog-single.html" class="card-image-wrap instaLink0">
                         <div class="card-image">
                             <img src="images/img31.jpg" alt="blog image" class="card__img insta0">
                         </div><!-- end card-image -->

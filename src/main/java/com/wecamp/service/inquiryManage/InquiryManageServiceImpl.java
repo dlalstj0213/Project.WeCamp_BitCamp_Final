@@ -53,9 +53,11 @@ public class InquiryManageServiceImpl implements InquiryManageService{
 	
 	@Transactional
 	@Override
-	public boolean updateInquiryService(int inq_idx) {
+	public boolean updateInquiryService(int inq_idx, String email) {
 		Inquiry inquiry = inquiryMapper.selectInquiryOne(inq_idx);
 		if(inquiryMapper.insertOwner(inquiry)) {
+			if(inquiryMapper.updateInquiredMember(email));
+			else return false;
 			return inquiryMapper.updateInquiry(inq_idx);
 		}
 		return false;

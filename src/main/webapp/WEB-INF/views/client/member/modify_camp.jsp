@@ -322,7 +322,7 @@
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
 													<textarea id="intro" name="camp.intro" class="message-control form-control check" style="height: 100px;"
-														placeholder="캠피장을 소개해주세요">${vo.camp.intro}</textarea>
+														placeholder="캠핑장을 소개해주세요">${vo.camp.intro}</textarea>
 												</div>
 											</div>
 											<div class="billing-content">

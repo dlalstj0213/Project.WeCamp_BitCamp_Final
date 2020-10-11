@@ -316,7 +316,7 @@
 								<div class="col-lg-12">
 									<div class="input-box" style="margin-bottom: 10px">
 										
-										<div id="site0" class="billing-form-item">
+										<div id="site" class="billing-form-item">
 										<div class="billing-content" style="padding-bottom: 0%;">
 											<label class="label-text">캠핑장 소개 </label>
 												<div class="form-group">
@@ -351,7 +351,7 @@
 									
 									<c:forEach items="${vo.sort_list}" var="sort" varStatus="index">
 									<!-- 전체적인 추가 사이트 -->
-										<div id="site${index.index+1}" class="billing-form-item">
+										<div id="site${index.index}" class="billing-form-item">
 											<div class="billing-content">
 											
 											<!-- 1 -->
@@ -359,7 +359,7 @@
 												data-placement="top" title="해당 구역 이름"></i></label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<input id="site-name${index.index+1}" name="sort[${index.index+1}].site_name" class="message-control form-control check" style="height: 50px"
+													<input id="site-name${index.index}" name="sort[${index.index}].site_name" class="message-control form-control check" style="height: 50px"
 														placeholder="캠핑 사이트 이름을 입력해주세요." value="${sort.site_name}">
 												</div>
 												
@@ -368,37 +368,37 @@
 											<div class="billing-form-item">
 												<div class="billing-content">
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-0-${index.index+1}" class="choice-sort" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-0-${index.index+1}">오토캠핑</label>
+														<input type="checkbox" id="chk-sort-0-${index.index}" class="choice-sort" value="오토캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-0-${index.index}">오토캠핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-1-${index.index+1}" class="choice-sort" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-1-${index.index+1}">글램핑</label>
+														<input type="checkbox" id="chk-sort-1-${index.index}" class="choice-sort" value="글램핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-1-${index.index}">글램핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-2-${index.index+1}" class="choice-sort" value="카라반" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-2-${index.index+1}">카라반</label>
+														<input type="checkbox" id="chk-sort-2-${index.index}" class="choice-sort" value="카라반" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-2-${index.index}">카라반</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-3-${index.index+1}" class="choice-sort" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-3-${index.index+1}">노지캠핑</label>
+														<input type="checkbox" id="chk-sort-3-${index.index}" class="choice-sort" value="노지캠핑" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-3-${index.index}">노지캠핑</label>
 													</div>
 													<div class="custom-checkbox" style='margin-bottom: 0px;'>
-														<input type="checkbox" id="chk-sort-4-${index.index+1}" class="choice-sort" value="기타" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
-															for="chk-sort-4-${index.index+1}">기타</label>
+														<input type="checkbox" id="chk-sort-4-${index.index}" class="choice-sort" value="기타" onClick="javascript:chooseOnlyOneSort(this, ${index.index});"> <label
+															for="chk-sort-4-${index.index}">기타</label>
 													</div>
-													<div id='etc-input-area-${index.index+1}' class='form-group' style='margin-bottom: 0px;'>
+													<div id='etc-input-area-${index.index}' class='form-group' style='margin-bottom: 0px;'>
 													</div>
 												</div>
 											</div>
 											
-											<input id="checked-data-${index.index+1}" type="hidden" class="check" name="sort[${index.index+1}].sort_name"  value="">
+											<input id="checked-data-${index.index}" type="hidden" class="check" name="sort[${index.index}].sort_name"  value="">
 											
 											<!-- 2 -->
 											<label class="label-text">해당 사이트 수용 인원 </label>
 												<div class="form-group">
 													<span class="la la-pencil form-icon"></span>
-													<input id="people-num${index.index+1}" name="sort[${index.index+1}].people_num" class="message-control form-control check" style="height: 50px"
+													<input id="people-num${index.index}" name="sort[${index.index}].people_num" class="message-control form-control check" style="height: 50px"
 														placeholder="해당 사이트 내 수용 가능한 인원을 입력해주세요." value="${sort.people_num}">
 												</div>
 												
@@ -406,15 +406,15 @@
 											<label class="label-text">해당 사이트 이용 가격 </label>
 												<div class="form-group">
 													<span class="la la-won form-icon"></span> <input
-														id="site-fee${index.index+1}" class="form-control camp-price check" type="text"
-														name="sort[${index.index+1}].site_fee" placeholder="캠핑장 가격을 정확히 입력해 주세요" value="${sort.site_fee}">
+														id="site-fee${index.index}" class="form-control camp-price check" type="text"
+														name="sort[${index.index}].site_fee" placeholder="캠핑장 가격을 정확히 입력해 주세요" value="${sort.site_fee}">
 												</div>
 												
 											<!-- 4 -->
 											<label class="label-text">해당 사이트 사진 <i	class="la la-file-image-o tip ml-1" data-toggle="tooltip"
 												data-placement="top" title="해당 사이트에 관련된 대표 사진 한 장을 선택해주세요(.png .jpg)"></i></label>
 												<div class="form-group">
-													<input id="site-img${index.index+1}" class="check" type="file" name="sort[${index.index+1}].site_img" accept=".png, .jpg">
+													<input id="site-img${index.index}" class="check" type="file" name="sort[${index.index}].site_img" accept=".png, .jpg">
 												</div>
 											
 											</div>

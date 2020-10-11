@@ -314,7 +314,7 @@
 								<div class="col-lg-12">
 									<div class="input-box" style="margin-bottom: 10px">
 										
-										<div id="site0" class="billing-form-item">
+										<div id="site" class="billing-form-item">
 										<div class="billing-content" style="padding-bottom: 0%;">
 											<label class="label-text">캠핑장 소개 </label>
 												<div class="form-group">
@@ -435,7 +435,7 @@
 												<div class="input-group-button" onclick="add_inputs();">
 													<span class="input-site-increment">+</span>
 												</div>
-													<input type='hidden' id='current-site-size' value='0'>
+													<input type='hidden' id='current-site-size' value='1'>
 												<div class="input-group-button" onclick="remove_inputs();">
 													<span class="input-site-decrement">-</span>
 												</div>

@@ -6,7 +6,7 @@ function uploadCamp(){
 	console.log(length);
 	
 	//var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
-	let reg = /(.*?)\.(jpg|png)$/;
+	let reg = /(.*?)\.(jpg|png|JPG|PNG)$/;
 	for(let i=0; i<document.getElementsByClassName('file').length; i++){
 		let file = document.getElementsByClassName('file')[i].value;
 		if(!file.match(reg)){
@@ -105,11 +105,11 @@ function uploadCamp(){
 
 function add_inputs(){
 	let num = Number(document.getElementById('current-site-size').value);
+	more_input_html(num);
 	num += 1;
 	//console.log(num);
-	$('#count-site').text("("+(num+1)+")");
+	$('#count-site').text("("+num+")");
 	document.getElementById('current-site-size').value = num;
-	more_input_html(num);
 }
 
 //deprecated - json 형태로 ajax를 통한 비동기 통신 해보기
@@ -131,11 +131,11 @@ function test(){
 
 function remove_inputs(){
 	let num = Number(document.getElementById('current-site-size').value);
-	if(num > 0){
+	if(num > 1){
+		num -= 1;
 		let e = document.getElementById('site'+num);
 		document.getElementById('site-size-box').removeChild(e);
-		num -= 1;
-		$('#count-site').text("("+(num+1)+")");
+		$('#count-site').text("("+num+")");
 	}else{
 		return;
 	}
@@ -190,7 +190,7 @@ function more_input_html(index){
 			+ "<label class='label-text'>해당 사이트 사진 <i	class='la la-file-image-o tip ml-1' data-toggle='tooltip'"
 			+ "data-placement='top' title='캠핑장 관련 상세 사진들을 선택해주세요(.png .jpg)'></i></label>"
 			+ "<div class='form-group'>"
-			+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img' accept='.png, .jpg'>"
+			+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img' accept='.png, .jpg, .PNG, .JPG'>"
 			+ "</div>"
 			+ "</div>"
 			//end billing-content 
@@ -205,7 +205,7 @@ function more_input_html(index){
 		checked_data_form.setAttribute('name', "sort["+index+"].sort_name");
 		checked_data_form.setAttribute('value', '');
 		$('#site-size-box').append(more_html);
-		$('#site-size-box').append(checked_data_form);
+		$('#site'+index).append(checked_data_form);
 	
 	//포인트 입력 시 자동으로 ',(콤마)' 입력
 	$(".camp-price").bind('keyup', function(e) {

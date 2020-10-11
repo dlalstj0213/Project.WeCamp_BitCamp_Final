@@ -4,8 +4,22 @@
 function uploadCamp(){
 	let length = document.getElementsByClassName('check').length;
 	console.log(length);
+	
+	//var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+	let reg = /(.*?)\.(jpg|png|JPG|PNG)$/;
+	for(let i=0; i<document.getElementsByClassName('file').length; i++){
+		let file = document.getElementsByClassName('file')[i].value;
+		if(!file.match(reg)){
+			document.getElementsByClassName('file')[i].focus();
+			alert("지정된 확장자의 파일만 업로드 가능합니다. (.png .jpg)");
+			return false;
+		}
+	}
+	
 	for(let k=0; k<length; k++){
 		if(document.getElementsByClassName('check')[k].value == ""){
+			console.log(document.getElementsByClassName('check')[k]);
+			console.log("k : "+k);
 			$('.check')[k].focus();
 			alert("모든 정보를 입력해 주세요.");
 			return false;
@@ -117,12 +131,12 @@ function test(){
 
 function remove_inputs(){
     let num = Number(document.getElementById('current-site-size').value);
-//    console.log("remove num: "+num);
+    console.log("remove num: "+num);
 	if(num > 1){
+		num -= 1;
         let e = document.getElementById('site'+num);
         //alert(e);
 		document.getElementById('site-size-box').removeChild(e);
-		num -= 1;
 		$('#count-site').text("("+(num)+")");
 	}else{
 		return;
@@ -152,41 +166,39 @@ function more_input_html(index){
 		let sort_name = ["오토캠핑", "글램핑", "카라반", "노지캠핑", "기타"];
 		for(let i=0; i<sort_name.length; i++){
 			more_html += "<div class='custom-checkbox' style='margin-bottom: 0px;'>"
-			+ "<input type='checkbox' id='chk-sort-"+i+"-"+index+"' class='choice-sort' value='"+sort_name[i]+"' onClick='javascript:chooseOnlyOneSort(this, "+index+");''> <label"
-			+ " for='chk-sort-"+i+"-"+index+"'>"+sort_name[i]+"</label>"
-			+ "</div>";
-		}
-		more_html += "<div id='etc-input-area-"+index+"' class='form-group' style='margin-bottom: 0px;'>"
-			+ "</div>"
-			+ "</div>"
-			+ "</div>"
-			
-			// 2 
-			+ "<label class='label-text'>해당 사이트 수용 인원 <i	class='la la-question tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
-			+ "<div class='form-group'>"
-			+ "<span class='la la-pencil form-icon'></span>"
-			+ "<input id='people-num"+index+"' name='sort["+index+"].people_num' class='message-control form-control check' style='height: 50px'"
-			+ "placeholder='해당 사이트 내 수용 가능한 인원을 입력해주세요.'>"
-			+ "</div>"
-			// 3 
-			+ "<label class='label-text'>해당 사이트 이용 가격 <i	class='la la-question tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
-			+ "<div class='form-group'>"
-			+ "<span class='la la-won form-icon'></span>"
-			+ "<input id='site-fee"+index+"' class='form-control camp-price check' type='text'"
-			+ "name='sort["+index+"].site_fee' placeholder='캠핑장 가격을 정확히 입력해 주세요'>"
-			+ "</div>"
-			// 4
-			+ "<label class='label-text'>해당 사이트 사진 <i	class='la la-file-image-o tip ml-1' data-toggle='tooltip'"
-			+ "data-placement='top' title='최대 30글자까지 입력가능합니다.'></i></label>"
-			+ "<div class='form-group'>"
-			+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img'>"
-			+ "</div>"
-			+ "</div>"
-			//end billing-content 
-			+ "</div>";
-			//end billing-form-item 
+				+ "<input type='checkbox' id='chk-sort-"+i+"-"+index+"' class='choice-sort' value='"+sort_name[i]+"' onClick='javascript:chooseOnlyOneSort(this, "+index+");''> <label"
+				+ " for='chk-sort-"+i+"-"+index+"'>"+sort_name[i]+"</label>"
+				+ "</div>";
+			}
+			more_html += "<div id='etc-input-area-"+index+"' class='form-group' style='margin-bottom: 0px;'>"
+				+ "</div>"
+				+ "</div>"
+				+ "</div>"
+				
+				// 2 
+				+ "<label class='label-text'>해당 사이트 수용 인원 </label>"
+				+ "<div class='form-group'>"
+				+ "<span class='la la-pencil form-icon'></span>"
+				+ "<input id='people-num"+index+"' name='sort["+index+"].people_num' class='message-control form-control check' style='height: 50px'"
+				+ "placeholder='해당 사이트 내 수용 가능한 인원을 입력해주세요.'>"
+				+ "</div>"
+				// 3 
+				+ "<label class='label-text'>해당 사이트 이용 가격 </label>"
+				+ "<div class='form-group'>"
+				+ "<span class='la la-won form-icon'></span>"
+				+ "<input id='site-fee"+index+"' class='form-control camp-price check' type='text'"
+				+ "name='sort["+index+"].site_fee' placeholder='캠핑장 가격을 정확히 입력해 주세요'>"
+				+ "</div>"
+				// 4
+				+ "<label class='label-text'>해당 사이트 사진 <i	class='la la-file-image-o tip ml-1' data-toggle='tooltip'"
+				+ "data-placement='top' title='캠핑장 관련 상세 사진들을 선택해주세요(.png .jpg)'></i></label>"
+				+ "<div class='form-group'>"
+				+ "<input id='site-img"+index+"' class='check' type='file' name='sort["+index+"].site_img' accept='.png, .jpg, .PNG, .JPG'>"
+				+ "</div>"
+				+ "</div>"
+				//end billing-content 
+				+ "</div>";
+				//end billing-form-item 
 		
 		//checkbox form data
 		let checked_data_form = document.createElement('input');
@@ -196,7 +208,7 @@ function more_input_html(index){
 		checked_data_form.setAttribute('name', "sort["+index+"].sort_name");
 		checked_data_form.setAttribute('value', '');
 		$('#site-size-box').append(more_html);
-		$('#site-size-box').append(checked_data_form);
+		$('#site'+index).append(checked_data_form);
 	
 	//포인트 입력 시 자동으로 ',(콤마)' 입력
 	$(".camp-price").bind('keyup', function(e) {
@@ -223,7 +235,7 @@ function chooseOnlyOneSort(check, index){
 			obj[i].checked = false;
 		}
 	}
-	
+	console.log("check.value : "+check.value);
 	if(check.checked == false){
 		$('#etc-input-area-'+index).html("");
 	}else if(check.value == "기타"){

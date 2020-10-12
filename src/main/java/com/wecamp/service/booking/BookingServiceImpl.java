@@ -48,7 +48,9 @@ public class BookingServiceImpl implements BookingService {
 		log.info("#save_point >>>> " +save_point);
 		log.info("#Point >>>> " +point);
 		
-		mapper.insertBooking(booking);
+		if(mapper.insertBooking(booking)) {
+			mapper.plusTotalBooking(booking.getCamp_idx());
+		}
 		if(point != -1L) {
 			query.put("point", point);
 			query.put("email", email);

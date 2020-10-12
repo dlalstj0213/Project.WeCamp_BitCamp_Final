@@ -1,12 +1,18 @@
 package com.wecamp.service.refund;
 
+import static com.wecamp.model.RefundSet.IMPORT_CANCEL_URL;
+import static com.wecamp.model.RefundSet.IMPORT_PAYMENTINFO_URL;
+import static com.wecamp.model.RefundSet.IMPORT_PREPARE_URL;
+import static com.wecamp.model.RefundSet.IMPORT_TOKEN_URL;
+import static com.wecamp.model.RefundSet.KEY;
+import static com.wecamp.model.RefundSet.SECRET;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,20 +31,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wecamp.mapper.BookingMapper;
+import com.wecamp.model.Booking;
 import com.wecamp.model.Member;
 import com.wecamp.utils.DateUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-import static com.wecamp.model.RefundSet.*;
-
 @Log4j
 @AllArgsConstructor
 @Service
 public class RefundServiceImpl implements RefundService {
 	
-
 	BookingMapper mapper;
 
 	// 아임포트 인증(토큰)을 받아주는 함수
@@ -94,6 +98,8 @@ public class RefundServiceImpl implements RefundService {
 			return -1; 
 		} else {
 			System.err.println("환불성공");
+			Booking booking = mapper.selectBookingOne(imp_uid);
+			mapper.minusTotalBooking(booking.getCamp_idx());
 			return 1;
 		}
 	}

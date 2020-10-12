@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.log4j.Log4j;
@@ -18,7 +20,8 @@ public class FileUtil {
 	 * @param path (String) 저장될 파일 경로
 	 * @return a String value of saveFileName 새로운파일이름
 	 */
-	public String uploadFile(MultipartFile file, String path) {
+	public String uploadFile(MultipartFile file, String path, HttpSession session) {
+		path = session.getServletContext().getRealPath("") + path;
 		String ofname = file.getOriginalFilename();
 		int idx = ofname.lastIndexOf(".");
 		String ofheader = ofname.substring(0, idx);

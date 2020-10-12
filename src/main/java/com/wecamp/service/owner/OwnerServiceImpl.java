@@ -90,16 +90,16 @@ class OwnerServiceImpl implements OwnerService{
 			query.put("email", user.getEmail());
 			if(ownerMapper.updateOwnerCampIdx(query)) {
 				List<Img> imgList =  new ArrayList<Img>();
-				String savedName = fileUtil.uploadFile(model.getImgThumb(), Path.CAMP_IMG_THUMB);
+				String savedName = fileUtil.uploadFile(model.getImgThumb(), Path.CAMP_IMG_THUMB, session);
 				imgList.add(new Img(0, 0, savedName, model.getImgThumb().getOriginalFilename(), model.getImgThumb().getSize(), "thumb"));
 				for(MultipartFile file : model.getImgDetail()) {
-					imgList.add(new Img(0, 0, fileUtil.uploadFile(file, Path.CAMP_IMG_DETAIL), file.getOriginalFilename(), file.getSize(), "detail"));
+					imgList.add(new Img(0, 0, fileUtil.uploadFile(file, Path.CAMP_IMG_DETAIL, session), file.getOriginalFilename(), file.getSize(), "detail"));
 				}
 				query.put("list", imgList);
 				if(ownerMapper.insertImgs(query)) {
 					query.remove("list");
 					for(Sort sort : model.getSort()) {
-						sort.setFname(fileUtil.uploadFile(sort.getSite_img(), Path.CAMP_IMG_SORT));
+						sort.setFname(fileUtil.uploadFile(sort.getSite_img(), Path.CAMP_IMG_SORT, session));
 						sort.setOfname(sort.getSite_img().getOriginalFilename());
 					}
 					query.put("list", model.getSort());
@@ -193,17 +193,17 @@ class OwnerServiceImpl implements OwnerService{
 					FileUtil fileUtil = new FileUtil();
 					List<Img> new_img_list = new ArrayList<Img>();
 					
-					String fname = fileUtil.uploadFile(request.getImgThumb(), Path.CAMP_IMG_THUMB);
+					String fname = fileUtil.uploadFile(request.getImgThumb(), Path.CAMP_IMG_THUMB, session);
 					new_img_list.add(new Img(-1, -1, fname, request.getImgThumb().getOriginalFilename(), request.getImgThumb().getSize(), "thumb"));
 					
 					for(MultipartFile mf : request.getImgDetail()) {
-						String d_fname = fileUtil.uploadFile(mf, Path.CAMP_IMG_DETAIL);
+						String d_fname = fileUtil.uploadFile(mf, Path.CAMP_IMG_DETAIL, session);
 						new_img_list.add(new Img(-1, -1, d_fname, mf.getOriginalFilename(), mf.getSize(), "detail"));
 					}
 					query.put("list", new_img_list);
 					if(ownerMapper.insertImgs(query)) {
 						for(Sort new_sort : request.getSort()) {
-							String s_fname = fileUtil.uploadFile(new_sort.getSite_img(), Path.CAMP_IMG_SORT);
+							String s_fname = fileUtil.uploadFile(new_sort.getSite_img(), Path.CAMP_IMG_SORT, session);
 							new_sort.setFname(s_fname);
 							new_sort.setOfname(new_sort.getSite_img().getOriginalFilename());
 						}

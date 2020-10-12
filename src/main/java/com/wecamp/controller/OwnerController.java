@@ -56,7 +56,8 @@ public class OwnerController {
 	@PostMapping("upload_camp.wcc")
 	private ModelAndView addCamp(CampAndSortAndImg model) {
 		log.info("#> addCamp() 접근"); 
-		log.info("#> size : "+model.getSort().size());
+		log.info("#> contextPath : "+session.getServletContext().getContextPath());
+		log.info("#> realPath : "+session.getServletContext().getRealPath(""));
 		int count = 0;
 		for(Sort detail : model.getSort()) {
 			count++;

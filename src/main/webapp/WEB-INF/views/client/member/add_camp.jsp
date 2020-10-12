@@ -536,7 +536,7 @@ function bt_addr_click(){
 			alert("사업자 회원만 접근 가능합니다.");
 			location.href = "/";
 		}else if(<%=request.getAttribute("response")%> == true){
-			alert("good");
+			alert("캠핑장 등록 완료");
 			location.href = "/";
 		}else if(<%=request.getAttribute("response")%> == false){
 			alert("error");

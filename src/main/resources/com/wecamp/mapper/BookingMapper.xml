@@ -65,4 +65,15 @@
 		update BOOKING set S_NO=2 where IMP_UID=#{imp_uid}
 	</update>
 	
+	<select id="selectBookingOne" parameterType="String" resultType="Booking">
+		select * from BOOKING where IMP_UID = #{imp_uid}
+	</select>
+	
+	<update id="plusTotalBooking" parameterType="int">
+		update CAMP set TOTAL_BOOKING = ((select nvl(TOTAL_BOOKING, 0) from CAMP where CAMP_IDX = #{camp_idx})+1)	where CAMP_IDX = #{camp_idx}
+	</update>
+	
+	<update id="minusTotalBooking" parameterType="int">
+		update CAMP set TOTAL_BOOKING = ((select nvl(TOTAL_BOOKING, 0) from CAMP where CAMP_IDX = #{camp_idx})-1) where CAMP_IDX = #{camp_idx}
+	</update>
 </mapper>

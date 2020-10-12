@@ -12,9 +12,12 @@ public interface BookingMapper{
 	boolean update_state(String imp_uid);
 	
 	
-	void insertBooking(Booking booking);
+	boolean insertBooking(Booking booking);
 	boolean updatePoint(HashMap<String, Object> query);
 	//void updatePoint(@Param("point")String point,@Param("email")String email);
 	String selectMemberGrade(String email);
 	boolean updateS_no(String imp_uid);
+	Booking selectBookingOne(String imp_uid);
+	boolean plusTotalBooking(int camp_idx);
+	boolean minusTotalBooking(int camp_idx);
 }

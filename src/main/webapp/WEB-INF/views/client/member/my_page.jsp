@@ -841,13 +841,12 @@ $(function(){
         $("#close_modal").click(function() {
             $("#exampleModal").modal("hide");
         });
-        
-        	let selected = document.getElementById('selectedTab').value;
-        	if(selected == 'booking'){
-        		call_booking_info();
-        	}else if(selected == 'heart'){
-        		call_heart_list();
-        	}
+       	let selected = document.getElementById('selectedTab').value;
+       	if(selected == 'booking'){
+       		call_booking_info();
+       	}else if(selected == 'heart'){
+       		call_heart_list();
+       	}
     });
     
     $('#myModal').on('shown.bs.modal', function () {

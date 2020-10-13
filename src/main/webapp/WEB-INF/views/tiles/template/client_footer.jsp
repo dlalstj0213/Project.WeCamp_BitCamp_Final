@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- ================================
        START FOOTER AREA
@@ -46,8 +47,10 @@
                     <h4 class="footer__title">Quick Links</h4>
                     <ul class="list-items">
                         <li><a href="/howto">사이트 활용법</a></li>
+                        <c:if test="${ empty member }">
                         <li><a href="/sign_up/sign_up_page.wcc">회원가입</a></li>
                         <li><a href="/login/login.wcc">로그인</a></li>
+                        </c:if>
                         <li><a href="/trust">신뢰와 안전</a></li>
                         <li><a href="/newsroom">뉴스룸</a></li>
                     </ul>

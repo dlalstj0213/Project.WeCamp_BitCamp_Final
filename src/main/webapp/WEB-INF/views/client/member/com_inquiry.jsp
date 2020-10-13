@@ -181,6 +181,13 @@ $(document).ready(function(){
 		alert("로그인 하신 후에 이용 하실 수 있습니다.");
 		location.href ="/login/login.wcc";
 	}
+	if(<%=request.getAttribute("continue")%> == 1){
+		alert("이미 작성하신 문의가 아직 처리 되지 않았습니다.");
+		location.href = "/";
+	} else if(<%=request.getAttribute("continue")%> == 2){
+		alert("업체 문의 처리가 이미 완료 되었습니다.");
+		location.href = "/member/mypage.wcc";
+	}
 	if(<%=request.getAttribute("result")%> == true){
 		alert("업체 문의가 작성되었습니다.");
 		location.href="/";

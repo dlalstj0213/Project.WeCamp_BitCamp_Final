@@ -253,11 +253,11 @@ Author Email:   contact@tecydevs.com
         
         function check_available(){
             let check = document.getElementById('peopleNum').value;
-            console.log("check available : "+check_booking_available);
+//            console.log("check available : "+check_booking_available);
             if(check>=1 && check_booking_available){
             	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
             }else{
-            	alert("인원수를 100명 이상으로 설정해주세요.")
+            	alert("인원수를 1명 이상으로 설정해주세요.")
             	document.getElementById('booking-event').style.pointerEvents = 'none';
             }
          }
@@ -543,10 +543,10 @@ Author Email:   contact@tecydevs.com
         $('.dropdown-toggle').dropdown();
 
 
-        /*=========== Google map ============*/
-        if($("#map").length) {
-            initMap('map', 40.717499, -74.044113, 'images/map-marker.png');
-        }
+//        /*=========== Google map ============*/
+//        if($("#map").length) {
+//            initMap('map', 40.717499, -74.044113, 'images/map-marker.png');
+//        }
 
     });
 })(jQuery);

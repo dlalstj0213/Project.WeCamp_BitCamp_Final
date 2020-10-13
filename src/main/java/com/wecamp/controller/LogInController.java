@@ -40,8 +40,9 @@ public class LogInController {
 	
 	// 로그인 폼으로 이동
 	@RequestMapping(value = "login.wcc", method = RequestMethod.GET)
-	private String login(Model model) {
+	private String login(Model model, boolean relogin) {
 		log.info("#> call - login() ");
+		if(relogin) session.removeAttribute("member");
 		SnsLogin snsLogin = new SnsLogin(new SnsValue("naver"));
 		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
 		return "client/member/login/" + WebTitle.TITLE + "로그인";

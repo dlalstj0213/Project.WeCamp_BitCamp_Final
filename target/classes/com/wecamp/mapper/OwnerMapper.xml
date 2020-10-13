@@ -7,6 +7,10 @@
 		insert into INQUIRY values(INQUIRY_SEQ.nextval, #{query.email}, 1, #{query.title}, #{query.owner_num}, #{query.content}, SYSDATE, #{query.com_name}, #{query.com_addr}, #{query.com_tel})
 	</insert>
 	
+	<select id="selectInquiryOne" resultType="Inquiry" parameterType="String">
+		select * from INQUIRY where EMAIL = #{email}
+	</select>
+	
 	<insert id="insertCamp" parameterType="Camp">
 		<selectKey keyProperty="camp_idx" resultType="int" order="BEFORE">
 			select CAMP_SEQ.nextval from dual

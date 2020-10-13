@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wecamp.model.CampAndSortAndImg;
 import com.wecamp.model.Inquiry;
+import com.wecamp.model.Member;
 import com.wecamp.model.Sort;
 import com.wecamp.service.owner.OwnerService;
 import com.wecamp.setting.WebTitle;
@@ -33,11 +34,16 @@ public class OwnerController {
 	private HttpSession session;
 	
 	@RequestMapping(value = "com_inquiry.wcc", method = RequestMethod.GET)
-	private String comInquiry() {
-		if(session.getAttribute("member") == null) {
-			return "redirect:../";
+	private ModelAndView comInquiry() {
+		Member member = (Member)session.getAttribute("member");
+		if(member == null) {
+			return new ModelAndView("redirect:../login/login.wcc");
+		} else {
+			ModelAndView response = new ModelAndView("client/member/com_inquiry/"+WebTitle.TITLE+"업체 문의 작성");
+			int result = ownerService.checkInquiryService(member);
+			response.addObject("continue", result);
+			return response;
 		}
-		return "client/member/com_inquiry/"+WebTitle.TITLE+"업체 문의 작성";
 	}
 	
 	@RequestMapping(value = "add_camp.wcc", method = RequestMethod.GET)

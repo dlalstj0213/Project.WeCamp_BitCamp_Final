@@ -532,9 +532,12 @@ function bt_addr_click(){
 <script src="/js/add-camp.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script>
 	$(document).ready(function() {
-		if(<%=request.getAttribute("result")%> == false){
+		if(<%=request.getAttribute("result")%> == 1){
 			alert("사업자 회원만 접근 가능합니다.");
 			location.href = "/";
+		}else if(<%=request.getAttribute("result")%> == 3){
+			alert("이미 등록된 캠핑장이 존재합니다.");
+			location.href = "../member/mypage.wcc";
 		}else if(<%=request.getAttribute("response")%> == true){
 			alert("캠핑장 등록 완료");
 			location.href = "/";

@@ -5,13 +5,13 @@ import java.util.List;
 
 import com.wecamp.model.Camp;
 import com.wecamp.model.Img;
+import com.wecamp.model.Inquiry;
 import com.wecamp.model.Owner;
 import com.wecamp.model.Sort;
 
-import com.wecamp.model.Camp;
-
 public interface OwnerMapper {
 	boolean insertInquiry(HashMap<String, Object> query);
+	List<Inquiry> selectInquiryOne(String email);
 	boolean insertCamp(Camp query);
 	boolean insertImgs(HashMap<String, Object> query);
 	boolean insertSorts(HashMap<String, Object> query);

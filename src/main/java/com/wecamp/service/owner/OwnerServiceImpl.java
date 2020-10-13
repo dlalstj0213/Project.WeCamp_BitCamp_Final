@@ -60,18 +60,42 @@ class OwnerServiceImpl implements OwnerService{
 		response.addObject("result", result);
 		return response;
 	}
-
+	
+	@Override
+	public int checkInquiryService(Member member) {
+		List<Inquiry> list = ownerMapper.selectInquiryOne(member.getEmail());
+		if(list.size() > 0) {
+			if(list.get(0).getS_no() == 1) return 1;
+			else return 2;
+		} else {
+			return 3;
+		}
+	}
+	
 	@Override
 	public ModelAndView checkOwner(HttpSession session) {
 		Member user  = (Member)session.getAttribute("member");
 		ModelAndView response = new ModelAndView();
-		response.setViewName("client/member/add_camp/"+WebTitle.TITLE+"캠핑장 등록");
+		Owner owner = null;
 		if(user == null) {
-			response.addObject("result", false);
+			response.setViewName("redirect:../login/login.wcc");
+			return response;
+		} else {
+			owner = ownerMapper.select_owner(user.getEmail());
+		}
+		
+		if(owner != null && user.getA_no() == 1) {
+			response.setViewName("redirect:../login/login.wcc?relogin="+true);
 		}else if(user.getA_no() == 1) {
-			response.addObject("result", false);
+			response.setViewName("client/member/add_camp/"+WebTitle.TITLE+"캠핑장 등록");
+			response.addObject("result", 1);
 		}else if(user.getA_no() == 2) {
-			response.addObject("result", true);
+			response.setViewName("client/member/add_camp/"+WebTitle.TITLE+"캠핑장 등록");
+			if(owner.getCamp_idx() == 0) {
+				response.addObject("result", 2);
+			}else {
+				response.addObject("result", 3);
+			}
 		}
 		return response;
 	}

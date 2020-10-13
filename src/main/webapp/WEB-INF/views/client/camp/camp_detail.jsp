@@ -698,6 +698,7 @@ $(document).ready(function(){
 			}
 			console.log("result : "+responseData.check);
 			isAvailable = responseData.check;
+			check_booking_available = isAvailable;
 		}
 	});
 	return isAvailable;
@@ -742,7 +743,8 @@ $(document).ready(function(){
         }, function(start, end, label){
         	$('#checkIn').val(start.format('YYYY/MM/DD'));
         	$('#checkOut').val(end.format('YYYY/MM/DD'));
-        	check_booking_available = check_dates(true);
+        	//check_booking_available = check_dates(true);
+        	check_dates(true);
         });
 })
 </script>

@@ -253,7 +253,7 @@ Author Email:   contact@tecydevs.com
         
         function check_available(){
             let check = document.getElementById('peopleNum').value;
-//            console.log("check available : "+check_booking_available);
+            console.log("check available : "+check_booking_available);
             if(check>=1 && check_booking_available){
             	document.getElementById('booking-event').style.pointerEvents = 'auto'; 
             }else{

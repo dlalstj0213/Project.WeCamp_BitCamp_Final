@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
+
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set>
 <c:set var="prevYear" value="${sysYear-1}"/> 
@@ -13,10 +12,6 @@
 
 
 <style>
-	html, body{
-		 width:100%;
-	  	height:100%;
-	}
 
 	.grid-container {
 	  display: grid;
@@ -306,6 +301,3 @@
 		
 	</script>
 <!-- END Java Script for this page -->
-
-
-</html>

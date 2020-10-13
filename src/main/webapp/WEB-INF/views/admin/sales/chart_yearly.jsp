@@ -1,153 +1,172 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
+
+
 <c:set var="now" value="<%=new java.util.Date()%>" />
-<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy" /></c:set>
-<c:set var="prevYear" value="${sysYear-1}"/> 
-<c:set var="lastYear" value="${sysYear-2}"/> 
-<c:set var="pastYear" value="${sysYear-3}"/> 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+<c:set var="sysYear">
+	<fmt:formatDate value="${now}" pattern="yyyy" />
+</c:set>
+<c:set var="prevYear" value="${sysYear-1}" />
+<c:set var="lastYear" value="${sysYear-2}" />
+<c:set var="pastYear" value="${sysYear-3}" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 
 
 <style>
-	html, body{
-		 width:100%;
-	  	height:100%;
-	}
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 1px 1px;
+	grid-template-areas: "right-chart left-table";
+	width: 100% !important;
+	height: 100% !important;
+}
 
-	.grid-container {
-	  display: grid;
-	  grid-template-columns: 1fr 1fr;
-	  grid-template-rows: 1fr;
-	  gap: 1px 1px;
-	  grid-template-areas: "right-chart left-table";
-	  width:100% !important;
-	  height:100% !important;
-	}
-	
-	.right-chart { grid-area: right-chart; margin-left: 5px; }
-	
-	.left-table { grid-area: left-table;
-				width: 900px;
-       			padding-left: 5vh; 
-	}
-	th, td { white-space: nowrap; }
+.right-chart {
+	grid-area: right-chart;
+	margin-left: 5px;
+}
 
+.left-table {
+	grid-area: left-table;
+	width: 900px;
+	padding-left: 5vh;
+}
+
+th, td {
+	white-space: nowrap;
+}
 </style>
 <div class="content-page">
-	
-		<!-- Start content -->
-        <div class="content">
-            
-			<div class="container-fluid">
 
-					<div class="row">
-							<div class="col-xl-12">
-									<div class="breadcrumb-holder">
-											<h1 class="main-title float-left">캠핑장 연도별 매출</h1>
-											<ol class="breadcrumb float-right">
-												<li class="breadcrumb-item">Home</li>
-												<li class="breadcrumb-item">매출 통계</li>
-												<li class="breadcrumb-item active">캠핑장 연도별 매출</li>
-											</ol>
-											<div class="clearfix"></div>
-									</div>
-							</div>
+	<!-- Start content -->
+	<div class="content">
+
+		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="breadcrumb-holder">
+						<h1 class="main-title float-left">캠핑장 연도별 매출</h1>
+						<ol class="breadcrumb float-right">
+							<li class="breadcrumb-item">Home</li>
+							<li class="breadcrumb-item">매출 통계</li>
+							<li class="breadcrumb-item active">캠핑장 연도별 매출</li>
+						</ol>
+						<div class="clearfix"></div>
 					</div>
-					<!-- end row -->
+				</div>
+			</div>
+			<!-- end row -->
 
-					
-					<div class="grid-container" style="height:auto !important">
-						<div class="right-chart">
-							<div class="card mb-3">
-									<div class="card-header">
-										<i class="fa fa-table"></i> 캠핑장 연도별 매출
-									</div>
-										
-									<div class="card-body" style="height:auto !important">
-										<canvas id="myChart"></canvas>
-									</div>							
-									<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-							</div>
-							<!-- end card-->				
+
+			<div class="grid-container" style="height: auto !important">
+				<div class="right-chart">
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-table"></i> 캠핑장 연도별 매출
 						</div>
-  						<div class="left-table">
-  							<table id="camp" class="display" style="width:100%">
-						        <thead>
-						            <tr>
-										 <th></th>						            
-						                <th>캠핑장 일련번호</th>
-						                <th>캠핑장명</th>
-						                <th>주소</th>
-						               
-						            </tr>
-						        </thead>
-						        <tfoot>
-						            <tr>
-						            	<th></th>
-						                <th>캠핑장 일련번호</th>
-						                <th>캠핑장명</th>
-						                <th>주소</th>
-						            </tr>
-						        </tfoot>
-						    </table>
-  						</div>
-									
-					</div>
-					<!-- end grid-container -->
 
-            </div>
-			<!-- END container-fluid -->
-			
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style="padding-left: 20px !important;">						
-										<div class="card mb-3">
-											<div class="card-header">
-												<h3><i class="fab fa-free-code-camp"></i> <span id="camp_name">캠핑장 명</span></h3>
-												#순 이익 : (총 매출액 - 영업 수수료) <br/> #매출 수익률 : (순 이익/총 매출) 
-										
-											</div>
-												
-											<div class="card-body">
-												
-												<table id="example1" class="table table-bordered table-responsive-xl table-hover display">
-													<thead>
-														<tr>
-															<th>구분(연도)</th>
-															<th>총 매출액(원)</th>
-															<th>거래 수(회)</th>
-															<th>업체 순 이익(원)</th>
-															<th>영업 수수료(원)</th>
-															<th>매출 수익률(%)</th>
-														</tr>
-													</thead>													
-													<tbody id="innerData">
-														
-													</tbody>
-												</table>
-												
-											</div>														
-										</div><!-- end card-->					
-									</div>
+						<div class="card-body" style="height: auto !important">
+							<canvas id="myChart"></canvas>
+						</div>
+						<div class="card-footer small text-muted">Updated yesterday
+							at 11:59 PM</div>
+					</div>
+					<!-- end card-->
+				</div>
+				<div class="left-table">
+					<table id="camp" class="display" style="width: 100%">
+						<thead>
+							<tr>
+								<th></th>
+								<th>캠핑장 일련번호</th>
+								<th>캠핑장명</th>
+								<th>주소</th>
+
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th></th>
+								<th>캠핑장 일련번호</th>
+								<th>캠핑장명</th>
+								<th>주소</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+
+			</div>
+			<!-- end grid-container -->
 
 		</div>
-		<!-- END content -->
+		<!-- END container-fluid -->
 
-    </div>
-	<!-- END content-page -->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+			style="padding-left: 20px !important;">
+			<div class="card mb-3">
+				<div class="card-header">
+					<h3>
+						<i class="fab fa-free-code-camp"></i> <span id="camp_name">캠핑장
+							명</span>
+					</h3>
+					#순 이익 : (총 매출액 - 영업 수수료) <br /> #매출 수익률 : (순 이익/총 매출)
+
+				</div>
+
+				<div class="card-body" style="overflow-x:scroll;overflow-y:hidden;" onscroll="scrollX();">
+
+					<table id="example1"
+						class="table table-bordered table-responsive-xl table-hover display" >
+						<thead>
+							<tr>
+								<th>구분(연도)</th>
+								<th>총 매출액(원)</th>
+								<th>거래 수(회)</th>
+								<th>업체 순 이익(원)</th>
+								<th>영업 수수료(원)</th>
+								<th>매출 수익률(%)</th>
+							</tr>
+						</thead>
+						<tbody id="innerData">
+
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+			<!-- end card-->
+		</div>
+
+	</div>
+	<!-- END content -->
+
+</div>
+<!-- END content-page -->
 
 
 <!-- BEGIN Java Script for this page -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"
+	defer></script>
 
-	
-	
-	<script>
+
+
+<script>
 	// comboBarLineChart
+	
+	function scrollX() {
+		document.all.mainTable.scrollLeft = document.all.bottomLine.scrollLeft;
+		document.all.topTable.scrollLeft = document.all.bottomLine.scrollLeft;
+	}
 	
 	let myData = {
 			labels: ["${pastYear}", "${lastYear}", "${prevYear}", "${sysYear}"],
@@ -181,8 +200,6 @@
 			}
 		}
 	});	
-
-
 	//테이블
 	$(document).ready(function() {
 	    $('#camp').DataTable( {
@@ -216,7 +233,6 @@
 			}
 			
 		}
-
 		const xhttp = new XMLHttpRequest(); // xmlHttpRequest생성
 		
 		xhttp.onreadystatechange = loader; //readystate에 변화가생기면 호출되는 함수
@@ -263,7 +279,6 @@
 		}catch(exception) {
 			alert("데이터가 존재하지 않습니다.");
 		}
-
 		}
 			
 		
@@ -273,6 +288,3 @@
 		
 	</script>
 <!-- END Java Script for this page -->
-
-
-</html>

@@ -74,7 +74,7 @@
                     <ul class="info-list contact-links">
                         <li><span class="la la-home"></span> 서울 마포구 백범로 23 3층</li>
                         <li><span class="la la-headphones"></span> <a href="#">+ 81 02 707 1480</a></li>
-                        <li><span class="la la-envelope-o"></span> <a href="#">dirto@gmail.com</a></li>
+                        <li><span class="la la-envelope-o"></span> <a href="mailto:rhieminseo@gmail.com">rhieminseo@gmail.com</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->

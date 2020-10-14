@@ -71,6 +71,8 @@
 					<a href="../camp/camp_detail.wcc?camp_idx=${list.camp_idx}">
 						<h4 class="card-title mt-0">${list.camp_name}</h4>
 						<p class="card-sub">${list.address}</p>
+						<p class="card-sub">${ list.check_in } ~ ${ list.check_out }</p>
+						<%-- <input type="hidden" id="" value="${ list.check_in }"> --%>
 					</a>
 				</div>
 				<div class="rating-row">

@@ -225,9 +225,6 @@
 																class="price">${sort.site_fee}</strong>
 																<input id="sort_idx${j}" type="hidden" value="${sort.sort_idx}">
 														</p>
-														<p class="card-text">
-															<small class="text-muted">3분 전에 업데이트 됨</small>
-														</p>
 													</div>
 												</div>
 											</div>

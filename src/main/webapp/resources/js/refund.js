@@ -37,10 +37,10 @@ function setVal(e){
 			oneBefore = result[4];
 			//console.log("0 : "+result[0]+", 1 : "+result[1]+", 2 : "+result[2]+", 3 : "+result[3]+",4 : "+result[4]);
 			//console.log("0 : "+typeof result[0]+", 1 : "+typeof result[1]+", 2 : "+result[2]+", 3 : "+result[3]+",4 : "+result[4]);
-			console.log("today : "+today+", fourBefore : "+fourBefore+", threeBefore : "+threeBefore+", twoBefore : "+twoBefore+",oneBefore : "+oneBefore);
+			//console.log("today : "+today+", fourBefore : "+fourBefore+", threeBefore : "+threeBefore+", twoBefore : "+twoBefore+",oneBefore : "+oneBefore);
 			$(".fourBefore"+e).text(fourBefore);
 			$(".threeBefore"+e).text(threeBefore);
-			if(today === threeBefore || today === twoBefore || today === oneBefore){
+			if(today === threeBefore || today === twoBefore || today === oneBefore || today === check_in){
 				 $(".bt_refund").text("환불 불가");
 				 $(".bt_refund").attr("disabled", true);
 				 $(".bt_refund").css('background-color','#bfbbbb');

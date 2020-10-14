@@ -37,7 +37,7 @@
 		where
 		B.EMAIL=#{email} and
 		i.division='thumb' order by
-		B.check_out desc
+		B.BDATE desc
 	</select>
 	
 	<!-- review_state 상태 변경 -->

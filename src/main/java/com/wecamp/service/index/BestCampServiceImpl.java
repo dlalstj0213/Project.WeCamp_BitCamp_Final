@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wecamp.mapper.CampMapper;
 import com.wecamp.model.CampAndEtc;
-import com.wecamp.model.CampAndImg;
 import com.wecamp.utils.StarUtil;
-import com.wecamp.vo.SearchResultVo;
 
 import lombok.AllArgsConstructor;
 

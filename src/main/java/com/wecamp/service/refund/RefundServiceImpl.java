@@ -1,11 +1,11 @@
 package com.wecamp.service.refund;
 
-import static com.wecamp.model.RefundSet.IMPORT_CANCEL_URL;
-import static com.wecamp.model.RefundSet.IMPORT_PAYMENTINFO_URL;
-import static com.wecamp.model.RefundSet.IMPORT_PREPARE_URL;
-import static com.wecamp.model.RefundSet.IMPORT_TOKEN_URL;
-import static com.wecamp.model.RefundSet.KEY;
-import static com.wecamp.model.RefundSet.SECRET;
+import static com.wecamp.setting.RefundSet.IMPORT_CANCEL_URL;
+import static com.wecamp.setting.RefundSet.IMPORT_PAYMENTINFO_URL;
+import static com.wecamp.setting.RefundSet.IMPORT_PREPARE_URL;
+import static com.wecamp.setting.RefundSet.IMPORT_TOKEN_URL;
+import static com.wecamp.setting.RefundSet.KEY;
+import static com.wecamp.setting.RefundSet.SECRET;
 
 import java.util.ArrayList;
 import java.util.HashMap;

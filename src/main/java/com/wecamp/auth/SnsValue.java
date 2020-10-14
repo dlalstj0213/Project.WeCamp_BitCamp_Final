@@ -17,8 +17,8 @@ public class SnsValue implements SnsUrl{
 	
 	public SnsValue(String service) {
 		this.service = service;
-		this.clientId = "YtUqxw72XK5MQyMaFC_R";
-		this.clientSecret = "T_F6lhg_Eh";
+		this.clientId = "[클라이언트 아이디]";
+		this.clientSecret = "[시크릿 키]";
 		this.redirectUrl = "https://3.35.93.88:8443/login/naver/callback";
 		if(service.equals("naver")) this.isNaver = true;
 		if(isNaver) {

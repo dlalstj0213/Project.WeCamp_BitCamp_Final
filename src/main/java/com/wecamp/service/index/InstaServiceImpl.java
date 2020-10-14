@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class InstaServiceImpl implements InstaService{
 	
-	private static final String url = "https://graph.instagram.com/me/media?media-id=17877290851747798&fields=media_url,%20permalink,%20timestamp,%20caption&access_token=IGQVJVdkVuR19YTUF4MzJEZA2pTTS11WDdKTURqY1VsbHFYdnRtby0weU1nckxsWnd5TTktLVdXUmF5VHRWQlI3SlVIWlFfOVVoaXJya0JqZAVViV0hVcXVxZAVRPd0hsLW1yeDhwYV9FZAVU5S0tJOE9RWgZDZD";
+	private static final String url = "https://graph.instagram.com/me/media?media-id=[아이디]&fields=media_url,%20permalink,%20timestamp,%20caption&access_token=[토큰]";
 	
 	public String getHttpHTML_GET() {
 		try {

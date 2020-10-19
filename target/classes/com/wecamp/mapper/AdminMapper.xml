@@ -36,6 +36,6 @@
 	</select>
 	
 	<select id="selectSumTotalFeeOnDate" resultType="long" parameterType="String">
-		select nvl(sum(TOTAL_FEE), 0) from BOOKING where to_char(BDATE, 'YYYY/MM/DD') = #{date}
+		select nvl(sum(TOTAL_FEE), 0) from BOOKING where to_char(BDATE, 'YYYY-MM-DD') = #{date}
 	</select>
 </mapper>

@@ -1,7 +1,5 @@
 package com.wecamp.service.refund;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
 
 public interface RefundService {

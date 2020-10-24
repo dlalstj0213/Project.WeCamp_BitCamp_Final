@@ -23,7 +23,7 @@
 
 
 # ABOUT PROJECT
-#### [ WeCamp ] 캠핑장 검색, 예약 및 관리 서비스 제공 웹 개발 프로젝트 <br><span style="font-size:15px">*( 2020.07.27 ~ 2020.10.12 )*</span>
+#### [ WeCamp ] 캠핑장 검색, 예약 및 관리 서비스 제공 웹 개발 프로젝트 <br><span style="font-size:15px">*( 2020.07.27 ~ 2020.10.14 )*</span>
 
 ## 1. 프로젝트 구성원
 
